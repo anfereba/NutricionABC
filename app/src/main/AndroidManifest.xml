@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NutricionABC">
         <activity
+            android:name=".RegistrarNutriologo"
+            android:exported="true" />
+        <activity
+            android:name=".RegistrarCliente"
+            android:exported="true" />
+        <activity
             android:name=".Logueo_Con_SQLite"
             android:exported="true" />
         <activity
