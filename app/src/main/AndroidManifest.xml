@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NutricionABC">
         <activity
+            android:name=".Logueo_Con_SQLite"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

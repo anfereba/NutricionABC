@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NutricionABC</string>
+    <string name="app_Correo">Correo</string>
+    <string name="app_Contraseña">Contraseña</string>
 </resources>
