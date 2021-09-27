@@ -15,6 +15,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/lion" />
+
             <EditText
                 android:id="@+id/editTextTextPersonName3"
                 android:layout_width="match_parent"
@@ -29,6 +35,14 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/app_Correo"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Contraseña"
                 android:inputType="textPersonName" />
 
             <Button

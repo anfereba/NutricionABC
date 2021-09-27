@@ -13,7 +13,7 @@ public class DbNutriologo extends DbHelper {
         super(context);
         this.context =context;
     }
-    public long insertarContacto(String nombre, String correo) {
+    public long insertarContacto(String nombre, String correo, String contraseña) {
 
         long id = 0;
 
@@ -24,6 +24,7 @@ public class DbNutriologo extends DbHelper {
             ContentValues values = new ContentValues();
             values.put("nombre", nombre);
             values.put("correo", correo);
+            values.put("contraseña",contraseña);
 
             id = db.insert(TABLE_NUTRIOLOGO, null, values);
         } catch (Exception ex) {

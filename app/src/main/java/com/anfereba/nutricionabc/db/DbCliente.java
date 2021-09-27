@@ -16,7 +16,7 @@ public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos
         super(context);
         this.context=context;
     }
-    public long insertarContacto(String nombre, String correo) {
+    public long insertarContacto(String nombre, String correo, String contraseña) {
 
         long id = 0;
 
@@ -27,6 +27,7 @@ public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos
             ContentValues values = new ContentValues();
             values.put("nombre", nombre);
             values.put("correo", correo);
+            values.put("contraseña",contraseña);
 
             id = db.insert(TABLE_CLIENTES, null, values);
         } catch (Exception ex) {

@@ -15,7 +15,7 @@ import com.anfereba.nutricionabc.db.DbHelper;
 
 public class RegistrarClienteConSQLite extends AppCompatActivity {
     Button btnCrear;
-    EditText Nombre, Correo;
+    EditText Nombre, Correo,Contraseña;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +24,15 @@ public class RegistrarClienteConSQLite extends AppCompatActivity {
         btnCrear = findViewById(R.id.button4);
         Nombre = (EditText) findViewById(R.id.editTextTextPersonName3);
         Correo = (EditText) findViewById(R.id.editTextTextPersonName4);
+        Contraseña=(EditText)findViewById(R.id.editTextTextPersonName7);
 
     btnCrear.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if(!Nombre.getText().toString().equals("")) {
+            if(!Nombre.getText().toString().equals("")&& !Correo.getText().toString().equals("")&& !Contraseña.getText().toString().equals("")) {
                 DbCliente dbCliente = new DbCliente(getApplicationContext());
 
-                long id = dbCliente.insertarContacto(Nombre.getText().toString(), Correo.getText().toString());
+                long id = dbCliente.insertarContacto(Nombre.getText().toString(), Correo.getText().toString(), Contraseña.getText().toString());
 
 
                 if (id > 0) {
@@ -60,5 +61,6 @@ public class RegistrarClienteConSQLite extends AppCompatActivity {
     private void limpiar() {
         Nombre.setText("");
         Correo.setText("");
+        Contraseña.setText("");
     }
 }

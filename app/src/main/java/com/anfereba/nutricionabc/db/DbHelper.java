@@ -22,16 +22,17 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_CLIENTES + "(" +/*Creamos la tabla nutriologo y
                  le asignamos los atributos */
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "contraseña TEXT NOT NULL," +
+                "correo TEXT NoT NULL," +
                 "nombre TEXT NOT NULL," +
-                "correo TEXT NoT NULL)");
+                "contraseña TEXT NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NUTRIOLOGO + "(" +/*Creamos la tabla nutriologo y
                  le asignamos los atributos */
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "contraseña TEXT NOT NULL," +
+                "correo TEXT NoT NULL," +
                 "nombre TEXT NOT NULL," +
-                "correo TEXT NoT NULL)");
+                "contraseña TEXT NOT NULL)");
+
 
     }
 

@@ -12,7 +12,7 @@ import com.anfereba.nutricionabc.db.DbCliente;
 import com.anfereba.nutricionabc.db.DbNutriologo;
 
 public class RegistrarNutriologoConSQLite extends AppCompatActivity {
-EditText Nombre, Correo;
+EditText Nombre, Correo,Contraseña;
 Button Crear;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +21,14 @@ Button Crear;
         Crear = findViewById(R.id.button5);
         Nombre = (EditText) findViewById(R.id.editTextTextPersonName5);
         Correo = (EditText) findViewById(R.id.editTextTextPersonName6);
-
+        Contraseña=(EditText)findViewById(R.id.editTextTextPersonName8);
         Crear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!Nombre.getText().toString().equals("")) {
+                if(!Nombre.getText().toString().equals("")&& !Correo.getText().toString().equals("")&& !Contraseña.getText().toString().equals("")) {
                     DbNutriologo DbNutriologo = new DbNutriologo (getApplicationContext());
 
-                    long id = DbNutriologo.insertarContacto(Nombre.getText().toString(), Correo.getText().toString());
+                    long id = DbNutriologo.insertarContacto(Nombre.getText().toString(), Correo.getText().toString(), Contraseña.getText().toString());
 
 
                     if (id > 0) {
@@ -55,5 +55,6 @@ Button Crear;
     private void limpiar() {
         Nombre.setText("");
         Correo.setText("");
+        Contraseña.setText("");
     }
 }
