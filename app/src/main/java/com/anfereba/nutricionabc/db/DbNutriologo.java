@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
-
+//Aqui podremos realizar las operaciones CRUB en la tabla Nutriologo
 public class DbNutriologo extends DbHelper {
     Context context;
     public DbNutriologo(@Nullable Context context) {

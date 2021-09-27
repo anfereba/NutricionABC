@@ -5,9 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
-
+//Aqui podremos crear las tablas y si queremos poner las versiones de la base de datos
 public class DbHelper extends SQLiteOpenHelper {
-
     private static final int DATABASE_VERSION = 1; //es la version de actualizaciones que le hagamos a la base de datos
     private static final String DATABASE_NOMBRE = "NutricionABC.db";//este es el nombre de la base de datos
     public static final String TABLE_CLIENTES = "t_clientes";//Creamos la tabla de clientes
