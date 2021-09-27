@@ -2,9 +2,12 @@ package com.anfereba.nutricionabc.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
+
+import org.w3c.dom.Text;
 
 public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos manejar la base de datos
     // y le heredamos la creacion de las tablas
@@ -33,5 +36,20 @@ public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos
         return id;
     }
 
+    public String consultarDato(String variableAconsultar, String filtroparabuscar, String informacionDelFiltro){
+        /*Esta consulta solo sirve para buscar un String*/
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
+
+        //Cursor cursorClientes= db.rawQuery(" SELECT * FROM "+TABLE_CLIENTES+" WHERE id=1",null); consulta de un numero
+        Cursor cursorClientes= db.rawQuery(" SELECT "+variableAconsultar+" FROM "+TABLE_CLIENTES+" WHERE "+filtroparabuscar+"='"+informacionDelFiltro+"'",null);
+        cursorClientes.moveToFirst();
+
+
+
+        String dato =cursorClientes.getString(0);
+        cursorClientes.close();
+        return dato;
+    }
 }
