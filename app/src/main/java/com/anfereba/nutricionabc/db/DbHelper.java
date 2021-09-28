@@ -11,6 +11,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NOMBRE = "NutricionABC.db";//este es el nombre de la base de datos
     public static final String TABLE_CLIENTES = "t_clientes";//Creamos la tabla de clientes
     public static final String TABLE_NUTRIOLOGO = "t_nutriologo";//Creamos la tabla de Nutriologo
+    public static final String TABLE_ADMINISTRADOR = "t_administrador";//Creamos la tabla de Nutriologo
         public DbHelper(@Nullable Context context) {
 
             super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
@@ -27,6 +28,13 @@ public class DbHelper extends SQLiteOpenHelper {
                 "contraseña TEXT NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NUTRIOLOGO + "(" +/*Creamos la tabla nutriologo y
+                 le asignamos los atributos */
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "correo TEXT NoT NULL," +
+                "nombre TEXT NOT NULL," +
+                "contraseña TEXT NOT NULL)");
+
+        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_ADMINISTRADOR + "(" +/*Creamos la tabla nutriologo y
                  le asignamos los atributos */
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "correo TEXT NoT NULL," +
