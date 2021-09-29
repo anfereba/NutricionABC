@@ -24,53 +24,106 @@
                 app:srcCompat="@drawable/imagen_ico"
                 android:onClick="EscogerImagenDeGaleria"/>
 
-            <EditText
-                android:id="@+id/TXTNombreUsuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/TXTNombreUsuario"
-                android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/TXTApellidoUsuario"
+            <!--Nombres -->
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/TXTApellidoUsuario"
-                android:inputType="textPersonName" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/TXTFechaNacimientoUsuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/TXTFechaNacimientoUsuario"
-                android:inputType="textPersonName" />
+                <EditText
+                    android:id="@+id/TXTNombreUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/TXTNombreUsuario"
+                    android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/TXTCorreoUsuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/TXTCorreoUsuario"
-                android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/TXTPasswordUsuario"
+            <!--Apellidos -->
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/TXTPasswordUsuario"
-                android:inputType="textPersonName" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/TXTFechaCreacionUsuario"
+                <EditText
+                    android:id="@+id/TXTApellidoUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/TXTApellidoUsuario"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Fecha de Nacimiento -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/TXTFechaNacimientoUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:hint="@string/TXTFechaNacimientoUsuario"
+                    android:inputType="date"
+                    android:onClick="SeleccionarFechaDeNacimiento"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Correo Electronico -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/TXTCorreoUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/TXTCorreoUsuario"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Contraseña -->
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/TXTFechaCreacionUsuario"
-                android:inputType="textPersonName" />
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/TXTPasswordUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/TXTPasswordUsuario"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Fecha de Creacion -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/TXTFechaCreacionUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:hint="@string/TXTFechaCreacionUsuario"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <Button
                 android:id="@+id/BtnRegistrarClienteBD"
