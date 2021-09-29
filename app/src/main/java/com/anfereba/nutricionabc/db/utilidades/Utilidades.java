@@ -19,8 +19,10 @@ public class Utilidades {
     public static final String CAMPO_CORREO = "Correo";
     public static final String CAMPO_PASSWORD = "Password";
     public static final String CAMPO_FECHA_CREACION = "FechaCreacion";
+    public static final String CAMPO_FOTO_USUARIO = "FotoPerfil";
 
-    //Setencia para crear tabla Usuario
+
+    //Sentencia para crear tabla Usuario
 
     public static final String CREAR_TABLA_USUARIO = "CREATE TABLE "
             + TABLA_USUARIO + "(" + CAMPO_ID_USUARIO + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -30,6 +32,7 @@ public class Utilidades {
             + CAMPO_FECHA_NACIMIENTO + " DATETIME NOT NULL, "
             + CAMPO_CORREO + " VARCHAR(100) NOT NULL UNIQUE, "
             + CAMPO_PASSWORD + " VARCHAR(100) NOT NULL, "
-            + CAMPO_FECHA_CREACION + " VARCHAR(100) NOT NULL)";
+            + CAMPO_FECHA_CREACION + " VARCHAR(100) NOT NULL, "
+            + CAMPO_FOTO_USUARIO + " BLOB NOT NULL)";
 
 }

@@ -12,14 +12,15 @@ import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 import org.w3c.dom.Text;
 
 
-public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos manejar la base de datos
-    // y le heredamos la creacion de las tablas
+public class DbCliente extends DbHelper{
+
     Context context;
     public DbCliente(@Nullable Context context) {
         super(context);
         this.context=context;
     }
-    public long insertarContacto(String nombres, String apellidos, String FechaNacimiento, String correo, String password, String FechaCreacion) {
+    public long insertarUsuario(String nombres, String apellidos, String FechaNacimiento,
+                                 String correo, String password, String FechaCreacion, byte[] FotoUsuario) {
 
         long id = 0;
 
@@ -34,6 +35,7 @@ public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos
             values.put(Utilidades.CAMPO_CORREO, correo);
             values.put(Utilidades.CAMPO_PASSWORD,password);
             values.put(Utilidades.CAMPO_FECHA_CREACION,FechaCreacion);
+            values.put(Utilidades.CAMPO_FOTO_USUARIO,FotoUsuario);
 
             id = db.insert(Utilidades.TABLA_USUARIO, null, values);
         } catch (Exception ex) {

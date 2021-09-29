@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/drawable-anydpi/imagen_ico.xml" value="0.1421875" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_carga.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_logueo_con_sqlite.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_main.xml" value="0.22685185185185186" />

@@ -22,7 +22,7 @@
     <string name="TXTCorreoUsuario">Correo</string>
     <string name="TXTPasswordUsuario">Password</string>
     <string name="TXTFechaCreacionUsuario">Fecha Creacion</string>
-    <string name="BtnRegistrarClienteBD">BtnRegistrarClienteBD</string>
+    <string name="BtnRegistrarClienteBD">Registrarse</string>
 
 
 </resources>

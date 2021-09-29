@@ -1,5 +1,7 @@
 package com.anfereba.nutricionabc.db.Entidades;
 
+import android.graphics.Bitmap;
+
 public class Usuario {
 
     private Integer idUsuario;
@@ -10,11 +12,12 @@ public class Usuario {
     private String Correo;
     private String Password;
     private String FechaCreacion;
+    private Bitmap FotoPerfil;
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, Integer idPerfilSistema, String nombres, String apellidos, String fechaNacimiento, String correo, String password, String fechaCreacion) {
+    public Usuario(Integer idUsuario, Integer idPerfilSistema, String nombres, String apellidos, String fechaNacimiento, String correo, String password, String fechaCreacion, Bitmap fotoPerfil) {
         this.idUsuario = idUsuario;
         this.idPerfilSistema = idPerfilSistema;
         this.Nombres = nombres;
@@ -23,6 +26,7 @@ public class Usuario {
         this.Correo = correo;
         this.Password = password;
         this.FechaCreacion = fechaCreacion;
+        this.FotoPerfil = fotoPerfil;
     }
 
     public Integer getIdUsuario() {
@@ -87,5 +91,13 @@ public class Usuario {
 
     public void setFechaCreacion(String fechaCreacion) {
         FechaCreacion = fechaCreacion;
+    }
+
+    public Bitmap getFotoPerfil() {
+        return FotoPerfil;
+    }
+
+    public void setFotoPerfil(Bitmap fotoPerfil) {
+        FotoPerfil = fotoPerfil;
     }
 }
