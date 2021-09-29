@@ -5,4 +5,9 @@
     <string name="app_Registrar">Registrar</string>
     <string name="app_Nombre">Nombre</string>
     <string name="desarrolladores">Desarrollado por Molina Rendon Roa</string>
+
+    <!-- Login Nutricion ABC -->
+    <string name="LoginTXT">Login Nutricion ABC</string>
+    <string name="Password">Contraseña</string>
+    <string name="Ingresar">Ingresar</string>
 </resources>
