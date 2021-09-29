@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
+import com.anfereba.nutricionabc.db.DbHelper;
+
 public class Carga extends AppCompatActivity {
 
     TextView app_name, desarrolladores;
@@ -21,10 +23,13 @@ public class Carga extends AppCompatActivity {
         desarrolladores = findViewById(R.id.desarrolladores);
 
         //Cambio de Letra
+
         String ubicacion = "fuentes/sans_negrita.ttf";
         Typeface tf = Typeface.createFromAsset(Carga.this.getAssets(),ubicacion);
-        //Cambio de Letra
 
+        //Creacion de la Base de datos
+
+        DbHelper conn = new DbHelper(this);
 
         final int DURACION = 3000;
 

@@ -14,29 +14,43 @@ import com.anfereba.nutricionabc.db.DbCliente;
 import com.anfereba.nutricionabc.db.DbHelper;
 
 public class RegistrarClienteConSQLite extends AppCompatActivity {
-    Button btnCrear;
-    EditText Nombre, Correo,Contraseña;
+    Button BtnRegistrarClienteBD;
+    EditText TXTNombreUsuario, TXTApellidoUsuario,TXTFechaNacimientoUsuario,TXTCorreoUsuario,TXTPasswordUsuario,TXTFechaCreacionUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_cliente);
-        btnCrear = findViewById(R.id.button4);
-        Nombre = (EditText) findViewById(R.id.editTextTextPersonName3);
-        Correo = (EditText) findViewById(R.id.editTextTextPersonName4);
-        Contraseña=(EditText)findViewById(R.id.editTextTextPersonName7);
 
-    btnCrear.setOnClickListener(new View.OnClickListener() {
+        //Inicializacion de elementos
+
+        BtnRegistrarClienteBD = findViewById(R.id.BtnRegistrarClienteBD);
+        TXTNombreUsuario = (EditText) findViewById(R.id.TXTNombreUsuario);
+        TXTApellidoUsuario = (EditText) findViewById(R.id.TXTApellidoUsuario);
+        TXTFechaNacimientoUsuario=(EditText)findViewById(R.id.TXTFechaNacimientoUsuario);
+        TXTCorreoUsuario = (EditText) findViewById(R.id.TXTCorreoUsuario);
+        TXTPasswordUsuario = (EditText) findViewById(R.id.TXTPasswordUsuario);
+        TXTFechaCreacionUsuario=(EditText)findViewById(R.id.TXTFechaCreacionUsuario);
+
+
+        BtnRegistrarClienteBD.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if(!Nombre.getText().toString().equals("")&& !Correo.getText().toString().equals("")&& !Contraseña.getText().toString().equals("")) {
+            if(!TXTNombreUsuario.getText().toString().equals("")&& !TXTApellidoUsuario.getText().toString().equals("")
+                    && !TXTFechaNacimientoUsuario.getText().toString().equals("")
+                    && !TXTCorreoUsuario.getText().toString().equals("")
+                    && !TXTPasswordUsuario.getText().toString().equals("")
+                    && !TXTFechaCreacionUsuario.getText().toString().equals("")) {
                 DbCliente dbCliente = new DbCliente(getApplicationContext());
 
-                long id = dbCliente.insertarContacto(Nombre.getText().toString(), Correo.getText().toString(), Contraseña.getText().toString());
+                long id = dbCliente.insertarContacto(TXTNombreUsuario.getText().toString(),
+                        TXTApellidoUsuario.getText().toString(),TXTFechaNacimientoUsuario.getText().toString(),
+                        TXTCorreoUsuario.getText().toString(),TXTPasswordUsuario.getText().toString(),
+                        TXTFechaCreacionUsuario.getText().toString());
 
 
                 if (id > 0) {
-                    Toast.makeText(getApplicationContext(), "REGISTRO GUARDADO", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "REGISTRO GUARDADO: "+String.valueOf(id), Toast.LENGTH_LONG).show();
                     limpiar();
                 } else {
                     Toast.makeText(getApplicationContext(), "ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
@@ -44,13 +58,8 @@ public class RegistrarClienteConSQLite extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), "DEBE LLENAR LOS CAMPOS OBLIGATORIOS", Toast.LENGTH_LONG).show();
             }
-
-
         }
-
-
     });
-
 
 
     }
@@ -59,8 +68,11 @@ public class RegistrarClienteConSQLite extends AppCompatActivity {
 
             }*///este es un metodo que encontre para despues
     private void limpiar() {
-        Nombre.setText("");
-        Correo.setText("");
-        Contraseña.setText("");
+        TXTNombreUsuario.setText("");
+        TXTApellidoUsuario.setText("");
+        TXTFechaNacimientoUsuario.setText("");
+        TXTCorreoUsuario.setText("");
+        TXTPasswordUsuario.setText("");
+        TXTFechaCreacionUsuario.setText("");
     }
 }

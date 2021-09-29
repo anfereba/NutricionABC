@@ -3,7 +3,6 @@ package com.anfereba.nutricionabc.db;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 //Aqui podremos realizar las operaciones CRUB en la tabla Nutriologo
@@ -33,4 +32,5 @@ public class DbNutriologo extends DbHelper {
 
         return id;
     }
+
 }

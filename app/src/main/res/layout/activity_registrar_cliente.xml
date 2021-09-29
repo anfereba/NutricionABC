@@ -22,34 +22,58 @@
                 app:srcCompat="@drawable/lion" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName3"
+                android:id="@+id/TXTNombreUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/app_Nombre"
+                android:hint="@string/TXTNombreUsuario"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName4"
+                android:id="@+id/TXTApellidoUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/app_Correo"
+                android:hint="@string/TXTApellidoUsuario"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName7"
+                android:id="@+id/TXTFechaNacimientoUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Contraseña"
+                android:hint="@string/TXTFechaNacimientoUsuario"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/TXTCorreoUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/TXTCorreoUsuario"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/TXTPasswordUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/TXTPasswordUsuario"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/TXTFechaCreacionUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/TXTFechaCreacionUsuario"
                 android:inputType="textPersonName" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/BtnRegistrarClienteBD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registrar" />
+                android:text="@string/BtnRegistrarClienteBD" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

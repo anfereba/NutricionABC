@@ -7,8 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
+import com.anfereba.nutricionabc.db.utilidades.Utilidades;
+
 import org.w3c.dom.Text;
-//Aqui podremos realizar las operaciones CRUD en la tabla Cliente
+
+
 public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos manejar la base de datos
     // y le heredamos la creacion de las tablas
     Context context;
@@ -16,7 +19,7 @@ public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos
         super(context);
         this.context=context;
     }
-    public long insertarContacto(String nombre, String correo, String contraseña) {
+    public long insertarContacto(String nombres, String apellidos, String FechaNacimiento, String correo, String password, String FechaCreacion) {
 
         long id = 0;
 
@@ -25,11 +28,14 @@ public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put("nombre", nombre);
-            values.put("correo", correo);
-            values.put("contraseña",contraseña);
+            values.put(Utilidades.CAMPO_NOMBRES, nombres);
+            values.put(Utilidades.CAMPO_APELLIDOS, apellidos);
+            values.put(Utilidades.CAMPO_FECHA_NACIMIENTO, FechaNacimiento);
+            values.put(Utilidades.CAMPO_CORREO, correo);
+            values.put(Utilidades.CAMPO_PASSWORD,password);
+            values.put(Utilidades.CAMPO_FECHA_CREACION,FechaCreacion);
 
-            id = db.insert(TABLE_CLIENTES, null, values);
+            id = db.insert(Utilidades.TABLA_USUARIO, null, values);
         } catch (Exception ex) {
             ex.toString();
         }
@@ -46,7 +52,6 @@ public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos
         //Cursor cursorClientes= db.rawQuery(" SELECT * FROM "+TABLE_CLIENTES+" WHERE id=1",null); consulta de un numero
         Cursor cursorClientes= db.rawQuery(" SELECT "+variableAconsultar+" FROM "+TABLE_CLIENTES+" WHERE "+filtroparabuscar+"='"+informacionDelFiltro+"'",null);
         cursorClientes.moveToFirst();
-
 
 
         String dato =cursorClientes.getString(0);

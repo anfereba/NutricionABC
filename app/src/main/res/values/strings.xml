@@ -15,4 +15,14 @@
     <string name="BtnRegistroNutriologo">Registrarse como nutriologo</string>
 
 
+    <!--Registro de Usuario -->
+    <string name="TXTNombreUsuario">Nombre</string>
+    <string name="TXTApellidoUsuario">Apellido</string>
+    <string name="TXTFechaNacimientoUsuario">Fecha Nacimiento</string>
+    <string name="TXTCorreoUsuario">Correo</string>
+    <string name="TXTPasswordUsuario">Password</string>
+    <string name="TXTFechaCreacionUsuario">Fecha Creacion</string>
+    <string name="BtnRegistrarClienteBD">BtnRegistrarClienteBD</string>
+
+
 </resources>
