@@ -23,6 +23,7 @@
     <string name="TXTPasswordUsuario">Password</string>
     <string name="TXTFechaCreacionUsuario">Fecha Creacion</string>
     <string name="BtnRegistrarClienteBD">Registrarse</string>
+    <string name="TXTRegistroUsuarios">Registro de Usuarios</string>
 
 
 </resources>
