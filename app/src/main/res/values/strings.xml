@@ -6,8 +6,13 @@
     <string name="app_Nombre">Nombre</string>
     <string name="desarrolladores">Desarrollado por Molina Rendon Roa</string>
 
-    <!-- Login Nutricion ABC -->
+    <!-- Pantalla Login Nutricion ABC -->
     <string name="LoginTXT">Login Nutricion ABC</string>
+    <string name="Correo">Correo electronico</string>
     <string name="Password">Contraseña</string>
-    <string name="Ingresar">Ingresar</string>
+    <string name="BtnIngresar">Ingresar</string>
+    <string name="BtnRegistroCliente">Registrarse como cliente</string>
+    <string name="BtnRegistroNutriologo">Registrarse como nutriologo</string>
+
+
 </resources>

@@ -40,11 +40,11 @@
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/Correo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/app_Correo"
+                android:hint="@string/Correo"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -56,7 +56,7 @@
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/Password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -66,33 +66,33 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/BtnIngresar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Ingresar"
+            android:layout_marginTop="10dp"
             android:background="#048981"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"/>
+            android:text="@string/BtnIngresar"
+            android:textColor="@color/white" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="50dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/BtnRegistroCliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#048981"
-            android:text="Registrarse como cliente"
+            android:text="@string/BtnRegistroCliente"
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/BtnRegistroNutriologo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="#048981"
-            android:text="Registrarse como Nutriologo"
+            android:text="@string/BtnRegistroNutriologo"
             android:textColor="@color/white" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

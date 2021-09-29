@@ -12,19 +12,24 @@ import android.widget.Toast;
 import com.anfereba.nutricionabc.db.DbCliente;
 
 public class Logueo_Con_SQLite extends AppCompatActivity {
-EditText Correo,Contraseña;
-Button RClinte, RNutriologo,Login;
+    EditText Correo,Password;
+    Button BtnIngresar, BtnRegistroCliente,BtnRegistroNutriologo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logueo_con_sqlite);
-        Correo= (EditText) findViewById(R.id.editTextTextPersonName);
-        Contraseña=(EditText) findViewById(R.id.editTextTextPersonName2);
-        RClinte=(Button) findViewById(R.id.button2);
-        Login=(Button) findViewById(R.id.button);
-        RNutriologo=(Button) findViewById(R.id.button3);
 
-        Login.setOnClickListener(new View.OnClickListener() {
+        //Se recogen los elementos
+
+        Correo= (EditText) findViewById(R.id.Correo);
+        Password=(EditText) findViewById(R.id.Password);
+        BtnIngresar=(Button) findViewById(R.id.BtnIngresar);
+        BtnRegistroCliente=(Button) findViewById(R.id.BtnRegistroCliente);
+        BtnRegistroNutriologo=(Button) findViewById(R.id.BtnRegistroNutriologo);
+
+        //Se programa el evento Onclick
+
+        BtnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DbCliente dbCliente = new DbCliente(getApplicationContext());
@@ -33,13 +38,13 @@ Button RClinte, RNutriologo,Login;
 
             }
         });
-        RClinte.setOnClickListener(new View.OnClickListener() {
+        BtnRegistroCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),RegistrarClienteConSQLite.class));
             }
         });
-        RNutriologo.setOnClickListener(new View.OnClickListener() {
+        BtnRegistroNutriologo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),RegistrarNutriologoConSQLite.class));

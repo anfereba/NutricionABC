@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import androidx.annotation.Nullable;
 
 import org.w3c.dom.Text;
-//Aqui podremos realizar las operaciones CRUB en la tabla Cliente
+//Aqui podremos realizar las operaciones CRUD en la tabla Cliente
 public class DbCliente extends DbHelper{ //el extend lo hacemos para que podamos manejar la base de datos
     // y le heredamos la creacion de las tablas
     Context context;
