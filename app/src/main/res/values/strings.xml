@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">NutricionABC</string>
+    <string name="app_name">Nutricion ABC</string>
     <string name="app_Correo">Correo</string>
     <string name="app_Contraseña">Contraseña</string>
     <string name="app_Registrar">Registrar</string>
     <string name="app_Nombre">Nombre</string>
+    <string name="desarrolladores">Desarrollado por Molina Rendon Roa</string>
 </resources>
