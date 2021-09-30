@@ -9,15 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.anfereba.nutricionabc.db.DbCliente;
+import com.anfereba.nutricionabc.db.DbUsuario;
 
-public class Logueo_Con_SQLite extends AppCompatActivity {
+public class Login_App extends AppCompatActivity {
     EditText Correo,Password;
-    Button BtnIngresar, BtnRegistroCliente,BtnRegistroNutriologo;
+    Button BtnIngresar, BtnRegistroCliente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_logueo_con_sqlite);
+        setContentView(R.layout.activity_login_app);
 
         //Se recogen los elementos
 
@@ -25,29 +25,30 @@ public class Logueo_Con_SQLite extends AppCompatActivity {
         Password=(EditText) findViewById(R.id.Password);
         BtnIngresar=(Button) findViewById(R.id.BtnIngresar);
         BtnRegistroCliente=(Button) findViewById(R.id.BtnRegistroCliente);
-        BtnRegistroNutriologo=(Button) findViewById(R.id.BtnRegistroNutriologo);
 
         //Se programa el evento Onclick
 
         BtnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DbCliente dbCliente = new DbCliente(getApplicationContext());
+                DbUsuario dbUsuario = new DbUsuario(getApplicationContext());
 
-                Toast.makeText(getApplicationContext(),"no se a programado esta funcion, Lo sentimos" , Toast.LENGTH_LONG).show();
+                String TipoUsuario = dbUsuario.Comprobar_Correo_Password(Correo.getText().toString(),Password.getText().toString());
+
+                boolean UsuarioEsValido = dbUsuario.Comprobar_Correo_Password(Correo.getText().toString(),Password.getText().toString())!=null;
+                if(UsuarioEsValido){
+                    Toast.makeText(getApplicationContext(),TipoUsuario , Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"Credenciales No Validas" , Toast.LENGTH_LONG).show();
+                }
 
             }
         });
         BtnRegistroCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),RegistrarClienteConSQLite.class));
-            }
-        });
-        BtnRegistroNutriologo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),RegistrarNutriologoConSQLite.class));
+                startActivity(new Intent(getApplicationContext(), RegistroUsuarios.class));
+                finish();
             }
         });
     }

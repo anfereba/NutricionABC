@@ -24,16 +24,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegistrarNutriologoConSQLite"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".RegistrarClienteConSQLite"
+            android:name=".RegistroUsuarios"
             android:exported="true" />
         <activity
-            android:name=".Logueo_Con_SQLite"
+            android:name=".Login_App"
             android:exported="true">
 
         </activity>

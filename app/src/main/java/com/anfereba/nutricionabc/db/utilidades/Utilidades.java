@@ -33,6 +33,7 @@ public class Utilidades {
             + TABLA_PERFIL_SISTEMA + "(" + CAMPO_ID_PERFIL_SISTEMA_2 + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + CAMPO_NOMBRE_PERFIL + " VARCHAR(100) NOT NULL UNIQUE)";
 
+    //Sentencia para insertar perfiles
 
     public static String INSERTAR_PERFIL_DEFAULT(String VALOR_NOMBRE_PERFIL){
         return "INSERT INTO "

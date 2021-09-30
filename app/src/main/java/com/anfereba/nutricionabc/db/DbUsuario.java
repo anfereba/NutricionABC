@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -11,11 +12,13 @@ import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import org.w3c.dom.Text;
 
+import okhttp3.internal.Util;
 
-public class DbCliente extends DbHelper{
+
+public class DbUsuario extends DbHelper{
 
     Context context;
-    public DbCliente(@Nullable Context context) {
+    public DbUsuario(@Nullable Context context) {
         super(context);
         this.context=context;
     }
@@ -44,6 +47,56 @@ public class DbCliente extends DbHelper{
         }
 
         return id;
+    }
+
+    public boolean Comprobar_Correo(String email){
+        boolean existeCorreo = false;
+        try{
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            Cursor cursor = db.query(Utilidades.TABLA_USUARIO,
+                    new String[]{Utilidades.CAMPO_CORREO},
+                    Utilidades.CAMPO_CORREO+"=?",
+                    new String[]{email},null,null,null);
+
+            cursor.moveToFirst();
+            if (cursor.getCount() > 0){
+                existeCorreo = true;
+            }else {
+                existeCorreo = false;
+            }
+        }catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            existeCorreo = false;
+        }
+        return existeCorreo;
+    }
+
+    public String Comprobar_Correo_Password(String email, String password){
+        String CredencialesCorrectas = null;
+
+        String[] parametros = {email, password};
+        String query = "SELECT a."+Utilidades.CAMPO_CORREO+
+                ", a."+Utilidades.CAMPO_PASSWORD+", b."+Utilidades.CAMPO_NOMBRE_PERFIL
+                +" FROM "+ Utilidades.TABLA_USUARIO+ " a INNER JOIN "+Utilidades.TABLA_PERFIL_SISTEMA+ " b ON "
+                +"a."+Utilidades.CAMPO_ID_PERFIL_SISTEMA+" = b."+Utilidades.CAMPO_ID_PERFIL_SISTEMA_2
+                +" WHERE a."+Utilidades.CAMPO_CORREO+" =? AND a."+Utilidades.CAMPO_PASSWORD+ " =?";
+
+        try{
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+            Cursor cursor = db.rawQuery(query,parametros);
+            cursor.moveToFirst();
+            if (cursor.getCount() > 0){
+                CredencialesCorrectas = cursor.getString(2);
+            }else {
+                CredencialesCorrectas = null;
+            }
+        }catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        return CredencialesCorrectas;
     }
 
     public String consultarDato(String variableAconsultar, String filtroparabuscar, String informacionDelFiltro){

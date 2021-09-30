@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".Logueo_Con_SQLite">
+    tools:context=".Login_App">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -86,14 +86,6 @@
             android:text="@string/BtnRegistroCliente"
             android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/BtnRegistroNutriologo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#048981"
-            android:text="@string/BtnRegistroNutriologo"
-            android:textColor="@color/white" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </RelativeLayout>

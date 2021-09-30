@@ -37,7 +37,7 @@ public class Carga extends AppCompatActivity {
             @Override
             public void run() {
                 //Codigo que se ejecutara
-                Intent intent = new Intent(Carga.this, Logueo_Con_SQLite.class);
+                Intent intent = new Intent(Carga.this, Login_App.class);
                 startActivity(intent);
                 finish();
             }
