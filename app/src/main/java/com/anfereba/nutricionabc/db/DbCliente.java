@@ -29,6 +29,7 @@ public class DbCliente extends DbHelper{
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
             ContentValues values = new ContentValues();
+            values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1);
             values.put(Utilidades.CAMPO_NOMBRES, nombres);
             values.put(Utilidades.CAMPO_APELLIDOS, apellidos);
             values.put(Utilidades.CAMPO_FECHA_NACIMIENTO, FechaNacimiento);

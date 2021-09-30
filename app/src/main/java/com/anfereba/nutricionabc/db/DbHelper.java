@@ -26,7 +26,14 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(Utilidades.CREAR_TABLA_PERFIL_SISTEMA);
         db.execSQL(Utilidades.CREAR_TABLA_USUARIO);
+
+        db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Cliente"));
+        db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Nutriologo"));
+        db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Administrador"));
+
+
 
         /*
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NUTRIOLOGO + "(" +//Creamos la tabla nutriologo y le asignamos los atributos //
