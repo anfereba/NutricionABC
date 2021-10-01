@@ -21,7 +21,8 @@
 
     <TextView
         android:layout_marginTop="5dp"
-        android:text="@string/usuario"
+        android:id="@+id/TXTNombreYApellido"
+        android:text="@string/TXTNombreYApellido"
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

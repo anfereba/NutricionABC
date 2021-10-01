@@ -52,8 +52,10 @@
     <string name="Opcion_tres_Administrador">Opción 3 Administrador</string>
     <string name="Opcion_cuatro_Administrador">Opción 4 Administrador</string>
     <string name="Opcion_cinco_Administrador">Opción 5 Administrador</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--Encabezado -->
+    <string name="TXTNombreYApellido"></string>
 
 
 </resources>
