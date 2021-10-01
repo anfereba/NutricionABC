@@ -31,12 +31,15 @@
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_login_app.xml" value="0.1" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_logueo_con_sqlite.xml" value="0.22" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_main_nutriologo.xml" value="0.33" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_registrar_cliente.xml" value="0.33" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_registrar_nutriologo.xml" value="0.25" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/carga.xml" value="0.196875" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/encabezado.xml" value="0.196875" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_nutriologo.xml" value="0.196875" />
+        <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_nutriologo.xml" value="0.25" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_nutriologo.xml" value="0.196875" />
+        <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/lista_item_alimento.xml" value="0.1272644927536232" />
       </map>
     </option>
   </component>
