@@ -87,7 +87,7 @@ public class Utilidades {
 
     public static final String CREAR_TABLA_Alimento = "CREATE TABLE "
             + TABLA_Alimento + "(" + CAMPO_ID_Alimento + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + CAMPO_NOMBREAlimento + " VARCHAR(100) NOT NULL, ";
+            + CAMPO_NOMBREAlimento + " VARCHAR(100) , ";
 
     //Sentencia para crear tabla TABLA_PlanAlimento
 
