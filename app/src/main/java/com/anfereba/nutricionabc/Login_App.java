@@ -20,6 +20,8 @@ public class Login_App extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
+    private int Id_Sesion = 0;
+
     EditText Correo,Password;
     Button BtnIngresar, BtnRegistroCliente;
 
@@ -32,12 +34,14 @@ public class Login_App extends AppCompatActivity {
 
         //Inicializa el sharedpreference y el editor para guardar y revisar sesion
 
+        dbUsuario = new DbUsuario(getApplicationContext());
+
         preferences = this.getSharedPreferences("Sesiones",Context.MODE_PRIVATE);
         editor = preferences.edit();
 
         if (VerificarIdDeSesion() > 0){
-            int id_sesion = VerificarIdDeSesion();
-            RetomarSesion(id_sesion);
+            Id_Sesion = VerificarIdDeSesion();
+            IniciarSesion(Id_Sesion);
 
         }else {
             Toast.makeText(getApplicationContext(), "Debe Iniciar Sesion", Toast.LENGTH_LONG).show();
@@ -63,7 +67,7 @@ public class Login_App extends AppCompatActivity {
                         (Correo.getText().toString(),Password.getText().toString())!=null;
 
                 if(UsuarioEsValido){
-                    IniciarSesion();
+                    IniciarSesion(Id_Sesion);
 
                 }else{
                     Toast.makeText(getApplicationContext(),"Credenciales No Validas" , Toast.LENGTH_LONG).show();
@@ -85,8 +89,59 @@ public class Login_App extends AppCompatActivity {
 
     }
 
-    private int VerificarIdDeSesion() {
-        return this.preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
+
+    private void IniciarSesion(int Id_Sesion){
+
+        dbUsuario = new DbUsuario(getApplicationContext());
+
+        String PerfilUsuario;
+        String Id_Usuario = null;
+        String Nombre_Usuario = null;
+        String Apellido_Usuario = null;
+
+
+        if (Id_Sesion > 0){
+
+            PerfilUsuario = dbUsuario.Comprobar_Perfil(Id_Sesion);
+        }
+        else{
+
+            //Se determina el perfil del usuario para iniciar sesion
+            PerfilUsuario = dbUsuario.Comprobar_Correo_Password(Correo.getText().toString(),Password.getText().toString());
+
+            //Se consulta el Id para guardar su sesion
+            Id_Usuario = dbUsuario.consultarDato(
+                    Utilidades.CAMPO_ID_USUARIO,
+                    Utilidades.CAMPO_CORREO,
+                    Correo.getText().toString());
+            Nombre_Usuario = dbUsuario.consultarDato(
+                    Utilidades.CAMPO_NOMBRES,
+                    Utilidades.CAMPO_CORREO,
+                    Correo.getText().toString());
+            Apellido_Usuario = dbUsuario.consultarDato(
+                    Utilidades.CAMPO_APELLIDOS,
+                    Utilidades.CAMPO_CORREO,
+                    Correo.getText().toString());
+
+            GuardarInicioDeSesion(Id_Usuario,Nombre_Usuario,Apellido_Usuario);
+        }
+
+        Intent intent = null;
+
+        switch (PerfilUsuario){
+            case "Cliente":
+                intent = new Intent(getApplicationContext(), MainActivityCliente.class);
+                break;
+            case "Nutriologo":
+                intent = new Intent(getApplicationContext(), MainActivityNutriologo.class);
+                break;
+            case "Administrador":
+                intent = new Intent(getApplicationContext(), MainActivityAdministrador.class);
+                break;
+        }
+
+        startActivity(intent);
+        finish();
     }
 
     private void GuardarInicioDeSesion(String Id_Usuario, String Nombre_Usuario, String Apellido_Usuario) {
@@ -96,67 +151,7 @@ public class Login_App extends AppCompatActivity {
         editor.apply();
     }
 
-    private void RetomarSesion(int Usuario){
-
-        dbUsuario = new DbUsuario(getApplicationContext());
-
-        //Se determina el perfil del usuario para iniciar sesion
-
-        String PerfilUsuario = dbUsuario.Comprobar_Perfil(Usuario);
-
-        Intent intent = null;
-        switch (PerfilUsuario){
-            case "Cliente":
-                intent = new Intent(getApplicationContext(), MainActivityCliente.class);
-                break;
-            case "Nutriologo":
-                intent = new Intent(getApplicationContext(), MainActivityNutriologo.class);
-                break;
-            case "Administrador":
-                intent = new Intent(getApplicationContext(), MainActivityAdministrador.class);
-                break;
-        }
-        startActivity(intent);
-        finish();
-
-    }
-    private void IniciarSesion(){
-
-        //Se determina el perfil del usuario para iniciar sesion
-
-        String PerfilUsuario = dbUsuario.Comprobar_Correo_Password(Correo.getText().toString(),Password.getText().toString());
-
-        //Se consulta el Id para guardar su sesion
-
-        String Id_Usuario = dbUsuario.consultarDato(
-                Utilidades.CAMPO_ID_USUARIO,
-                Utilidades.CAMPO_CORREO,
-                Correo.getText().toString());
-
-        String Nombre_Usuario = dbUsuario.consultarDato(
-                Utilidades.CAMPO_NOMBRES,
-                Utilidades.CAMPO_CORREO,
-                Correo.getText().toString());
-
-        String Apellido_Usuario = dbUsuario.consultarDato(
-                Utilidades.CAMPO_APELLIDOS,
-                Utilidades.CAMPO_CORREO,
-                Correo.getText().toString());
-
-        Intent intent = null;
-        switch (PerfilUsuario){
-            case "Cliente":
-                intent = new Intent(getApplicationContext(), MainActivityCliente.class);
-                break;
-            case "Nutriologo":
-                intent = new Intent(getApplicationContext(), MainActivityNutriologo.class);
-                break;
-            case "Administrador":
-                intent = new Intent(getApplicationContext(), MainActivityAdministrador.class);
-                break;
-        }
-        GuardarInicioDeSesion(Id_Usuario,Nombre_Usuario,Apellido_Usuario);
-        startActivity(intent);
-        finish();
+    private int VerificarIdDeSesion() {
+        return this.preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
     }
 }

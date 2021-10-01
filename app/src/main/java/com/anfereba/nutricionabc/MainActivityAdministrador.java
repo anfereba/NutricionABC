@@ -7,8 +7,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.anfereba.nutricionabc.FragmentosAdministrador.OpcionDosAdministrador;
 import com.anfereba.nutricionabc.FragmentosAdministrador.OpcionTresAdministrador;
@@ -17,16 +20,23 @@ import com.anfereba.nutricionabc.FragmentosCliente.OpcionCuatroCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionDosCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionTresCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionUnoCliente;
+import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivityAdministrador extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawerLayout;
 
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_administrador);
+
+        preferences = this.getSharedPreferences("Sesiones", Context.MODE_PRIVATE);
+        editor = preferences.edit();
 
         Toolbar toolbar = findViewById(R.id.toolbarA);
         setSupportActionBar(toolbar);
@@ -71,5 +81,8 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
     }
 
     private void CerrarSesion() {
+        editor.putInt(Utilidades.CAMPO_ID_USUARIO,0);
+        editor.apply();
+        Toast.makeText(getApplicationContext(), "La sesion fue cerrada", Toast.LENGTH_SHORT).show();
     }
 }
