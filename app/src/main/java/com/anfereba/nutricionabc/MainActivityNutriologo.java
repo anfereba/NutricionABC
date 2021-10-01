@@ -85,5 +85,6 @@ public class MainActivityNutriologo extends AppCompatActivity implements Navigat
         editor.putInt(Utilidades.CAMPO_ID_USUARIO,0);
         editor.apply();
         Toast.makeText(getApplicationContext(), "La sesion fue cerrada", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }
