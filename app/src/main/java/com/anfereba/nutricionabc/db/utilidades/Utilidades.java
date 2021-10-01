@@ -30,7 +30,7 @@ public class Utilidades {
     public static final String TABLA_PlanNutricional = "PlanNutricional";
     public static final String CAMPO_ID_PlanNutricional = "idPlanNutricional";
     public static final String CAMPO_ID_USUARIO2 = "idUsuario"; //FK_idUsuario
-    public static final String CAMPO_NOMBRE = "NombrePlamNutricional";
+    public static final String CAMPO_NOMBREPlanNutricional = "NombrePlamNutricional";
 
     //Campos Tabla Alimento
     public static final String TABLA_Alimento = "Alimento";
@@ -79,7 +79,7 @@ public class Utilidades {
     public static final String CREAR_TABLA_PlanNutricional = "CREATE TABLE "
             + TABLA_PlanNutricional + "(" + CAMPO_ID_PlanNutricional + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + CAMPO_ID_USUARIO2 + " INTEGER NOT NULL, "
-            + CAMPO_NOMBRE + " VARCHAR(100) NOT NULL, "
+            + CAMPO_NOMBREPlanNutricional + " VARCHAR(100) NOT NULL, "
             +"FOREIGN KEY"+ "("+CAMPO_ID_USUARIO2+") "
             +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO2+"))";
 

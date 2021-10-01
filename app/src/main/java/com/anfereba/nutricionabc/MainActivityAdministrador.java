@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -81,8 +82,11 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
     }
 
     private void CerrarSesion() {
+        Intent intent = null;
         editor.putInt(Utilidades.CAMPO_ID_USUARIO,0);
         editor.apply();
         Toast.makeText(getApplicationContext(), "La sesion fue cerrada", Toast.LENGTH_SHORT).show();
+        intent = new Intent(getApplicationContext(), Login_App.class);
+        startActivity(intent);
     }
 }
