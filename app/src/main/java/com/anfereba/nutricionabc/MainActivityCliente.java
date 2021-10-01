@@ -10,7 +10,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,8 @@ public class MainActivityCliente extends AppCompatActivity implements Navigation
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
+    TextView TXTNombreYApellido, NombrePerfilUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,8 @@ public class MainActivityCliente extends AppCompatActivity implements Navigation
 
         preferences = this.getSharedPreferences("Sesiones",Context.MODE_PRIVATE);
         editor = preferences.edit();
+
+        AsignarDatosEncabezado();
 
         Toolbar toolbar = findViewById(R.id.toolbarC);
         setSupportActionBar(toolbar);
@@ -90,5 +96,23 @@ public class MainActivityCliente extends AppCompatActivity implements Navigation
         editor.apply();
         Toast.makeText(getApplicationContext(), "La sesion fue cerrada", Toast.LENGTH_SHORT).show();
 
+    }
+
+    private void AsignarDatosEncabezado(){
+
+        SharedPreferences shared = getSharedPreferences("Sesiones", MODE_PRIVATE);
+
+        NavigationView navigationView = findViewById(R.id.nav_viewC);
+        View header = navigationView.getHeaderView(0);
+        TXTNombreYApellido = (TextView) header.findViewById(R.id.TXTNombreYApellido);
+        NombrePerfilUsuario = (TextView) header.findViewById(R.id.NombrePerfilUsuario);
+
+
+        String Nombre = shared.getString(Utilidades.CAMPO_NOMBRES,"");
+        String Apellido = shared.getString(Utilidades.CAMPO_APELLIDOS,"");
+        String Perfil = shared.getString(Utilidades.CAMPO_NOMBRE_PERFIL,"");
+
+        NombrePerfilUsuario.setText(Perfil);
+        TXTNombreYApellido.setText(Nombre+" "+Apellido);
     }
 }

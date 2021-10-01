@@ -11,6 +11,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anfereba.nutricionabc.FragmentosAdministrador.OpcionDosAdministrador;
@@ -30,6 +32,8 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
+    TextView TXTNombreYApellido, NombrePerfilUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,8 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
 
         preferences = this.getSharedPreferences("Sesiones", Context.MODE_PRIVATE);
         editor = preferences.edit();
+
+        AsignarDatosEncabezado();
 
         Toolbar toolbar = findViewById(R.id.toolbarA);
         setSupportActionBar(toolbar);
@@ -58,6 +64,24 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
             navigationView.setCheckedItem(R.id.Opcion_uno_Administrador);
         }
 
+    }
+
+    private void AsignarDatosEncabezado() {
+
+        SharedPreferences shared = getSharedPreferences("Sesiones", MODE_PRIVATE);
+
+        NavigationView navigationView = findViewById(R.id.nav_viewA);
+        View header = navigationView.getHeaderView(0);
+        TXTNombreYApellido = (TextView) header.findViewById(R.id.TXTNombreYApellido);
+        NombrePerfilUsuario = (TextView) header.findViewById(R.id.NombrePerfilUsuario);
+
+
+        String Nombre = shared.getString(Utilidades.CAMPO_NOMBRES,"");
+        String Apellido = shared.getString(Utilidades.CAMPO_APELLIDOS,"");
+        String Perfil = shared.getString(Utilidades.CAMPO_NOMBRE_PERFIL,"");
+
+        NombrePerfilUsuario.setText(Perfil);
+        TXTNombreYApellido.setText(Nombre+" "+Apellido);
     }
 
     @Override

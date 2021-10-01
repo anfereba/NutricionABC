@@ -123,7 +123,7 @@ public class Login_App extends AppCompatActivity {
                     Utilidades.CAMPO_CORREO,
                     Correo.getText().toString());
 
-            GuardarInicioDeSesion(Id_Usuario,Nombre_Usuario,Apellido_Usuario);
+            GuardarInicioDeSesion(Id_Usuario,Nombre_Usuario,Apellido_Usuario,PerfilUsuario);
         }
 
         Intent intent = null;
@@ -144,10 +144,11 @@ public class Login_App extends AppCompatActivity {
         finish();
     }
 
-    private void GuardarInicioDeSesion(String Id_Usuario, String Nombre_Usuario, String Apellido_Usuario) {
+    private void GuardarInicioDeSesion(String Id_Usuario, String Nombre_Usuario, String Apellido_Usuario, String Perfil_Usuario) {
         editor.putInt(Utilidades.CAMPO_ID_USUARIO,Integer.parseInt(Id_Usuario));
         editor.putString(Utilidades.CAMPO_NOMBRES,Nombre_Usuario);
         editor.putString(Utilidades.CAMPO_APELLIDOS,Apellido_Usuario);
+        editor.putString(Utilidades.CAMPO_NOMBRE_PERFIL,Perfil_Usuario);
         editor.apply();
     }
 
