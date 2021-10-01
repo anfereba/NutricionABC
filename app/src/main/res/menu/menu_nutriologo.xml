@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item
+        android:id="@+id/Opcionestxt"
+        android:title="@string/Opcionestxt">
+        <menu>
+            <item
+                android:id="@+id/Opcion_uno_Nutriologo"
+                android:title="@string/Opcion_uno_Nutriologo"
+                android:icon="@drawable/uno_ico">
+            </item>
+            <item
+                android:id="@+id/Opcion_dos_Nutriologo"
+                android:title="@string/Opcion_dos_Nutriologo"
+                android:icon="@drawable/uno_ico">
+            </item>
+
+        </menu>
+    </item>
+    <item
+        android:id="@+id/MasOpcionestxt"
+        android:title="@string/MasOpcionestxt">
+        <menu>
+            <item
+                android:id="@+id/Opcion_tres_Nutriologo"
+                android:title="@string/Opcion_tres_Nutriologo"
+                android:icon="@drawable/uno_ico">
+            </item>
+            <item
+                android:id="@+id/Salir"
+                android:title="@string/Salir"
+                android:icon="@drawable/cinco_ico"/>
+        </menu>
+    </item>
+</menu>

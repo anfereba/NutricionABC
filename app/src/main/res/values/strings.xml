@@ -6,6 +6,9 @@
     <string name="app_Nombre">Nombre</string>
     <string name="desarrolladores">Desarrollado por Molina Rendon Roa</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <!-- Pantalla Login Nutricion ABC -->
     <string name="LoginTXT">Login Nutricion ABC</string>
     <string name="Correo">Correo electronico</string>
@@ -24,6 +27,33 @@
     <string name="TXTFechaCreacionUsuario">Fecha Creacion</string>
     <string name="BtnRegistrarClienteBD">Registrarse</string>
     <string name="TXTRegistroUsuarios">Registro de Usuarios</string>
+
+    <!-- Menu de Opciones Cliente -->
+    <string name="Salir">Cerrar sesión</string>
+    <string name="Opcion_uno_Cliente">Opción 1</string>
+    <string name="Opcion_dos_Cliente">Opción 2</string>
+    <string name="Opcion_tres_Cliente">Opción 3</string>
+    <string name="Opcion_cuatro_Cliente">Opción 4</string>
+    <string name="Opcion_cinco_Cliente">Opción 5</string>
+    <string name="usuario" />
+
+    <!-- Menu de opciones Nutriologo -->
+    <string name="Opcionestxt">Opciones</string>
+    <string name="Opcion_uno_Nutriologo">Opción 1 Nutriologo</string>
+    <string name="Opcion_dos_Nutriologo">Opción 2 Nutriologo</string>
+    <string name="Opcion_tres_Nutriologo">Opción 3 Nutriologo</string>
+    <string name="Opcion_cuatro_Nutriologo">Opción 4 Nutriologo</string>
+    <string name="Opcion_cinco_Nutriologo">Opción 5 Nutriologo</string>
+    <string name="MasOpcionestxt">Mas Opciones</string>
+
+    <!--Menu de opciones Administrador -->
+    <string name="Opcion_uno_Administrador">Opción 1 Administrador</string>
+    <string name="Opcion_dos_Administrador">Opción 2 Administrador</string>
+    <string name="Opcion_tres_Administrador">Opción 3 Administrador</string>
+    <string name="Opcion_cuatro_Administrador">Opción 4 Administrador</string>
+    <string name="Opcion_cinco_Administrador">Opción 5 Administrador</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
