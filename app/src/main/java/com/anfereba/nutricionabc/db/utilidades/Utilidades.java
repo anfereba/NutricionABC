@@ -25,17 +25,24 @@ public class Utilidades {
     public static final String CAMPO_PASSWORD = "Password";
     public static final String CAMPO_FECHA_CREACION = "FechaCreacion";
     public static final String CAMPO_FOTO_USUARIO = "FotoPerfil";
-    //Campos Tabla PlanNutricional
 
+    //Campos Tabla PlanNutricional
     public static final String TABLA_PlanNutricional = "PlanNutricional";
     public static final String CAMPO_ID_PlanNutricional = "idPlanNutricional";
-    public static final String CAMPO_ID_USUARIO2 = "idUsuario"; //FK_PerfilSistema
-    public static final String CAMPO_NOMBRE = "Nombre";
-    public static final String CAMPO_Alimento1 = "Alimento1";
-    public static final String CAMPO_Alimento2 = "Alimento2";
-    public static final String CAMPO_Alimento3 = "Alimento3";
-    public static final String CAMPO_Alimento4 = "Alimento4";
-    public static final String CAMPO_Alimento5 = "Alimento5";
+    public static final String CAMPO_ID_USUARIO2 = "idUsuario"; //FK_idUsuario
+    public static final String CAMPO_NOMBRE = "NombrePlamNutricional";
+
+    //Campos Tabla Alimento
+    public static final String TABLA_Alimento = "Alimento";
+    public static final String CAMPO_ID_Alimento = "idAlimento";
+    public static final String CAMPO_NOMBREAlimento = "NombreAlimento";
+
+    //Campos Tabla PlanAlimento
+    public static final String TABLA_PlanAlimento = "PlanAlimento";
+    public static final String CAMPO_ID_PlanAlimento = "idPlanAlimento";
+    public static final String CAMPO_ID_PlanNutricional2 = "idPlanNutricional";//FK_PlanNutricional
+    public static final String CAMPO_ID_Alimento2 = "idAlimento";//FK_idAlimento
+
 
 
     //Sentencia para crear tabla PerfilSistema
@@ -73,13 +80,25 @@ public class Utilidades {
             + TABLA_PlanNutricional + "(" + CAMPO_ID_PlanNutricional + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + CAMPO_ID_USUARIO2 + " INTEGER NOT NULL, "
             + CAMPO_NOMBRE + " VARCHAR(100) NOT NULL, "
-            + CAMPO_Alimento1 + " VARCHAR(100) NOT NULL, "
-            + CAMPO_Alimento2 + " VARCHAR(100) NOT NULL, "
-            + CAMPO_Alimento3+ " VARCHAR(100) NOT NULL, "
-            + CAMPO_Alimento4 + " VARCHAR(100) NOT NULL, "
-            + CAMPO_Alimento5 + " VARCHAR(100) NOT NULL, "
             +"FOREIGN KEY"+ "("+CAMPO_ID_USUARIO2+") "
             +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO2+"))";
+
+    //Sentencia para crear tabla TABLA_Alimento
+
+    public static final String CREAR_TABLA_Alimento = "CREATE TABLE "
+            + TABLA_Alimento + "(" + CAMPO_ID_Alimento + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + CAMPO_NOMBREAlimento + " VARCHAR(100) NOT NULL, ";
+
+    //Sentencia para crear tabla TABLA_PlanAlimento
+
+    public static final String CREAR_TABLA_PlanAlimento = "CREATE TABLE "
+            + TABLA_PlanAlimento + "(" + CAMPO_ID_PlanAlimento + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + CAMPO_ID_PlanNutricional2 + " VARCHAR(100) NOT NULL, "
+            + CAMPO_ID_Alimento2 + " VARCHAR(100) NOT NULL, "
+            +"FOREIGN KEY"+ "("+CAMPO_ID_PlanNutricional2+") "
+            +"REFERENCES "+TABLA_PlanNutricional+"("+CAMPO_ID_PlanNutricional2+"))"
+            +"FOREIGN KEY"+ "("+CAMPO_ID_Alimento2+") "
+            +"REFERENCES "+TABLA_PlanNutricional+"("+CAMPO_ID_Alimento2+"))";
 
 
 

@@ -29,6 +29,8 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.CREAR_TABLA_PERFIL_SISTEMA);
         db.execSQL(Utilidades.CREAR_TABLA_USUARIO);
         db.execSQL(Utilidades.CREAR_TABLA_PlanNutricional);
+        db.execSQL(Utilidades.CREAR_TABLA_Alimento);
+        db.execSQL(Utilidades.CREAR_TABLA_PlanAlimento);
 
         db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Cliente"));
         db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Nutriologo"));
