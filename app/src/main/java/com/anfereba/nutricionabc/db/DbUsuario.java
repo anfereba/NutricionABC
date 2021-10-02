@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.anfereba.nutricionabc.db.utilidades.AESCrypt;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import org.w3c.dom.Text;
@@ -34,6 +36,8 @@ public class DbUsuario extends DbHelper{
         try {
             DbHelper dbHelper = new DbHelper(context);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            password = AESCrypt.encrypt(password);
 
             ContentValues values = new ContentValues();
             values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
@@ -82,15 +86,16 @@ public class DbUsuario extends DbHelper{
     public String Comprobar_Correo_Password(String email, String password){
         String CredencialesCorrectas = null;
 
-        String[] parametros = {email, password};
-
-        String query = "SELECT a."+Utilidades.CAMPO_CORREO+
-                ", a."+Utilidades.CAMPO_PASSWORD+", b."+Utilidades.CAMPO_NOMBRE_PERFIL
-                +" FROM "+ Utilidades.TABLA_USUARIO+ " a INNER JOIN "+Utilidades.TABLA_PERFIL_SISTEMA+ " b ON "
-                +"a."+Utilidades.CAMPO_ID_PERFIL_SISTEMA+" = b."+Utilidades.CAMPO_ID_PERFIL_SISTEMA_2
-                +" WHERE a."+Utilidades.CAMPO_CORREO+" =? AND a."+Utilidades.CAMPO_PASSWORD+ " =?";
-
         try{
+
+            password = AESCrypt.encrypt(password);
+            String[] parametros = {email, password};
+            String query = "SELECT a."+Utilidades.CAMPO_CORREO+
+                    ", a."+Utilidades.CAMPO_PASSWORD+", b."+Utilidades.CAMPO_NOMBRE_PERFIL
+                    +" FROM "+ Utilidades.TABLA_USUARIO+ " a INNER JOIN "+Utilidades.TABLA_PERFIL_SISTEMA+ " b ON "
+                    +"a."+Utilidades.CAMPO_ID_PERFIL_SISTEMA+" = b."+Utilidades.CAMPO_ID_PERFIL_SISTEMA_2
+                    +" WHERE a."+Utilidades.CAMPO_CORREO+" =? AND a."+Utilidades.CAMPO_PASSWORD+ " =?";
+
             DbHelper dbHelper = new DbHelper(context);
             SQLiteDatabase db = dbHelper.getReadableDatabase();
 
@@ -108,26 +113,28 @@ public class DbUsuario extends DbHelper{
     }
 
     public String Comprobar_Perfil(int IdSesion){
-        String CredencialesCorrectas = null;
+        String CredencialesCorrectas = "";
 
-        String[] parametros = {Integer.toString(IdSesion)};
 
         String query = "SELECT a."+Utilidades.CAMPO_CORREO+
                 ", a."+Utilidades.CAMPO_PASSWORD+", b."+Utilidades.CAMPO_NOMBRE_PERFIL
                 +" FROM "+ Utilidades.TABLA_USUARIO+ " a INNER JOIN "+Utilidades.TABLA_PERFIL_SISTEMA+ " b ON "
                 +"a."+Utilidades.CAMPO_ID_PERFIL_SISTEMA+" = b."+Utilidades.CAMPO_ID_PERFIL_SISTEMA_2
-                +" WHERE a."+Utilidades.CAMPO_ID_PERFIL_SISTEMA+" =?";
+                +" WHERE a."+Utilidades.CAMPO_ID_USUARIO+" = "+IdSesion;
 
         try{
             DbHelper dbHelper = new DbHelper(context);
             SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-            Cursor cursor = db.rawQuery(query,parametros);
+            Cursor cursor = db.rawQuery(query,null);
+
+
             cursor.moveToFirst();
             if (cursor.getCount() > 0){
                 CredencialesCorrectas = cursor.getString(2);
             }else {
-                CredencialesCorrectas = null;
+                CredencialesCorrectas = "";
+
             }
         }catch (Exception ex){
             Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();

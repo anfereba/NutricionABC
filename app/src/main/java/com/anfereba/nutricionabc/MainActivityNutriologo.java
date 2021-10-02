@@ -113,5 +113,6 @@ public class MainActivityNutriologo extends AppCompatActivity implements Navigat
         Toast.makeText(getApplicationContext(), "La sesion fue cerrada", Toast.LENGTH_SHORT).show();
         intent=new Intent(getApplicationContext(), Login_App.class);
         startActivity(intent);
+        finish();
     }
 }

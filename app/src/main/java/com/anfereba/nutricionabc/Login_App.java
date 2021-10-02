@@ -20,7 +20,7 @@ public class Login_App extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
-    private int Id_Sesion = 0;
+    private Integer Id_Sesion = -1;
 
     EditText Correo,Password;
     Button BtnIngresar, BtnRegistroCliente;
@@ -40,6 +40,7 @@ public class Login_App extends AppCompatActivity {
         editor = preferences.edit();
 
         if (VerificarIdDeSesion() > 0){
+
             Id_Sesion = VerificarIdDeSesion();
             IniciarSesion(Id_Sesion);
 
@@ -94,14 +95,13 @@ public class Login_App extends AppCompatActivity {
 
         dbUsuario = new DbUsuario(getApplicationContext());
 
-        String PerfilUsuario;
+        String PerfilUsuario = "";
         String Id_Usuario = null;
         String Nombre_Usuario = null;
         String Apellido_Usuario = null;
 
 
         if (Id_Sesion > 0){
-
             PerfilUsuario = dbUsuario.Comprobar_Perfil(Id_Sesion);
         }
         else{
@@ -152,7 +152,7 @@ public class Login_App extends AppCompatActivity {
         editor.apply();
     }
 
-    private int VerificarIdDeSesion() {
+    private Integer VerificarIdDeSesion() {
         return this.preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
     }
 }
