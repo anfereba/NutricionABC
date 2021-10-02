@@ -15,12 +15,12 @@ public class Usuario {
     private String Ciudad;
     private String Telefono;
     private String FechaCreacion;
-    private Bitmap FotoPerfil;
+    private byte[] FotoPerfil;
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, Integer idPerfilSistema, String nombres, String apellidos, String fechaNacimiento, String correo, String password, String direccion, String ciudad, String telefono, String fechaCreacion, Bitmap fotoPerfil) {
+    public Usuario(Integer idUsuario, Integer idPerfilSistema, String nombres, String apellidos, String fechaNacimiento, String correo, String password, String direccion, String ciudad, String telefono, String fechaCreacion, byte[] fotoPerfil) {
         this.idUsuario = idUsuario;
         this.idPerfilSistema = idPerfilSistema;
         Nombres = nombres;
@@ -123,11 +123,11 @@ public class Usuario {
         FechaCreacion = fechaCreacion;
     }
 
-    public Bitmap getFotoPerfil() {
+    public byte[] getFotoPerfil() {
         return FotoPerfil;
     }
 
-    public void setFotoPerfil(Bitmap fotoPerfil) {
+    public void setFotoPerfil(byte[] fotoPerfil) {
         FotoPerfil = fotoPerfil;
     }
 }

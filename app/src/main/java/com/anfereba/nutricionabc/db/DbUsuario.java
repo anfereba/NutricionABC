@@ -10,10 +10,13 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.anfereba.nutricionabc.db.Entidades.Usuario;
 import com.anfereba.nutricionabc.db.utilidades.AESCrypt;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 import okhttp3.internal.Util;
 
@@ -21,8 +24,8 @@ import okhttp3.internal.Util;
 public class DbUsuario extends DbHelper{
 
     Context context;
-
-
+    ArrayList<String> listaUsuarios;
+    ArrayList<Usuario> usuariosList;
 
     public DbUsuario(@Nullable Context context) {
         super(context);
@@ -142,7 +145,6 @@ public class DbUsuario extends DbHelper{
         return CredencialesCorrectas;
     }
 
-
     public String consultarDato(String variableAconsultar, String filtroparabuscar, String informacionDelFiltro){
         /*Esta consulta solo sirve para buscar un String*/
         DbHelper dbHelper = new DbHelper(context);
@@ -158,4 +160,29 @@ public class DbUsuario extends DbHelper{
         cursorClientes.close();
         return dato;
     }
+
+    public ArrayList<Usuario> ConsultarListaClientes(){
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Usuario persona = null;
+        usuariosList = new ArrayList<Usuario>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Utilidades.TABLA_USUARIO+ " WHERE "+Utilidades.CAMPO_ID_PERFIL_SISTEMA + " =1",null);
+        while (cursor.moveToNext()){
+            persona = new Usuario();
+            persona.setIdUsuario(cursor.getInt(0));
+            persona.setNombres(cursor.getString(2));
+            persona.setApellidos(cursor.getString(3));
+            persona.setFechaNacimiento(cursor.getString(4));
+            persona.setCorreo(cursor.getString(5));
+            persona.setDireccion(cursor.getString(7));
+            persona.setCiudad(cursor.getString(8));
+            persona.setTelefono(cursor.getString(9));
+            persona.setFotoPerfil(cursor.getBlob(11));
+
+            usuariosList.add(persona);
+        }
+        return(usuariosList);
+    }
+
 }
