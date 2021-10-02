@@ -116,6 +116,51 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!--Direccion Usuario -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/TXTDireccionUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/TXTDireccionUsuario"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Ciudad Usuario -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/TXTCiudadUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/TXTCiudadUsuario"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--TelefonoUsuario -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/TXTTelefonoUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/TXTTelefonoUsuario"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <!-- Fecha de Creacion -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -132,8 +177,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
             <Button
                 android:layout_marginTop="10dp"
                 android:id="@+id/BtnRegistrarClienteBD"
@@ -141,7 +184,11 @@
                 android:layout_height="wrap_content"
                 android:background="#3b5998"
                 android:textColor="@color/white"
+                android:layout_marginBottom="30dp"
                 android:text="@string/BtnRegistrarClienteBD" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+
     </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

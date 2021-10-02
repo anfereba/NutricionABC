@@ -11,22 +11,28 @@ public class Usuario {
     private String FechaNacimiento;
     private String Correo;
     private String Password;
+    private String Direccion;
+    private String Ciudad;
+    private String Telefono;
     private String FechaCreacion;
     private Bitmap FotoPerfil;
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, Integer idPerfilSistema, String nombres, String apellidos, String fechaNacimiento, String correo, String password, String fechaCreacion, Bitmap fotoPerfil) {
+    public Usuario(Integer idUsuario, Integer idPerfilSistema, String nombres, String apellidos, String fechaNacimiento, String correo, String password, String direccion, String ciudad, String telefono, String fechaCreacion, Bitmap fotoPerfil) {
         this.idUsuario = idUsuario;
         this.idPerfilSistema = idPerfilSistema;
-        this.Nombres = nombres;
-        this.Apellidos = apellidos;
-        this.FechaNacimiento = fechaNacimiento;
-        this.Correo = correo;
-        this.Password = password;
-        this.FechaCreacion = fechaCreacion;
-        this.FotoPerfil = fotoPerfil;
+        Nombres = nombres;
+        Apellidos = apellidos;
+        FechaNacimiento = fechaNacimiento;
+        Correo = correo;
+        Password = password;
+        Direccion = direccion;
+        Ciudad = ciudad;
+        Telefono = telefono;
+        FechaCreacion = fechaCreacion;
+        FotoPerfil = fotoPerfil;
     }
 
     public Integer getIdUsuario() {
@@ -85,6 +91,30 @@ public class Usuario {
         Password = password;
     }
 
+    public String getDireccion() {
+        return Direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        Direccion = direccion;
+    }
+
+    public String getCiudad() {
+        return Ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        Ciudad = ciudad;
+    }
+
+    public String getTelefono() {
+        return Telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        Telefono = telefono;
+    }
+
     public String getFechaCreacion() {
         return FechaCreacion;
     }
@@ -101,3 +131,4 @@ public class Usuario {
         FotoPerfil = fotoPerfil;
     }
 }
+

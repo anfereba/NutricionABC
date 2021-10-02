@@ -24,7 +24,11 @@ public class Utilidades {
     public static final String CAMPO_CORREO = "Correo";
     public static final String CAMPO_PASSWORD = "Password";
     public static final String CAMPO_FECHA_CREACION = "FechaCreacion";
+    public static final String CAMPO_DIRECCION_USUARIO = "Direccion";
+    public static final String CAMPO_CIUDAD = "Ciudad";
+    public static final String CAMPO_TELEFONO = "Telefono";
     public static final String CAMPO_FOTO_USUARIO = "FotoPerfil";
+
 
     //Campos Tabla PlanNutricional
     public static final String TABLA_PlanNutricional = "PlanNutricional";
@@ -69,6 +73,9 @@ public class Utilidades {
             + CAMPO_FECHA_NACIMIENTO + " DATETIME NOT NULL, "
             + CAMPO_CORREO + " VARCHAR(100) NOT NULL UNIQUE, "
             + CAMPO_PASSWORD + " VARCHAR(100) NOT NULL, "
+            + CAMPO_DIRECCION_USUARIO + " VARCHAR(70) NOT NULL, "
+            + CAMPO_CIUDAD + " VARCHAR(50) NOT NULL, "
+            + CAMPO_TELEFONO + " VARCHAR(11) NOT NULL, "
             + CAMPO_FECHA_CREACION + " VARCHAR(100) NOT NULL, "
             + CAMPO_FOTO_USUARIO + " BLOB NOT NULL, "
             +"FOREIGN KEY"+ "("+CAMPO_ID_PERFIL_SISTEMA+") "

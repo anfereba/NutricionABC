@@ -27,7 +27,7 @@ public class DbUsuario extends DbHelper{
         this.context=context;
     }
     public long insertarUsuario(String nombres, String apellidos, String FechaNacimiento,
-                                 String correo, String password, String FechaCreacion, byte[] FotoUsuario) {
+                                 String correo, String password, String Direccion, String Ciudad, String Telefono, String FechaCreacion, byte[] FotoUsuario) {
 
         long id = 0;
 
@@ -42,6 +42,9 @@ public class DbUsuario extends DbHelper{
             values.put(Utilidades.CAMPO_FECHA_NACIMIENTO, FechaNacimiento);
             values.put(Utilidades.CAMPO_CORREO, correo);
             values.put(Utilidades.CAMPO_PASSWORD,password);
+            values.put(Utilidades.CAMPO_DIRECCION_USUARIO, Direccion);
+            values.put(Utilidades.CAMPO_CIUDAD, Ciudad);
+            values.put(Utilidades.CAMPO_TELEFONO,Telefono);
             values.put(Utilidades.CAMPO_FECHA_CREACION,FechaCreacion);
             values.put(Utilidades.CAMPO_FOTO_USUARIO,FotoUsuario);
 

@@ -56,6 +56,15 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
     @NotEmpty (message = "Este campo es Obligatorio")
     EditText TXTApellidoUsuario;
 
+    @NotEmpty (message = "Este campo es Obligatorio")
+    EditText TXTDireccionUsuario;
+
+    @NotEmpty (message = "Este campo es Obligatorio")
+    EditText TXTCiudadUsuario;
+
+    @NotEmpty (message = "Este campo es Obligatorio")
+    EditText TXTTelefonoUsuario;
+
 
     @NotEmpty (message = "Este campo es Obligatorio")
     EditText TXTFechaNacimientoUsuario;
@@ -82,6 +91,9 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
         TXTCorreoUsuario = (EditText) findViewById(R.id.TXTCorreoUsuario);
         TXTPasswordUsuario = (EditText) findViewById(R.id.TXTPasswordUsuario);
         TXTFechaCreacionUsuario=(EditText)findViewById(R.id.TXTFechaCreacionUsuario);
+        TXTDireccionUsuario = (EditText) findViewById(R.id.TXTDireccionUsuario);
+        TXTCiudadUsuario = (EditText) findViewById(R.id.TXTCiudadUsuario);
+        TXTTelefonoUsuario=(EditText)findViewById(R.id.TXTTelefonoUsuario);
         AgregarFotoCliente=(ImageView) findViewById(R.id.AgregarFotoCliente);
 
         CalcularFechaActual();
@@ -110,6 +122,8 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
                     long QueryExitosa = dbUsuario.insertarUsuario(TXTNombreUsuario.getText().toString(),
                             TXTApellidoUsuario.getText().toString(),TXTFechaNacimientoUsuario.getText().toString(),
                             TXTCorreoUsuario.getText().toString(),TXTPasswordUsuario.getText().toString(),
+                            TXTDireccionUsuario.getText().toString(),TXTCiudadUsuario.getText().toString(),
+                            TXTTelefonoUsuario.getText().toString(),
                             TXTFechaCreacionUsuario.getText().toString(),FotoPerfilEnBytes());
 
                     if (QueryExitosa > 0) {
@@ -144,6 +158,9 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
         TXTFechaNacimientoUsuario.setText("");
         TXTCorreoUsuario.setText("");
         TXTPasswordUsuario.setText("");
+        TXTDireccionUsuario.setText("");
+        TXTCiudadUsuario.setText("");
+        TXTTelefonoUsuario.setText("");
     }
 
     //Asigna la imagen escogida de la galeria al ImageView
