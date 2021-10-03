@@ -66,6 +66,10 @@
     <string name="BtnActualizarClienteBD">Actualizar</string>
     <string name="TXTGestionUsuarios">Gestion De Usuarios</string>
     <string name="BtnEliminarClienteBD">Eliminar</string>
+    <string name="Agregar">Agregar</string>
+    <string name="BuscarUsuario">BuscarUsuario</string>
+    <string name="BuscarUsuarioTXT">Buscar Usuario</string>
+    <string name="BtnBuscarUsuario">Buscar Usuario</string>
 
     <!--Alimentos -->
     <string name="TXTAgregarAlimento">Agregar Alimento +</string>
