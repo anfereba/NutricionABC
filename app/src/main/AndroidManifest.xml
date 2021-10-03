@@ -14,6 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".RegistrarAlimento"
+            android:exported="true"
+            android:parentActivityName=".MainActivityNutriologo">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivityNutriologo"
+                 />
+        </activity>
+
+        <activity
             android:name=".FragmentosAdministrador.ActualizarUsuario"
             android:exported="true" />
         <activity

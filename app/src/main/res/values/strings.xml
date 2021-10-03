@@ -44,7 +44,7 @@
     <string name="Opcionestxt">Opciones</string>
     <string name="Opcion_uno_Nutriologo">Opción 1 Nutriologo</string>
     <string name="Opcion_dos_Nutriologo">Opción 2 Nutriologo</string>
-    <string name="Opcion_tres_Nutriologo">Opción 3 Nutriologo</string>
+    <string name="Opcion_tres_Nutriologo">Alimentos</string>
     <string name="Opcion_cuatro_Nutriologo">Opción 4 Nutriologo</string>
     <string name="Opcion_cinco_Nutriologo">Opción 5 Nutriologo</string>
     <string name="MasOpcionestxt">Mas Opciones</string>
@@ -66,6 +66,12 @@
     <string name="BtnActualizarClienteBD">Actualizar</string>
     <string name="TXTGestionUsuarios">Gestion De Usuarios</string>
     <string name="BtnEliminarClienteBD">Eliminar</string>
+
+    <!--Alimentos -->
+    <string name="TXTAgregarAlimento">Agregar Alimento +</string>
+    <string name="TXTGuardarAlimento">Guardar Alimento</string>
+
+    <string name="TXTNombreAlimento">Nombre del Alimento</string>
 
 
 </resources>

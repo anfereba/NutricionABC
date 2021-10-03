@@ -1,17 +1,24 @@
 package com.anfereba.nutricionabc.FragmentosNutriologo;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaAlimentosAdapter;
+import com.anfereba.nutricionabc.RegistrarAlimento;
+import com.anfereba.nutricionabc.db.Entidades.Alimentos;
+import com.anfereba.nutricionabc.db.utilidades.DbAlimento;
 import com.anfereba.nutricionabc.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,13 +72,21 @@ public class OpcionTresNutriologo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_opcion_tres_nutriologo, container, false);
-        Button button= (Button) v.findViewById(R.id.button);
+        Button button= (Button) v.findViewById(R.id.AgregarAlimento);
+        RecyclerView listaAlimentos = (RecyclerView) v.findViewById(R.id.listaAlimentos);
+        listaAlimentos.setLayoutManager(new LinearLayoutManager(getActivity()));
+        DbAlimento dbAlimento = new DbAlimento(getActivity());
+        ArrayList<Alimentos>listaArrayAlimentos = new ArrayList<>();
+        ListaAlimentosAdapter adapter =new ListaAlimentosAdapter(dbAlimento.mostrarAlimentos());
+        listaAlimentos.setAdapter(adapter);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"buena",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getActivity(), RegistrarAlimento.class));
             }
         });
         return v;
