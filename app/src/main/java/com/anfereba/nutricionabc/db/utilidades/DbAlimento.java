@@ -47,20 +47,20 @@ public class DbAlimento extends DbHelper {
 
         ArrayList<Alimentos> listaAlimentos = new ArrayList<>();
         Alimentos alimentos;
-        Cursor cursorContactos;
+        Cursor cursorAlimentos;
 
-        cursorContactos = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_Alimento, null);
+        cursorAlimentos = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_Alimento, null);
 
-        if (cursorContactos.moveToFirst()) {
+        if (cursorAlimentos.moveToFirst()) {
             do {
                 alimentos = new Alimentos();
-                alimentos.setIdAlimento(cursorContactos.getInt(0));
-                alimentos.setNombreAlimento(cursorContactos.getString(1));
+                alimentos.setIdAlimento(cursorAlimentos.getInt(0));
+                alimentos.setNombreAlimento(cursorAlimentos.getString(1));
                 listaAlimentos.add(alimentos);
-            } while (cursorContactos.moveToNext());
+            } while (cursorAlimentos.moveToNext());
         }
 
-        cursorContactos.close();
+        cursorAlimentos.close();
 
         return listaAlimentos;
     }

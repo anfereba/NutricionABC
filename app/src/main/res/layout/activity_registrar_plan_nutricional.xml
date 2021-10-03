@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentosNutriologo.OpcionTresNutriologo">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".RegistrarPlanNutricional">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,26 +15,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listaAlimentos"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/Opcion_tres_Nutriologo"
-                android:textSize="25sp" />
+                <EditText
+                    android:id="@+id/NombrePlanNutricional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/TXTNombrePlan" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/AgregarAlimento"
+                android:id="@+id/GuardarPlan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:text="Agregar Alimento +" />
-
+                android:layout_weight="1"
+                android:text="@string/TXTGuardarPlan" />
         </LinearLayout>
     </ScrollView>
-
 </FrameLayout>

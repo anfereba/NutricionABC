@@ -79,6 +79,7 @@ public class OpcionTresNutriologo extends Fragment {
         Button button= (Button) v.findViewById(R.id.AgregarAlimento);
         RecyclerView listaAlimentos = (RecyclerView) v.findViewById(R.id.listaAlimentos);
         listaAlimentos.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         DbAlimento dbAlimento = new DbAlimento(getActivity());
         ArrayList<Alimentos>listaArrayAlimentos = new ArrayList<>();
         ListaAlimentosAdapter adapter =new ListaAlimentosAdapter(dbAlimento.mostrarAlimentos());

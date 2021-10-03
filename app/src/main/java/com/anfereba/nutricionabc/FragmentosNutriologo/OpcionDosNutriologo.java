@@ -1,14 +1,28 @@
 package com.anfereba.nutricionabc.FragmentosNutriologo;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaAlimentosAdapter;
+import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanesNutricionalesAdapter;
 import com.anfereba.nutricionabc.R;
+import com.anfereba.nutricionabc.RegistrarAlimento;
+import com.anfereba.nutricionabc.RegistrarPlanNutricional;
+import com.anfereba.nutricionabc.db.Entidades.Alimentos;
+import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
+import com.anfereba.nutricionabc.db.utilidades.DbAlimento;
+import com.anfereba.nutricionabc.db.utilidades.DbPlanNutricional;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +75,21 @@ public class OpcionDosNutriologo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_opcion_dos_nutriologo, container, false);
+        View v= inflater.inflate(R.layout.fragment_opcion_dos_nutriologo, container, false);
+        Button button= (Button) v.findViewById(R.id.AgregarPlan);
+        RecyclerView listaPlanes = (RecyclerView) v.findViewById(R.id.listaPlanes);
+        listaPlanes.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        DbPlanNutricional dbPlanNutricional = new DbPlanNutricional(getContext());
+        ArrayList<PlanesNutricionales> listaArrayPlanes = new ArrayList<>();
+        ListaPlanesNutricionalesAdapter adapter =new ListaPlanesNutricionalesAdapter(dbPlanNutricional.mostrarPlan());
+        listaPlanes.setAdapter(adapter);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), RegistrarPlanNutricional.class));
+            }
+        });
+        return v;
     }
 }

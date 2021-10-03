@@ -9,6 +9,10 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.anfereba.nutricionabc.db.DbHelper;
+import com.anfereba.nutricionabc.db.Entidades.Alimentos;
+import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
+
+import java.util.ArrayList;
 
 public class DbPlanNutricional extends DbHelper {
     Context context;
@@ -36,6 +40,31 @@ public class DbPlanNutricional extends DbHelper {
         }
 
         return id;
+    }
+    public ArrayList<PlanesNutricionales> mostrarPlan() {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ArrayList<PlanesNutricionales> listaPlanesNutricionales = new ArrayList<>();
+        PlanesNutricionales planesNutricionales;
+        Cursor cursorPlanes;
+
+        cursorPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PlanNutricional, null);
+
+        if (cursorPlanes.moveToFirst()) {
+            do {
+                planesNutricionales = new PlanesNutricionales();
+                planesNutricionales.setIdPlanNutricional(cursorPlanes.getInt(0));
+                planesNutricionales.setIdUsuario(cursorPlanes.getInt(1));
+                planesNutricionales.setNombrePlan(cursorPlanes.getString(2));
+                listaPlanesNutricionales.add(planesNutricionales);
+            } while (cursorPlanes.moveToNext());
+        }
+
+        cursorPlanes.close();
+
+        return listaPlanesNutricionales;
     }
 
 }
