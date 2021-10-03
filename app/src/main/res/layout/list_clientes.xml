@@ -59,12 +59,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Colombia"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <TextView
-                android:id="@+id/statusTextView"
+            <ImageView
+                android:id="@+id/Detalles_Ico"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -72,8 +72,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="6dp"
                 android:layout_marginRight="6dp"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:src="@drawable/detalles_ico"/>
+
 
         </RelativeLayout>
 

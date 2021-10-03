@@ -14,9 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".FragmentosAdministrador.ActualizarUsuario"
+            android:exported="true" />
+        <activity
+            android:name=".FragmentosAdministrador.GestionUsuarios"
+            android:exported="true" />
+        <activity
             android:name=".MainActivityAdministrador"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivityNutriologo"
             android:exported="true"
@@ -34,7 +40,7 @@
         <activity
             android:name=".MainActivityCliente"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegistroUsuarios"
             android:exported="true" />

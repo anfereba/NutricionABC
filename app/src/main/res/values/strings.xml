@@ -62,6 +62,10 @@
 
 
     <string name="TXTListaClientes">Lista de Clientes</string>
+    <string name="AccederCRUDUsuarios">CRUD USUARIOS</string>
+    <string name="BtnActualizarClienteBD">Actualizar</string>
+    <string name="TXTGestionUsuarios">Gestion De Usuarios</string>
+    <string name="BtnEliminarClienteBD">Eliminar</string>
 
 
 </resources>

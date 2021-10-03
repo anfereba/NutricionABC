@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/drawable-anydpi/imagen_ico.xml" value="0.1421875" />
+        <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_actualizar_usuario.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_carga.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_gestion_usuarios.xml" value="0.2" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_login_app.xml" value="0.264" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_logueo_con_sqlite.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_main.xml" value="0.22685185185185186" />
@@ -15,6 +17,7 @@
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_registrar_nutriologo.xml" value="0.264" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_registro_usuario.xml" value="0.152" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/carga.xml" value="0.13229166666666667" />
+        <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/dialog.xml" value="0.264" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/encabezado.xml" value="0.4" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/fragment_opcion_cuatro_cliente.xml" value="0.13229166666666667" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_administrador.xml" value="0.13072916666666667" />
@@ -23,7 +26,7 @@
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_administrador.xml" value="0.13072916666666667" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_cliente.xml" value="0.13229166666666667" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_nutriologo.xml" value="0.14479166666666668" />
-        <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_administrador.xml" value="0.2" />
+        <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_administrador.xml" value="0.4" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_cliente.xml" value="0.264" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_nutriologo.xml" value="0.14479166666666668" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/list_clientes.xml" value="0.4" />

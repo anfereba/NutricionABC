@@ -56,10 +56,11 @@ public class DbUsuario extends DbHelper{
             values.put(Utilidades.CAMPO_FOTO_USUARIO,FotoUsuario);
 
             id = db.insert(Utilidades.TABLA_USUARIO, null, values);
+
+            db.close();
         } catch (Exception ex) {
             ex.toString();
         }
-
         return id;
     }
 
@@ -79,6 +80,7 @@ public class DbUsuario extends DbHelper{
             }else {
                 existeCorreo = false;
             }
+            db.close();
         }catch (Exception ex){
             Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
             existeCorreo = false;
@@ -109,6 +111,7 @@ public class DbUsuario extends DbHelper{
             }else {
                 CredencialesCorrectas = null;
             }
+            db.close();
         }catch (Exception ex){
             Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -139,6 +142,7 @@ public class DbUsuario extends DbHelper{
                 CredencialesCorrectas = "";
 
             }
+            db.close();
         }catch (Exception ex){
             Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -161,6 +165,31 @@ public class DbUsuario extends DbHelper{
         return dato;
     }
 
+    public void actualizarUsuario(String Nombres, String Apellidos, String FechaNacimiento, String Correo, String Direccion, String ciudad, String Telefono, int Id_Usuario){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] parametros = {Integer.toString(Id_Usuario)};
+        ContentValues values = new ContentValues();
+        values.put(Utilidades.CAMPO_NOMBRES,Nombres);
+        values.put(Utilidades.CAMPO_APELLIDOS,Apellidos);
+        values.put(Utilidades.CAMPO_FECHA_NACIMIENTO,FechaNacimiento);
+        values.put(Utilidades.CAMPO_CORREO,Correo);
+        values.put(Utilidades.CAMPO_DIRECCION_USUARIO,Direccion);
+        values.put(Utilidades.CAMPO_CIUDAD,ciudad);
+        values.put(Utilidades.CAMPO_TELEFONO,Telefono);
+        db.update(Utilidades.TABLA_USUARIO,values,Utilidades.CAMPO_ID_USUARIO+"=?",parametros);
+        Toast.makeText(context, "Ya se actualizo", Toast.LENGTH_SHORT).show();
+        db.close();
+    }
+    public void eliminarUsuario(String Id_Usuario){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] parametros = {Id_Usuario};
+        db.delete(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_ID_USUARIO+"=?",parametros);
+        Toast.makeText(context, "Ya se elimino el usuario", Toast.LENGTH_SHORT).show();
+        db.close();
+    }
+
     public ArrayList<Usuario> ConsultarListaClientes(){
 
         DbHelper dbHelper = new DbHelper(context);
@@ -181,7 +210,9 @@ public class DbUsuario extends DbHelper{
             persona.setFotoPerfil(cursor.getBlob(11));
 
             usuariosList.add(persona);
+
         }
+        db.close();
         return(usuariosList);
     }
 
