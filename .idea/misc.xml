@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_insertar_usuario_administrador.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_registro_usuario.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_administrador.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/drawable-anydpi/imagen_ico.xml" value="0.1421875" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_carga.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_login_app.xml" value="0.264" />

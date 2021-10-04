@@ -6,11 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".FragmentosAdministrador.OpcionUnoAdministrador" >
 
-    <Button
-        android:id="@+id/AccederCRUDUsuarios"
-        android:text="@string/AccederCRUDUsuarios"
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/AccederCRUDUsuarios"
+            android:text="@string/AccederCRUDUsuarios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/OperacionInsertarUsuarios"
+            android:text="@string/OperacionInsertarUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
 
 

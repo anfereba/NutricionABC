@@ -80,6 +80,7 @@
     <string name="TXTAgregarPlan">Agregar Plan +</string>
     <string name="TXTGuardarPlan">Guardar Plan</string>
     <string name="TXTNombrePlan">Nombre del Plan Nutricional</string>
+    <string name="OperacionInsertarUsuario">Insertar Usuario</string>
 
 
 </resources>

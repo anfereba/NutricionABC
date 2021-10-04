@@ -17,9 +17,9 @@ import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbUsuario;
 
 
-public class OpcionUnoAdministrador extends Fragment {
+public class OpcionUnoAdministrador extends Fragment implements View.OnClickListener{
 
-    Button AccederCRUDUsuarios;
+    Button AccederCRUDUsuarios, OperacionInsertarUsuarios;
 
 
     @Override
@@ -29,13 +29,27 @@ public class OpcionUnoAdministrador extends Fragment {
         View view = inflater.inflate(R.layout.fragment_opcion_uno_administrador, container, false);
 
         AccederCRUDUsuarios=view.findViewById(R.id.AccederCRUDUsuarios);
-        AccederCRUDUsuarios.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), GestionUsuarios.class));
-            }
-        });
+        OperacionInsertarUsuarios=view.findViewById(R.id.OperacionInsertarUsuarios);
+
+        AccederCRUDUsuarios.setOnClickListener(this);
+        OperacionInsertarUsuarios.setOnClickListener(this);
+
+
 
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.AccederCRUDUsuarios:
+                startActivity(new Intent(getActivity(), GestionUsuarios.class));
+                break;
+            case R.id.OperacionInsertarUsuarios:
+                startActivity(new Intent(getActivity(), InsertarUsuarioAdministrador.class));
+                break;
+                
+        }
+
     }
 }

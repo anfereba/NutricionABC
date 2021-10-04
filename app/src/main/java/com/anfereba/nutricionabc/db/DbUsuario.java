@@ -32,7 +32,7 @@ public class DbUsuario extends DbHelper{
         this.context=context;
     }
     public long insertarUsuario(String nombres, String apellidos, String FechaNacimiento,
-                                 String correo, String password, String Direccion, String Ciudad, String Telefono, String FechaCreacion, byte[] FotoUsuario) {
+                                 String correo, String password, String Direccion, String Ciudad, String Telefono, String FechaCreacion, byte[] FotoUsuario, int idPerfil) {
 
         long id = 0;
 
@@ -43,7 +43,7 @@ public class DbUsuario extends DbHelper{
             password = AESCrypt.encrypt(password);
 
             ContentValues values = new ContentValues();
-            values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
+            values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,idPerfil); // <---- Por defecto se registrara como cliente
             values.put(Utilidades.CAMPO_NOMBRES, nombres);
             values.put(Utilidades.CAMPO_APELLIDOS, apellidos);
             values.put(Utilidades.CAMPO_FECHA_NACIMIENTO, FechaNacimiento);
@@ -196,7 +196,7 @@ public class DbUsuario extends DbHelper{
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Usuario persona = null;
         usuariosList = new ArrayList<Usuario>();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+Utilidades.TABLA_USUARIO+ " WHERE "+Utilidades.CAMPO_ID_PERFIL_SISTEMA + " =1",null);
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Utilidades.TABLA_USUARIO,null);
         while (cursor.moveToNext()){
             persona = new Usuario();
             persona.setIdUsuario(cursor.getInt(0));

@@ -124,7 +124,7 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
                             TXTCorreoUsuario.getText().toString(),TXTPasswordUsuario.getText().toString(),
                             TXTDireccionUsuario.getText().toString(),TXTCiudadUsuario.getText().toString(),
                             TXTTelefonoUsuario.getText().toString(),
-                            TXTFechaCreacionUsuario.getText().toString(),FotoPerfilEnBytes());
+                            TXTFechaCreacionUsuario.getText().toString(),FotoPerfilEnBytes(),1);
 
                     if (QueryExitosa > 0) {
                         startActivity(new Intent(getApplicationContext(), Login_App.class));
