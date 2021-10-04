@@ -39,6 +39,8 @@
         app:headerLayout="@layout/encabezado"
         app:menu="@menu/menu_cliente"
         android:background="@color/white"
-        app:itemTextColor="@color/black" />
+        app:itemTextColor="@color/black" >
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -11,7 +11,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -23,8 +22,6 @@ import com.anfereba.nutricionabc.FragmentosCliente.OpcionTresCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionUnoCliente;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 import com.google.android.material.navigation.NavigationView;
-
-import okhttp3.internal.Util;
 
 public class MainActivityCliente extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -89,7 +86,6 @@ public class MainActivityCliente extends AppCompatActivity implements Navigation
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
 
-
     }
 
     private void CerrarSesion() {
@@ -110,7 +106,6 @@ public class MainActivityCliente extends AppCompatActivity implements Navigation
         View header = navigationView.getHeaderView(0);
         TXTNombreYApellido = (TextView) header.findViewById(R.id.TXTNombreYApellido);
         NombrePerfilUsuario = (TextView) header.findViewById(R.id.NombrePerfilUsuario);
-
 
         String Nombre = shared.getString(Utilidades.CAMPO_NOMBRES,"");
         String Apellido = shared.getString(Utilidades.CAMPO_APELLIDOS,"");
