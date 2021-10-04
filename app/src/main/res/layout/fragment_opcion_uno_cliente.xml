@@ -6,12 +6,9 @@
     tools:context=".FragmentosCliente.OpcionUnoCliente">
 
     <RatingBar
-        android:id="@+id/ratingCalifNutri"
+        android:id="@+id/RatingCalifNutri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="78dp"
         android:layout_marginTop="192dp"
         android:background="#2962FF"
@@ -20,51 +17,34 @@
         android:rating="2" />
 
     <Button
-        android:id="@+id/buttonCalifNutri"
+        android:id="@+id/BtnCalifNutri"
         android:layout_width="313dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentEnd="false"
-        android:layout_centerHorizontal="false"
         android:layout_marginTop="300dp"
         android:background="@color/purple_500"
-        android:enabled="false"
-        android:fadeScrollbars="false"
-        android:padding="10dp"
-        android:scrollbarFadeDuration="300"
         android:text="Calificar"
         android:textColor="#00BFA5"
         android:textSize="20sp"
         android:textStyle="bold"
         android:translationX="50dp"
-
-        />
+       />
 
     <TextView
-        android:id="@+id/textCalifNutri"
+        android:id="@+id/TextCalifNutri"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="42dp"
         android:layout_marginTop="61dp"
-        android:accessibilityLiveRegion="none"
         android:background="#75DACAC5"
         android:text="Calificacion Nutriologo"
-        android:textAllCaps="false"
         android:textColor="#0C69BA"
-        android:textColorLink="#03A9F4"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextCalifNutri"
+        android:id="@+id/EditTextCalifNutri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="96dp"
         android:layout_marginTop="119dp"
         android:ems="10"
