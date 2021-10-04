@@ -223,6 +223,39 @@ public class DbUsuario extends DbHelper{
         return(usuariosList);
     }
 
+    public ArrayList<Usuario> ConsultarListaUsuarios(){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        Usuario usuario = null;
+        Cursor cursorUsuarios = null;
+        String consulta = "SELECT * FROM "+Utilidades.TABLA_USUARIO;
+
+        cursorUsuarios = db.rawQuery(consulta,null);
+        if (cursorUsuarios.moveToFirst()){
+            do{
+                usuario = new Usuario();
+                usuario.setIdUsuario(cursorUsuarios.getInt(0));
+                usuario.setIdPerfilSistema(cursorUsuarios.getInt(1));
+                usuario.setNombres(cursorUsuarios.getString(2));
+                usuario.setApellidos(cursorUsuarios.getString(3));
+                usuario.setFechaNacimiento(cursorUsuarios.getString(4));
+                usuario.setCorreo(cursorUsuarios.getString(5));
+                usuario.setPassword(cursorUsuarios.getString(6));
+                usuario.setDireccion(cursorUsuarios.getString(7));
+                usuario.setCiudad(cursorUsuarios.getString(8));
+                usuario.setTelefono(cursorUsuarios.getString(9));
+                usuario.setFechaCreacion(cursorUsuarios.getString(10));
+                usuario.setFotoPerfil(cursorUsuarios.getBlob(11));
+                usuario.setPreguntaUno(cursorUsuarios.getString(12));
+                usuario.setPreguntaDos(cursorUsuarios.getString(13));
+                listaUsuarios.add(usuario);
+            }while (cursorUsuarios.moveToNext());
+        }
+        cursorUsuarios.close();
+        return listaUsuarios;
+    }
+
     public long RestablecerPassword(String Correo, String Password, String PreguntaUno, String PreguntaDos) {
 
         long id = 0;

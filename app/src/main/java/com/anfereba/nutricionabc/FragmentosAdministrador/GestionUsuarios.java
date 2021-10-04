@@ -14,33 +14,34 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 
-import com.anfereba.nutricionabc.FragmentosAdministrador.Listas.ListAdapter;
+import com.anfereba.nutricionabc.FragmentosAdministrador.Adaptadores.ListaUsuariosAdapter;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbUsuario;
+import com.anfereba.nutricionabc.db.Entidades.Usuario;
 
+import java.util.ArrayList;
 
 
 public class GestionUsuarios extends AppCompatActivity {
 
     SwipeRefreshLayout swipeRefreshLayout;
     Dialog dialog;
-    ListAdapter listAdapter;
-    RecyclerView recyclerView;
+    RecyclerView listaUsuariosRV;
+
+    ListaUsuariosAdapter adapter;
+    ArrayList<Usuario> listaArrayUsuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_usuarios);
 
-        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+
+
         dialog = new Dialog(GestionUsuarios.this);
 
         mostrarListaUsuarios();
         SetearActionBar();
-
-
-
-
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -51,8 +52,19 @@ public class GestionUsuarios extends AppCompatActivity {
             }
         });
 
-
     }
+
+    private void mostrarListaUsuarios() {
+        listaUsuariosRV = findViewById(R.id.listaUsuariosRV);
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        listaUsuariosRV.setLayoutManager(new LinearLayoutManager(this));
+        DbUsuario db = new DbUsuario(GestionUsuarios.this);
+        listaArrayUsuarios = new ArrayList<>();
+        adapter = new ListaUsuariosAdapter(db.ConsultarListaUsuarios(),this);
+        listaUsuariosRV.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
     public void SetearActionBar(){
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -74,6 +86,8 @@ public class GestionUsuarios extends AppCompatActivity {
         menuInflater.inflate(R.menu.menu_buscar,menu);
         MenuItem item = menu.findItem(R.id.BuscarUsuario);
         SearchView searchView = (SearchView) item.getActionView();
+
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -82,24 +96,11 @@ public class GestionUsuarios extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                listAdapter.getFilter().filter(newText);
+                adapter.getFilter().filter(newText);
                 return false;
             }
         });
 
         return super.onCreateOptionsMenu(menu);
     }
-
-
-
-    public void mostrarListaUsuarios(){
-        DbUsuario db = new DbUsuario(this);
-        listAdapter = new ListAdapter(db.ConsultarListaClientes(), this);
-        recyclerView = findViewById(R.id.listRecyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(listAdapter);
-        listAdapter.notifyDataSetChanged();
-    }
-
 }

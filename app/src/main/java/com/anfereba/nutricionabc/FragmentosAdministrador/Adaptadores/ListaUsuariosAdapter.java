@@ -1,4 +1,4 @@
-package com.anfereba.nutricionabc.FragmentosAdministrador.Listas;
+package com.anfereba.nutricionabc.FragmentosAdministrador.Adaptadores;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anfereba.nutricionabc.R;
@@ -36,14 +34,12 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
-import java.net.IDN;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> implements Validator.ValidationListener, Filterable {
+public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdapter.UsuarioViewHolder> implements Validator.ValidationListener,Filterable {
 
     @NotEmpty
     @Email
@@ -73,62 +69,71 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
     private boolean DatosValidados;
     private Validator validator;
 
+    private Context context;
+
     //Calendario
 
     DatePickerDialog picker;
 
     //Para almacenamiento de datos y busqueda de coincidencias
 
-    private List<Usuario> mData;
-    private ArrayList<Usuario> mDataAll;
+    private ArrayList<Usuario> listaUsuarios; //mData
+    private List<Usuario> listaUsuariosFiltrada; //mDataAll
 
-    private LayoutInflater mInflater;
-    private Context context;
 
-    public ListAdapter(List<Usuario> itemList, Context context){
+    public ListaUsuariosAdapter(ArrayList<Usuario> listaUsuarios, Context context){
 
-        this.mInflater = LayoutInflater.from(context);
+        this.listaUsuarios = listaUsuarios;
+        this.listaUsuariosFiltrada = new ArrayList<>(listaUsuarios);
         this.context = context;
-        this.mData = itemList;
-        this.mDataAll = new ArrayList<>(mData);
 
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public UsuarioViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        //Enlaza el adaptador con el list clientes
+        //Enlaza el adaptador con el list clientes (Asigna el diseño de cada elemento de la lista)
 
-        View view = mInflater.inflate(R.layout.list_clientes, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.list_clientes,null,false);
+
         validator = new Validator(this);
         validator.setValidationListener(this);
 
-
-        return new ViewHolder(view);
+        return new UsuarioViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull UsuarioViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         //Establece comunicacion y adaptador y viewHodler
 
-        holder.bindData(mData.get(position));
+
+        Bitmap bitmap = BitmapFactory.decodeByteArray(listaUsuarios.get(position).getFotoPerfil(), 0,
+
+                listaUsuarios.get(position).getFotoPerfil().length);
+
+
+        holder.IMGCardView.setImageBitmap(bitmap);
+
+        holder.nameTextView.setText(listaUsuarios.get(position).getNombres()+ " " +
+                                    listaUsuarios.get(position).getApellidos());
+
+        holder.cityTextView.setText(listaUsuarios.get(position).getCiudad()+ " " +
+                                    listaUsuarios.get(position).getTelefono());
+
+
         holder.Detalles_Ico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(position);
-
-
-
+                mostrarDialogActualizar(position);
             }
         });
-
     }
 
 
 
-    private void showDialog(int position) {
+    private void mostrarDialogActualizar(int position) {
 
         //Muestra una ventana emergente con los datos del usuario seleccionado
 
@@ -167,20 +172,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
 
         //Se recogen los valores almacenados en el ArrayList y se asignan en los campos del dialog
 
-        TXTActualizarNombreUsuario.setText(mData.get(position).getNombres());
-        TXTActualizarApellidoUsuario.setText(mData.get(position).getApellidos());
-        TXTActualizarFechaNacimientoUsuario.setText(mData.get(position).getFechaNacimiento());
-        TXTActualizarCorreoUsuario.setText(mData.get(position).getCorreo());
-        TXTActualizarDireccionUsuario.setText(mData.get(position).getDireccion());
-        TXTActualizarCiudadUsuario.setText(mData.get(position).getCiudad());
-        TXTActualizarTelefonoUsuario.setText(mData.get(position).getTelefono());
+        TXTActualizarNombreUsuario.setText(listaUsuarios.get(position).getNombres());
+        TXTActualizarApellidoUsuario.setText(listaUsuarios.get(position).getApellidos());
+        TXTActualizarFechaNacimientoUsuario.setText(listaUsuarios.get(position).getFechaNacimiento());
+        TXTActualizarCorreoUsuario.setText(listaUsuarios.get(position).getCorreo());
+        TXTActualizarDireccionUsuario.setText(listaUsuarios.get(position).getDireccion());
+        TXTActualizarCiudadUsuario.setText(listaUsuarios.get(position).getCiudad());
+        TXTActualizarTelefonoUsuario.setText(listaUsuarios.get(position).getTelefono());
 
         //Variable Auxiliar para actualizar el email
 
-        String AuxCorreoUsuario = mData.get(position).getCorreo();
+        String AuxCorreoUsuario = listaUsuarios.get(position).getCorreo();
 
         //Variable donde se almacena el id del usuario para ejecutar la sentencia UPDATE
-        Id_Usuario = mData.get(position).getIdUsuario();
+        Id_Usuario = listaUsuarios.get(position).getIdUsuario();
 
         //Llamado al calendario tras hacer click en el campo de fecha
         TXTActualizarFechaNacimientoUsuario.setOnClickListener(new View.OnClickListener() {
@@ -218,10 +223,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
                                 TXTActualizarTelefonoUsuario.getText().toString(),
                                 Id_Usuario);
 
-                        mData.get(position).setNombres(TXTActualizarNombreUsuario.getText().toString());
-                        mData.get(position).setApellidos(TXTActualizarApellidoUsuario.getText().toString());
-                        mData.get(position).setCiudad(TXTActualizarCiudadUsuario.getText().toString());
-                        mData.get(position).setCorreo(TXTActualizarCorreoUsuario.getText().toString());
+                        listaUsuarios.get(position).setNombres(TXTActualizarNombreUsuario.getText().toString());
+                        listaUsuarios.get(position).setApellidos(TXTActualizarApellidoUsuario.getText().toString());
+                        listaUsuarios.get(position).setCiudad(TXTActualizarCiudadUsuario.getText().toString());
+                        listaUsuarios.get(position).setCorreo(TXTActualizarCorreoUsuario.getText().toString());
 
                         dialog.cancel();
                         notifyItemChanged(position);
@@ -246,10 +251,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
 
                             //Se actualiza los detalles mostrados en el RecyclerView
 
-                            mData.get(position).setNombres(TXTActualizarNombreUsuario.getText().toString());
-                            mData.get(position).setApellidos(TXTActualizarApellidoUsuario.getText().toString());
-                            mData.get(position).setCiudad(TXTActualizarCiudadUsuario.getText().toString());
-                            mData.get(position).setCorreo(TXTActualizarCorreoUsuario.getText().toString());
+                            listaUsuarios.get(position).setNombres(TXTActualizarNombreUsuario.getText().toString());
+                            listaUsuarios.get(position).setApellidos(TXTActualizarApellidoUsuario.getText().toString());
+                            listaUsuarios.get(position).setCiudad(TXTActualizarCiudadUsuario.getText().toString());
+                            listaUsuarios.get(position).setCorreo(TXTActualizarCorreoUsuario.getText().toString());
 
                             dialog.cancel();
                             notifyItemChanged(position);
@@ -278,15 +283,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
         });
     }
 
+
+
     @Override
     public int getItemCount() {
         //Retorna tamaño de la lista
-        return mData.size();
+
+        return listaUsuarios.size();
     }
 
-    //Para asignar los items al ArrayList
 
-    public void setItems(List<Usuario> items){ mData = items;}
+
+    public void setItems(ArrayList<Usuario> items){
+        listaUsuarios = items;
+    }
 
 
     //Si la validacion fue exitosa
@@ -334,24 +344,24 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
         picker.show();
     }
 
-
     @Override
     public Filter getFilter() {
         return filter;
     }
+
 
     //Para filtrar los Usuarios del RecyclerView
 
     Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
-            List<Usuario> listaUsuariosFiltrada = new ArrayList<>();
+            ArrayList<Usuario> listaUsuariosFiltrada = new ArrayList<>();
             if (charSequence.toString().isEmpty()){
-                listaUsuariosFiltrada.addAll(mDataAll);
+                listaUsuariosFiltrada.addAll(listaUsuarios);
             }else{
                 //Se itera la lista y se guardan las coincidencias
 
-                for (Usuario item: mDataAll){
+                for (Usuario item: listaUsuarios){
                     if ((item.getNombres().toString().toLowerCase() + " "+item.getApellidos().toString().toLowerCase())
                             .contains(charSequence.toString().toLowerCase())){
                         listaUsuariosFiltrada.add(item);
@@ -367,36 +377,28 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
 
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            mData.clear();
-            mData.addAll((Collection<? extends Usuario>) filterResults.values);
+            listaUsuarios.clear();
+            listaUsuarios.addAll((Collection<? extends Usuario>) filterResults.values);
             notifyDataSetChanged();
 
 
         }
     };
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class UsuarioViewHolder extends RecyclerView.ViewHolder {
+
+        //Se identifican los elementos
+
         ImageView IMGCardView;
         TextView nameTextView, cityTextView;
         ImageView Detalles_Ico;
 
-        ViewHolder(View itemView) {
+        UsuarioViewHolder(View itemView) {
             super(itemView);
             IMGCardView = itemView.findViewById(R.id.IMGCardView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
             cityTextView = itemView.findViewById(R.id.cityTextView);
             Detalles_Ico = itemView.findViewById(R.id.Detalles_Ico);
         }
-
-        void bindData(final Usuario item) {
-
-            Bitmap bitmap = BitmapFactory.decodeByteArray(item.getFotoPerfil(), 0, item.getFotoPerfil().length);
-
-            IMGCardView.setImageBitmap(bitmap);
-            nameTextView.setText(item.getNombres() + " " + item.getApellidos());
-            cityTextView.setText(item.getCiudad() + " - " + item.getCorreo());
-            // statusTextView.setText(item.getCorreo());
-        }
-
     }
 }
