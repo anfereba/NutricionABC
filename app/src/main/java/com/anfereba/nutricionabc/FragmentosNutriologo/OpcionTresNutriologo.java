@@ -13,9 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaAlimentosAdapter;
-import com.anfereba.nutricionabc.RegistrarAlimento;
 import com.anfereba.nutricionabc.db.Entidades.Alimentos;
-import com.anfereba.nutricionabc.db.utilidades.DbAlimento;
+import com.anfereba.nutricionabc.db.DbAlimento;
 import com.anfereba.nutricionabc.R;
 
 import java.util.ArrayList;

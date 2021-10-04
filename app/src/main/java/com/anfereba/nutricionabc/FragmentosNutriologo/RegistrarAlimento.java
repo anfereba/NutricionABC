@@ -1,4 +1,4 @@
-package com.anfereba.nutricionabc;
+package com.anfereba.nutricionabc.FragmentosNutriologo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.anfereba.nutricionabc.db.utilidades.DbAlimento;
+import com.anfereba.nutricionabc.R;
+import com.anfereba.nutricionabc.db.DbAlimento;
 
 public class RegistrarAlimento extends AppCompatActivity {
 Button AgregarAlimento;

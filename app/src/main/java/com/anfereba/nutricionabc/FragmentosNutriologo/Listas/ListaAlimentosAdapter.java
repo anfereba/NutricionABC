@@ -1,5 +1,7 @@
 package com.anfereba.nutricionabc.FragmentosNutriologo.Listas;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.anfereba.nutricionabc.FragmentosNutriologo.EditarPlanesNutricionales;
+import com.anfereba.nutricionabc.FragmentosNutriologo.VerAlimentos;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 
@@ -40,6 +44,15 @@ public class ListaAlimentosAdapter extends RecyclerView.Adapter<ListaAlimentosAd
         public AlimentosViewHolder(@NonNull View itemView) {
             super(itemView);
             viewNombre= itemView.findViewById(R.id.NombreAlimentoView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context =  view.getContext();
+                    Intent intent = new Intent(context, VerAlimentos.class); //si algo me toca modificarlo
+                    intent.putExtra("IdAlimentos",listaAlimentos.get(getAdapterPosition()).getIdAlimento());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

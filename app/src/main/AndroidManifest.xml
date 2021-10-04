@@ -17,10 +17,42 @@
             android:name=".FragmentosAdministrador.InsertarUsuarioAdministrador"
             android:exported="true" />
         <activity
-            android:name=".RegistrarPlanNutricional"
-            android:exported="true" />
+            android:name=".FragmentosNutriologo.EditarAlimentos"
+            android:exported="true" android:parentActivityName=".MainActivityNutriologo">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivityNutriologo" />
+        </activity>
         <activity
-            android:name=".RegistrarAlimento"
+            android:name=".FragmentosNutriologo.VerAlimentos"
+            android:exported="true" android:parentActivityName=".MainActivityNutriologo">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivityNutriologo" />
+        </activity>
+        <activity
+            android:name=".FragmentosNutriologo.EditarPlanesNutricionales"
+            android:exported="true" android:parentActivityName=".MainActivityNutriologo">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivityNutriologo" />
+        </activity>
+        <activity
+            android:name=".FragmentosNutriologo.VerPlanesNutricionales"
+            android:exported="true" android:parentActivityName=".MainActivityNutriologo">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivityNutriologo" />
+        </activity>
+        <activity
+            android:name=".FragmentosNutriologo.RegistrarPlanNutricional"
+            android:exported="true" android:parentActivityName=".MainActivityNutriologo">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivityNutriologo" />
+        </activity>
+        <activity
+            android:name=".FragmentosNutriologo.RegistrarAlimento"
             android:exported="true"
             android:parentActivityName=".MainActivityNutriologo">
             <meta-data

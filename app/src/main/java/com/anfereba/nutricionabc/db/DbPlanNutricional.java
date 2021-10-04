@@ -1,4 +1,4 @@
-package com.anfereba.nutricionabc.db.utilidades;
+package com.anfereba.nutricionabc.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.anfereba.nutricionabc.db.DbHelper;
 import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
+import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -66,5 +67,66 @@ public class DbPlanNutricional extends DbHelper {
 
         return listaPlanesNutricionales;
     }
+    public PlanesNutricionales verPlan(int id) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+        PlanesNutricionales planesNutricionales=null;
+        Cursor cursorPlanes;
+
+        cursorPlanes = db.rawQuery("SELECT * FROM  "+Utilidades.TABLA_PlanNutricional+" WHERE IdPlanNutricional = "+id+"", null);
+
+        if (cursorPlanes.moveToFirst()) {
+
+                planesNutricionales = new PlanesNutricionales();
+                planesNutricionales.setIdPlanNutricional(cursorPlanes.getInt(0));
+                planesNutricionales.setIdUsuario(cursorPlanes.getInt(1));
+                planesNutricionales.setNombrePlan(cursorPlanes.getString(2));
+
+
+        }
+
+        cursorPlanes.close();
+
+        return planesNutricionales;
+    }
+    public boolean EditarPlan(int id, String nombre) {
+        boolean correcto =false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("UPDATE "+Utilidades.TABLA_PlanNutricional+ " SET NombrePlamNutricional = '"+nombre+"' WHERE idPlanNutricional= '"+ id +"'");
+            correcto=true;
+        } catch (Exception ex) {
+            ex.toString();
+            correcto=false;
+        }finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+    public boolean EliminarPlan(int id) {
+
+        boolean correcto =false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("DELETE FROM "+Utilidades.TABLA_PlanNutricional+" WHERE idPlanNutricional= '"+ id +"'");
+            correcto=true;
+        } catch (Exception ex) {
+            ex.toString();
+            correcto=false;
+        }finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+
 
 }

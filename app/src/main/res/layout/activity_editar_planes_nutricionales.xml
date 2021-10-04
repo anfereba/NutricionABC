@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentosNutriologo.RegistrarPlanNutricional">
+    tools:context=".FragmentosNutriologo.EditarPlanesNutricionales">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,19 +20,35 @@
                 android:layout_height="match_parent">
 
                 <EditText
-                    android:id="@+id/NombrePlanNutricional"
+                    android:id="@+id/ModificarNombrePlan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/TXTNombrePlan" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/GuardarPlan"
+                android:id="@+id/ModificarPlan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/TXTGuardarPlan" />
+                android:text="@string/BtnModificarNombrePlan" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingEditarPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:backgroundTint="@color/white"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingEliminarPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:backgroundTint="@color/white"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_baseline_delete_24" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

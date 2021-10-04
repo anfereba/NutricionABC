@@ -1,4 +1,4 @@
-package com.anfereba.nutricionabc.db.utilidades;
+package com.anfereba.nutricionabc.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.anfereba.nutricionabc.db.DbHelper;
 import com.anfereba.nutricionabc.db.Entidades.Alimentos;
+import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -63,6 +64,66 @@ public class DbAlimento extends DbHelper {
         cursorAlimentos.close();
 
         return listaAlimentos;
+    }
+    public Alimentos verAlimentos(int  id){
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+        Alimentos alimentos = null;
+        Cursor cursorAlimentos;
+
+        cursorAlimentos = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_Alimento+" WHERE IdAlimento = "+id+" LIMIT 1 ", null);
+
+        if (cursorAlimentos.moveToFirst()) {
+
+                alimentos = new Alimentos();
+                alimentos.setIdAlimento(cursorAlimentos.getInt(0));
+                alimentos.setNombreAlimento(cursorAlimentos.getString(1));
+
+
+        }
+
+        cursorAlimentos.close();
+
+        return alimentos;
+    }
+    public boolean EditarAlimento(int id, String nombre) {
+
+        boolean correcto =false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("UPDATE "+Utilidades.TABLA_Alimento+ " SET NombreAlimento = '"+nombre+"' WHERE idAlimento= '"+ id +"'");
+        correcto=true;
+        } catch (Exception ex) {
+            ex.toString();
+            correcto=false;
+        }finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+    public boolean EliminarAlimento(int id) {
+
+        boolean correcto =false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("DELETE FROM "+Utilidades.TABLA_Alimento+" WHERE idAlimento= '"+ id +"'");
+            correcto=true;
+        } catch (Exception ex) {
+            ex.toString();
+            correcto=false;
+        }finally {
+            db.close();
+        }
+
+        return correcto;
     }
 }
 

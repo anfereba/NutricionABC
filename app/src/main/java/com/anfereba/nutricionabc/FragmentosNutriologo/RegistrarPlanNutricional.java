@@ -1,4 +1,4 @@
-package com.anfereba.nutricionabc;
+package com.anfereba.nutricionabc.FragmentosNutriologo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.anfereba.nutricionabc.db.utilidades.DbAlimento;
-import com.anfereba.nutricionabc.db.utilidades.DbPlanNutricional;
+import com.anfereba.nutricionabc.R;
+import com.anfereba.nutricionabc.db.DbPlanNutricional;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 public class RegistrarPlanNutricional extends AppCompatActivity {
@@ -20,7 +20,7 @@ Button Guardarplan;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_plan_nutricional);
-        TomarIdNutriologo();
+        TomarIdNutriologo(); //Con este podemos traer la informacion que se ha guardado en el login
         NombrePlanNutricional = findViewById(R.id.NombrePlanNutricional);
         Guardarplan=findViewById(R.id.GuardarPlan);
         Guardarplan.setOnClickListener(new View.OnClickListener() {

@@ -12,15 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaAlimentosAdapter;
 import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanesNutricionalesAdapter;
 import com.anfereba.nutricionabc.R;
-import com.anfereba.nutricionabc.RegistrarAlimento;
-import com.anfereba.nutricionabc.RegistrarPlanNutricional;
-import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
-import com.anfereba.nutricionabc.db.utilidades.DbAlimento;
-import com.anfereba.nutricionabc.db.utilidades.DbPlanNutricional;
+import com.anfereba.nutricionabc.db.DbPlanNutricional;
 
 import java.util.ArrayList;
 
