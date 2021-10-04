@@ -75,8 +75,11 @@
     <string name="TXTAgregarAlimento">Agregar Alimento +</string>
     <string name="TXTGuardarAlimento">Guardar Alimento</string>
     <string name="TXTNombreAlimento">Nombre del Alimento</string>
+    <string name="TXTRegistroAlimento">Registro Alimento</string>
+    <string name="TXTEditarAlimento">Editar Alimento</string>
+    <string name="CaloriasAlimento">Calorías</string>
 
-    <!--Alimentos -->
+    <!--Plan Nutricional -->
     <string name="TXTAgregarPlan">Agregar Plan +</string>
     <string name="TXTGuardarPlan">Guardar Plan</string>
     <string name="TXTNombrePlan">Nombre del Plan Nutricional</string>

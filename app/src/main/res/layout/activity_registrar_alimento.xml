@@ -15,6 +15,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/TXTRegistroAlimento"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25sp"/>
+
+            <ImageView
+                android:id="@+id/ImagenAlimento"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:onClick="EscogerImagenDeGaleria"
+                app:srcCompat="@drawable/imagen_ico" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -23,16 +41,30 @@
                     android:id="@+id/NombreDelAlimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/TXTNombreAlimento" />
+                    android:ems="10"
+                    android:hint="@string/TXTNombreAlimento"
+                    android:inputType="textPersonName"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/GuardarAlimento"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:text="@string/TXTGuardarAlimento" />
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/CaloriasAlimento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/CaloriasAlimento" />
+
+                <Button
+                    android:id="@+id/GuardarAlimento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="@string/TXTGuardarAlimento" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

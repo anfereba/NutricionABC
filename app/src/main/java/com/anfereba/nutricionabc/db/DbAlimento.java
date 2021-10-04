@@ -19,7 +19,7 @@ public class DbAlimento extends DbHelper {
         super(context);
         this.context=context;
     }
-    public long insertarAlimento(String nombre) {
+    public long insertarAlimento(String nombre, int calorias,byte[] FotoAlimento ) {
 
         long id = 0;
 
@@ -29,7 +29,11 @@ public class DbAlimento extends DbHelper {
 
             ContentValues values = new ContentValues();
             //values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
-            values.put(Utilidades.CAMPO_NOMBREAlimento, nombre);
+            values.put(Utilidades.CAMPO_FOTO_ALIMENTO,FotoAlimento);
+            values.put(Utilidades.CAMPO_ID_CALORIAS,calorias);
+            values.put(Utilidades.CAMPO_NOMBREAlimento,nombre);
+
+
 
 
             id = db.insert(Utilidades.TABLA_Alimento, null, values);
@@ -56,7 +60,9 @@ public class DbAlimento extends DbHelper {
             do {
                 alimentos = new Alimentos();
                 alimentos.setIdAlimento(cursorAlimentos.getInt(0));
-                alimentos.setNombreAlimento(cursorAlimentos.getString(1));
+                alimentos.setFotoAlimento(cursorAlimentos.getBlob(1));
+                alimentos.setCalorias(cursorAlimentos.getInt(2));
+                alimentos.setNombreAlimento(cursorAlimentos.getString(3));
                 listaAlimentos.add(alimentos);
             } while (cursorAlimentos.moveToNext());
         }
@@ -80,7 +86,9 @@ public class DbAlimento extends DbHelper {
 
                 alimentos = new Alimentos();
                 alimentos.setIdAlimento(cursorAlimentos.getInt(0));
-                alimentos.setNombreAlimento(cursorAlimentos.getString(1));
+                alimentos.setFotoAlimento(cursorAlimentos.getBlob(1));
+                alimentos.setCalorias(cursorAlimentos.getInt(2));
+                alimentos.setNombreAlimento(cursorAlimentos.getString(3));
 
 
         }

@@ -43,6 +43,8 @@ public class Utilidades {
     public static final String TABLA_Alimento = "Alimento";
     public static final String CAMPO_ID_Alimento = "idAlimento";
     public static final String CAMPO_NOMBREAlimento = "NombreAlimento";
+    public static final String CAMPO_FOTO_ALIMENTO = "FotoAlimento";
+    public static final String CAMPO_ID_CALORIAS = "Calorias";
 
     //Campos Tabla PlanAlimento
     public static final String TABLA_PlanAlimento = "PlanAlimento";
@@ -99,6 +101,8 @@ public class Utilidades {
 
     public static final String CREAR_TABLA_Alimento = "CREATE TABLE "
             + TABLA_Alimento + "(" + CAMPO_ID_Alimento + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + CAMPO_FOTO_ALIMENTO + " BLOB NOT NULL, "
+            + CAMPO_ID_CALORIAS + " INTEGER NOT NULL, "
             + CAMPO_NOMBREAlimento + " VARCHAR(100) NOT NULL)";
 
     //Sentencia para crear tabla TABLA_PlanAlimento

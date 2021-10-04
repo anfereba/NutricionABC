@@ -13,7 +13,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/editarAlimento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/TXTEditarAlimento"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/EditarimagenAlimento"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/imagen_ico" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -23,7 +40,20 @@
                     android:id="@+id/ModificarNombreAlimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/TXTNombreAlimento" />
+                    android:ems="10"
+                    android:hint="@string/TXTNombreAlimento"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/EditarCalorias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/CaloriasAlimento" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

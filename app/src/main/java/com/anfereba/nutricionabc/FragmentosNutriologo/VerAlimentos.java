@@ -2,11 +2,14 @@ package com.anfereba.nutricionabc.FragmentosNutriologo;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,12 +18,18 @@ import com.anfereba.nutricionabc.MainActivityNutriologo;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 import com.anfereba.nutricionabc.db.DbAlimento;
+import com.anfereba.nutricionabc.db.Entidades.Usuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.sql.Blob;
+import java.util.ArrayList;
+
 public class VerAlimentos extends AppCompatActivity {
-    EditText NombreAlimento;
+    EditText NombreAlimento,CaloriasAlimento;
+    ImageView EditarFotoAlimento;
     Button GuardarAlimento;
     Alimentos alimentos;
+    private ArrayList<Alimentos> listaAlimentos; //mData
     FloatingActionButton fabEditarAlimentos,fabEliminarAlimentos;
     int id=0;
     @Override
@@ -28,6 +37,8 @@ public class VerAlimentos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_alimentos);
         NombreAlimento=(EditText) findViewById(R.id.ModificarNombreAlimento);
+        CaloriasAlimento=(EditText)findViewById(R.id.EditarCalorias);
+        EditarFotoAlimento=(ImageView)findViewById(R.id.EditarimagenAlimento);
         GuardarAlimento=(Button) findViewById(R.id.ModificarAlimento);
         fabEditarAlimentos = (FloatingActionButton) findViewById(R.id.fabEditarAlimento);
         fabEliminarAlimentos=(FloatingActionButton) findViewById(R.id.fabEliminarAlimento);
@@ -52,9 +63,13 @@ public class VerAlimentos extends AppCompatActivity {
         DbAlimento dbAlimento = new DbAlimento (VerAlimentos.this);
         alimentos = dbAlimento.verAlimentos(id);
         if(alimentos!=null){
+            Bitmap bitmap = BitmapFactory.decodeByteArray(alimentos.getFotoAlimento(), 0,alimentos.getFotoAlimento().length);
             NombreAlimento.setText(alimentos.getNombreAlimento());
+            CaloriasAlimento.setText((alimentos.getCalorias()).toString());
             GuardarAlimento.setVisibility(View.INVISIBLE);//pongo invisible el boton
             NombreAlimento.setInputType(InputType.TYPE_NULL);//le quito el teclado a los editext
+            CaloriasAlimento.setInputType(InputType.TYPE_NULL);//le quito el teclado a los editext
+            EditarFotoAlimento.setImageBitmap(bitmap);
         }
         fabEliminarAlimentos.setOnClickListener(new View.OnClickListener() {
             @Override
