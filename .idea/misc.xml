@@ -3,9 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_insertar_usuario_administrador.xml" value="0.25025641025641027" />
-        <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_registro_usuario.xml" value="0.25025641025641027" />
-        <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_administrador.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/drawable-anydpi/imagen_ico.xml" value="0.1421875" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_carga.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/layout/activity_login_app.xml" value="0.264" />
@@ -31,24 +28,8 @@
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/menu/menu_administrador.xml" value="0.4" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/menu/menu_cliente.xml" value="0.4" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/menu/menu_nutriologo.xml" value="0.264" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/activity_login_app.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/activity_main_cliente.xml" value="0.264" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/dialog.xml" value="0.264" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/encabezado.xml" value="0.536" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_cuatro_cliente.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_administrador.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_cliente.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_nutriologo.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_administrador.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_cliente.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_nutriologo.xml" value="0.536" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_administrador.xml" value="0.264" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_cliente.xml" value="0.4" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_nutriologo.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/list_clientes.xml" value="0.4" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/lista_item_alimento.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/lista_item_plan_nutricional.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_cliente.xml" value="0.25416666666666665" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.21302083333333333" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.21302083333333333" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.21302083333333333" />
@@ -68,6 +49,7 @@
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_cliente.xml" value="0.12318840579710146" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_nutriologo.xml" value="0.196875" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_nutriologo.xml" value="0.25" />
+        <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_administrador.xml" value="0.5" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_nutriologo.xml" value="0.196875" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/lista_item_alimento.xml" value="0.1272644927536232" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/lista_item_plan_nutricional.xml" value="0.22" />

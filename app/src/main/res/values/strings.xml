@@ -57,6 +57,7 @@
     <string name="Opcion_cinco_Administrador">Opción 5 Administrador</string>
 
 
+
     <!--Encabezado -->
     <string name="TXTNombreYApellido">Khe</string>
 
@@ -80,6 +81,7 @@
     <string name="TXTAgregarPlan">Agregar Plan +</string>
     <string name="TXTGuardarPlan">Guardar Plan</string>
     <string name="TXTNombrePlan">Nombre del Plan Nutricional</string>
+    <string name="OperacionInsertarUsuario">Insertar Usuario</string>
     <string name="BtnModificarNombrePlan">Modificar Plan</string>
 
 
