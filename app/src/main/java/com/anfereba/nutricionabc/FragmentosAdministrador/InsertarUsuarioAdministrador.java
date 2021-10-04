@@ -85,6 +85,13 @@ public class InsertarUsuarioAdministrador extends AppCompatActivity implements V
     @Password(min = 6, scheme = Password.Scheme.ALPHA_NUMERIC_MIXED_CASE_SYMBOLS)
     EditText TXTPasswordUsuarioA;
 
+    @NotEmpty (message = "Este campo es Obligatorio")
+    EditText TXTPreguntaUnoA;
+
+
+    @NotEmpty (message = "Este campo es Obligatorio")
+    EditText TXTPreguntaDosA;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +112,8 @@ public class InsertarUsuarioAdministrador extends AppCompatActivity implements V
         TXTTelefonoUsuarioA=(EditText)findViewById(R.id.TXTTelefonoUsuarioA);
         AgregarFotoClienteA=(ImageView) findViewById(R.id.AgregarFotoClienteA);
         spinner = (Spinner) findViewById(R.id.cmbPerfiles);
+        TXTPreguntaUnoA=(EditText)findViewById(R.id.TXTPreguntaUnoA);
+        TXTPreguntaDosA=(EditText) findViewById(R.id.TXTPreguntaDosA);
 
         List perfiles = new ArrayList();
         perfiles.add("1 Cliente");
@@ -159,7 +168,8 @@ public class InsertarUsuarioAdministrador extends AppCompatActivity implements V
                                 TXTCorreoUsuarioA.getText().toString(),TXTPasswordUsuarioA.getText().toString(),
                                 TXTDireccionUsuarioA.getText().toString(),TXTCiudadUsuarioA.getText().toString(),
                                 TXTTelefonoUsuarioA.getText().toString(),
-                                TXTFechaCreacionUsuarioA.getText().toString(),FotoPerfilEnBytes(),Integer.parseInt(idPerfil[0]));
+                                TXTFechaCreacionUsuarioA.getText().toString(),FotoPerfilEnBytes(),Integer.parseInt(idPerfil[0]),
+                                TXTPreguntaUnoA.getText().toString(), TXTPreguntaDosA.getText().toString());
 
                         if (QueryExitosa > 0) {
                             startActivity(new Intent(getApplicationContext(), Login_App.class));

@@ -57,7 +57,6 @@
     <string name="Opcion_cinco_Administrador">Opción 5 Administrador</string>
 
 
-
     <!--Encabezado -->
     <string name="TXTNombreYApellido">Khe</string>
 
@@ -77,12 +76,16 @@
     <string name="TXTGuardarAlimento">Guardar Alimento</string>
     <string name="TXTNombreAlimento">Nombre del Alimento</string>
 
-    <!--Plan Nutricional -->
+    <!--Alimentos -->
     <string name="TXTAgregarPlan">Agregar Plan +</string>
     <string name="TXTGuardarPlan">Guardar Plan</string>
     <string name="TXTNombrePlan">Nombre del Plan Nutricional</string>
     <string name="OperacionInsertarUsuario">Insertar Usuario</string>
-    <string name="BtnModificarNombrePlan">Modificar Plan</string>
+    <string name="BtnModificarNombrePlan">Modificar Nombre Plan</string>
+    <string name="TXTPreguntaUno">¿Cual fue tu apodo de pequeño/a?</string>
+    <string name="TXTPreguntaDos">¿Cual fue el nombre de tu primera Mascota?</string>
+    <string name="BtnReestablecerPassword">Reestablecer Contraseña</string>
+    <string name="BtnRestablecerPasswordR">Reestablecer Contraseña</string>
 
 
 </resources>

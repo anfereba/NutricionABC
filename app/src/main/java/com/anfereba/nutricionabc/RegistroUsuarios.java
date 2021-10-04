@@ -77,6 +77,14 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
     @Password(min = 6, scheme = Password.Scheme.ALPHA_NUMERIC_MIXED_CASE_SYMBOLS)
     EditText TXTPasswordUsuario;
 
+
+    @NotEmpty (message = "Este campo es Obligatorio")
+    EditText TXTPreguntaUno;
+
+
+    @NotEmpty (message = "Este campo es Obligatorio")
+    EditText TXTPreguntaDos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +103,8 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
         TXTCiudadUsuario = (EditText) findViewById(R.id.TXTCiudadUsuario);
         TXTTelefonoUsuario=(EditText)findViewById(R.id.TXTTelefonoUsuario);
         AgregarFotoCliente=(ImageView) findViewById(R.id.AgregarFotoCliente);
+        TXTPreguntaUno=(EditText)findViewById(R.id.TXTPreguntaUno);
+        TXTPreguntaDos=(EditText) findViewById(R.id.TXTPreguntaDos);
 
         CalcularFechaActual();
 
@@ -124,7 +134,7 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
                             TXTCorreoUsuario.getText().toString(),TXTPasswordUsuario.getText().toString(),
                             TXTDireccionUsuario.getText().toString(),TXTCiudadUsuario.getText().toString(),
                             TXTTelefonoUsuario.getText().toString(),
-                            TXTFechaCreacionUsuario.getText().toString(),FotoPerfilEnBytes(),1);
+                            TXTFechaCreacionUsuario.getText().toString(),FotoPerfilEnBytes(),1,TXTPreguntaUno.getText().toString(), TXTPreguntaDos.getText().toString());
 
                     if (QueryExitosa > 0) {
                         startActivity(new Intent(getApplicationContext(), Login_App.class));

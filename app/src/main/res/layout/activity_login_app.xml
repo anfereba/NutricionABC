@@ -95,6 +95,15 @@
                     android:text="@string/BtnRegistroCliente"
                     android:textColor="@color/white" />
 
+                <Button
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/BtnReestablecerPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#048981"
+                    android:text="@string/BtnReestablecerPassword"
+                    android:textColor="@color/white" />
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </LinearLayout>

@@ -28,6 +28,9 @@ public class Utilidades {
     public static final String CAMPO_CIUDAD = "Ciudad";
     public static final String CAMPO_TELEFONO = "Telefono";
     public static final String CAMPO_FOTO_USUARIO = "FotoPerfil";
+    public static final String CAMPO_PREGUNTA_UNO = "PreguntaUno";
+    public static final String CAMPO_PREGUNTA_DOS = "PreguntaDos";
+
 
 
     //Campos Tabla PlanNutricional
@@ -78,6 +81,8 @@ public class Utilidades {
             + CAMPO_TELEFONO + " VARCHAR(11) NOT NULL, "
             + CAMPO_FECHA_CREACION + " VARCHAR(100) NOT NULL, "
             + CAMPO_FOTO_USUARIO + " BLOB NOT NULL, "
+            + CAMPO_PREGUNTA_UNO+ " VARCHAR(100) NOT NULL, "
+            + CAMPO_PREGUNTA_DOS + " VARCHAR(100) NOT NULL, "
             +"FOREIGN KEY"+ "("+CAMPO_ID_PERFIL_SISTEMA+") "
             +"REFERENCES "+TABLA_PERFIL_SISTEMA+"("+CAMPO_ID_PERFIL_SISTEMA+"))";
 

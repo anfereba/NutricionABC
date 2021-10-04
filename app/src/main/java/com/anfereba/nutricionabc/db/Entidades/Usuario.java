@@ -16,11 +16,29 @@ public class Usuario {
     private String Telefono;
     private String FechaCreacion;
     private byte[] FotoPerfil;
+    private String PreguntaUno;
+    private String PreguntaDos;
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, Integer idPerfilSistema, String nombres, String apellidos, String fechaNacimiento, String correo, String password, String direccion, String ciudad, String telefono, String fechaCreacion, byte[] fotoPerfil) {
+    public String getPreguntaUno() {
+        return PreguntaUno;
+    }
+
+    public void setPreguntaUno(String preguntaUno) {
+        PreguntaUno = preguntaUno;
+    }
+
+    public String getPreguntaDos() {
+        return PreguntaDos;
+    }
+
+    public void setPreguntaDos(String preguntaDos) {
+        PreguntaDos = preguntaDos;
+    }
+
+    public Usuario(Integer idUsuario, Integer idPerfilSistema, String nombres, String apellidos, String fechaNacimiento, String correo, String password, String direccion, String ciudad, String telefono, String fechaCreacion, byte[] fotoPerfil, String preguntaUno, String preguntaDos) {
         this.idUsuario = idUsuario;
         this.idPerfilSistema = idPerfilSistema;
         Nombres = nombres;
@@ -33,6 +51,8 @@ public class Usuario {
         Telefono = telefono;
         FechaCreacion = fechaCreacion;
         FotoPerfil = fotoPerfil;
+        PreguntaUno = preguntaUno;
+        PreguntaDos = preguntaDos;
     }
 
     public Integer getIdUsuario() {

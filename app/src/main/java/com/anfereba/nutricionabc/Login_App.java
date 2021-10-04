@@ -23,7 +23,7 @@ public class Login_App extends AppCompatActivity {
     private Integer Id_Sesion = -1;
 
     EditText Correo,Password;
-    Button BtnIngresar, BtnRegistroCliente;
+    Button BtnIngresar, BtnRegistroCliente, BtnReestablecerPassword;
 
     DbUsuario dbUsuario;
 
@@ -54,6 +54,7 @@ public class Login_App extends AppCompatActivity {
         Password=(EditText) findViewById(R.id.Password);
         BtnIngresar=(Button) findViewById(R.id.BtnIngresar);
         BtnRegistroCliente=(Button) findViewById(R.id.BtnRegistroCliente);
+        BtnReestablecerPassword=(Button) findViewById(R.id.BtnReestablecerPassword);
 
         //Se programa el evento Onclick
 
@@ -84,6 +85,15 @@ public class Login_App extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), RegistroUsuarios.class));
                 finish();
+            }
+        });
+
+        BtnReestablecerPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), restablecer_password.class));
+                finish();
+
             }
         });
 

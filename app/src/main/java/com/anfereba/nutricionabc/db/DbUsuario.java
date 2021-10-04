@@ -32,7 +32,9 @@ public class DbUsuario extends DbHelper{
         this.context=context;
     }
     public long insertarUsuario(String nombres, String apellidos, String FechaNacimiento,
-                                 String correo, String password, String Direccion, String Ciudad, String Telefono, String FechaCreacion, byte[] FotoUsuario, int idPerfil) {
+                                 String correo, String password, String Direccion,
+                                String Ciudad, String Telefono, String FechaCreacion,
+                                byte[] FotoUsuario, int idPerfil, String PreguntaUno, String PreguntaDos) {
 
         long id = 0;
 
@@ -54,6 +56,8 @@ public class DbUsuario extends DbHelper{
             values.put(Utilidades.CAMPO_TELEFONO,Telefono);
             values.put(Utilidades.CAMPO_FECHA_CREACION,FechaCreacion);
             values.put(Utilidades.CAMPO_FOTO_USUARIO,FotoUsuario);
+            values.put(Utilidades.CAMPO_PREGUNTA_UNO,PreguntaUno);
+            values.put(Utilidades.CAMPO_PREGUNTA_DOS,PreguntaDos);
 
             id = db.insert(Utilidades.TABLA_USUARIO, null, values);
 
@@ -196,7 +200,8 @@ public class DbUsuario extends DbHelper{
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Usuario persona = null;
         usuariosList = new ArrayList<Usuario>();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+Utilidades.TABLA_USUARIO,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Utilidades.TABLA_USUARIO+" WHERE "+Utilidades.CAMPO_ID_PERFIL_SISTEMA+ " = 1",null);
+        Log.i("Movetonext",String.valueOf(cursor.moveToNext()));
         while (cursor.moveToNext()){
             persona = new Usuario();
             persona.setIdUsuario(cursor.getInt(0));
@@ -212,8 +217,31 @@ public class DbUsuario extends DbHelper{
             usuariosList.add(persona);
 
         }
+        cursor.close();
         db.close();
+
         return(usuariosList);
     }
 
+    public long RestablecerPassword(String Correo, String Password, String PreguntaUno, String PreguntaDos) {
+
+        long id = 0;
+        try {
+            Password = AESCrypt.encrypt(Password);
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            String[] parametros = {Correo,PreguntaUno,PreguntaDos};
+            ContentValues values = new ContentValues();
+            values.put(Utilidades.CAMPO_PASSWORD,Password);
+            id = db.update(Utilidades.TABLA_USUARIO,values,
+                    Utilidades.CAMPO_CORREO+"=? and "
+                            +Utilidades.CAMPO_PREGUNTA_UNO+"=? and "
+                            +Utilidades.CAMPO_PREGUNTA_DOS+"=?",parametros);
+            db.close();
+
+        }catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        return id;
+    }
 }
