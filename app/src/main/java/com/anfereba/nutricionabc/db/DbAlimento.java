@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -30,6 +31,7 @@ public class DbAlimento extends DbHelper {
             ContentValues values = new ContentValues();
             //values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
             values.put(Utilidades.CAMPO_FOTO_ALIMENTO,FotoAlimento);
+            Toast.makeText(context.getApplicationContext(), FotoAlimento.toString(),Toast.LENGTH_LONG).show();
             values.put(Utilidades.CAMPO_ID_CALORIAS,calorias);
             values.put(Utilidades.CAMPO_NOMBREAlimento,nombre);
 
@@ -97,21 +99,31 @@ public class DbAlimento extends DbHelper {
 
         return alimentos;
     }
-    public boolean EditarAlimento(int id, String nombre) {
 
-        boolean correcto =false;
-        DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+    public long EditarAlimento(int id, String nombre, int calorias,byte[] FotoAlimento) {
+
+        long correcto =0;
+        String[] parametros = {Integer.toString(id)};
 
         try {
-            db.execSQL("UPDATE "+Utilidades.TABLA_Alimento+ " SET NombreAlimento = '"+nombre+"' WHERE idAlimento= '"+ id +"'");
-        correcto=true;
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            //values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
+            values.put(Utilidades.CAMPO_FOTO_ALIMENTO,FotoAlimento);
+            values.put(Utilidades.CAMPO_ID_CALORIAS,calorias);
+            values.put(Utilidades.CAMPO_NOMBREAlimento,nombre);
+
+
+
+
+           correcto = db.update(Utilidades.TABLA_Alimento,values,Utilidades.CAMPO_ID_Alimento+"=?",parametros);
         } catch (Exception ex) {
             ex.toString();
-            correcto=false;
-        }finally {
-            db.close();
         }
+
+
 
         return correcto;
     }

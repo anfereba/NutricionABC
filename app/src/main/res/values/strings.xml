@@ -77,7 +77,7 @@
     <string name="TXTGuardarAlimento">Guardar Alimento</string>
     <string name="TXTNombreAlimento">Nombre del Alimento</string>
     <string name="TXTRegistroAlimento">Registro Alimento</string>
-    <string name="TXTEditarAlimento">Editar Alimento</string>
+    <string name="TXTEditarAlimento">Alimento</string>
     <string name="CaloriasAlimento">Calorías</string>
 
     <!--Plan Nutricional -->

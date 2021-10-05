@@ -39,7 +39,7 @@ Uri RutaArchivoUri;
     private boolean DatosValidados;
     //Validacion de cada campo
 
-    @NotEmpty
+    @NotEmpty (message = "Este campo es Obligatorio")
     EditText NombreDelAlimento;
 
     @NotEmpty (message = "Este campo es Obligatorio")

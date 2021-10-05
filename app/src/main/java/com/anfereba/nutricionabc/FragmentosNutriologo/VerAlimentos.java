@@ -29,7 +29,6 @@ public class VerAlimentos extends AppCompatActivity {
     ImageView EditarFotoAlimento;
     Button GuardarAlimento;
     Alimentos alimentos;
-    private ArrayList<Alimentos> listaAlimentos; //mData
     FloatingActionButton fabEditarAlimentos,fabEliminarAlimentos;
     int id=0;
     @Override
@@ -96,4 +95,8 @@ public class VerAlimentos extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivityNutriologo.class);
         startActivity(intent);
     }
+    public void EscogerImagenDeGaleria(View view) {
+
+    }
+
 }
