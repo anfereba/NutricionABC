@@ -52,10 +52,11 @@
     <!--Menu de opciones Administrador -->
     <string name="Opcion_uno_Administrador">CRUD Usuarios</string>
     <string name="Opcion_dos_Administrador">Opción 2 Administrador</string>
-    <string name="Opcion_tres_Administrador">Perfil</string>
     <string name="Opcion_cuatro_Administrador">Opción 4 Administrador</string>
     <string name="Opcion_cinco_Administrador">Opción 5 Administrador</string>
 
+    <!-- Opcion para todos los perfiles -->
+    <string name="OpcionPerfil">Perfil</string>
 
     <!--Encabezado -->
     <string name="TXTNombreYApellido">Khe</string>
@@ -85,6 +86,8 @@
     <string name="TXTNombrePlan">Nombre del Plan Nutricional</string>
     <string name="OperacionInsertarUsuario">Insertar Usuario</string>
     <string name="BtnModificarNombrePlan">Modificar Nombre Plan</string>
+
+
     <string name="TXTPreguntaUno">¿Cual fue tu apodo de pequeño/a?</string>
     <string name="TXTPreguntaDos">¿Cual fue el nombre de tu primera Mascota?</string>
     <string name="BtnReestablecerPassword">Reestablecer Contraseña</string>

@@ -14,7 +14,7 @@
             <item
                 android:id="@+id/Opcion_dos_Cliente"
                 android:title="@string/Opcion_dos_Cliente"
-                android:icon="@drawable/uno_ico">
+                android:icon="@drawable/dos_ico">
             </item>
 
         </menu>
@@ -26,12 +26,12 @@
             <item
                 android:id="@+id/Opcion_tres_Cliente"
                 android:title="@string/Opcion_tres_Cliente"
-                android:icon="@drawable/uno_ico">
+                android:icon="@drawable/tres_ico">
             </item>
             <item
                 android:id="@+id/Opcion_cuatro_Cliente"
-                android:title="@string/Opcion_cuatro_Cliente"
-                android:icon="@drawable/uno_ico">
+                android:title="@string/OpcionPerfil"
+                android:icon="@drawable/cuatro_ico">
             </item>
             <item
                 android:id="@+id/Salir"

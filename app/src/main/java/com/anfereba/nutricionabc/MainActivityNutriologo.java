@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anfereba.nutricionabc.FragmentosAdministrador.PerfilUsuario;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionCuatroCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionDosCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionTresCliente;
@@ -96,6 +97,9 @@ public class MainActivityNutriologo extends AppCompatActivity implements Navigat
                 break;
             case R.id.Opcion_tres_Nutriologo:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerN,new OpcionTresNutriologo()).commit();
+                break;
+            case R.id.Opcion_cuatro_Nutriologo:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerN,new PerfilUsuario()).commit();
                 break;
             case R.id.Salir:
                 CerrarSesion();

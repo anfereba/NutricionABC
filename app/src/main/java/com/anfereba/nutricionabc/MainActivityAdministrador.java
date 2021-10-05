@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anfereba.nutricionabc.FragmentosAdministrador.OpcionDosAdministrador;
-import com.anfereba.nutricionabc.FragmentosAdministrador.PerfilAdministrador;
+import com.anfereba.nutricionabc.FragmentosAdministrador.PerfilUsuario;
 import com.anfereba.nutricionabc.FragmentosAdministrador.CrudUsuariosAdministrador;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 import com.google.android.material.navigation.NavigationView;
@@ -92,7 +92,7 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new OpcionDosAdministrador()).commit();
                 break;
             case R.id.Opcion_tres_Administrador:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new PerfilAdministrador()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new PerfilUsuario()).commit();
                 break;
             case R.id.Salir:
                 CerrarSesion();

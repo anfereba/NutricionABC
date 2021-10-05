@@ -25,7 +25,7 @@
         <menu>
             <item
                 android:id="@+id/Opcion_tres_Administrador"
-                android:title="@string/Opcion_tres_Administrador"
+                android:title="@string/OpcionPerfil"
                 android:icon="@drawable/uno_ico">
             </item>
             <item

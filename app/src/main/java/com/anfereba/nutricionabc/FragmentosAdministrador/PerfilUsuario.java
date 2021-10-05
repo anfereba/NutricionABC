@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PerfilAdministrador extends Fragment {
+public class PerfilUsuario extends Fragment {
 
     ArrayList<Usuario> listaArrayUsuarios;
     DbUsuario db;
@@ -39,7 +39,7 @@ public class PerfilAdministrador extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_perfil_administrador, container, false);
+        View view = inflater.inflate(R.layout.fragment_perfil_usuario, container, false);
 
         IdUsuario = ObtenerIdUsuarioActual();
         db = new DbUsuario(getActivity());

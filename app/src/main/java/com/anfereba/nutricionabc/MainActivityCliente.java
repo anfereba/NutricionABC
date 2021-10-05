@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anfereba.nutricionabc.FragmentosAdministrador.PerfilUsuario;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionCuatroCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionDosCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionTresCliente;
@@ -77,7 +78,7 @@ public class MainActivityCliente extends AppCompatActivity implements Navigation
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerC,new OpcionTresCliente()).commit();
                 break;
             case R.id.Opcion_cuatro_Cliente:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerC,new OpcionCuatroCliente()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerC,new PerfilUsuario()).commit();
                 break;
             case R.id.Salir:
                 CerrarSesion();
