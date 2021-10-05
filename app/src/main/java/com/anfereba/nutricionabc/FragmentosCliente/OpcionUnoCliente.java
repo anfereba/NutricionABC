@@ -66,6 +66,20 @@ public class OpcionUnoCliente extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_opcion_uno_cliente, container, false);
+      View view = inflater.inflate(R.layout.fragment_opcion_uno_cliente, container, false);
+        final RatingBar simpleRatingBar = (RatingBar) view.findViewById(R.id.RatingCalifNutri);
+        Button submitButton = (Button) view.findViewById(R.id.BtnCalifNutri);
+        EditText text = (EditText) view.findViewById(R.id.EditTextCalifNutri);
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String totalStars = "Total Stars:: " + simpleRatingBar.getNumStars();
+                String rating = "Rating :: " + simpleRatingBar.getRating();
+                Toast.makeText(getActivity(), "Total de Estrellas:: "+totalStars + "\n" + "Rating :: "+rating +"\n"
+                        + "ID Nutriologo:: " +text.getText().toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+      return view;
     }
 }
