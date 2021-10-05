@@ -50,9 +50,9 @@
     <string name="MasOpcionestxt">Mas Opciones</string>
 
     <!--Menu de opciones Administrador -->
-    <string name="Opcion_uno_Administrador">Opción 1 Administrador</string>
+    <string name="Opcion_uno_Administrador">CRUD Usuarios</string>
     <string name="Opcion_dos_Administrador">Opción 2 Administrador</string>
-    <string name="Opcion_tres_Administrador">Opción 3 Administrador</string>
+    <string name="Opcion_tres_Administrador">Perfil</string>
     <string name="Opcion_cuatro_Administrador">Opción 4 Administrador</string>
     <string name="Opcion_cinco_Administrador">Opción 5 Administrador</string>
 
@@ -89,6 +89,17 @@
     <string name="TXTPreguntaDos">¿Cual fue el nombre de tu primera Mascota?</string>
     <string name="BtnReestablecerPassword">Reestablecer Contraseña</string>
     <string name="BtnRestablecerPasswordR">Reestablecer Contraseña</string>
+    <string name="address">Direccion</string>
+    <string name="PerfilNombresyApellidos">Nombres y Apellidos</string>
+    <string name="PerfilRegresar">Regresar</string>
+    <string name="PerfilFechaNacimiento">Fecha de Nacimiento</string>
+    <string name="PerfilTXTFechaNacimiento">Fecha de Nacimiento</string>
+    <string name="PerfilTXTNumeroTelefono">Numero de telefono</string>
+    <string name="PerfilNumeroTelefono">Numero de telefono</string>
+    <string name="PerfilTXTCorreo">Email</string>
+    <string name="PerfilCorreo">Correo Electronico</string>
+    <string name="PerfilTXTDireccion">Direccion</string>
+    <string name="PerfilDireccion">Direccion de persona</string>
 
 
 </resources>

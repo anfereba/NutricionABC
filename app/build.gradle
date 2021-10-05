@@ -50,4 +50,7 @@ dependencies {
     /*VALIDACION DE CAMPOS*/
     implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
 
+    //circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }

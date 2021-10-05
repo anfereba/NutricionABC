@@ -13,7 +13,7 @@ import android.widget.Button;
 import com.anfereba.nutricionabc.R;
 
 
-public class OpcionUnoAdministrador extends Fragment implements View.OnClickListener{
+public class CrudUsuariosAdministrador extends Fragment implements View.OnClickListener{
 
     Button AccederCRUDUsuarios, OperacionInsertarUsuarios;
 
@@ -22,7 +22,7 @@ public class OpcionUnoAdministrador extends Fragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_opcion_uno_administrador, container, false);
+        View view = inflater.inflate(R.layout.fragment_crud_usuarios_administrador, container, false);
 
         AccederCRUDUsuarios=view.findViewById(R.id.AccederCRUDUsuarios);
         OperacionInsertarUsuarios=view.findViewById(R.id.OperacionInsertarUsuarios);

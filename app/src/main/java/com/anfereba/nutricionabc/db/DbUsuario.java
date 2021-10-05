@@ -194,35 +194,6 @@ public class DbUsuario extends DbHelper{
         db.close();
     }
 
-    public ArrayList<Usuario> ConsultarListaClientes(){
-
-        DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Usuario persona = null;
-        usuariosList = new ArrayList<Usuario>();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+Utilidades.TABLA_USUARIO+" WHERE "+Utilidades.CAMPO_ID_PERFIL_SISTEMA+ " = 1",null);
-        Log.i("Movetonext",String.valueOf(cursor.moveToNext()));
-        while (cursor.moveToNext()){
-            persona = new Usuario();
-            persona.setIdUsuario(cursor.getInt(0));
-            persona.setNombres(cursor.getString(2));
-            persona.setApellidos(cursor.getString(3));
-            persona.setFechaNacimiento(cursor.getString(4));
-            persona.setCorreo(cursor.getString(5));
-            persona.setDireccion(cursor.getString(7));
-            persona.setCiudad(cursor.getString(8));
-            persona.setTelefono(cursor.getString(9));
-            persona.setFotoPerfil(cursor.getBlob(11));
-
-            usuariosList.add(persona);
-
-        }
-        cursor.close();
-        db.close();
-
-        return(usuariosList);
-    }
-
     public ArrayList<Usuario> ConsultarListaUsuarios(){
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -276,5 +247,35 @@ public class DbUsuario extends DbHelper{
             Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
         return id;
+    }
+
+    public ArrayList<Usuario> ObtenerDatosUsuario(int idUsuario) {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        ArrayList<Usuario> datosUsuario = new ArrayList<>();
+        Usuario usuario = null;
+        Cursor cursorUsuarios = null;
+        String consulta = "SELECT * FROM "+Utilidades.TABLA_USUARIO + " WHERE "+Utilidades.CAMPO_ID_USUARIO + " = "+idUsuario;
+        cursorUsuarios = db.rawQuery(consulta,null);
+        if (cursorUsuarios.moveToFirst()){
+            usuario = new Usuario();
+            usuario.setIdUsuario(cursorUsuarios.getInt(0));
+            usuario.setIdPerfilSistema(cursorUsuarios.getInt(1));
+            usuario.setNombres(cursorUsuarios.getString(2));
+            usuario.setApellidos(cursorUsuarios.getString(3));
+            usuario.setFechaNacimiento(cursorUsuarios.getString(4));
+            usuario.setCorreo(cursorUsuarios.getString(5));
+            usuario.setPassword(cursorUsuarios.getString(6));
+            usuario.setDireccion(cursorUsuarios.getString(7));
+            usuario.setCiudad(cursorUsuarios.getString(8));
+            usuario.setTelefono(cursorUsuarios.getString(9));
+            usuario.setFechaCreacion(cursorUsuarios.getString(10));
+            usuario.setFotoPerfil(cursorUsuarios.getBlob(11));
+            usuario.setPreguntaUno(cursorUsuarios.getString(12));
+            usuario.setPreguntaDos(cursorUsuarios.getString(13));
+            datosUsuario.add(usuario);
+        }
+        cursorUsuarios.close();
+        return datosUsuario;
     }
 }

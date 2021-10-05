@@ -17,12 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anfereba.nutricionabc.FragmentosAdministrador.OpcionDosAdministrador;
-import com.anfereba.nutricionabc.FragmentosAdministrador.OpcionTresAdministrador;
-import com.anfereba.nutricionabc.FragmentosAdministrador.OpcionUnoAdministrador;
-import com.anfereba.nutricionabc.FragmentosCliente.OpcionCuatroCliente;
-import com.anfereba.nutricionabc.FragmentosCliente.OpcionDosCliente;
-import com.anfereba.nutricionabc.FragmentosCliente.OpcionTresCliente;
-import com.anfereba.nutricionabc.FragmentosCliente.OpcionUnoCliente;
+import com.anfereba.nutricionabc.FragmentosAdministrador.PerfilAdministrador;
+import com.anfereba.nutricionabc.FragmentosAdministrador.CrudUsuariosAdministrador;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 import com.google.android.material.navigation.NavigationView;
 
@@ -61,7 +57,7 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
         toggle.syncState();
 
         if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new OpcionUnoAdministrador()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new CrudUsuariosAdministrador()).commit();
             navigationView.setCheckedItem(R.id.Opcion_uno_Administrador);
         }
 
@@ -77,11 +73,12 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
         NombrePerfilUsuario = (TextView) header.findViewById(R.id.NombrePerfilUsuario);
 
 
+        int IdUsuario = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0);
         String Nombre = shared.getString(Utilidades.CAMPO_NOMBRES,"");
         String Apellido = shared.getString(Utilidades.CAMPO_APELLIDOS,"");
         String Perfil = shared.getString(Utilidades.CAMPO_NOMBRE_PERFIL,"");
 
-        NombrePerfilUsuario.setText(Perfil);
+        NombrePerfilUsuario.setText(IdUsuario + " " +Perfil);
         TXTNombreYApellido.setText(Nombre+" "+Apellido);
     }
 
@@ -89,13 +86,13 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.Opcion_uno_Administrador:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new OpcionUnoAdministrador()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new CrudUsuariosAdministrador()).commit();
                 break;
             case R.id.Opcion_dos_Administrador:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new OpcionDosAdministrador()).commit();
                 break;
             case R.id.Opcion_tres_Administrador:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new OpcionTresAdministrador()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new PerfilAdministrador()).commit();
                 break;
             case R.id.Salir:
                 CerrarSesion();
