@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/TXTNombreUsuario"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textAutoCorrect" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/TXTApellidoUsuario"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textAutoCorrect" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/TXTDireccionUsuario"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textAutoCorrect" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/TXTCiudadUsuario"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textAutoCorrect" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/TXTTelefonoUsuario"
-                    android:inputType="textPersonName" />
+                    android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/TXTPreguntaUno"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textAutoCorrect" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -204,7 +204,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/TXTPreguntaDos"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textAutoCorrect" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <Button
