@@ -15,10 +15,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
+
+import org.w3c.dom.Text;
 
 import java.util.concurrent.Executor;
 
@@ -35,7 +38,8 @@ public class Login_App extends AppCompatActivity {
     private Integer Id_Sesion = -1;
 
     EditText Correo,Password;
-    Button BtnIngresar, BtnRegistroCliente, BtnReestablecerPassword, BtnHuellaDactilar;
+    Button BtnIngresar, BtnHuellaDactilar;
+    TextView BtnRegistroCliente, BtnReestablecerPassword;
 
     DbUsuario dbUsuario;
 
@@ -65,8 +69,8 @@ public class Login_App extends AppCompatActivity {
         Correo= (EditText) findViewById(R.id.Correo);
         Password=(EditText) findViewById(R.id.Password);
         BtnIngresar=(Button) findViewById(R.id.BtnIngresar);
-        BtnRegistroCliente=(Button) findViewById(R.id.BtnRegistroCliente);
-        BtnReestablecerPassword=(Button) findViewById(R.id.BtnReestablecerPassword);
+        BtnRegistroCliente=(TextView) findViewById(R.id.BtnRegistroCliente);
+        BtnReestablecerPassword=(TextView) findViewById(R.id.BtnReestablecerPassword);
         BtnHuellaDactilar=(Button) findViewById(R.id.BtnHuellaDactilar);
         executor = ContextCompat.getMainExecutor(this);
 

@@ -14,4 +14,5 @@
 
     <color name="colorError">#d9534f</color>
     <color name="colorExito">#5cb85c</color>
+    <color name="hipervinculo">#2a7ee6</color>
 </resources>

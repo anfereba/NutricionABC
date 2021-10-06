@@ -4,17 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/fondo_gradiente"
+    android:padding="16dp"
     tools:context=".Login_App">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="350dp"
+            android:layout_margin="5dp"
+            android:elevation="5dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="5dp">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -28,13 +33,13 @@
                     android:gravity="center"
                     android:text="@string/LoginTXT"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <!-- Uso del Lottie-->
                 <com.airbnb.lottie.LottieAnimationView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     app:lottie_autoPlay="true"
@@ -94,28 +99,28 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+                    android:layout_height="10dp" />
 
-                <Button
+                <TextView
                     android:id="@+id/BtnRegistroCliente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#048981"
+                    android:gravity="center"
                     android:text="@string/BtnRegistroCliente"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/hipervinculo" />
 
-                <Button
-                    android:layout_marginTop="10dp"
+                <TextView
                     android:id="@+id/BtnReestablecerPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#048981"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
                     android:text="@string/BtnReestablecerPassword"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/hipervinculo" />
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </ScrollView>
 
 </RelativeLayout>
