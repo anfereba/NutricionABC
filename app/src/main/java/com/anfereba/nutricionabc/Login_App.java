@@ -1,10 +1,15 @@
 package com.anfereba.nutricionabc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,15 +20,22 @@ import android.widget.Toast;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
+import java.util.concurrent.Executor;
+
+
 public class Login_App extends AppCompatActivity {
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
+    private Executor executor;
+
     private Integer Id_Sesion = -1;
 
     EditText Correo,Password;
-    Button BtnIngresar, BtnRegistroCliente, BtnReestablecerPassword;
+    Button BtnIngresar, BtnRegistroCliente, BtnReestablecerPassword, BtnHuellaDactilar;
 
     DbUsuario dbUsuario;
 
@@ -55,6 +67,49 @@ public class Login_App extends AppCompatActivity {
         BtnIngresar=(Button) findViewById(R.id.BtnIngresar);
         BtnRegistroCliente=(Button) findViewById(R.id.BtnRegistroCliente);
         BtnReestablecerPassword=(Button) findViewById(R.id.BtnReestablecerPassword);
+        BtnHuellaDactilar=(Button) findViewById(R.id.BtnHuellaDactilar);
+        executor = ContextCompat.getMainExecutor(this);
+
+        BtnHuellaDactilar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BiometricManager biometricManager = BiometricManager.from(getApplicationContext());
+                if (biometricManager.canAuthenticate() != BiometricManager.BIOMETRIC_SUCCESS){
+                    Toast.makeText(getApplicationContext(),"Error con la huella dactilar", Toast.LENGTH_LONG).show();
+                    BtnHuellaDactilar.setText("No Validada");
+                    BtnHuellaDactilar.setBackgroundColor(getResources().getColor(R.color.colorError));
+                }
+                biometricPrompt = new BiometricPrompt(Login_App.this, executor, new BiometricPrompt.AuthenticationCallback(){
+                    @Override
+                    public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                        super.onAuthenticationError(errorCode, errString);
+                        BtnHuellaDactilar.setText("No Validada");
+                        BtnHuellaDactilar.setBackgroundColor(getResources().getColor(R.color.colorError));
+                    }
+
+                    @Override
+                    public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                        super.onAuthenticationSucceeded(result);
+                        BtnHuellaDactilar.setText("Validada");
+                        BtnHuellaDactilar.setBackgroundColor(getResources().getColor(R.color.colorExito));
+                    }
+                    @Override
+                    public void onAuthenticationFailed() {
+                        super.onAuthenticationFailed();
+                        Toast.makeText(getApplicationContext(), "Autenticacion Fallida", Toast.LENGTH_SHORT).show();
+                    }
+
+                });
+                //Despliegue del cuadro de dialogo autenticacion
+
+                promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                        .setTitle("Autenticacion")
+                        .setDescription("Utilizar la huella dactilar para iniciar sesión")
+                        .setDeviceCredentialAllowed(true) //Habilitar el uso opcional de autenticacion con (PIN - PATRON o Contraseña)
+                        .build();
+                biometricPrompt.authenticate(promptInfo);
+            }
+        });
 
         //Se programa el evento Onclick
 
@@ -68,11 +123,15 @@ public class Login_App extends AppCompatActivity {
                 boolean UsuarioEsValido = dbUsuario.Comprobar_Correo_Password
                         (Correo.getText().toString(),Password.getText().toString())!=null;
 
-                if(UsuarioEsValido){
+                if(UsuarioEsValido && BtnHuellaDactilar.getText().toString().equals("Validada")){
                     IniciarSesion(Id_Sesion);
 
-                }else{
-                    Toast.makeText(getApplicationContext(),"Credenciales No Validas" , Toast.LENGTH_LONG).show();
+                }else if(!UsuarioEsValido){
+                    Toast.makeText(getApplicationContext(),"El correo o la contraseña no son correctos" , Toast.LENGTH_LONG).show();
+                }else if (UsuarioEsValido && BtnHuellaDactilar.getText().toString().equals("Validar Huella")){
+                    Toast.makeText(getApplicationContext(),"Tambien debe validar su huella para iniciar sesion" , Toast.LENGTH_LONG).show();
+                }else if (BtnHuellaDactilar.getText().toString().equals("No Validada")){
+                    Toast.makeText(getApplicationContext(),"No es posible iniciar sesion, huella no validada" , Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -99,6 +158,7 @@ public class Login_App extends AppCompatActivity {
 
 
     }
+
 
 
     private void IniciarSesion(int Id_Sesion){
@@ -165,4 +225,6 @@ public class Login_App extends AppCompatActivity {
     private Integer VerificarIdDeSesion() {
         return this.preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
     }
+
+
 }

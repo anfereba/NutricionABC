@@ -103,6 +103,7 @@
     <string name="PerfilCorreo">Correo Electronico</string>
     <string name="PerfilTXTDireccion">Direccion</string>
     <string name="PerfilDireccion">Direccion de persona</string>
+    <string name="BtnHuellaDactilar">Validar Huella</string>
 
 
 </resources>

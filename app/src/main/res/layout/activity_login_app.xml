@@ -75,6 +75,15 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
+                    android:id="@+id/BtnHuellaDactilar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#4995AC"
+                    android:text="@string/BtnHuellaDactilar"
+                    android:textColor="@color/white" />
+
+                <Button
                     android:id="@+id/BtnIngresar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

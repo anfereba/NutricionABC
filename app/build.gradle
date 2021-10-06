@@ -53,4 +53,7 @@ dependencies {
     //circle image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //Huella Dactilar
+    implementation 'androidx.biometric:biometric:1.0.1'
+
 }
