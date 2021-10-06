@@ -106,6 +106,10 @@
     <string name="BtnHuellaDactilar">Validar Huella</string>
     <string name="TXTReestablecerPassword">Reestablecer Contraseña</string>
     <string name="TXTNuevoPasswordUsuario">Nuevo Password</string>
+    <string name="PerfilTXTCiudad">Ciudad</string>
+    <string name="PerfilCiudad">Nombre de la ciudad</string>
+    <string name="OpcionActualizarPerfil">Actualizar Datos</string>
+    <string name="OpcionActualizarPasswordPerfil">Actualizar Password</string>
 
 
 </resources>

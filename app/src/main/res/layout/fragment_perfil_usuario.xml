@@ -41,13 +41,14 @@
         android:background="@drawable/bg_button_rounded">
 
         <ImageView
+            android:id="@+id/OpcionActualizarDatosPerfil"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:padding="6dp"
             android:layout_marginStart="7dp"
             android:layout_gravity="center_vertical"
             android:scaleType="centerCrop"
-            android:src="@drawable/atras_ico"
+            android:src="@drawable/actualizar_ico"
             android:background="@drawable/bg_circle"/>
 
         <TextView
@@ -57,11 +58,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="@string/PerfilRegresar" />
+            android:text="@string/OpcionActualizarPerfil" />
+
+        <ImageView
+            android:id="@+id/OpcionActualizarPasswordPerfil"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="7dp"
+            android:padding="6dp"
+            android:layout_marginEnd="7dp"
+            android:layout_gravity="right"
+            android:scaleType="centerCrop"
+            android:src="@drawable/password_ico"
+            android:background="@drawable/bg_circle"/>
 
     </FrameLayout>
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.6"
@@ -69,6 +82,8 @@
         android:paddingEnd="16dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical">
+
+        <!-- Fecha de Nacimiento -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,6 +119,8 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <!-- Numero de Telefono -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -141,6 +158,8 @@
 
         </LinearLayout>
 
+        <!-- Email -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -176,6 +195,8 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <!-- Direccion -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -213,6 +234,48 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <!-- Ciudad -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="4dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ciudad_ico"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/PerfilTXTCiudad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/PerfilTXTCiudad"
+                    style="@style/TextBlackTitle"/>
+
+                <TextView
+                    android:id="@+id/PerfilCiudad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/PerfilCiudad"
+                    style="@style/TextDescription"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </LinearLayout>
