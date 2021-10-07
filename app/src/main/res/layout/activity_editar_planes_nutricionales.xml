@@ -26,6 +26,36 @@
                     android:hint="@string/TXTNombrePlan" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinnerAlimentos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom|center"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/agregarAlimentos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom|start|center_horizontal|end"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    app:backgroundTint="@color/icon_background"
+                    app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ListaPlanesAlimentos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
             <Button
                 android:id="@+id/ModificarPlan"
                 android:layout_width="match_parent"

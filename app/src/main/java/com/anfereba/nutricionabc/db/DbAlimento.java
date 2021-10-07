@@ -31,7 +31,6 @@ public class DbAlimento extends DbHelper {
             ContentValues values = new ContentValues();
             //values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
             values.put(Utilidades.CAMPO_FOTO_ALIMENTO,FotoAlimento);
-            Toast.makeText(context.getApplicationContext(), FotoAlimento.toString(),Toast.LENGTH_LONG).show();
             values.put(Utilidades.CAMPO_ID_CALORIAS,calorias);
             values.put(Utilidades.CAMPO_NOMBREAlimento,nombre);
 
@@ -146,4 +145,3 @@ public class DbAlimento extends DbHelper {
         return correcto;
     }
 }
-

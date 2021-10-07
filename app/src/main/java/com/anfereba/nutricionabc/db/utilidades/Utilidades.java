@@ -109,8 +109,8 @@ public class Utilidades {
 
     public static final String CREAR_TABLA_PlanAlimento = "CREATE TABLE "
             + TABLA_PlanAlimento + "(" + CAMPO_ID_PlanAlimento + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + CAMPO_ID_PlanNutricional2 + " VARCHAR(100) NOT NULL, "
-            + CAMPO_ID_Alimento2 + " VARCHAR(100) NOT NULL, "
+            + CAMPO_ID_PlanNutricional2 + " INTEGER NOT NULL, "
+            + CAMPO_ID_Alimento2 + " INTEGER NOT NULL, "
             +"FOREIGN KEY"+ "("+CAMPO_ID_PlanNutricional2+") "
             +"REFERENCES "+TABLA_PlanNutricional+"("+CAMPO_ID_PlanNutricional2+")"
             +"FOREIGN KEY"+ "("+CAMPO_ID_Alimento2+") "

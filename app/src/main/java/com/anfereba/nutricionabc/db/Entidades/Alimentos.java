@@ -38,4 +38,7 @@ private String NombreAlimento;
     public void setNombreAlimento(String nombreAlimento) {
         NombreAlimento = nombreAlimento;
     }
+    public String toString(){
+        return  getNombreAlimento();
+    }
 }
