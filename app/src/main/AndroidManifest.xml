@@ -13,6 +13,8 @@
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/> <!-- optional (needed if default theme has no action bar) -->
         <activity
             android:name=".restablecer_password"
             android:exported="true" />
@@ -62,9 +64,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityNutriologo" />
         </activity>
-        <activity
-            android:name=".FragmentosAdministrador.ActualizarUsuario"
-            android:exported="true" />
         <activity
             android:name=".FragmentosAdministrador.GestionUsuarios"
             android:exported="true" />

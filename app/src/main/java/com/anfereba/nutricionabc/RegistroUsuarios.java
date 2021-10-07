@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -24,10 +25,14 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.mobsandgeeks.saripaar.annotation.Password;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegistroUsuarios extends AppCompatActivity implements Validator.ValidationListener {
     Button BtnRegistrarClienteBD;
@@ -35,11 +40,11 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
 
     Uri RutaArchivoUri;
 
-    ImageView AgregarFotoCliente;
+    CircleImageView AgregarFotoCliente;
     private byte[] imagenEnBytes = null;
     Bitmap FotoDePefil;
 
-    int CODIGO_DE_SOLICITUD_IMAGEN = 5;
+    int CODIGO_DE_SOLICITUD_IMAGEN = 1;
 
     private Validator validator;
     private boolean DatosValidados;
@@ -102,7 +107,7 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
         TXTDireccionUsuario = (EditText) findViewById(R.id.TXTDireccionUsuario);
         TXTCiudadUsuario = (EditText) findViewById(R.id.TXTCiudadUsuario);
         TXTTelefonoUsuario=(EditText)findViewById(R.id.TXTTelefonoUsuario);
-        AgregarFotoCliente=(ImageView) findViewById(R.id.AgregarFotoCliente);
+        AgregarFotoCliente=(CircleImageView) findViewById(R.id.AgregarFotoCliente);
         TXTPreguntaUno=(EditText)findViewById(R.id.TXTPreguntaUno);
         TXTPreguntaDos=(EditText) findViewById(R.id.TXTPreguntaDos);
 
@@ -184,14 +189,26 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
                 && data.getData() != null){
 
             RutaArchivoUri = data.getData();
-            try {
-                FotoDePefil = MediaStore.Images.Media.getBitmap(getContentResolver(),RutaArchivoUri);
-                AgregarFotoCliente.setImageBitmap(FotoDePefil);
-            }catch (Exception e){
-                Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            CropImage.activity(RutaArchivoUri)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(1,1)
+                    .start(this);
+
+        }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK){
+                Uri RutaArchivoUri2 = result.getUri();
+                try {
+                    FotoDePefil = MediaStore.Images.Media.getBitmap(getContentResolver(),RutaArchivoUri2);
+                    AgregarFotoCliente.setImageBitmap(FotoDePefil);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
         }
     }
-}
+
 
     //Abre la galeria para escoger imagen
 
@@ -199,7 +216,7 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        startActivityForResult(Intent.createChooser(intent,"Seleccionar imagen"),CODIGO_DE_SOLICITUD_IMAGEN);
+        startActivityForResult(Intent.createChooser(intent,"Seleccione Imagen"),CODIGO_DE_SOLICITUD_IMAGEN);
     }
 
     //Convierte la foto de perfil escogida en Bytes
@@ -267,3 +284,8 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
         TXTFechaCreacionUsuario.setText(año + "-"+mes+"-"+dia);
     }
 }
+
+
+
+
+

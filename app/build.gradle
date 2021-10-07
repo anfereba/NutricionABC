@@ -49,11 +49,11 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     /*VALIDACION DE CAMPOS*/
     implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
-
     //circle image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-
     //Huella Dactilar
     implementation 'androidx.biometric:biometric:1.0.1'
+    //Recortar Imagenes
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 
 }
