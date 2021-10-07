@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_cliente"
     tools:context=".FragmentosCliente.OpcionUnoCliente">
 
     <RatingBar
@@ -11,23 +12,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="78dp"
         android:layout_marginTop="192dp"
-        android:background="#2962FF"
+        android:background="@color/teal_700"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:rating="2" />
 
     <Button
         android:id="@+id/BtnCalifNutri"
-        android:layout_width="313dp"
+        android:layout_width="294dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
-        android:background="@color/purple_500"
+        android:background="@color/hipervinculo"
         android:text="Calificar"
-        android:textColor="#00BFA5"
+        android:textColor="@color/icon_background"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:translationX="50dp"
-       />
+        android:translationX="50dp" />
 
     <TextView
         android:id="@+id/TextCalifNutri"
