@@ -56,4 +56,6 @@ dependencies {
     //Recortar Imagenes
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 
+    implementation 'nl.psdcompany:duo-navigation-drawer:3.0.0'
+
 }

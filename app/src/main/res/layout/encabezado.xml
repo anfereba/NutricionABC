@@ -4,19 +4,22 @@
     android:layout_height="200dp"
     android:gravity="bottom"
     android:padding="15dp"
+    android:background="@drawable/fondo_gradiente"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/FotoPerfilEncabezado"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/encabezado"/>
+        android:src="@drawable/lion"/>
 
     <TextView
         android:layout_marginTop="5dp"
         android:id="@+id/NombrePerfilUsuario"
         android:text="@string/app_name"
-        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -24,7 +27,8 @@
         android:layout_marginTop="5dp"
         android:id="@+id/TXTNombreYApellido"
         android:text="@string/TXTNombreYApellido"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

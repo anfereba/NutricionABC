@@ -10,6 +10,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,8 +21,14 @@ import android.widget.Toast;
 import com.anfereba.nutricionabc.FragmentosAdministrador.OpcionDosAdministrador;
 import com.anfereba.nutricionabc.FragmentosAdministrador.PerfilUsuario;
 import com.anfereba.nutricionabc.FragmentosAdministrador.CrudUsuariosAdministrador;
+import com.anfereba.nutricionabc.db.DbUsuario;
+import com.anfereba.nutricionabc.db.Entidades.Usuario;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivityAdministrador extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -28,6 +36,10 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+
+    ArrayList<Usuario> listaArrayUsuarios;
+    DbUsuario db;
+    CircleImageView FotoPerfilEncabezado;
 
     TextView TXTNombreYApellido, NombrePerfilUsuario;
 
@@ -71,12 +83,21 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
         View header = navigationView.getHeaderView(0);
         TXTNombreYApellido = (TextView) header.findViewById(R.id.TXTNombreYApellido);
         NombrePerfilUsuario = (TextView) header.findViewById(R.id.NombrePerfilUsuario);
+        FotoPerfilEncabezado = (CircleImageView) header.findViewById(R.id.FotoPerfilEncabezado);
 
 
         int IdUsuario = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0);
         String Nombre = shared.getString(Utilidades.CAMPO_NOMBRES,"");
         String Apellido = shared.getString(Utilidades.CAMPO_APELLIDOS,"");
         String Perfil = shared.getString(Utilidades.CAMPO_NOMBRE_PERFIL,"");
+
+        db = new DbUsuario(this);
+        listaArrayUsuarios = new ArrayList<>(db.ObtenerDatosUsuario(IdUsuario));
+
+        Bitmap bitmap = BitmapFactory.decodeByteArray(listaArrayUsuarios.get(0).getFotoPerfil(),0,
+                listaArrayUsuarios.get(0).getFotoPerfil().length);
+
+        FotoPerfilEncabezado.setImageBitmap(bitmap);
 
         NombrePerfilUsuario.setText(IdUsuario + " " +Perfil);
         TXTNombreYApellido.setText(Nombre+" "+Apellido);
