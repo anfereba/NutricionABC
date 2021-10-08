@@ -20,7 +20,7 @@
             android:orientation="horizontal"
             android:padding="6dp">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/IMGCardView"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -28,8 +28,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 app:srcCompat="@drawable/lion" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -39,7 +39,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="9dp"
                 android:layout_toEndOf="@+id/IMGCardView"
                 android:layout_toRightOf="@+id/IMGCardView"
                 android:orientation="vertical">

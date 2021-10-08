@@ -182,9 +182,31 @@ public class DbUsuario extends DbHelper{
         values.put(Utilidades.CAMPO_CIUDAD,ciudad);
         values.put(Utilidades.CAMPO_TELEFONO,Telefono);
         db.update(Utilidades.TABLA_USUARIO,values,Utilidades.CAMPO_ID_USUARIO+"=?",parametros);
-        Toast.makeText(context, "Ya se actualizo", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Datos Actualizados", Toast.LENGTH_SHORT).show();
         db.close();
     }
+
+
+    public void actualizarUsuario(String Nombres, String Apellidos, String FechaNacimiento, String Correo, String Direccion, String ciudad, String Telefono,byte[] FotoUsuario, int Id_Usuario){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] parametros = {Integer.toString(Id_Usuario)};
+        ContentValues values = new ContentValues();
+        values.put(Utilidades.CAMPO_NOMBRES,Nombres);
+        values.put(Utilidades.CAMPO_APELLIDOS,Apellidos);
+        values.put(Utilidades.CAMPO_FECHA_NACIMIENTO,FechaNacimiento);
+        values.put(Utilidades.CAMPO_CORREO,Correo);
+        values.put(Utilidades.CAMPO_DIRECCION_USUARIO,Direccion);
+        values.put(Utilidades.CAMPO_CIUDAD,ciudad);
+        values.put(Utilidades.CAMPO_TELEFONO,Telefono);
+        values.put(Utilidades.CAMPO_FOTO_USUARIO,FotoUsuario);
+        db.update(Utilidades.TABLA_USUARIO,values,Utilidades.CAMPO_ID_USUARIO+"=?",parametros);
+        Toast.makeText(context, "Datos Actualizados", Toast.LENGTH_SHORT).show();
+        db.close();
+    }
+
+
+
     public void eliminarUsuario(String Id_Usuario){
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();

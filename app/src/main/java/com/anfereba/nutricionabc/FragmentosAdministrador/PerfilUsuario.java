@@ -1,18 +1,26 @@
 package com.anfereba.nutricionabc.FragmentosAdministrador;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,6 +36,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anfereba.nutricionabc.ActualizarPerfil;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Usuario;
@@ -36,15 +45,18 @@ import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PerfilUsuario extends Fragment implements Validator.ValidationListener{
+public class PerfilUsuario extends Fragment{
 
     ArrayList<Usuario> listaArrayUsuarios;
     DbUsuario db;
@@ -52,42 +64,12 @@ public class PerfilUsuario extends Fragment implements Validator.ValidationListe
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
+
     TextView PerfilNombresyApellidos, PerfilFechaNacimiento, PerfilNumeroTelefono, PerfilCorreo, PerfilDireccion, PerfilCiudad;
-    CircleImageView PerfilImagen;
+    CircleImageView PerfilImagen, ActualizarFotoUsuario;
     ImageView OpcionActualizarDatosPerfil, OpcionActualizarPasswordPerfil;
 
 
-    @NotEmpty
-    @Email
-    EditText TXTActualizarCorreoUsuario;
-
-    @NotEmpty (message = "Este campo es Obligatorio")
-    EditText TXTActualizarNombreUsuario;
-
-    @NotEmpty (message = "Este campo es Obligatorio")
-    EditText TXTActualizarApellidoUsuario;
-
-    @NotEmpty (message = "Este campo es Obligatorio")
-    EditText TXTActualizarDireccionUsuario;
-
-    @NotEmpty (message = "Este campo es Obligatorio")
-    EditText TXTActualizarCiudadUsuario;
-
-    @NotEmpty (message = "Este campo es Obligatorio")
-    EditText TXTActualizarTelefonoUsuario;
-
-
-    @NotEmpty (message = "Este campo es Obligatorio")
-    EditText TXTActualizarFechaNacimientoUsuario;
-
-    //Para validacion de Campos
-
-    private boolean DatosValidados;
-    private Validator validator;
-
-    //Calendario
-
-    DatePickerDialog picker;
 
 
     @Override
@@ -113,15 +95,14 @@ public class PerfilUsuario extends Fragment implements Validator.ValidationListe
         OpcionActualizarDatosPerfil = view.findViewById(R.id.OpcionActualizarDatosPerfil);
         OpcionActualizarPasswordPerfil = view.findViewById(R.id.OpcionActualizarPasswordPerfil);
 
-        validator = new Validator(this);
-        validator.setValidationListener((Validator.ValidationListener) this);
-
         SetearDatosPerfilAVista();
 
         OpcionActualizarDatosPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mostrarDialogActualizar();
+
+                Intent intent = new Intent(getActivity(), ActualizarPerfil.class);
+                startActivity(intent);
             }
         });
 
@@ -153,169 +134,5 @@ public class PerfilUsuario extends Fragment implements Validator.ValidationListe
         PerfilImagen.setImageBitmap(bitmap);
     }
 
-    private void mostrarDialogActualizar() {
 
-        //Muestra una ventana emergente con los datos del usuario seleccionado
-
-        Button BtnActualizarClienteBD;
-        Button BtnEliminarClienteBD;
-
-        int Id_Usuario;
-
-        final Dialog dialog = new Dialog(getActivity());
-
-        //Personalizacion del Dialog
-
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        WindowManager.LayoutParams params = new WindowManager.LayoutParams();
-        dialog.setContentView(R.layout.dialog);
-        params.copyFrom(dialog.getWindow().getAttributes());
-        params.height = WindowManager.LayoutParams.MATCH_PARENT;
-        params.width = WindowManager.LayoutParams.MATCH_PARENT;
-        params.gravity = Gravity.CENTER;
-        dialog.getWindow().setAttributes(params);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
-
-        //Inicializamos los elementos del Dialog
-
-        TXTActualizarNombreUsuario = (EditText) dialog.findViewById(R.id.TXTActualizarNombreUsuario);
-        TXTActualizarApellidoUsuario = (EditText) dialog.findViewById(R.id.TXTActualizarApellidoUsuario);
-        TXTActualizarFechaNacimientoUsuario = (EditText) dialog.findViewById(R.id.TXTActualizarFechaNacimientoUsuario);
-        TXTActualizarCorreoUsuario = (EditText) dialog.findViewById(R.id.TXTActualizarCorreoUsuario);
-        TXTActualizarDireccionUsuario = (EditText) dialog.findViewById(R.id.TXTActualizarDireccionUsuario);
-        TXTActualizarCiudadUsuario = (EditText) dialog.findViewById(R.id.TXTActualizarCiudadUsuario);
-        TXTActualizarTelefonoUsuario = (EditText) dialog.findViewById(R.id.TXTActualizarTelefonoUsuario);
-
-        BtnActualizarClienteBD = (Button) dialog.findViewById(R.id.BtnActualizarClienteBD);
-        BtnEliminarClienteBD = (Button) dialog.findViewById(R.id.BtnEliminarrClienteBD);
-        BtnEliminarClienteBD.setVisibility(View.GONE);
-
-        //Se recogen los valores almacenados en el ArrayList y se asignan en los campos del dialog
-
-        TXTActualizarNombreUsuario.setText(listaArrayUsuarios.get(0).getNombres());
-        TXTActualizarApellidoUsuario.setText(listaArrayUsuarios.get(0).getApellidos());
-        TXTActualizarFechaNacimientoUsuario.setText(listaArrayUsuarios.get(0).getFechaNacimiento());
-        TXTActualizarCorreoUsuario.setText(listaArrayUsuarios.get(0).getCorreo());
-        TXTActualizarDireccionUsuario.setText(listaArrayUsuarios.get(0).getDireccion());
-        TXTActualizarCiudadUsuario.setText(listaArrayUsuarios.get(0).getCiudad());
-        TXTActualizarTelefonoUsuario.setText(listaArrayUsuarios.get(0).getTelefono());
-
-        //Variable Auxiliar para actualizar el email
-
-        String AuxCorreoUsuario = listaArrayUsuarios.get(0).getCorreo();
-
-        //Variable donde se almacena el id del usuario para ejecutar la sentencia UPDATE
-        Id_Usuario = listaArrayUsuarios.get(0).getIdUsuario();
-
-        //Llamado al calendario tras hacer click en el campo de fecha
-        TXTActualizarFechaNacimientoUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ActualizarFechaDeNacimiento();
-            }
-        });
-
-        //Se actualizan los datos del cliente
-
-        BtnActualizarClienteBD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validator.validate();
-
-                //Si todos los campos estan validados
-
-                if (DatosValidados){
-                    DbUsuario db = new DbUsuario(getActivity());
-
-                    //Si el usuario no desea cambiar su email actual
-
-                    if (AuxCorreoUsuario.equals(TXTActualizarCorreoUsuario.getText().toString())){
-
-
-                        // Se omite el metodo para la validacion de Correo
-
-                        db.actualizarUsuario(TXTActualizarNombreUsuario.getText().toString(),
-                                TXTActualizarApellidoUsuario.getText().toString(),
-                                TXTActualizarFechaNacimientoUsuario.getText().toString(),
-                                TXTActualizarCorreoUsuario.getText().toString(),
-                                TXTActualizarDireccionUsuario.getText().toString(),
-                                TXTActualizarCiudadUsuario.getText().toString(),
-                                TXTActualizarTelefonoUsuario.getText().toString(),
-                                Id_Usuario);
-
-                        dialog.cancel();
-
-                    }else{
-
-                        //Se valida si el correo nuevo no se encuentra registrado en la BD
-
-                        if (!db.Comprobar_Correo(TXTActualizarCorreoUsuario.getText().toString())){
-
-                            //Se ejecuta el UPDATE
-
-                            db.actualizarUsuario(TXTActualizarNombreUsuario.getText().toString(),
-                                    TXTActualizarApellidoUsuario.getText().toString(),
-                                    TXTActualizarFechaNacimientoUsuario.getText().toString(),
-                                    TXTActualizarCorreoUsuario.getText().toString(),
-                                    TXTActualizarDireccionUsuario.getText().toString(),
-                                    TXTActualizarCiudadUsuario.getText().toString(),
-                                    TXTActualizarTelefonoUsuario.getText().toString(),
-                                    Id_Usuario);
-
-
-                            dialog.cancel();
-
-                        }else{
-                            Toast.makeText(getActivity(), "Este correo ya existe", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                }
-
-            }
-        });
-
-    }
-
-    //Metodo para mostrar calendario para actualizar la fecha de nacimiento
-
-    public void ActualizarFechaDeNacimiento() {
-
-        final Calendar calendario = Calendar.getInstance();
-        int dia = calendario.get(Calendar.DAY_OF_MONTH);
-        int mes = calendario.get(Calendar.MONTH);
-        int año = calendario.get(Calendar.YEAR);
-
-        //Date Picker Dialog
-        picker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month+=1;
-                TXTActualizarFechaNacimientoUsuario.setText(year + "-"+month+"-"+day);
-            }
-        },año,mes,dia);
-        picker.show();
-    }
-
-    @Override
-    public void onValidationSucceeded() {
-        DatosValidados = true;
-    }
-
-    @Override
-    public void onValidationFailed(List<ValidationError> errors) {
-        DatosValidados = false;
-        for (ValidationError error : errors) {
-            View view = error.getView();
-            String message = error.getCollatedErrorMessage(getActivity());
-
-            if (view instanceof EditText) {
-                ((EditText) view).setError(message);
-            } else {
-                Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
-            }
-
-        }
-    }
 }

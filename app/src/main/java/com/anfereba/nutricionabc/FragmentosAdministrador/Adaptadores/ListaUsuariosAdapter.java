@@ -4,10 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,12 +37,19 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdapter.UsuarioViewHolder> implements Validator.ValidationListener,Filterable {
+
+    CircleImageView ActualizarFotoCliente;
+
+    int CODIGO_DE_SOLICITUD_IMAGEN = 1;
 
     @NotEmpty
     @Email
@@ -110,7 +120,6 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
 
 
         Bitmap bitmap = BitmapFactory.decodeByteArray(listaUsuarios.get(position).getFotoPerfil(), 0,
-
                 listaUsuarios.get(position).getFotoPerfil().length);
 
 
@@ -126,14 +135,16 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
         holder.Detalles_Ico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mostrarDialogActualizar(position);
+                mostrarDialogActualizar(position, context);
             }
         });
     }
 
 
 
-    private void mostrarDialogActualizar(int position) {
+
+
+    private void mostrarDialogActualizar(int position, Context context) {
 
         //Muestra una ventana emergente con los datos del usuario seleccionado
 
@@ -166,6 +177,8 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
         TXTActualizarDireccionUsuario = (EditText) dialog.findViewById(R.id.TXTActualizarDireccionUsuario);
         TXTActualizarCiudadUsuario = (EditText) dialog.findViewById(R.id.TXTActualizarCiudadUsuario);
         TXTActualizarTelefonoUsuario = (EditText) dialog.findViewById(R.id.TXTActualizarTelefonoUsuario);
+        ActualizarFotoCliente = (CircleImageView) dialog.findViewById(R.id.ActualizarFotoUsuario);
+
 
         BtnActualizarClienteBD = (Button) dialog.findViewById(R.id.BtnActualizarClienteBD);
         BtnEliminarClienteBD = (Button) dialog.findViewById(R.id.BtnEliminarrClienteBD);
@@ -179,6 +192,13 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
         TXTActualizarDireccionUsuario.setText(listaUsuarios.get(position).getDireccion());
         TXTActualizarCiudadUsuario.setText(listaUsuarios.get(position).getCiudad());
         TXTActualizarTelefonoUsuario.setText(listaUsuarios.get(position).getTelefono());
+
+
+        //Asignamos imagen al dialog
+
+        Bitmap bitmap = BitmapFactory.decodeByteArray(listaUsuarios.get(position).getFotoPerfil(), 0,
+                listaUsuarios.get(position).getFotoPerfil().length);
+        ActualizarFotoCliente.setImageBitmap(bitmap);
 
         //Variable Auxiliar para actualizar el email
 
@@ -194,6 +214,7 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
                 ActualizarFechaDeNacimiento();
             }
         });
+
 
         //Se actualizan los datos del cliente
 
@@ -389,7 +410,7 @@ public class ListaUsuariosAdapter extends RecyclerView.Adapter<ListaUsuariosAdap
 
         //Se identifican los elementos
 
-        ImageView IMGCardView;
+        CircleImageView IMGCardView;
         TextView nameTextView, cityTextView;
         ImageView Detalles_Ico;
 

@@ -13,8 +13,12 @@
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/> <!-- optional (needed if default theme has no action bar) -->
+        <activity
+            android:name=".ActualizarPerfil"
+            android:exported="true" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
         <activity
             android:name=".restablecer_password"
             android:exported="true" />
@@ -23,35 +27,40 @@
             android:exported="true" />
         <activity
             android:name=".FragmentosNutriologo.EditarAlimentos"
-            android:exported="true" android:parentActivityName=".MainActivityNutriologo">
+            android:exported="true"
+            android:parentActivityName=".MainActivityNutriologo">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityNutriologo" />
         </activity>
         <activity
             android:name=".FragmentosNutriologo.VerAlimentos"
-            android:exported="true" android:parentActivityName=".MainActivityNutriologo">
+            android:exported="true"
+            android:parentActivityName=".MainActivityNutriologo">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityNutriologo" />
         </activity>
         <activity
             android:name=".FragmentosNutriologo.EditarPlanesNutricionales"
-            android:exported="true" android:parentActivityName=".MainActivityNutriologo">
+            android:exported="true"
+            android:parentActivityName=".MainActivityNutriologo">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityNutriologo" />
         </activity>
         <activity
             android:name=".FragmentosNutriologo.VerPlanesNutricionales"
-            android:exported="true" android:parentActivityName=".MainActivityNutriologo">
+            android:exported="true"
+            android:parentActivityName=".MainActivityNutriologo">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityNutriologo" />
         </activity>
         <activity
             android:name=".FragmentosNutriologo.RegistrarPlanNutricional"
-            android:exported="true" android:parentActivityName=".MainActivityNutriologo">
+            android:exported="true"
+            android:parentActivityName=".MainActivityNutriologo">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityNutriologo" />

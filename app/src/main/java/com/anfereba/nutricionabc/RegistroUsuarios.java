@@ -209,7 +209,6 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
         }
     }
 
-
     //Abre la galeria para escoger imagen
 
     public void EscogerImagenDeGaleria(View view) {
