@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/fondo_gradiente"
-    tools:context=".ActualizarPerfil">
+    android:orientation="vertical"
+    tools:context=".FragmentosAdministrador.EditarUsuarioAdministrador">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -31,7 +32,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/TXTActualizarDatos"
+                    android:text="@string/TXTGestionUsuarios"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="25sp"/>
@@ -42,7 +43,7 @@
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:src="@drawable/imagen_ico"
-                    android:onClick="EscogerImagenDeGaleria"/>
+                    android:onClick="EscogerImagenDeGaleriaE"/>
 
 
                 <!--Nombres -->
@@ -158,7 +159,7 @@
 
                 <Button
                     android:layout_marginTop="10dp"
-                    android:id="@+id/BtnActualizarUsuarioBD"
+                    android:id="@+id/BtnActualizarClienteBD"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:background="#3b5998"
@@ -167,7 +168,7 @@
                     android:text="@string/BtnActualizarClienteBD" />
 
                 <Button
-                    android:id="@+id/BtnEliminarUsuarioBD"
+                    android:id="@+id/BtnEliminarrClienteBD"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:background="#C60909"
@@ -176,6 +177,7 @@
                     android:text="@string/BtnEliminarClienteBD" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
         </androidx.cardview.widget.CardView>
 
     </ScrollView>

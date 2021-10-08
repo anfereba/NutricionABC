@@ -17,9 +17,10 @@
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/drawable/fondo_gradiente.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/drawable/rounder_corners.xml" value="0.171875" />
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/font/raleway_bold.xml" value="0.1453125" />
-        <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_actualizar_perfil.xml" value="0.2" />
+        <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_actualizar_perfil.xml" value="0.264" />
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_editar_alimentos.xml" value="0.264" />
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_editar_planes_nutricionales.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_editar_usuario_administrador.xml" value="0.264" />
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_gestion_usuarios.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_insertar_usuario_administrador.xml" value="0.2" />
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/layout/activity_login_app.xml" value="0.264" />

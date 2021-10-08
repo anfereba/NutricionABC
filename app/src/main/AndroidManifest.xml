@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".FragmentosAdministrador.EditarUsuarioAdministrador"
+            android:exported="true" />
+        <activity
             android:name=".ActualizarPerfil"
             android:exported="true" />
         <activity

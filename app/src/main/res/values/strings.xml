@@ -110,6 +110,7 @@
     <string name="PerfilCiudad">Nombre de la ciudad</string>
     <string name="OpcionActualizarPerfil">Actualizar Datos</string>
     <string name="OpcionActualizarPasswordPerfil">Actualizar Password</string>
+    <string name="TXTActualizarDatos">Actualizar Datos</string>
 
 
 </resources>
