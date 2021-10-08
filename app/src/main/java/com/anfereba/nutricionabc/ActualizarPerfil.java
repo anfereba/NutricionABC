@@ -157,7 +157,6 @@ public class ActualizarPerfil extends AppCompatActivity implements Validator.Val
     }
 
     private int ObtenerIdUsuarioActual() {
-
         preferences = this.getSharedPreferences("Sesiones", Context.MODE_PRIVATE);
         editor = preferences.edit();
         int IdUsuario = preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);

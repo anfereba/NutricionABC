@@ -300,4 +300,35 @@ public class DbUsuario extends DbHelper{
         cursorUsuarios.close();
         return datosUsuario;
     }
+
+    public void ActualizarRespuestasUsuario(int idUsuario, String preguntaUno, String preguntaDos) {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] parametros = {Integer.toString(idUsuario)};
+        ContentValues values = new ContentValues();
+        values.put(Utilidades.CAMPO_PREGUNTA_UNO,preguntaUno);
+        values.put(Utilidades.CAMPO_PREGUNTA_DOS,preguntaDos);
+        db.update(Utilidades.TABLA_USUARIO,values,Utilidades.CAMPO_ID_USUARIO+"=?",parametros);
+        Toast.makeText(context, "Datos Actualizados", Toast.LENGTH_SHORT).show();
+        db.close();
+
+
+    }
+
+    public void ActualizarPasswordUsuario(int idUsuario, String nuevoPassword) {
+
+        try {
+            nuevoPassword = AESCrypt.encrypt(nuevoPassword);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] parametros = {Integer.toString(idUsuario)};
+        ContentValues values = new ContentValues();
+        values.put(Utilidades.CAMPO_PASSWORD,nuevoPassword);
+        db.update(Utilidades.TABLA_USUARIO,values,Utilidades.CAMPO_ID_USUARIO+"=?",parametros);
+        Toast.makeText(context, "Contraseña actualizada", Toast.LENGTH_SHORT).show();
+        db.close();
+    }
 }

@@ -37,6 +37,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anfereba.nutricionabc.ActualizarPerfil;
+import com.anfereba.nutricionabc.CambiarCredenciales;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Usuario;
@@ -102,6 +103,14 @@ public class PerfilUsuario extends Fragment{
             public void onClick(View view) {
 
                 Intent intent = new Intent(getActivity(), ActualizarPerfil.class);
+                startActivity(intent);
+            }
+        });
+
+        OpcionActualizarPasswordPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CambiarCredenciales.class);
                 startActivity(intent);
             }
         });

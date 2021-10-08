@@ -111,6 +111,11 @@
     <string name="OpcionActualizarPerfil">Actualizar Datos</string>
     <string name="OpcionActualizarPasswordPerfil">Actualizar Password</string>
     <string name="TXTActualizarDatos">Actualizar Datos</string>
+    <string name="TXTActualizarCredenciales">Actualizar Credenciales</string>
+    <string name="TXTPasswordAntiguoUsuario">Password Antiguo</string>
+    <string name="TXTPasswordNuevoUsuario">Password Nuevo</string>
+    <string name="BtnActualizarPreguntasUsuarioBD">Actualizar Preguntas</string>
+    <string name="BtnActualizarContraseñaUsuarioBD">Actualizar Contraseña</string>
 
 
 </resources>
