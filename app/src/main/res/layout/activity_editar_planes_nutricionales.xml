@@ -6,55 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".FragmentosNutriologo.EditarPlanesNutricionales">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/ModificarNombrePlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/TXTNombrePlan" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <EditText
-                    android:id="@+id/ModificarNombrePlan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/TXTNombrePlan" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:id="@+id/spinnerAlimentos"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="bottom|center"
-                    android:layout_weight="1" />
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/agregarAlimentos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="bottom|start|center_horizontal|end"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    app:backgroundTint="@color/icon_background"
-                    app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ListaPlanesAlimentos"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            android:layout_gravity="bottom|end"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/ModificarPlan"
@@ -62,23 +39,63 @@
                 android:layout_height="wrap_content"
                 android:text="@string/BtnModificarNombrePlan" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingEditarPlan"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingEditarPlan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:backgroundTint="@color/white"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingEliminarPlan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:backgroundTint="@color/white"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinnerAlimentos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:backgroundTint="@color/white"
-                android:clickable="true"
-                app:srcCompat="@drawable/ic_baseline_edit_24" />
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|center"
+                android:layout_weight="1" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingEliminarPlan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:backgroundTint="@color/white"
+                android:id="@+id/agregarAlimentos"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|start|center_horizontal|end"
+                android:layout_weight="1"
                 android:clickable="true"
-                app:srcCompat="@drawable/ic_baseline_delete_24" />
+                app:backgroundTint="@color/icon_background"
+                app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
         </LinearLayout>
-    </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ListaPlanesAlimentos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
 </FrameLayout>

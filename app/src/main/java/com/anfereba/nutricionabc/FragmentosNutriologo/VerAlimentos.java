@@ -95,8 +95,6 @@ public class VerAlimentos extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivityNutriologo.class);
         startActivity(intent);
     }
-    public void EscogerImagenDeGaleria(View view) {
-
-    }
+    
 
 }

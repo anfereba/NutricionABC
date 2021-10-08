@@ -1,6 +1,9 @@
 package com.anfereba.nutricionabc.FragmentosNutriologo;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +19,7 @@ import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanesNutricio
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
 import com.anfereba.nutricionabc.db.DbPlanNutricional;
+import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -77,7 +81,11 @@ public class OpcionDosNutriologo extends Fragment {
 
         DbPlanNutricional dbPlanNutricional = new DbPlanNutricional(getContext());
         ArrayList<PlanesNutricionales> listaArrayPlanes = new ArrayList<>();
-        ListaPlanesNutricionalesAdapter adapter =new ListaPlanesNutricionalesAdapter(dbPlanNutricional.mostrarPlan());
+        SharedPreferences shared = getActivity().getSharedPreferences("Sesiones", MODE_PRIVATE);//Llamar id del nutriologo.
+        Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del nutriologo.
+
+        ListaPlanesNutricionalesAdapter adapter =new ListaPlanesNutricionalesAdapter(dbPlanNutricional.mostrarPlan(iDNutriologo));
+
         listaPlanes.setAdapter(adapter);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

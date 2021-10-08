@@ -93,7 +93,6 @@ public class DbPlanAlimento extends DbHelper{
                 Cursor cursorNombreAlimentos =db.rawQuery("SELECT "+Utilidades.CAMPO_NOMBREAlimento+" FROM  "+Utilidades.TABLA_Alimento+" WHERE "+Utilidades.CAMPO_ID_Alimento+" = "+planesAlimentos.getIdAlimento()+"", null);
                 cursorNombreAlimentos.moveToFirst();
                 planesAlimentos.setNombrePlanesAlimentos(cursorNombreAlimentos.getString(0));
-                System.out.println(cursorNombreAlimentos.getString(0));
                 listaPlanesAlimentos.add(planesAlimentos);
 
             } while (cursorPlanes.moveToNext());

@@ -42,7 +42,7 @@ public class DbPlanNutricional extends DbHelper {
 
         return id;
     }
-    public ArrayList<PlanesNutricionales> mostrarPlan() {
+    public ArrayList<PlanesNutricionales> mostrarPlan(int id) {
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -51,7 +51,7 @@ public class DbPlanNutricional extends DbHelper {
         PlanesNutricionales planesNutricionales;
         Cursor cursorPlanes;
 
-        cursorPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PlanNutricional, null);
+        cursorPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PlanNutricional +" WHERE "+Utilidades.CAMPO_ID_USUARIO2+" = "+id+"", null);
 
         if (cursorPlanes.moveToFirst()) {
             do {
