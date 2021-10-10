@@ -31,6 +31,7 @@ public class VerAlimentos extends AppCompatActivity {
     Alimentos alimentos;
     FloatingActionButton fabEditarAlimentos,fabEliminarAlimentos;
     int id=0;
+    int id2=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +56,11 @@ public class VerAlimentos extends AppCompatActivity {
                 id=Integer.parseInt(null);
             }else {
                 id= extras.getInt("IdAlimentos");
+                id2=extras.getInt("IdPlanAlimento");
             }
         }else {
             id = (int) savedInstanceState.getSerializable("IdAlimentos");
+            id2=(int) savedInstanceState.getSerializable("IdPlanAlimento");
         }
         DbAlimento dbAlimento = new DbAlimento (VerAlimentos.this);
         alimentos = dbAlimento.verAlimentos(id);
@@ -69,6 +72,10 @@ public class VerAlimentos extends AppCompatActivity {
             NombreAlimento.setInputType(InputType.TYPE_NULL);//le quito el teclado a los editext
             CaloriasAlimento.setInputType(InputType.TYPE_NULL);//le quito el teclado a los editext
             EditarFotoAlimento.setImageBitmap(bitmap);
+            if(id2!=0){
+                fabEditarAlimentos.setVisibility(View.INVISIBLE);
+                fabEliminarAlimentos.setVisibility(View.INVISIBLE);
+            }
         }
         fabEliminarAlimentos.setOnClickListener(new View.OnClickListener() {
             @Override

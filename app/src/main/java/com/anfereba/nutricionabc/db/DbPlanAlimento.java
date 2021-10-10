@@ -102,4 +102,46 @@ public class DbPlanAlimento extends DbHelper{
 
         return listaPlanesAlimentos;
     }
+   public long EditarPlanesAlimentos(int id, int idAlimentos) {
+
+        long correcto =0;
+        String[] parametros = {Integer.toString(id)};
+
+        try {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            //values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
+            values.put(Utilidades.CAMPO_ID_Alimento2,idAlimentos);
+
+
+
+
+            correcto = db.update(Utilidades.TABLA_PlanAlimento,values,Utilidades.CAMPO_ID_PlanAlimento+"=?",parametros);
+        } catch (Exception ex) {
+            ex.toString();
+        }
+
+        return correcto;
+    }
+    public boolean EliminarPlanAlimento(int id) {
+
+        boolean correcto =false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("DELETE FROM "+Utilidades.TABLA_PlanAlimento+" WHERE "+Utilidades.CAMPO_ID_PlanNutricional2+ "='"+ id +"'");
+            correcto=true;
+        } catch (Exception ex) {
+            ex.toString();
+            correcto=false;
+        }finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+
 }

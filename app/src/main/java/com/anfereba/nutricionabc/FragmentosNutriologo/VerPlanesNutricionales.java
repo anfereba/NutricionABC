@@ -94,6 +94,7 @@ public class VerPlanesNutricionales extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(dbPlanNutricional.EliminarPlan(id)){
+                            dbPlanAlimento.EliminarPlanAlimento(id);
                             lista();
                         }
                     }

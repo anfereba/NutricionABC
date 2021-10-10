@@ -48,7 +48,7 @@ public class ListaAlimentosAdapter extends RecyclerView.Adapter<ListaAlimentosAd
                 @Override
                 public void onClick(View view) {
                     Context context =  view.getContext();
-                    Intent intent = new Intent(context, VerAlimentos.class); //si algo me toca modificarlo
+                    Intent intent = new Intent(context, VerAlimentos.class); //si algo lo toca se podra modificar
                     intent.putExtra("IdAlimentos",listaAlimentos.get(getAdapterPosition()).getIdAlimento());
                     context.startActivity(intent);
                 }

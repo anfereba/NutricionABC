@@ -1,26 +1,41 @@
 package com.anfereba.nutricionabc.FragmentosNutriologo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaAlimentosAdapter;
+import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanesAlimentosAdapter;
+import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanesAlimentosEditarAdapter;
 import com.anfereba.nutricionabc.R;
+import com.anfereba.nutricionabc.db.DbAlimento;
+import com.anfereba.nutricionabc.db.DbPlanAlimento;
+import com.anfereba.nutricionabc.db.Entidades.Alimentos;
+import com.anfereba.nutricionabc.db.Entidades.PlanesAlimentos;
 import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
 import com.anfereba.nutricionabc.db.DbPlanNutricional;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class EditarPlanesNutricionales extends AppCompatActivity {
 EditText NombrePlanNutricional;
 Button modificarPlanNutricional;
+RecyclerView ListaPlanesAlimentos2;
 PlanesNutricionales planesNutricionales;
-FloatingActionButton fabEditarPlan,fabEliminarPlan;
+FloatingActionButton fabEditarPlan,fabEliminarPlan,agregarAlimentos;
+Spinner spinnerAlimentos;
 boolean correcto= false;
 int id=0;
+int id2=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +44,22 @@ int id=0;
         NombrePlanNutricional=(EditText) findViewById(R.id.ModificarNombrePlan);
         modificarPlanNutricional=(Button) findViewById(R.id.ModificarPlan);
         fabEditarPlan=(FloatingActionButton) findViewById(R.id.floatingEditarPlan);
+        spinnerAlimentos=(Spinner)findViewById(R.id.spinnerAlimentos);
+        agregarAlimentos=(FloatingActionButton)findViewById(R.id.agregarAlimentos);
         fabEliminarPlan=(FloatingActionButton) findViewById(R.id.floatingEliminarPlan);
+        ListaPlanesAlimentos2 = (RecyclerView) findViewById(R.id.ListaPlanesAlimentos);
         if(savedInstanceState ==null){
             Bundle extras = getIntent().getExtras();
             if(extras == null){
                 id = Integer.parseInt(null);
+                id2 = Integer.parseInt(null);
             }else{
                 id = extras.getInt("IdPlanesNutricionales");
+                id2 = extras.getInt("IdPlanAlimento");
             }
         }else{
             id=(int)savedInstanceState.getSerializable("IdPlanesNutricionales");
+            id2=(int)savedInstanceState.getSerializable("IdPlanAlimento");
         }
         DbPlanNutricional dbPlanNutricional = new DbPlanNutricional(EditarPlanesNutricionales.this);
         planesNutricionales =dbPlanNutricional.verPlan(id);
@@ -48,6 +69,8 @@ int id=0;
             NombrePlanNutricional.setInputType(InputType.TYPE_NULL);//le quito el teclado a los */
             fabEditarPlan.setVisibility(View.INVISIBLE);
             fabEliminarPlan.setVisibility(View.INVISIBLE);
+            spinnerAlimentos.setVisibility(View.INVISIBLE);
+            agregarAlimentos.setVisibility(View.INVISIBLE);
             modificarPlanNutricional.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -64,7 +87,17 @@ int id=0;
                     }
                 }
             });
+
         }
+        /*DbPlanAlimento dbPlanAlimento= new DbPlanAlimento(getApplicationContext());
+        ListaPlanesAlimentosEditarAdapter adapter = new ListaPlanesAlimentosEditarAdapter(dbPlanAlimento.mostrarIdAlimento(id));
+        ListaPlanesAlimentos2.setAdapter(adapter);*/
+        ListaPlanesAlimentos2 = (RecyclerView) findViewById(R.id.ListaPlanesAlimentos);
+        ListaPlanesAlimentos2.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        DbPlanAlimento  dbPlanAlimento= new DbPlanAlimento(getApplicationContext());
+        ArrayList<PlanesAlimentos> listaArrayAlimentos = new ArrayList<>();
+        ListaPlanesAlimentosEditarAdapter adapter =new ListaPlanesAlimentosEditarAdapter(dbPlanAlimento.mostrarIdAlimento(id));
+        ListaPlanesAlimentos2.setAdapter(adapter);
     }
     private void verRegistro(){
         Intent intent = new Intent(this,VerPlanesNutricionales.class);

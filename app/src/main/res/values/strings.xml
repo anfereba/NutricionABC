@@ -116,6 +116,7 @@
     <string name="TXTPasswordNuevoUsuario">Password Nuevo</string>
     <string name="BtnActualizarPreguntasUsuarioBD">Actualizar Preguntas</string>
     <string name="BtnActualizarContraseñaUsuarioBD">Actualizar Contraseña</string>
-
+    <!--Plan Alimentos -->
+    <string name="TXTSeleccioneElAlimentoQueQuiere">Seleccione el Alimento que desea +</string>
 
 </resources>

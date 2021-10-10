@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentosNutriologo.EditarPlanesAlimentos">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/EditarPlanAlimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/TXTSeleccioneElAlimentoQueQuiere"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinnerEditarPlanesAlimentos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|center"
+                android:layout_weight="1" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/EditarPlanesAlimentos"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|start|center_horizontal|end"
+                android:layout_weight="1"
+                android:clickable="true"
+                app:backgroundTint="@color/icon_background"
+                app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
