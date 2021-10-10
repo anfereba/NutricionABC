@@ -52,6 +52,16 @@ public class Utilidades {
     public static final String CAMPO_ID_PlanNutricional2 = "idPlanNutricional";//FK_PlanNutricional
     public static final String CAMPO_ID_Alimento2 = "idAlimento";//FK_idAlimento
 
+    //Campos Tabla Hijo
+    public static final String TABLA_Hijo = "Hijo";
+    public static final String CAMPO_ID_HIJO = "idHijo";
+    public static final String CAMPO_NOMBRE_HIJO = "NombreHijo";
+    public static final String CAMPO_ESTATURA_HIJO = "Estatura";
+    public static final String CAMPO_EDAD_HIJO = "Edad";
+    public static final String CAMPO_PESO_HIJO = "Peso";
+    public static final String CAMPO_ID_USUARIO3 = "idUsuario";//FK_idUsuario
+    public static final String CAMPO_ID_PlanNutricional3 = "idPlanNutricional";//idPlanNutricional
+
 
 
     //Sentencia para crear tabla PerfilSistema
@@ -115,7 +125,20 @@ public class Utilidades {
             +"REFERENCES "+TABLA_PlanNutricional+"("+CAMPO_ID_PlanNutricional2+")"
             +"FOREIGN KEY"+ "("+CAMPO_ID_Alimento2+") "
             +"REFERENCES "+TABLA_Alimento+"("+CAMPO_ID_Alimento2+"))";
+//Sentencia para crear tabla TABLA_HIJO
 
+    public static final String CREAR_TABLA_HIJO = "CREATE TABLE "
+            + TABLA_Hijo + "(" + CAMPO_ID_HIJO + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + CAMPO_NOMBRE_HIJO + " VARCHAR(100) NOT NULL, "
+            + CAMPO_ESTATURA_HIJO + " INTEGER NOT NULL, "
+            + CAMPO_EDAD_HIJO + " INTEGER NOT NULL, "
+            + CAMPO_PESO_HIJO + " INTEGER NOT NULL, "
+            + CAMPO_ID_USUARIO3 + " INTEGER NOT NULL, "
+            + CAMPO_ID_PlanNutricional3 + " INTEGER NOT NULL, "
+            +"FOREIGN KEY"+ "("+CAMPO_ID_PlanNutricional3+") "
+            +"REFERENCES "+TABLA_PlanNutricional+"("+CAMPO_ID_PlanNutricional3+")"
+            +"FOREIGN KEY"+ "("+CAMPO_ID_USUARIO3+") "
+            +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO3+"))";
 
 
 
