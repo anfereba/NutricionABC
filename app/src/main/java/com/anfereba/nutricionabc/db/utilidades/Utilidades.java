@@ -31,15 +31,15 @@ public class Utilidades {
     public static final String CAMPO_PREGUNTA_UNO = "PreguntaUno";
     public static final String CAMPO_PREGUNTA_DOS = "PreguntaDos";
 
-
-
     //Campos Tabla PlanNutricional
+
     public static final String TABLA_PlanNutricional = "PlanNutricional";
     public static final String CAMPO_ID_PlanNutricional = "idPlanNutricional";
     public static final String CAMPO_ID_USUARIO2 = "idUsuario"; //FK_idUsuario
     public static final String CAMPO_NOMBREPlanNutricional = "NombrePlamNutricional";
 
     //Campos Tabla Alimento
+
     public static final String TABLA_Alimento = "Alimento";
     public static final String CAMPO_ID_Alimento = "idAlimento";
     public static final String CAMPO_NOMBREAlimento = "NombreAlimento";
@@ -47,12 +47,14 @@ public class Utilidades {
     public static final String CAMPO_ID_CALORIAS = "Calorias";
 
     //Campos Tabla PlanAlimento
+
     public static final String TABLA_PlanAlimento = "PlanAlimento";
     public static final String CAMPO_ID_PlanAlimento = "idPlanAlimento";
     public static final String CAMPO_ID_PlanNutricional2 = "idPlanNutricional";//FK_PlanNutricional
     public static final String CAMPO_ID_Alimento2 = "idAlimento";//FK_idAlimento
 
     //Campos Tabla Hijo
+
     public static final String TABLA_Hijo = "Hijo";
     public static final String CAMPO_ID_HIJO = "idHijo";
     public static final String CAMPO_NOMBRE_HIJO = "NombreHijo";
@@ -62,7 +64,13 @@ public class Utilidades {
     public static final String CAMPO_ID_USUARIO3 = "idUsuario";//FK_idUsuario
     public static final String CAMPO_ID_PlanNutricional3 = "idPlanNutricional";//idPlanNutricional
 
+    //Campos Tabla de calificacion
 
+    public static final String TABLA_Calificacion = "Calificacion";
+    public static final String CAMPO_ID_Calificacion = "idCalificacion";
+    public static final String CAMPO_ID_USUARIO_3 = "idUsuario";//FK_Usuario
+    public static final String CAMPO_ID_PERFIL_SISTEMA_3 = "idPerfilSistema";//FK_PerfilSistema
+    public static final String CAMPO_Rating = "rating";
 
     //Sentencia para crear tabla PerfilSistema
 
@@ -139,6 +147,18 @@ public class Utilidades {
             +"REFERENCES "+TABLA_PlanNutricional+"("+CAMPO_ID_PlanNutricional3+")"
             +"FOREIGN KEY"+ "("+CAMPO_ID_USUARIO3+") "
             +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO3+"))";
+
+    //Sentencia para crear tabla TABLA_Calificacion
+
+    public static final String CREAR_TABLA_Calificacion = "CREATE TABLE "
+            + TABLA_Calificacion + "(" + CAMPO_ID_Calificacion + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + CAMPO_ID_USUARIO_3 + " INTEGER NOT NULL, "
+            + CAMPO_ID_PERFIL_SISTEMA_3 + " INTEGER NOT NULL, "
+            + CAMPO_Rating + " VARCHAR(5) NOT NULL, "
+            +"FOREIGN KEY"+ "("+CAMPO_ID_USUARIO_3+") "
+            +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO_3+")"
+            +"FOREIGN KEY"+ "("+CAMPO_ID_PERFIL_SISTEMA_3+") "
+            +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_PERFIL_SISTEMA_3+"))";
 
 
 

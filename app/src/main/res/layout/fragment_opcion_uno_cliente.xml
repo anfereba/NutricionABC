@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:alwaysDrawnWithCache="false"
+    android:animateLayoutChanges="false"
+    android:animationCache="false"
     android:background="@drawable/fondo_cliente"
     tools:context=".FragmentosCliente.OpcionUnoCliente">
 
@@ -41,14 +44,10 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/EditTextCalifNutri"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="119dp"
-        android:ems="10"
-        android:hint="ID Nutriologo"
-        android:inputType="textPersonName" />
+    <Spinner
+        android:id="@+id/SpinnerCalif"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:translationY="130dp" />
 
 </FrameLayout>
