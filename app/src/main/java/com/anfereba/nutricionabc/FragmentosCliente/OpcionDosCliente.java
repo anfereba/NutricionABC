@@ -1,14 +1,31 @@
 package com.anfereba.nutricionabc.FragmentosCliente;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.anfereba.nutricionabc.FragmentosCliente.Listas.ListaHijosAdapter;
+import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanesNutricionalesAdapter;
+import com.anfereba.nutricionabc.FragmentosNutriologo.RegistrarPlanNutricional;
 import com.anfereba.nutricionabc.R;
+import com.anfereba.nutricionabc.db.DbHijo;
+import com.anfereba.nutricionabc.db.DbPlanNutricional;
+import com.anfereba.nutricionabc.db.Entidades.Hijos;
+import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
+import com.anfereba.nutricionabc.db.utilidades.Utilidades;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +78,27 @@ public class OpcionDosCliente extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_opcion_dos_cliente, container, false);
+        View v=inflater.inflate(R.layout.fragment_opcion_dos_cliente, container, false);
+        Button AgregarHijo = (Button) v.findViewById(R.id.AgregarHijo);
+        RecyclerView listaHijos = (RecyclerView) v.findViewById(R.id.listaHijos);
+        listaHijos.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        DbHijo dbHijo = new DbHijo(getContext());
+        ArrayList<Hijos> listaArrayHijos = new ArrayList<>();
+        SharedPreferences shared = getActivity().getSharedPreferences("Sesiones", MODE_PRIVATE);//Llamar id del cliente.
+        Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del cliente.
+
+        ListaHijosAdapter adapter =new ListaHijosAdapter(dbHijo.mostrarHijos(iDNutriologo));
+
+        listaHijos.setAdapter(adapter);
+
+
+        AgregarHijo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), RegistrarHijo.class));
+            }
+        });
+        return v;
     }
 }

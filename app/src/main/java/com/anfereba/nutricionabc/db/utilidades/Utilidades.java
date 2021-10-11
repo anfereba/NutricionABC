@@ -57,6 +57,7 @@ public class Utilidades {
 
     public static final String TABLA_Hijo = "Hijo";
     public static final String CAMPO_ID_HIJO = "idHijo";
+    public static final String CAMPO_FOTO_HIJO = "FotoHijo";
     public static final String CAMPO_NOMBRE_HIJO = "NombreHijo";
     public static final String CAMPO_ESTATURA_HIJO = "Estatura";
     public static final String CAMPO_EDAD_HIJO = "Edad";
@@ -137,8 +138,9 @@ public class Utilidades {
 
     public static final String CREAR_TABLA_HIJO = "CREATE TABLE "
             + TABLA_Hijo + "(" + CAMPO_ID_HIJO + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + CAMPO_FOTO_HIJO + " BLOB NOT NULL, "
             + CAMPO_NOMBRE_HIJO + " VARCHAR(100) NOT NULL, "
-            + CAMPO_ESTATURA_HIJO + " INTEGER NOT NULL, "
+            + CAMPO_ESTATURA_HIJO + " VARCHAR(100) NOT NULL, "
             + CAMPO_EDAD_HIJO + " INTEGER NOT NULL, "
             + CAMPO_PESO_HIJO + " INTEGER NOT NULL, "
             + CAMPO_ID_USUARIO3 + " INTEGER NOT NULL, "

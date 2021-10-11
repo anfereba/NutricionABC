@@ -34,7 +34,7 @@
     <!-- Menu de Opciones Cliente -->
     <string name="Salir">Cerrar sesión</string>
     <string name="Opcion_uno_Cliente">Opción 1</string>
-    <string name="Opcion_dos_Cliente">Opción 2</string>
+    <string name="Opcion_dos_Cliente">Hijos</string>
     <string name="Opcion_tres_Cliente">Opción 3</string>
     <string name="Opcion_cuatro_Cliente">Opción 4</string>
     <string name="Opcion_cinco_Cliente">Opción 5</string>
@@ -117,6 +117,16 @@
     <string name="BtnActualizarPreguntasUsuarioBD">Actualizar Preguntas</string>
     <string name="BtnActualizarContraseñaUsuarioBD">Actualizar Contraseña</string>
     <!--Plan Alimentos -->
-    <string name="TXTSeleccioneElAlimentoQueQuiere">Seleccione el Alimento que desea +</string>
+    <string name="TXTSeleccioneElAlimentoQueQuiere">Seleccione el Alimento que desea</string>
+    <!--HIJO -->
+    <string name="TXTAgregarHijo">Agregar Hijo + </string>
+    <string name="TXTRegistroHijo">Registrar Hijo</string>
+    <string name="TXTNombreHijo">Nombre Hijo</string>
+    <string name="TXTEstaturaHijo">Estatura Hijo en metros</string>
+    <string name="TXTEdadHijo">Edad Hijo en años</string>
+    <string name="TXTPesoHijo">Peso Hijo en kilogramos</string>
+    <string name="BtnGuardarHijo">Guardar Hijo</string>
+
+
 
 </resources>

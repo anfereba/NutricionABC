@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentosNutriologo.RegistrarAlimento" >
+    tools:context=".FragmentosCliente.RegistrarHijo">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,16 +16,16 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/TituloRegistroAlimento"
+                android:id="@+id/TituloRegistroHijo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/TXTRegistroAlimento"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="25sp"/>
+                android:text="@string/TXTRegistroHijo"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/ImagenAlimento"
+                android:id="@+id/AgregarFotoHijo"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
@@ -38,14 +38,10 @@
                 android:layout_height="match_parent">
 
                 <EditText
-                    android:id="@+id/NombreDelAlimento"
+                    android:id="@+id/NombreHijo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/TXTNombreAlimento"
-                    android:inputType="textPersonName"
-                    />
-
+                    android:hint="@string/TXTNombreHijo" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -53,19 +49,40 @@
                 android:layout_height="match_parent">
 
                 <EditText
-                    android:id="@+id/CaloriasAlimento"
+                    android:id="@+id/EstaturaHijo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/CaloriasAlimento" />
+                    android:hint="@string/TXTEstaturaHijo" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/EdadHijo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/TXTEdadHijo" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/PesoHijo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/TXTPesoHijo" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/GuardarAlimento"
+                android:id="@+id/GuardarHijo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:text="@string/TXTGuardarAlimento" />
+                android:text="@string/BtnGuardarHijo" />
         </LinearLayout>
     </ScrollView>
+
 </FrameLayout>
