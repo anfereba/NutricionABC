@@ -72,7 +72,6 @@ public class Utilidades {
     public static final String CAMPO_ID_USUARIO_3 = "idUsuario";//FK_Usuario
     public static final String CAMPO_ID_PERFIL_SISTEMA_3 = "idPerfilSistema";//FK_PerfilSistema
     public static final String CAMPO_Rating = "rating";
-
     //Sentencia para crear tabla PerfilSistema
 
     public static final String CREAR_TABLA_PERFIL_SISTEMA = "CREATE TABLE "
@@ -156,7 +155,7 @@ public class Utilidades {
             + TABLA_Calificacion + "(" + CAMPO_ID_Calificacion + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + CAMPO_ID_USUARIO_3 + " INTEGER NOT NULL, "
             + CAMPO_ID_PERFIL_SISTEMA_3 + " INTEGER NOT NULL, "
-            + CAMPO_Rating + " VARCHAR(5) NOT NULL, "
+            + CAMPO_Rating + " INTEGER NOT NULL, "
             +"FOREIGN KEY"+ "("+CAMPO_ID_USUARIO_3+") "
             +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO_3+")"
             +"FOREIGN KEY"+ "("+CAMPO_ID_PERFIL_SISTEMA_3+") "
