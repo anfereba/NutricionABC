@@ -120,7 +120,7 @@ public class VerPlanesNutricionales extends AppCompatActivity {
                         dbPlanAlimento.insertarPlanAlimento(id,idAlimentos);
                         ListaPlanesAlimentosAdapter adapter = new ListaPlanesAlimentosAdapter(dbPlanAlimento.mostrarIdAlimento(id));
                         ListaPlanesAlimentos.setAdapter(adapter);
-
+                        finish();
                     }
                 });
             }
