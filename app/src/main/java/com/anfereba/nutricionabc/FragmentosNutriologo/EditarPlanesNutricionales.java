@@ -77,6 +77,7 @@ int id2=0;
                     if(!NombrePlanNutricional.getText().toString().equals("")){
                         correcto=dbPlanNutricional.EditarPlan(id,NombrePlanNutricional.getText().toString());
                         verRegistro();
+                        finish();
                         if(correcto){
                            Toast.makeText(EditarPlanesNutricionales.this,"Plan Modificado",Toast.LENGTH_LONG).show();
                         }else{
@@ -103,5 +104,6 @@ int id2=0;
         Intent intent = new Intent(this,VerPlanesNutricionales.class);
         intent.putExtra("IdPlanesNutricionales",id);
         startActivity(intent);
+        finish();
     }
 }

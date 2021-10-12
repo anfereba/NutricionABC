@@ -87,6 +87,7 @@ public class VerAlimentos extends AppCompatActivity {
 
                         if(dbAlimento.EliminarAlimento(id)){
                             lista();
+                            finish();
                         }
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -101,6 +102,7 @@ public class VerAlimentos extends AppCompatActivity {
     private void lista(){
         Intent intent = new Intent(this, MainActivityNutriologo.class);
         startActivity(intent);
+        finish();
     }
     
 

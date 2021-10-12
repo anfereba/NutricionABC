@@ -96,6 +96,7 @@ public class VerPlanesNutricionales extends AppCompatActivity {
                         if(dbPlanNutricional.EliminarPlan(id)){
                             dbPlanAlimento.EliminarPlanAlimento(id);
                             lista();
+                            finish();
                         }
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -119,6 +120,7 @@ public class VerPlanesNutricionales extends AppCompatActivity {
                         dbPlanAlimento.insertarPlanAlimento(id,idAlimentos);
                         ListaPlanesAlimentosAdapter adapter = new ListaPlanesAlimentosAdapter(dbPlanAlimento.mostrarIdAlimento(id));
                         ListaPlanesAlimentos.setAdapter(adapter);
+
                     }
                 });
             }
@@ -132,5 +134,6 @@ public class VerPlanesNutricionales extends AppCompatActivity {
     private void lista(){
         Intent intent = new Intent(this, MainActivityNutriologo.class);
         startActivity(intent);
+        finish();
     }
 }
