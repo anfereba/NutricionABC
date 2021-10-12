@@ -44,7 +44,7 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
     private byte[] imagenEnBytes = null;
     Bitmap FotoDePefil;
 
-    int CODIGO_DE_SOLICITUD_IMAGEN = 1;
+    int CODIGO_DE_SOLICITUD_IMAGEN = 1;//tener encuenta
 
     private Validator validator;
     private boolean DatosValidados;
@@ -215,7 +215,7 @@ public class RegistroUsuarios extends AppCompatActivity implements Validator.Val
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        startActivityForResult(Intent.createChooser(intent,"Seleccione Imagen"),CODIGO_DE_SOLICITUD_IMAGEN);
+        startActivityForResult(Intent.createChooser(intent,"Seleccione Imagen"),CODIGO_DE_SOLICITUD_IMAGEN);//poner imagen
     }
 
     //Convierte la foto de perfil escogida en Bytes
