@@ -99,17 +99,29 @@ public class EditarAlimentos extends AppCompatActivity implements Validator.Vali
                         verRegistro();
                         Toast.makeText(getApplicationContext(), "Alimento guardado con éxito: ", Toast.LENGTH_LONG).show();
                         limpiar();
+                        finish();
                     } else {
                         Toast.makeText(getApplicationContext(), "ERROR AL GUARDAR El ALIMENTO: ", Toast.LENGTH_LONG).show();
                     }
 
 
 
-                }else if (DatosValidados && (AgregarFotoAlimento.getDrawable()==null || FotoAlimentoEnBytes()==null)){
+                }else if (DatosValidados && ( FotoAlimentoEnBytes()==null)){
 
                     //Validacion manual de la foto de perfil
+                    int numEntero = Integer.parseInt(String.valueOf(CaloriasAlimento.getText()));
+                    long QueryExitosa = dbAlimento.EditarAlimento(id,NombreDelAlimento.getText().toString(),
+                            numEntero,alimentos.getFotoAlimento());
+                    if (QueryExitosa > 0 ) {
+                        verRegistro();
+                        Toast.makeText(getApplicationContext(), "Alimento guardado con éxito: ", Toast.LENGTH_LONG).show();
+                        limpiar();
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "ERROR AL GUARDAR El ALIMENTO: ", Toast.LENGTH_LONG).show();
+                    }
 
-                    Toast.makeText(getApplicationContext(), "Debe Escoger una Foto para el alimento", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "Debe Escoger una Foto para el alimento", Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -129,6 +141,7 @@ AgregarFotoAlimento.setOnClickListener(new View.OnClickListener() {
         Intent intent = new Intent(this,VerAlimentos.class);
         intent.putExtra("IdAlimentos",id);
         startActivity(intent);
+        finish();
     }
 
     private void limpiar() {

@@ -59,6 +59,7 @@ FloatingActionButton agregarAlimentos;
                         Intent intent = new Intent(EditarPlanesAlimentos.this,EditarPlanesNutricionales.class);
                         intent.putExtra("IdPlanesNutricionales",id2);
                         startActivity(intent);
+                        finish();
                     }
                 });
             }
