@@ -13,16 +13,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.anfereba.nutricionabc.FragmentosAdministrador.PerfilUsuario;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Usuario;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
@@ -130,6 +126,7 @@ public class ActualizarPerfil extends AppCompatActivity implements Validator.Val
             @Override
             public void onClick(View view) {
                 ActualizarDatosUsuario();
+
             }
         });
 
@@ -198,6 +195,7 @@ public class ActualizarPerfil extends AppCompatActivity implements Validator.Val
                             TXTActualizarCiudadUsuario.getText().toString(),
                             TXTActualizarTelefonoUsuario.getText().toString(),FotoPerfilEnBytes(),
                             IdUsuario);
+                    ActualizarPerfil.this.finish();
                 } else {
 
                     //Si el usuario no cambio su foto de perfil
@@ -210,7 +208,7 @@ public class ActualizarPerfil extends AppCompatActivity implements Validator.Val
                             TXTActualizarCiudadUsuario.getText().toString(),
                             TXTActualizarTelefonoUsuario.getText().toString(),
                             IdUsuario);
-
+                    ActualizarPerfil.this.finish();
                 }
 
             }else{
@@ -231,6 +229,7 @@ public class ActualizarPerfil extends AppCompatActivity implements Validator.Val
                                 TXTActualizarCiudadUsuario.getText().toString(),
                                 TXTActualizarTelefonoUsuario.getText().toString(),FotoPerfilEnBytes(),
                                 IdUsuario);
+                        ActualizarPerfil.this.finish();
                     }else{
                         db.actualizarUsuario(TXTActualizarNombreUsuario.getText().toString(),
                                 TXTActualizarApellidoUsuario.getText().toString(),
@@ -240,7 +239,7 @@ public class ActualizarPerfil extends AppCompatActivity implements Validator.Val
                                 TXTActualizarCiudadUsuario.getText().toString(),
                                 TXTActualizarTelefonoUsuario.getText().toString(),
                                 IdUsuario);
-
+                        ActualizarPerfil.this.finish();
                     }
 
                 }else{

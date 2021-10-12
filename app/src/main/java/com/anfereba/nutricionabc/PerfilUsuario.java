@@ -1,4 +1,4 @@
-package com.anfereba.nutricionabc.FragmentosAdministrador;
+package com.anfereba.nutricionabc;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -104,7 +104,6 @@ public class PerfilUsuario extends Fragment{
 
                 Intent intent = new Intent(getActivity(), ActualizarPerfil.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -113,7 +112,6 @@ public class PerfilUsuario extends Fragment{
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), CambiarCredenciales.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 

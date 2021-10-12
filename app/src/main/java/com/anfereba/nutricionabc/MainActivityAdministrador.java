@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anfereba.nutricionabc.FragmentosAdministrador.OpcionDosAdministrador;
-import com.anfereba.nutricionabc.FragmentosAdministrador.PerfilUsuario;
 import com.anfereba.nutricionabc.FragmentosAdministrador.CrudUsuariosAdministrador;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Usuario;
@@ -117,7 +116,6 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
                 break;
             case R.id.Salir:
                 CerrarSesion();
-                finish();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -129,7 +127,8 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
         editor.putInt(Utilidades.CAMPO_ID_USUARIO,0);
         editor.apply();
         Toast.makeText(getApplicationContext(), "La sesion fue cerrada", Toast.LENGTH_SHORT).show();
-        intent = new Intent(getApplicationContext(), Login_App.class);
+        intent = new Intent(MainActivityAdministrador.this, Login_App.class);
         startActivity(intent);
+        finish();
     }
 }

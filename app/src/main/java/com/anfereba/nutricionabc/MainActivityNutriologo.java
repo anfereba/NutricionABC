@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,11 +18,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.anfereba.nutricionabc.FragmentosAdministrador.PerfilUsuario;
-import com.anfereba.nutricionabc.FragmentosCliente.OpcionCuatroCliente;
-import com.anfereba.nutricionabc.FragmentosCliente.OpcionDosCliente;
-import com.anfereba.nutricionabc.FragmentosCliente.OpcionTresCliente;
-import com.anfereba.nutricionabc.FragmentosCliente.OpcionUnoCliente;
 import com.anfereba.nutricionabc.FragmentosNutriologo.OpcionDosNutriologo;
 import com.anfereba.nutricionabc.FragmentosNutriologo.OpcionTresNutriologo;
 import com.anfereba.nutricionabc.FragmentosNutriologo.OpcionUnoNutriologo;
@@ -124,7 +118,6 @@ public class MainActivityNutriologo extends AppCompatActivity implements Navigat
                 break;
             case R.id.Salir:
                 CerrarSesion();
-                finish();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -137,7 +130,7 @@ public class MainActivityNutriologo extends AppCompatActivity implements Navigat
         editor.putInt(Utilidades.CAMPO_ID_USUARIO,0);
         editor.apply();
         Toast.makeText(getApplicationContext(), "La sesion fue cerrada", Toast.LENGTH_SHORT).show();
-        intent=new Intent(getApplicationContext(), Login_App.class);
+        intent=new Intent(MainActivityNutriologo.this, Login_App.class);
         startActivity(intent);
         finish();
     }

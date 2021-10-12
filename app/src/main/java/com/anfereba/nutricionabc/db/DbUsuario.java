@@ -210,11 +210,16 @@ public class DbUsuario extends DbHelper{
     public void eliminarUsuario(String Id_Usuario){
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Log.i("SQLITEDatabase Instanciado","Si");
         String[] parametros = {Id_Usuario};
         db.delete(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_ID_USUARIO+"=?",parametros);
         Toast.makeText(context, "Ya se elimino el usuario", Toast.LENGTH_SHORT).show();
         db.close();
     }
+
+
+
+
 
     public ArrayList<Usuario> ConsultarListaUsuarios(){
         DbHelper dbHelper = new DbHelper(context);
