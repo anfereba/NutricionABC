@@ -124,6 +124,7 @@ public class MainActivityNutriologo extends AppCompatActivity implements Navigat
                 break;
             case R.id.Salir:
                 CerrarSesion();
+                finish();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

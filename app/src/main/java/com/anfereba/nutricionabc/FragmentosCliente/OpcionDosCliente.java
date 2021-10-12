@@ -97,6 +97,7 @@ public class OpcionDosCliente extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), RegistrarHijo.class));
+                getActivity().finish();
             }
         });
         return v;

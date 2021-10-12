@@ -104,6 +104,7 @@ public class PerfilUsuario extends Fragment{
 
                 Intent intent = new Intent(getActivity(), ActualizarPerfil.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
@@ -112,6 +113,7 @@ public class PerfilUsuario extends Fragment{
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), CambiarCredenciales.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
@@ -119,10 +121,12 @@ public class PerfilUsuario extends Fragment{
     }
 
     private int ObtenerIdUsuarioActual() {
-
+        int IdUsuario = 0;
         preferences = getActivity().getSharedPreferences("Sesiones", Context.MODE_PRIVATE);
         editor = preferences.edit();
-        int IdUsuario = preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
+        Log.i("Usuario Anterior: ",String.valueOf(preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0)));
+        IdUsuario = preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
+        Log.i("Usuario Despues: ",String.valueOf(IdUsuario));
         return IdUsuario;
     }
 

@@ -94,6 +94,7 @@ public class MainActivityCliente extends AppCompatActivity implements Navigation
                 break;
             case R.id.Salir:
                 CerrarSesion();
+                finish();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
