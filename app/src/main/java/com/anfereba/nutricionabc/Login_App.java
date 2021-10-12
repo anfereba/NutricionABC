@@ -33,7 +33,7 @@ public class Login_App extends AppCompatActivity {
 
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
-    private Executor executor;
+    private Executor executor; //para manejar eventos callback
 
     private Integer Id_Sesion = -1;
 
@@ -79,7 +79,13 @@ public class Login_App extends AppCompatActivity {
             public void onClick(View view) {
                 BiometricManager biometricManager = BiometricManager.from(getApplicationContext());
                 if (biometricManager.canAuthenticate() != BiometricManager.BIOMETRIC_SUCCESS){
-                    Toast.makeText(getApplicationContext(),"Error con la huella dactilar", Toast.LENGTH_LONG).show();
+                    if (biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE){
+                        toast("No puede autenticarse porque el hardware no está disponible. Inténtelo de nuevo más tarde.");
+                    }else if (biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED){
+                        toast("No puede autenticarse porque no se ha registrado ninguna credencial biométrica o de dispositivo.");
+                    }else if (biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE){
+                        toast("No puede autenticarse porque no hay un hardware adecuado (no hay un sensor biométrico o no hay un keyguard).");
+                    }
                     BtnHuellaDactilar.setText("No Validada");
                     BtnHuellaDactilar.setBackgroundColor(getResources().getColor(R.color.colorError));
                 }
@@ -87,6 +93,9 @@ public class Login_App extends AppCompatActivity {
                     @Override
                     public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                         super.onAuthenticationError(errorCode, errString);
+
+                        // Se llama cuando se ha encontrado un error irrecuperable y la operación ha finalizado.
+
                         BtnHuellaDactilar.setText("No Validada");
                         BtnHuellaDactilar.setBackgroundColor(getResources().getColor(R.color.colorError));
                     }
@@ -96,15 +105,21 @@ public class Login_App extends AppCompatActivity {
                         super.onAuthenticationSucceeded(result);
                         BtnHuellaDactilar.setText("Validada");
                         BtnHuellaDactilar.setBackgroundColor(getResources().getColor(R.color.colorExito));
+
+                        //Se llama cuando se reconoce un dato biométrico.
+
                     }
                     @Override
                     public void onAuthenticationFailed() {
+
+                        // Se llama cuando un dato biométrico es válido pero no se reconoce
+
                         super.onAuthenticationFailed();
-                        Toast.makeText(getApplicationContext(), "Autenticacion Fallida", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "La aplicación no ha reconocido la huella dactilar colocada. Por favor, inténtelo de nuevo", Toast.LENGTH_SHORT).show();
                     }
 
                 });
-                //Despliegue del cuadro de dialogo autenticacion
+                //Configuración del título, descripción en el diálogo de autenticación
 
                 promptInfo = new BiometricPrompt.PromptInfo.Builder()
                         .setTitle("Autenticacion")
@@ -229,6 +244,7 @@ public class Login_App extends AppCompatActivity {
     private Integer VerificarIdDeSesion() {
         return this.preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
     }
-
-
+    public void toast(String texto){
+        Toast.makeText(getApplicationContext(), texto, Toast.LENGTH_SHORT).show();
+    }
 }

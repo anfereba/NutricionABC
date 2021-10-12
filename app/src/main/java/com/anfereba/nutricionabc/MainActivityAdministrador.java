@@ -117,6 +117,7 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
                 break;
             case R.id.Salir:
                 CerrarSesion();
+                finish();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
