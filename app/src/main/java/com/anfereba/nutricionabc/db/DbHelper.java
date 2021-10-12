@@ -18,12 +18,10 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String TABLE_NUTRIOLOGO = "t_nutriologo";//Creamos la tabla de Nutriologo
     public static final String TABLE_ADMINISTRADOR = "t_administrador";//Creamos la tabla de Nutriologo
 
+    //constructor
         public DbHelper(@Nullable Context context) {
-
             super(context, Utilidades.DATABASE_NOMBRE, null, Utilidades.DATABASE_VERSION);
     }
-
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Utilidades.CREAR_TABLA_PERFIL_SISTEMA);
@@ -37,8 +35,6 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Cliente"));
         db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Nutriologo"));
         db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Administrador"));
-
-
 
         /*
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NUTRIOLOGO + "(" +//Creamos la tabla nutriologo y le asignamos los atributos //
