@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,7 +19,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.anfereba.nutricionabc.R;
-import com.anfereba.nutricionabc.db.DbHelper;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Usuario;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
@@ -160,7 +158,6 @@ public class EditarUsuarioAdministrador extends AppCompatActivity implements Val
             public void onClick(View view) {
                 DbUsuario db = new DbUsuario(context);
                 db.eliminarUsuario(Integer.toString(Id_Usuario));
-                db.close();
             }
         });
 
