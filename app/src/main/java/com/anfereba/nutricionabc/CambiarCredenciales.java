@@ -71,6 +71,7 @@ public class CambiarCredenciales extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 ActualizarPasswordUsuario();
+
             }
         });
 
@@ -78,6 +79,7 @@ public class CambiarCredenciales extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 ActualizarRespuestasUsuario();
+
             }   
         });
 
@@ -92,6 +94,7 @@ public class CambiarCredenciales extends AppCompatActivity{
                     Toast.makeText(this, "Las respuestas no pueden ser vacias", Toast.LENGTH_SHORT).show();
                 }else{
                     db.ActualizarRespuestasUsuario(IdUsuario,preguntaUno, preguntaDos);
+                    CambiarCredenciales.this.finish();
                 }
         }else{
             Toast.makeText(this, "Tu contraseña no es correcta", Toast.LENGTH_SHORT).show();
@@ -108,6 +111,7 @@ public class CambiarCredenciales extends AppCompatActivity{
                 Toast.makeText(this, "La nueva contraseña no puede estar vacia", Toast.LENGTH_SHORT).show();
             }else{
                 db.ActualizarPasswordUsuario(IdUsuario,nuevoPassword);
+                CambiarCredenciales.this.finish();
             }
         }else{
             Toast.makeText(this, "Tu contraseña antigua no es correcta", Toast.LENGTH_SHORT).show();

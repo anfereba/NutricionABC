@@ -172,10 +172,11 @@ public class InsertarUsuarioAdministrador extends AppCompatActivity implements V
                                 TXTPreguntaUnoA.getText().toString(), TXTPreguntaDosA.getText().toString());
 
                         if (QueryExitosa > 0) {
-                            startActivity(new Intent(getApplicationContext(), Login_App.class));
-                            finish();
+                            //startActivity(new Intent(getApplicationContext(), Login_App.class));
+                            //finish();
                             Toast.makeText(getApplicationContext(), "Registro guardado con éxito: ", Toast.LENGTH_LONG).show();
                             limpiar();
+                            InsertarUsuarioAdministrador.this.finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "ERROR AL GUARDAR REGISTRO: ", Toast.LENGTH_LONG).show();
                         }

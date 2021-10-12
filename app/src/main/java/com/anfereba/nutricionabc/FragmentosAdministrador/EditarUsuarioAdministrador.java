@@ -12,12 +12,14 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.anfereba.nutricionabc.Login_App;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Usuario;
@@ -145,8 +147,8 @@ public class EditarUsuarioAdministrador extends AppCompatActivity implements Val
         BtnActualizarClienteBD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                     ActualizarDatosUsuario();
+                    EditarUsuarioAdministrador.this.finish();
 
             }
         });
@@ -156,8 +158,9 @@ public class EditarUsuarioAdministrador extends AppCompatActivity implements Val
         BtnEliminarClienteBD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DbUsuario db = new DbUsuario(context);
+                DbUsuario db = new DbUsuario(getApplicationContext());
                 db.eliminarUsuario(Integer.toString(Id_Usuario));
+                EditarUsuarioAdministrador.this.finish();
             }
         });
 
@@ -230,7 +233,6 @@ public class EditarUsuarioAdministrador extends AppCompatActivity implements Val
                             TXTActualizarCiudadUsuario.getText().toString(),
                             TXTActualizarTelefonoUsuario.getText().toString(),
                             Id_Usuario);
-
                 }
 
             }else{
@@ -260,7 +262,6 @@ public class EditarUsuarioAdministrador extends AppCompatActivity implements Val
                                 TXTActualizarCiudadUsuario.getText().toString(),
                                 TXTActualizarTelefonoUsuario.getText().toString(),
                                 Id_Usuario);
-
                     }
 
                 }else{
