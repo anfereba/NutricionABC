@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -67,13 +68,13 @@ public class OpcionUnoCliente extends Fragment {
         View view = inflater.inflate(R.layout.fragment_opcion_uno_cliente, container, false);
         final RatingBar simpleRatingBar = (RatingBar) view.findViewById(R.id.RatingCalifNutri);
         Button submitButton = (Button) view.findViewById(R.id.BtnCalifNutri);
+        EditText text = (EditText) view.findViewById(R.id.EditTextCalifNutri);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String totalStars = "Total Stars:: " + simpleRatingBar.getNumStars();
                 String rating = "Rating :: " + simpleRatingBar.getRating();
-                Toast.makeText(getActivity(), "Total de Estrellas:: " + totalStars + "\n" + "Rating :: " + rating + "\n"
-                        + "ID Nutriologo:: ", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Total de Estrellas:: "+totalStars + "\n" + "Rating :: "+rating +"\n" + "ID Nutriologo:: " +text.getText().toString(), Toast.LENGTH_LONG).show();
             }
         });
         return view;

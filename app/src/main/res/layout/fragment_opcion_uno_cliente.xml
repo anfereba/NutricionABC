@@ -18,7 +18,8 @@
         android:background="@color/teal_700"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:rating="2" />
+        android:rating="2"
+        android:translationY="35dp" />
 
     <Button
         android:id="@+id/BtnCalifNutri"
@@ -48,6 +49,22 @@
         android:id="@+id/SpinnerCalif"
         android:layout_width="match_parent"
         android:layout_height="36dp"
-        android:translationY="130dp" />
+        android:translationY="120dp" />
+
+    <EditText
+        android:id="@+id/EditTextCalifNutri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="IdNutriologo"
+        android:inputType="textPersonName"
+        android:translationX="90dp"
+        android:translationY="170dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="293dp"
+        android:layout_height="wrap_content"
+        android:translationX="50dp"
+        android:translationY="370dp" />
 
 </FrameLayout>

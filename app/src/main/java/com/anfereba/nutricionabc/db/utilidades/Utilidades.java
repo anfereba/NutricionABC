@@ -159,7 +159,7 @@ public class Utilidades {
             +"FOREIGN KEY"+ "("+CAMPO_ID_USUARIO_3+") "
             +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO_3+")"
             +"FOREIGN KEY"+ "("+CAMPO_ID_PERFIL_SISTEMA_3+") "
-            +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_PERFIL_SISTEMA_3+"))";
+            +"REFERENCES "+TABLA_PERFIL_SISTEMA+"("+CAMPO_ID_PERFIL_SISTEMA_3+"))";
 
 
 
