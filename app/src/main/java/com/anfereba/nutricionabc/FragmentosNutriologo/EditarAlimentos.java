@@ -11,12 +11,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.anfereba.nutricionabc.MainActivityNutriologo;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 import com.anfereba.nutricionabc.db.DbAlimento;
@@ -97,9 +99,9 @@ public class EditarAlimentos extends AppCompatActivity implements Validator.Vali
 
                     if (QueryExitosa > 0 ) {
                         verRegistro();
+                        finish();
                         Toast.makeText(getApplicationContext(), "Alimento guardado con éxito: ", Toast.LENGTH_LONG).show();
                         limpiar();
-                        finish();
                     } else {
                         Toast.makeText(getApplicationContext(), "ERROR AL GUARDAR El ALIMENTO: ", Toast.LENGTH_LONG).show();
                     }
@@ -141,7 +143,6 @@ AgregarFotoAlimento.setOnClickListener(new View.OnClickListener() {
         Intent intent = new Intent(this,VerAlimentos.class);
         intent.putExtra("IdAlimentos",id);
         startActivity(intent);
-        finish();
     }
 
     private void limpiar() {
@@ -198,5 +199,13 @@ AgregarFotoAlimento.setOnClickListener(new View.OnClickListener() {
             }
 
         }
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==event.KEYCODE_BACK){
+            finish();
+            ((MainActivityNutriologo)getApplicationContext()).finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

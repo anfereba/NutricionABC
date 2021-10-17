@@ -44,12 +44,7 @@
             android:exported="true" />
         <activity
             android:name=".FragmentosNutriologo.EditarAlimentos"
-            android:exported="true"
-            android:parentActivityName=".MainActivityNutriologo">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivityNutriologo" />
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".FragmentosNutriologo.VerAlimentos"
             android:exported="true"
@@ -61,11 +56,7 @@
         <activity
             android:name=".FragmentosNutriologo.EditarPlanesNutricionales"
             android:exported="true"
-            android:parentActivityName=".MainActivityNutriologo">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivityNutriologo" />
-        </activity>
+             />
         <activity
             android:name=".FragmentosNutriologo.VerPlanesNutricionales"
             android:exported="true"

@@ -51,8 +51,13 @@ public class ListaAlimentosAdapter extends RecyclerView.Adapter<ListaAlimentosAd
                     Intent intent = new Intent(context, VerAlimentos.class); //si algo lo toca se podra modificar
                     intent.putExtra("IdAlimentos",listaAlimentos.get(getAdapterPosition()).getIdAlimento());
                     context.startActivity(intent);
+                    //((MainActivityNutriologo)context).finish();
                 }
             });
         }
+    }
+    public void updateRecyclerViewAdapter(ArrayList<Alimentos>listaAlimentos){
+        this.listaAlimentos = listaAlimentos;
+        notifyDataSetChanged();
     }
 }

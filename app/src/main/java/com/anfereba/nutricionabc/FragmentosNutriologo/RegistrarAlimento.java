@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.anfereba.nutricionabc.Login_App;
+import com.anfereba.nutricionabc.MainActivityNutriologo;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbAlimento;
 import com.anfereba.nutricionabc.db.DbUsuario;
@@ -152,5 +154,13 @@ Uri RutaArchivoUri;
             }
 
         }
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==event.KEYCODE_BACK){
+            finish();
+            ((MainActivityNutriologo)getApplicationContext()).finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

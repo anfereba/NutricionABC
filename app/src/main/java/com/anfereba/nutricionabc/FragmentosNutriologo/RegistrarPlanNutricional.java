@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anfereba.nutricionabc.MainActivityNutriologo;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbPlanNutricional;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
@@ -43,6 +45,7 @@ Button Guardarplan;
                 }
             }
         });
+
     }
 
     private void limpiar() {
@@ -55,4 +58,13 @@ Button Guardarplan;
         Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );
         return iDNutriologo;
     }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==event.KEYCODE_BACK){
+            finish();
+            ((MainActivityNutriologo)getApplicationContext()).finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaAlimentosAdapter;
 import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanesAlimentosAdapter;
 import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanesAlimentosEditarAdapter;
+import com.anfereba.nutricionabc.MainActivityNutriologo;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbAlimento;
 import com.anfereba.nutricionabc.db.DbPlanAlimento;
@@ -28,10 +30,9 @@ import java.util.ArrayList;
 
 public class EditarPlanesNutricionales extends AppCompatActivity {
 EditText NombrePlanNutricional;
-Button modificarPlanNutricional;
 RecyclerView ListaPlanesAlimentos2;
 PlanesNutricionales planesNutricionales;
-FloatingActionButton fabEditarPlan,fabEliminarPlan,agregarAlimentos;
+FloatingActionButton fabEditarPlan,fabEliminarPlan,agregarAlimentos,modificarPlanNutricional;
 Spinner spinnerAlimentos;
 boolean correcto= false;
 int id=0;
@@ -42,7 +43,7 @@ int id2=0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_planes_nutricionales);
         NombrePlanNutricional=(EditText) findViewById(R.id.ModificarNombrePlan);
-        modificarPlanNutricional=(Button) findViewById(R.id.ModificarPlan);
+        modificarPlanNutricional=(FloatingActionButton) findViewById(R.id.ModificarPlan);
         fabEditarPlan=(FloatingActionButton) findViewById(R.id.floatingEditarPlan);
         spinnerAlimentos=(Spinner)findViewById(R.id.spinnerAlimentos);
         agregarAlimentos=(FloatingActionButton)findViewById(R.id.agregarAlimentos);
@@ -105,5 +106,13 @@ int id2=0;
         intent.putExtra("IdPlanesNutricionales",id);
         startActivity(intent);
         finish();
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==event.KEYCODE_BACK){
+            finish();
+            ((MainActivityNutriologo)getApplicationContext()).finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
