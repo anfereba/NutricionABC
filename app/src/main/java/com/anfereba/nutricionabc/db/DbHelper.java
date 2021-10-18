@@ -30,26 +30,12 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.CREAR_TABLA_Alimento);
         db.execSQL(Utilidades.CREAR_TABLA_PlanAlimento);
         db.execSQL(Utilidades.CREAR_TABLA_HIJO);
-        db.execSQL(Utilidades.CREAR_TABLA_Calificacion);
+        db.execSQL(Utilidades.CREAR_TABLA_CALIFICACION);
 
         db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Cliente"));
         db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Nutriologo"));
         db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Administrador"));
 
-        /*
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NUTRIOLOGO + "(" +//Creamos la tabla nutriologo y le asignamos los atributos //
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "correo TEXT NoT NULL," +
-                "nombre TEXT NOT NULL," +
-                "contraseña TEXT NOT NULL)");
-
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_ADMINISTRADOR + "(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "correo TEXT NoT NULL," +
-                "nombre TEXT NOT NULL," +
-                "contraseña TEXT NOT NULL)");
-
-                */
     }
 
 
@@ -59,6 +45,7 @@ public class DbHelper extends SQLiteOpenHelper {
      mucho del numero que pongan arriba*/
 
         db.execSQL("DROP TABLE IF EXISTS " + Utilidades.TABLA_USUARIO);
+        
         //sqLiteDatabase.execSQL("DROP TABLE " + TABLE_NUTRIOLOGO);
         onCreate(db);
 

@@ -9,11 +9,13 @@
             <item
                 android:id="@+id/Opcion_uno_Cliente"
                 android:title="@string/Opcion_uno_Cliente"
+                android:fontFamily="@font/proximanovaregular"
                 android:icon="@drawable/uno_ico">
             </item>
             <item
                 android:id="@+id/Opcion_dos_Cliente"
                 android:title="@string/Opcion_dos_Cliente"
+                android:fontFamily="@font/proximanovaregular"
                 android:icon="@drawable/dos_ico">
             </item>
 
@@ -21,21 +23,25 @@
     </item>
     <item
         android:id="@+id/MasOpcionestxt"
+        android:fontFamily="@font/proximanovaregular"
         android:title="@string/MasOpcionestxt">
         <menu>
             <item
                 android:id="@+id/Opcion_tres_Cliente"
                 android:title="@string/Opcion_tres_Cliente"
+                android:fontFamily="@font/proximanovaregular"
                 android:icon="@drawable/tres_ico">
             </item>
             <item
                 android:id="@+id/Opcion_cuatro_Cliente"
                 android:title="@string/OpcionPerfil"
+                android:fontFamily="@font/proximanovaregular"
                 android:icon="@drawable/cuatro_ico">
             </item>
             <item
                 android:id="@+id/Salir"
                 android:title="@string/Salir"
+                android:fontFamily="@font/proximanovaregular"
                 android:icon="@drawable/cinco_ico"/>
         </menu>
     </item>

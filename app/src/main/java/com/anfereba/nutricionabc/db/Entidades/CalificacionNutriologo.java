@@ -3,44 +3,57 @@ package com.anfereba.nutricionabc.db.Entidades;
 public class CalificacionNutriologo {
 
 
-    private Integer idCalificacion;
-    private Integer idUsuario;
-    private Integer idPerfilSistema;
-    private Integer rating;
+    private Integer IdCalificacion;
+    private Integer IdPadre;
+    private Integer IdNutriologo;
+    private double Puntuacion;
+    private String Comentario;
 
-    public String toString(){
-        return getIdCalificacion() +" "+ getIdUsuario() +" "+ getIdPerfilSistema() + ""+ getRating() +" ";
+    public CalificacionNutriologo(Integer idCalificacion, Integer idPadre, Integer idNutriologo, double puntuacion, String comentario) {
+        IdCalificacion = idCalificacion;
+        IdPadre = idPadre;
+        IdNutriologo = idNutriologo;
+        Puntuacion = puntuacion;
+        Comentario = comentario;
     }
 
     public Integer getIdCalificacion() {
-        return idCalificacion;
+        return IdCalificacion;
     }
 
     public void setIdCalificacion(Integer idCalificacion) {
-        this.idCalificacion = idCalificacion;
+        IdCalificacion = idCalificacion;
     }
 
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getIdPadre() {
+        return IdPadre;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdPadre(Integer idPadre) {
+        IdPadre = idPadre;
     }
 
-    public Integer getIdPerfilSistema() {
-        return idPerfilSistema;
+    public Integer getIdNutriologo() {
+        return IdNutriologo;
     }
 
-    public void setIdPerfilSistema(Integer idPerfilSistema) {
-        this.idPerfilSistema = idPerfilSistema;
+    public void setIdNutriologo(Integer idNutriologo) {
+        IdNutriologo = idNutriologo;
     }
 
-    public Integer getRating() {
-        return rating;
+    public double getPuntuacion() {
+        return Puntuacion;
     }
 
-    public void setRating(Integer rating) {
-        this.rating = rating;
+    public void setPuntuacion(double puntuacion) {
+        Puntuacion = puntuacion;
+    }
+
+    public String getComentario() {
+        return Comentario;
+    }
+
+    public void setComentario(String comentario) {
+        Comentario = comentario;
     }
 }

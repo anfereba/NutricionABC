@@ -67,11 +67,13 @@ public class Utilidades {
 
     //Campos Tabla de calificacion
 
-    public static final String TABLA_Calificacion = "Calificacion";
-    public static final String CAMPO_ID_Calificacion = "idCalificacion";
-    public static final String CAMPO_ID_USUARIO_3 = "idUsuario";//FK_Usuario
-    public static final String CAMPO_ID_PERFIL_SISTEMA_3 = "idPerfilSistema";//FK_PerfilSistema
-    public static final String CAMPO_Rating = "rating";
+    public static final String TABLA_CALIFICACION = "Calificacion";
+    public static final String CAMPO_ID_CALIFICACION = "IdCalificacion";
+    public static final String CAMPO_ID_PADRE_CALIFICACION = "IdPadre";//FK_Usuario
+    public static final String CAMPO_ID_NUTRIOLOGO_CALIFICACION = "IdNutriologo";//FK_PerfilSistema
+    public static final String CAMPO_PUNTUACION = "Puntuacion";
+    public static final String CAMPO_COMENTARIO = "Comentario";
+
     //Sentencia para crear tabla PerfilSistema
 
     public static final String CREAR_TABLA_PERFIL_SISTEMA = "CREATE TABLE "
@@ -151,16 +153,14 @@ public class Utilidades {
 
     //Sentencia para crear tabla TABLA_Calificacion
 
-    public static final String CREAR_TABLA_Calificacion = "CREATE TABLE "
-            + TABLA_Calificacion + "(" + CAMPO_ID_Calificacion + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + CAMPO_ID_USUARIO_3 + " INTEGER NOT NULL, "
-            + CAMPO_ID_PERFIL_SISTEMA_3 + " INTEGER NOT NULL, "
-            + CAMPO_Rating + " INTEGER NOT NULL, "
-            +"FOREIGN KEY"+ "("+CAMPO_ID_USUARIO_3+") "
-            +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO_3+")"
-            +"FOREIGN KEY"+ "("+CAMPO_ID_PERFIL_SISTEMA_3+") "
-            +"REFERENCES "+TABLA_PERFIL_SISTEMA+"("+CAMPO_ID_PERFIL_SISTEMA_3+"))";
-
-
-
+    public static final String CREAR_TABLA_CALIFICACION = "CREATE TABLE "
+            + TABLA_CALIFICACION + "(" + CAMPO_ID_CALIFICACION + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + CAMPO_ID_PADRE_CALIFICACION + " INTEGER NOT NULL, "
+            + CAMPO_ID_NUTRIOLOGO_CALIFICACION + " INTEGER NOT NULL, "
+            + CAMPO_PUNTUACION + " REAL NOT NULL, "
+            + CAMPO_COMENTARIO + " TEXT NOT NULL, "
+            +"FOREIGN KEY"+ "("+CAMPO_ID_PADRE_CALIFICACION+") "
+            +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO+")"
+            +"FOREIGN KEY"+ "("+CAMPO_ID_NUTRIOLOGO_CALIFICACION+") "
+            +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO+"))";
 }

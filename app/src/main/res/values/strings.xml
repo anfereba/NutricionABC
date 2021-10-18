@@ -33,7 +33,7 @@
 
     <!-- Menu de Opciones Cliente -->
     <string name="Salir">Cerrar sesión</string>
-    <string name="Opcion_uno_Cliente">Opción 1</string>
+    <string name="Opcion_uno_Cliente">Info git Nutriologos</string>
     <string name="Opcion_dos_Cliente">Hijos</string>
     <string name="Opcion_tres_Cliente">Opción 3</string>
     <string name="Opcion_cuatro_Cliente">Opción 4</string>

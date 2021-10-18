@@ -2,10 +2,13 @@ package com.anfereba.nutricionabc.FragmentosCliente;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anfereba.nutricionabc.R;
+import com.anfereba.nutricionabc.db.DbCalificacion;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Usuario;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
@@ -25,14 +29,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VerDetallesNutriologo extends AppCompatActivity {
 
-    private int Id_Usuario;
+    private int Id_Nutriologo;
 
     DbUsuario db;
+    DbCalificacion dbCalificacion;
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     CircleImageView imagenNutriologo;
     LinearLayout personalinfo, experience, review;
     TextView personalinfobtn, experiencebtn, reviewbtn,
             TXTNombreNutriologo, TXTTelefonoNutriologo, TXTCorreoNutriologo, TXTCiudadNutriologo;
+    EditText TXTComentario;
 
     private ArrayList<Usuario> listaNutriologos;
 
@@ -53,6 +62,7 @@ public class VerDetallesNutriologo extends AppCompatActivity {
         TXTTelefonoNutriologo = findViewById(R.id.TXTTelefonoNutriologo);
         TXTCorreoNutriologo= findViewById(R.id.TXTCorreoNutriologo);
         TXTCiudadNutriologo = findViewById(R.id.TXTCiudadNutriologo);
+        TXTComentario = findViewById(R.id.TXTComentario);
 
 
         /*making personal info visible*/
@@ -64,16 +74,18 @@ public class VerDetallesNutriologo extends AppCompatActivity {
         if(savedInstanceState==null){
             Bundle extras = getIntent().getExtras();
             if(extras==null){
-                Id_Usuario=Integer.parseInt(null);
+                Id_Nutriologo=Integer.parseInt(null);
             }else {
-                Id_Usuario= extras.getInt(Utilidades.CAMPO_ID_USUARIO);
+                Id_Nutriologo= extras.getInt(Utilidades.CAMPO_ID_USUARIO);
             }
         }else {
-            Id_Usuario = (int) savedInstanceState.getSerializable(Utilidades.CAMPO_ID_USUARIO);
+            Id_Nutriologo = (int) savedInstanceState.getSerializable(Utilidades.CAMPO_ID_USUARIO);
         }
 
         db = new DbUsuario(this);
-        listaNutriologos = new ArrayList<>(db.ObtenerDatosUsuario(Id_Usuario));
+        dbCalificacion = new DbCalificacion(this);
+
+        listaNutriologos = new ArrayList<>(db.ObtenerDatosUsuario(Id_Nutriologo));
 
 
         SetearDatos();
@@ -84,9 +96,17 @@ public class VerDetallesNutriologo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String totalStars = "Total Stars:: " + simpleRatingBar.getNumStars();
-                String rating = "Rating :: " + simpleRatingBar.getRating();
+                String puntuacion = "Rating :: " + simpleRatingBar.getRating();
                 Toast.makeText(getApplicationContext(), "Total de Estrellas:: "+totalStars + "\n" +
-                        "Rating :: "+rating +"\n", Toast.LENGTH_LONG).show();
+                        "Rating :: "+puntuacion +"\n", Toast.LENGTH_LONG).show();
+
+                Double puntaje = Double.valueOf(simpleRatingBar.getRating());
+                long query = dbCalificacion.insertarCalificacion(ObtenerIdUsuarioActual(),Id_Nutriologo, puntaje,TXTComentario.getText().toString());
+                if (query > 0){
+                    Toast.makeText(getApplicationContext(), "Calificacion Enviada", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Error al enviar calificacion", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -145,5 +165,13 @@ public class VerDetallesNutriologo extends AppCompatActivity {
         TXTCorreoNutriologo.setText(listaNutriologos.get(0).getCorreo());
         TXTCiudadNutriologo.setText(listaNutriologos.get(0).getCiudad() + " , "+
                 listaNutriologos.get(0).getDireccion());
+    }
+
+    private int ObtenerIdUsuarioActual() {
+        int IdUsuario = 0;
+        preferences = this.getSharedPreferences("Sesiones", Context.MODE_PRIVATE);
+        editor = preferences.edit();
+        IdUsuario = preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
+        return IdUsuario;
     }
 }
