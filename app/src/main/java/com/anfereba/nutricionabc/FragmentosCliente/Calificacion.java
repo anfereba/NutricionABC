@@ -23,7 +23,6 @@ public class Calificacion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstancesState) {
         super.onCreate(savedInstancesState);
         setContentView(R.layout.fragment_opcion_uno_cliente);
-        SpinnerCalif = findViewById(R.id.SpinnerCalif);
 
         List<CalificacionNutriologo> listaCalificacion = llenarCalificacion();
         //enviamos el adapatador que se va adecuar a lo que traiga

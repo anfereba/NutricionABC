@@ -15,4 +15,11 @@
     <color name="colorError">#d9534f</color>
     <color name="colorExito">#5cb85c</color>
     <color name="hipervinculo">#2a7ee6</color>
+
+
+    <color name="grey">#E9EAEE</color>
+    <color name="yellow">#F8BA0F</color>
+    <color name="goodgrey">#535353</color>
+    <color name="blue">#293859</color>
+    <color name="lightgrey">#EEEEEE</color>
 </resources>

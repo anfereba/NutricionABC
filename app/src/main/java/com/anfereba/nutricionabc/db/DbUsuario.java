@@ -336,4 +336,37 @@ public class DbUsuario extends DbHelper{
         Toast.makeText(context, "Contraseña actualizada", Toast.LENGTH_SHORT).show();
         db.close();
     }
+
+    public ArrayList<Usuario> ConsultarListaNutriologos(){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        ArrayList<Usuario> listaNutriologos = new ArrayList<>();
+        Usuario usuario = null;
+        Cursor cursorUsuarios = null;
+        String consulta = "SELECT * FROM "+Utilidades.TABLA_USUARIO+ " WHERE "+Utilidades.CAMPO_ID_PERFIL_SISTEMA+" = 2";
+
+        cursorUsuarios = db.rawQuery(consulta,null);
+        if (cursorUsuarios.moveToFirst()){
+            do{
+                usuario = new Usuario();
+                usuario.setIdUsuario(cursorUsuarios.getInt(0));
+                usuario.setIdPerfilSistema(cursorUsuarios.getInt(1));
+                usuario.setNombres(cursorUsuarios.getString(2));
+                usuario.setApellidos(cursorUsuarios.getString(3));
+                usuario.setFechaNacimiento(cursorUsuarios.getString(4));
+                usuario.setCorreo(cursorUsuarios.getString(5));
+                usuario.setPassword(cursorUsuarios.getString(6));
+                usuario.setDireccion(cursorUsuarios.getString(7));
+                usuario.setCiudad(cursorUsuarios.getString(8));
+                usuario.setTelefono(cursorUsuarios.getString(9));
+                usuario.setFechaCreacion(cursorUsuarios.getString(10));
+                usuario.setFotoPerfil(cursorUsuarios.getBlob(11));
+                usuario.setPreguntaUno(cursorUsuarios.getString(12));
+                usuario.setPreguntaDos(cursorUsuarios.getString(13));
+                listaNutriologos.add(usuario);
+            }while (cursorUsuarios.moveToNext());
+        }
+        cursorUsuarios.close();
+        return listaNutriologos;
+    }
 }

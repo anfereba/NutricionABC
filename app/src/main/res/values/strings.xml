@@ -126,7 +126,13 @@
     <string name="TXTEdadHijo">Edad Hijo en años</string>
     <string name="TXTPesoHijo">Peso Hijo en kilogramos</string>
     <string name="BtnGuardarHijo">Guardar Hijo</string>
-
+    <string name="job_success">Job Success</string>
+    <string name="ratings">Calificacion</string>
+    <string name="about_me">Acerca de mi</string>
+    <string name="my_desc">Aqui van cosas sobre mi</string>
+    <string name="contact">Contacto</string>
+    <string name="skills">Habilidades</string>
+    <string name="samplereview">Eres muy buen nutriologo</string>
 
 
 </resources>
