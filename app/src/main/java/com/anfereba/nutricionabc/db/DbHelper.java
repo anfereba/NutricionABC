@@ -36,6 +36,9 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Nutriologo"));
         db.execSQL(Utilidades.INSERTAR_PERFIL_DEFAULT("Administrador"));
 
+        db.execSQL(Utilidades.CREAR_VISTA_CALIFIACION_USUARIO);
+        Utilidades.AsignarAlias();
+
     }
 
 

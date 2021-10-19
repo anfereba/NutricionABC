@@ -1,6 +1,8 @@
 package com.anfereba.nutricionabc.FragmentosCliente;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,10 +19,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anfereba.nutricionabc.FragmentosCliente.Listas.ListaCalificacionesNutriologoAdapter;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbCalificacion;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Usuario;
+import com.anfereba.nutricionabc.db.VistasDb.VistaCalificacionUsuario;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import java.util.ArrayList;
@@ -36,6 +40,11 @@ public class VerDetallesNutriologo extends AppCompatActivity {
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+
+    RecyclerView listaCalificacionesRV;
+    ListaCalificacionesNutriologoAdapter adapter;
+    ArrayList<VistaCalificacionUsuario> listaArrayCalificaciones;
+
 
     CircleImageView imagenNutriologo;
     LinearLayout personalinfo, experience, review;
@@ -86,6 +95,7 @@ public class VerDetallesNutriologo extends AppCompatActivity {
         dbCalificacion = new DbCalificacion(this);
 
         listaNutriologos = new ArrayList<>(db.ObtenerDatosUsuario(Id_Nutriologo));
+
 
 
         SetearDatos();
@@ -142,7 +152,7 @@ public class VerDetallesNutriologo extends AppCompatActivity {
         reviewbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mostrarListaCalificaciones();
                 personalinfo.setVisibility(View.GONE);
                 experience.setVisibility(View.GONE);
                 review.setVisibility(View.VISIBLE);
@@ -152,6 +162,16 @@ public class VerDetallesNutriologo extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void mostrarListaCalificaciones() {
+        listaCalificacionesRV = findViewById(R.id.listaCalificacionesRV);
+        listaCalificacionesRV.setLayoutManager(new LinearLayoutManager(this));
+        DbCalificacion db = new DbCalificacion(VerDetallesNutriologo.this);
+        listaArrayCalificaciones = new ArrayList<>();
+        adapter = new ListaCalificacionesNutriologoAdapter(db.ConsultarListaCalificaciones(Id_Nutriologo),this);
+        listaCalificacionesRV.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     private void SetearDatos() {

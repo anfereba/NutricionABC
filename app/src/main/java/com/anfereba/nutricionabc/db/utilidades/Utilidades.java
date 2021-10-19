@@ -74,6 +74,37 @@ public class Utilidades {
     public static final String CAMPO_PUNTUACION = "Puntuacion";
     public static final String CAMPO_COMENTARIO = "Comentario";
 
+    //Campos Vista V_CALIFICACION_USUARIO
+
+    public static final String VISTA_CALIFICACION_USUARIO = "v_calificacion_usuario";
+    public static final String CAMPO_VISTA_ID_CALIFICACION = "IdCalificacion";
+    public static final String CAMPO_VISTA_ID_PADRE = "IdPadre";
+    public static final String CAMPO_VISTA_ID_NUTRIOLOGO = "IdNutriologo";
+    public static String CAMPO_VISTA_NOMBRE_PADRE = "Nombres";
+    public static String CAMPO_VISTA_APELLIDOS_PADRE = "Apellidos";
+    public static String CAMPO_VISTA_CORREO_PADRE = "Correo";
+    public static String CAMPO_VISTA_FOTO_PADRE = "FotoPerfil";
+    public static String CAMPO_VISTA_NOMBRE_NUTRIOLOGO = "Nombres";
+    public static String CAMPO_VISTA_APELLIDOS_NUTRIOLOGO = "Apellidos";
+    public static String CAMPO_VISTA_CORREO_NUTRIOLOGO = "Correo";
+    public static String CAMPO_VISTA_FOTO_NUTRIOLOGO = "FotoPerfil";
+    public static final String CAMPO_VISTA_PUNTUACION = "Puntuacion";
+    public static final String CAMPO_VISTA_COMENTARIO = "Comentario";
+
+    public static final String ALIAS_CAMPO_NOMBRE_PADRE = "nombrePadre";
+    public static final String ALIAS_CAMPO_APELLIDOS_PADRE = "apellidosPadre";
+    public static final String ALIAS_CAMPO_CORREO_PADRE = "CorreoPadre";
+    public static final String ALIAS_CAMPO_FOTO_PADRE = "fotoPadre";
+
+    public static final String ALIAS_CAMPO_NOMBRE_NUTRIOLOGO= "nombreNutriologo";
+    public static final String ALIAS_CAMPO_APELLIDOS_NUTRIOLOGO = "apellidosNutriologo";
+    public static final String ALIAS_CAMPO_CORREO_NUTRIOLOGO = "CorreoNutriologo";
+    public static final String ALIAS_CAMPO_FOTO_NUTRIOLOGO = "fotoNutriologo";
+
+
+
+
+
     //Sentencia para crear tabla PerfilSistema
 
     public static final String CREAR_TABLA_PERFIL_SISTEMA = "CREATE TABLE "
@@ -163,4 +194,36 @@ public class Utilidades {
             +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO+")"
             +"FOREIGN KEY"+ "("+CAMPO_ID_NUTRIOLOGO_CALIFICACION+") "
             +"REFERENCES "+TABLA_USUARIO+"("+CAMPO_ID_USUARIO+"))";
+
+    //Crear Vista v_calificacion_usuario;
+
+    public static final String CREAR_VISTA_CALIFIACION_USUARIO = " CREATE VIEW "+Utilidades.VISTA_CALIFICACION_USUARIO + " AS " +
+            "SELECT a."+Utilidades.CAMPO_VISTA_ID_CALIFICACION+
+            ",a."+CAMPO_VISTA_ID_PADRE+",a."+CAMPO_VISTA_ID_NUTRIOLOGO+
+            ",b."+CAMPO_VISTA_NOMBRE_PADRE+ " AS "+ALIAS_CAMPO_NOMBRE_PADRE+
+            ",b."+CAMPO_VISTA_APELLIDOS_PADRE+ " AS "+ALIAS_CAMPO_APELLIDOS_PADRE+
+            ",b."+CAMPO_VISTA_CORREO_PADRE+ " AS "+ALIAS_CAMPO_CORREO_PADRE+
+            ",b."+CAMPO_VISTA_FOTO_PADRE+ " AS "+ALIAS_CAMPO_FOTO_PADRE+
+            ",c."+CAMPO_VISTA_NOMBRE_NUTRIOLOGO+ " AS "+ALIAS_CAMPO_NOMBRE_NUTRIOLOGO+
+            ",c."+CAMPO_VISTA_APELLIDOS_NUTRIOLOGO+ " AS "+ALIAS_CAMPO_APELLIDOS_NUTRIOLOGO+
+            ",c."+CAMPO_VISTA_CORREO_NUTRIOLOGO+ " AS "+ALIAS_CAMPO_CORREO_NUTRIOLOGO+
+            ",c."+CAMPO_VISTA_FOTO_NUTRIOLOGO+ " AS "+ALIAS_CAMPO_FOTO_NUTRIOLOGO+
+            ",a."+CAMPO_VISTA_PUNTUACION+",a."+CAMPO_VISTA_COMENTARIO+
+            " FROM "+TABLA_CALIFICACION+ " a INNER JOIN "+TABLA_USUARIO+" b ON a."+
+            CAMPO_VISTA_ID_PADRE+" = b."+CAMPO_ID_USUARIO+
+            " INNER JOIN "+TABLA_USUARIO+ " c ON a."+CAMPO_VISTA_ID_NUTRIOLOGO+ " = c."+CAMPO_ID_USUARIO;
+
+    public static void AsignarAlias(){
+
+        CAMPO_VISTA_NOMBRE_PADRE = ALIAS_CAMPO_NOMBRE_PADRE;
+        CAMPO_VISTA_APELLIDOS_PADRE = ALIAS_CAMPO_APELLIDOS_PADRE;
+        CAMPO_VISTA_CORREO_PADRE = ALIAS_CAMPO_CORREO_PADRE;
+        CAMPO_VISTA_FOTO_PADRE = ALIAS_CAMPO_FOTO_PADRE;
+        CAMPO_VISTA_NOMBRE_NUTRIOLOGO = ALIAS_CAMPO_NOMBRE_NUTRIOLOGO;
+        CAMPO_VISTA_APELLIDOS_NUTRIOLOGO = ALIAS_CAMPO_APELLIDOS_NUTRIOLOGO;
+        CAMPO_VISTA_CORREO_NUTRIOLOGO = ALIAS_CAMPO_CORREO_NUTRIOLOGO;
+        CAMPO_VISTA_FOTO_NUTRIOLOGO = ALIAS_CAMPO_FOTO_NUTRIOLOGO;
+
+    }
+
 }
