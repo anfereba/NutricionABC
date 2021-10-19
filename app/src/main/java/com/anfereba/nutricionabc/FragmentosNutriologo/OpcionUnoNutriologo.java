@@ -1,14 +1,26 @@
 package com.anfereba.nutricionabc.FragmentosNutriologo;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.anfereba.nutricionabc.FragmentosCliente.Listas.ListaHijosAdapter;
 import com.anfereba.nutricionabc.R;
+import com.anfereba.nutricionabc.db.DbHijo;
+import com.anfereba.nutricionabc.db.Entidades.Hijos;
+import com.anfereba.nutricionabc.db.utilidades.Utilidades;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +73,16 @@ public class OpcionUnoNutriologo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_opcion_uno_nutriologo, container, false);
+        View v = inflater.inflate(R.layout.fragment_opcion_uno_nutriologo, container, false);
+        RecyclerView listaHijos = (RecyclerView) v.findViewById(R.id.ListaHijosNutriologo);
+        listaHijos.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        DbHijo dbHijo = new DbHijo(getContext());
+        ArrayList<Hijos> listaArrayHijos = new ArrayList<>();
+        Integer iDUsuario=0;
+        ListaHijosAdapter adapter =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosQueNoTienenPlan(iDUsuario));
+
+        listaHijos.setAdapter(adapter);
+        return v;
     }
 }

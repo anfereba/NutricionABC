@@ -108,8 +108,8 @@ public class VerAlimentos extends AppCompatActivity {
     }
 
     private void lista() {
-        Intent intent = new Intent(this, MainActivityNutriologo.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(this, MainActivityNutriologo.class);
+        startActivity(intent);*/
         finish();
     }
 

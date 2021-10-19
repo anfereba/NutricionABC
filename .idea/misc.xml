@@ -45,12 +45,11 @@
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/menu/menu_nutriologo.xml" value="0.536" />
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/menu/menu_opciones_perfil.xml" value="0.264" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_gestion_usuarios.xml" value="0.2" />
-        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_ver_detalles_nutriologo.xml" value="0.2" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_ver_detalles_nutriologo.xml" value="0.21433494141971055" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_ver_nutriologos.xml" value="0.2" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_cliente.xml" value="0.2" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/list_clientes.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/list_nutriologos.xml" value="0.19610507246376813" />
-        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/lista_calificaciones.xml" value="0.4" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/menu/menu_buscar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/menu/menu_cliente.xml" value="0.4" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/drawable-anydpi/imagen_ico.xml" value="0.1421875" />
@@ -81,6 +80,7 @@
         <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/activity_main_cliente.xml" value="0.264" />
         <entry key="..\:/Users/ladyv/AndroidStudioProjects/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_cliente.xml" value="0.25416666666666665" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.21302083333333333" />
+        <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_editar_hijo.xml" value="0.10260416666666666" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_editar_planes_nutricionales.xml" value="0.25" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_login_app.xml" value="0.1" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_logueo_con_sqlite.xml" value="0.22" />

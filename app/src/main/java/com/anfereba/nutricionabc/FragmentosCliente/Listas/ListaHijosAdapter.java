@@ -1,5 +1,7 @@
 package com.anfereba.nutricionabc.FragmentosCliente.Listas;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.anfereba.nutricionabc.FragmentosCliente.VerHijo;
 import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaAlimentosAdapter;
 import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanesAlimentosAdapter;
+import com.anfereba.nutricionabc.FragmentosNutriologo.VerAlimentos;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
 import com.anfereba.nutricionabc.db.Entidades.PlanesAlimentos;
@@ -52,6 +56,16 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
             EstaturaHijos = itemView.findViewById(R.id.EstaturaHijo);
             EdadHijos = itemView.findViewById(R.id.EdadHijo);
             PesoHijos = itemView.findViewById(R.id.PesoHijo);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context =  view.getContext();
+                    Intent intent = new Intent(context, VerHijo.class); //si algo me toca modificarlo
+                    intent.putExtra("IdHijo",listaHijos.get(getAdapterPosition()).getIdHijos());
+                    context.startActivity(intent);
+                    //((Activity)context).finish();
+                }
+            });
         }
     }
 }

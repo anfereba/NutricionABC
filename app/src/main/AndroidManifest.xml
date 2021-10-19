@@ -21,6 +21,9 @@
             android:name=".FragmentosCliente.VerNutriologos"
             android:exported="false" />
         <activity
+            android:name=".FragmentosCliente.EditarHijo"
+            android:exported="true" />
+        <activity
             android:name=".FragmentosCliente.RegistrarHijo"
             android:exported="true" />
         <activity
@@ -61,6 +64,9 @@
         </activity>
         <activity
             android:name=".FragmentosNutriologo.EditarPlanesNutricionales"
+            android:exported="true" />
+        <activity
+            android:name=".FragmentosCliente.VerHijo"
             android:exported="true" />
         <activity
             android:name=".FragmentosNutriologo.VerPlanesNutricionales"

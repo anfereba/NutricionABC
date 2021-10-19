@@ -86,9 +86,9 @@ public class OpcionDosCliente extends Fragment {
         DbHijo dbHijo = new DbHijo(getContext());
         ArrayList<Hijos> listaArrayHijos = new ArrayList<>();
         SharedPreferences shared = getActivity().getSharedPreferences("Sesiones", MODE_PRIVATE);//Llamar id del cliente.
-        Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del cliente.
+        Integer iDUsuario = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del cliente.
 
-        ListaHijosAdapter adapter =new ListaHijosAdapter(dbHijo.mostrarHijos(iDNutriologo));
+        ListaHijosAdapter adapter =new ListaHijosAdapter(dbHijo.mostrarHijos(iDUsuario));
 
         listaHijos.setAdapter(adapter);
 
