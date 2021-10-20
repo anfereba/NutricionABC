@@ -2,6 +2,8 @@ package com.anfereba.nutricionabc.FragmentosCliente.Listas;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anfereba.nutricionabc.FragmentosCliente.VerHijo;
-import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaAlimentosAdapter;
-import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanesAlimentosAdapter;
-import com.anfereba.nutricionabc.FragmentosNutriologo.VerAlimentos;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
-import com.anfereba.nutricionabc.db.Entidades.PlanesAlimentos;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.ListaHijosViewHolder>{
     ArrayList<Hijos> listaHijos;
@@ -34,10 +34,17 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
 
     @Override
     public void onBindViewHolder(@NonNull ListaHijosViewHolder holder, int position) {
+
+        Bitmap bitmap = BitmapFactory.decodeByteArray(listaHijos.get(position).getFotoHijos(), 0,
+                listaHijos.get(position).getFotoHijos().length);
+
+
+        holder.IMGHijo.setImageBitmap(bitmap);
+
         holder.NombreHijos.setText(listaHijos.get(position).getNombreHijos());
-        holder.EstaturaHijos.setText(listaHijos.get(position).getEstaturaHijos()+" m");
-        holder.EdadHijos.setText(listaHijos.get(position).getEdadHijos().toString()+" Años ");
-        holder.PesoHijos.setText(listaHijos.get(position).getPesoHijos().toString()+" Kilos ");
+        holder.EstaturaHijos.setText("Estatura: "+listaHijos.get(position).getEstaturaHijos()+" m");
+        holder.EdadHijos.setText("Edad: "+listaHijos.get(position).getEdadHijos().toString()+" Años ");
+        holder.PesoHijos.setText("Peso: "+listaHijos.get(position).getPesoHijos().toString()+" Kilos ");
     }
 
     @Override
@@ -50,12 +57,14 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
         TextView EstaturaHijos;
         TextView EdadHijos;
         TextView PesoHijos;
+        CircleImageView IMGHijo;
         public ListaHijosViewHolder(@NonNull View itemView) {
             super(itemView);
             NombreHijos= itemView.findViewById(R.id.NombreHijo);
             EstaturaHijos = itemView.findViewById(R.id.EstaturaHijo);
             EdadHijos = itemView.findViewById(R.id.EdadHijo);
             PesoHijos = itemView.findViewById(R.id.PesoHijo);
+            IMGHijo = itemView.findViewById(R.id.IMGHijo);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

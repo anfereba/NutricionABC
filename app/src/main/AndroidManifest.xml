@@ -16,6 +16,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".FragmentosCliente.VerDetallesNutriologo"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".FragmentosCliente.VerNutriologos"

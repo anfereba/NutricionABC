@@ -7,7 +7,7 @@
     android:animateLayoutChanges="false"
     android:animationCache="false"
     android:background="@drawable/fondo_gradiente"
-    tools:context=".FragmentosCliente.OpcionUnoCliente">
+    tools:context=".FragmentosCliente.InformacionNutriologoCliente">
 
     <androidx.cardview.widget.CardView
         xmlns:app="http://schemas.android.com/apk/res-auto"

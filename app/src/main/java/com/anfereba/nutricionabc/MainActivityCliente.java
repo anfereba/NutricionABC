@@ -18,9 +18,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.anfereba.nutricionabc.FragmentosCliente.OpcionDosCliente;
+import com.anfereba.nutricionabc.FragmentosCliente.HijosCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.OpcionTresCliente;
-import com.anfereba.nutricionabc.FragmentosCliente.OpcionUnoCliente;
+import com.anfereba.nutricionabc.FragmentosCliente.InformacionNutriologoCliente;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Usuario;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
@@ -70,7 +70,7 @@ public class MainActivityCliente extends AppCompatActivity implements Navigation
         toggle.syncState();
 
         if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerC,new OpcionUnoCliente()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerC,new InformacionNutriologoCliente()).commit();
             navigationView.setCheckedItem(R.id.Opcion_uno_Cliente);
         }
     }
@@ -79,10 +79,10 @@ public class MainActivityCliente extends AppCompatActivity implements Navigation
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.Opcion_uno_Cliente:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerC,new OpcionUnoCliente()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerC,new InformacionNutriologoCliente()).commit();
                 break;
             case R.id.Opcion_dos_Cliente:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerC,new OpcionDosCliente()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerC,new HijosCliente()).commit();
                 break;
             case R.id.Opcion_tres_Cliente:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerC,new OpcionTresCliente()).commit();
