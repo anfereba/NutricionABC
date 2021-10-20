@@ -158,8 +158,8 @@ Uri RutaArchivoUri;
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode==event.KEYCODE_BACK){
-            finish();
-            ((MainActivityNutriologo)getApplicationContext()).finish();
+            finishAffinity ();//se utiliza para terminará la actividad actual y todas las actividades de los padres
+            //((MainActivityNutriologo)getApplicationContext()).finish();
         }
         return super.onKeyDown(keyCode, event);
     }
