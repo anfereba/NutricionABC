@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.anfereba.nutricionabc.FragmentosCliente.Listas.ListaHijosAdapter;
 import com.anfereba.nutricionabc.R;
@@ -27,13 +28,18 @@ import java.util.ArrayList;
 
 public class HijosCliente extends Fragment {
 
+    public HijosCliente() {
+        // Required empty public constructor
+    }
 
+    Button AgregarHijo;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_hijos_cliente, container, false);
-        Button AgregarHijo = (Button) v.findViewById(R.id.AgregarHijo);
+        AgregarHijo = v.findViewById(R.id.AgregarHijo2);
+
         RecyclerView listaHijos = (RecyclerView) v.findViewById(R.id.listaHijos);
         listaHijos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
 
@@ -47,9 +53,11 @@ public class HijosCliente extends Fragment {
         listaHijos.setAdapter(adapter);
 
 
+
         AgregarHijo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(), "Click", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(), RegistrarHijo.class));
                 //getActivity().finish();
             }

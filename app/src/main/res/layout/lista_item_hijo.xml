@@ -7,6 +7,7 @@
     android:animateLayoutChanges="true"
     app:cardCornerRadius="20dp"
     android:layout_gravity="center"
+    android:outlineAmbientShadowColor="@color/fondocardview1"
     app:cardElevation="4dp"
     android:orientation="horizontal"
     app:cardUseCompatPadding="true">
@@ -41,13 +42,13 @@
                     android:gravity="center"
                     android:text="Nombre"
                     android:textColor="@color/black"
-                    android:textSize="37sp"
+                    android:textSize="33sp"
                     android:textStyle="bold" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/IMGHijo"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
@@ -60,30 +61,33 @@
 
                 <TextView
                     android:id="@+id/EdadHijo"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/flecha_derecha_ico"
                     android:fontFamily="@font/proximanovaregular"
                     android:gravity="center"
                     android:text="Edad"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/PesoHijo"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/proximanovaregular"
+                    android:drawableLeft="@drawable/flecha_derecha_ico"
                     android:gravity="center"
                     android:text="Peso"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/EstaturaHijo"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/flecha_derecha_ico"
                     android:fontFamily="@font/proximanovaregular"
                     android:gravity="center"
                     android:text="Estatura"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

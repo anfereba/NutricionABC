@@ -26,6 +26,7 @@
             android:exported="true" />
         <activity
             android:name=".FragmentosCliente.RegistrarHijo"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".FragmentosNutriologo.EditarPlanesAlimentos"
