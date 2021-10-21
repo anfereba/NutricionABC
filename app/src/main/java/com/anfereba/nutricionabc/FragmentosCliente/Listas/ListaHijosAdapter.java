@@ -1,18 +1,24 @@
 package com.anfereba.nutricionabc.FragmentosCliente.Listas;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.anfereba.nutricionabc.FragmentosCliente.HijosCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.VerHijo;
+import com.anfereba.nutricionabc.MainActivityCliente;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
 
@@ -34,9 +40,19 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
 
     @Override
     public void onBindViewHolder(@NonNull ListaHijosViewHolder holder, int position) {
-
         Bitmap bitmap = BitmapFactory.decodeByteArray(listaHijos.get(position).getFotoHijos(), 0,
                 listaHijos.get(position).getFotoHijos().length);
+
+        if(listaHijos.get(position).getIdPlanNutricional3()!=0){
+            holder.AsignacionDePlan.setText("Se le ha asignado un plan");
+            holder.AsignacionDePlan.setTextColor(Color.BLACK);
+            holder.AsignacionDePlan.setBackgroundColor(Color.GREEN);
+            }else{
+            holder.AsignacionDePlan.setText("No se le ha asignado un plan");
+            holder.AsignacionDePlan.setTextColor(Color.WHITE);
+            holder.AsignacionDePlan.setBackgroundColor(Color.RED);
+        }
+
 
 
         holder.IMGHijo.setImageBitmap(bitmap);
@@ -53,6 +69,7 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
     }
 
     public class ListaHijosViewHolder extends RecyclerView.ViewHolder {
+        TextView AsignacionDePlan;
         TextView NombreHijos;
         TextView EstaturaHijos;
         TextView EdadHijos;
@@ -60,6 +77,20 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
         CircleImageView IMGHijo;
         public ListaHijosViewHolder(@NonNull View itemView) {
             super(itemView);
+            AsignacionDePlan= itemView. findViewById(R.id.AsignacionDePlan);
+            AsignacionDePlan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context =  view.getContext();
+                    if(listaHijos.get(getAdapterPosition()).getIdPlanNutricional3()!=0){
+
+                        Toast.makeText(context,"Te han asignado un plan",Toast.LENGTH_LONG).show();
+                    }else{
+
+                        Toast.makeText(context,"No te han asignado un plan",Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
             NombreHijos= itemView.findViewById(R.id.NombreHijo);
             EstaturaHijos = itemView.findViewById(R.id.EstaturaHijo);
             EdadHijos = itemView.findViewById(R.id.EdadHijo);

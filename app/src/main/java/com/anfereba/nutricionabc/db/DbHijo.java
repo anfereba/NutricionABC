@@ -67,6 +67,8 @@ public class DbHijo extends DbHelper {
                 hijos.setEstaturaHijos(cursorHijos.getString(3));
                 hijos.setEdadHijos(cursorHijos.getInt(4));
                 hijos.setPesoHijos(cursorHijos.getInt(5));
+                hijos.setIdUsuario3(cursorHijos.getInt(6));
+                hijos.setIdPlanNutricional3(cursorHijos.getInt(7));
                 listaHijos.add(hijos);
             } while (cursorHijos.moveToNext());
         }
@@ -95,6 +97,8 @@ public class DbHijo extends DbHelper {
                 hijos.setEstaturaHijos(cursorHijos.getString(3));
                 hijos.setEdadHijos(cursorHijos.getInt(4));
                 hijos.setPesoHijos(cursorHijos.getInt(5));
+                hijos.setIdUsuario3(cursorHijos.getInt(6));
+                hijos.setIdPlanNutricional3(cursorHijos.getInt(7));
                 listaHijos.add(hijos);
             } while (cursorHijos.moveToNext());
         }

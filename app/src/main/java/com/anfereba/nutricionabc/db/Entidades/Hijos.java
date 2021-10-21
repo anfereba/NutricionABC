@@ -7,6 +7,9 @@ public class Hijos {
     private String EstaturaHijos;
     private Integer EdadHijos;
     private Integer PesoHijos;
+    private Integer idUsuario3;
+    private Integer idPlanNutricional3;
+
 
     public Integer getIdHijos() {
         return IdHijos;
@@ -54,5 +57,21 @@ public class Hijos {
 
     public void setPesoHijos(Integer pesoHijos) {
         PesoHijos = pesoHijos;
+    }
+
+    public Integer getIdUsuario3() {
+        return idUsuario3;
+    }
+
+    public void setIdUsuario3(Integer idUsuario3) {
+        this.idUsuario3 = idUsuario3;
+    }
+
+    public Integer getIdPlanNutricional3() {
+        return idPlanNutricional3;
+    }
+
+    public void setIdPlanNutricional3(Integer idPlanNutricional3) {
+        this.idPlanNutricional3 = idPlanNutricional3;
     }
 }
