@@ -28,7 +28,7 @@ public class GestionUsuarios extends AppCompatActivity {
     Dialog dialog;
     RecyclerView listaUsuariosRV;
 
-    ListaUsuariosAdapter adapter;
+    static ListaUsuariosAdapter adapter;
     ArrayList<Usuario> listaArrayUsuarios;
 
     @Override
@@ -54,7 +54,7 @@ public class GestionUsuarios extends AppCompatActivity {
 
     }
 
-    private void mostrarListaUsuarios() {
+    public void mostrarListaUsuarios() {
         listaUsuariosRV = findViewById(R.id.listaUsuariosRV);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         listaUsuariosRV.setLayoutManager(new LinearLayoutManager(this));
@@ -68,7 +68,7 @@ public class GestionUsuarios extends AppCompatActivity {
     public void SetearActionBar(){
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
-        actionBar.setTitle("Listado de Clientes");
+        actionBar.setTitle("Listado de Usuarios");
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -102,5 +102,11 @@ public class GestionUsuarios extends AppCompatActivity {
         });
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onResume() {
+        mostrarListaUsuarios();
+        super.onResume();
     }
 }

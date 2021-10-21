@@ -64,6 +64,7 @@ public class PerfilUsuario extends Fragment{
     int IdUsuario;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    View view;
 
 
     TextView PerfilNombresyApellidos, PerfilFechaNacimiento, PerfilNumeroTelefono, PerfilCorreo, PerfilDireccion, PerfilCiudad;
@@ -77,7 +78,46 @@ public class PerfilUsuario extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_perfil_usuario, container, false);
+        view = inflater.inflate(R.layout.fragment_perfil_usuario, container, false);
+
+        SetearDatosPerfilAVista(view);
+
+        OpcionActualizarDatosPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), ActualizarPerfil.class);
+                startActivity(intent);
+            }
+        });
+        OpcionActualizarPasswordPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CambiarCredenciales.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SetearDatosPerfilAVista(view);
+    }
+
+    private int ObtenerIdUsuarioActual() {
+        int IdUsuario = 0;
+        preferences = getActivity().getSharedPreferences("Sesiones", Context.MODE_PRIVATE);
+        editor = preferences.edit();
+        Log.i("Usuario Anterior: ",String.valueOf(preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0)));
+        IdUsuario = preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
+        Log.i("Usuario Despues: ",String.valueOf(IdUsuario));
+        return IdUsuario;
+    }
+
+    private void SetearDatosPerfilAVista(View view){
 
         IdUsuario = ObtenerIdUsuarioActual();
         db = new DbUsuario(getActivity());
@@ -95,40 +135,6 @@ public class PerfilUsuario extends Fragment{
 
         OpcionActualizarDatosPerfil = view.findViewById(R.id.OpcionActualizarDatosPerfil);
         OpcionActualizarPasswordPerfil = view.findViewById(R.id.OpcionActualizarPasswordPerfil);
-
-        SetearDatosPerfilAVista();
-
-        OpcionActualizarDatosPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), ActualizarPerfil.class);
-                startActivity(intent);
-            }
-        });
-
-        OpcionActualizarPasswordPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CambiarCredenciales.class);
-                startActivity(intent);
-            }
-        });
-
-        return view;
-    }
-
-    private int ObtenerIdUsuarioActual() {
-        int IdUsuario = 0;
-        preferences = getActivity().getSharedPreferences("Sesiones", Context.MODE_PRIVATE);
-        editor = preferences.edit();
-        Log.i("Usuario Anterior: ",String.valueOf(preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0)));
-        IdUsuario = preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
-        Log.i("Usuario Despues: ",String.valueOf(IdUsuario));
-        return IdUsuario;
-    }
-
-    private void SetearDatosPerfilAVista(){
 
         PerfilNombresyApellidos.setText(listaArrayUsuarios.get(0).getNombres() + " " + listaArrayUsuarios.get(0).getApellidos());
         PerfilFechaNacimiento.setText(listaArrayUsuarios.get(0).getFechaNacimiento());

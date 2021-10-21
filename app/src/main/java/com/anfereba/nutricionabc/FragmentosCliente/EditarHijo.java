@@ -35,7 +35,7 @@ import java.util.List;
 
 public class EditarHijo extends AppCompatActivity implements Validator.ValidationListener{
     TextView NombreDelHijo;
-    ImageView EditarImagenHijo;
+    ImageView EditarImagenHijo, IMGAtras;
     FloatingActionButton EditarHijo,EliminarHijo,GuardarEdiHijo;
     int id =0;
     Hijos hijos;
@@ -72,6 +72,7 @@ public class EditarHijo extends AppCompatActivity implements Validator.Validatio
         EditarHijo=(FloatingActionButton) findViewById(R.id.EditarHijo);
         EliminarHijo=(FloatingActionButton) findViewById(R.id.EliminarHijo);
         GuardarEdiHijo=(FloatingActionButton) findViewById(R.id.GuardarEdiHijo);
+        IMGAtras = findViewById(R.id.IMGAtras);
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
@@ -137,6 +138,12 @@ public class EditarHijo extends AppCompatActivity implements Validator.Validatio
                     //Toast.makeText(getApplicationContext(), "Debe Escoger una Foto para el alimento", Toast.LENGTH_LONG).show();
 
                 }
+            }
+        });
+        IMGAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     EditarImagenHijo.setOnClickListener(new View.OnClickListener() {

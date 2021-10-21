@@ -24,17 +24,22 @@ import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class RegistrarHijo extends AppCompatActivity implements Validator.ValidationListener {
     Button GuardarHijo;
-    ImageView AgregarFotoHijo;
+    ImageView IMGAtras;
+    CircleImageView AgregarFotoHijo;
     private byte[] imagenEnBytes = null;
     Bitmap FotoDeLHijo;
     Uri RutaArchivoUri;
-    int CODIGO_DE_SOLICITUD_IMAGEN = 5;
+    int CODIGO_DE_SOLICITUD_IMAGEN = 1;
     private Validator validator;
     private boolean DatosValidados;
     @NotEmpty(message = "Este campo es Obligatorio")
@@ -52,11 +57,12 @@ public class RegistrarHijo extends AppCompatActivity implements Validator.Valida
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_hijo);
         GuardarHijo = (Button) findViewById(R.id.GuardarHijo);
-        AgregarFotoHijo= (ImageView) findViewById(R.id.AgregarFotoHijo);
+        AgregarFotoHijo= findViewById(R.id.AgregarFotoHijo);
         NombreHijo = (EditText) findViewById(R.id.NombreHijo);
         EstaturaHijo=(EditText) findViewById(R.id.EstaturaHijo);
         EdadHijo=(EditText) findViewById(R.id.EdadHijo);
         PesoHijo=(EditText) findViewById(R.id.PesoHijo);
+        IMGAtras = findViewById(R.id.IMGAtras);
         EstaturaHijo.setInputType(InputType.TYPE_CLASS_NUMBER| InputType.TYPE_NUMBER_FLAG_DECIMAL);
         EdadHijo.setInputType(InputType.TYPE_CLASS_NUMBER);
         PesoHijo.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -83,6 +89,7 @@ public class RegistrarHijo extends AppCompatActivity implements Validator.Valida
 
                     if (QueryExitosa > 0) {
                         Toast.makeText(getApplicationContext(), "Registro guardado con éxito: ", Toast.LENGTH_LONG).show();
+                        RegistrarHijo.this.finish();
                         limpiar();
                     } else {
                         Toast.makeText(getApplicationContext(), "ERROR AL GUARDAR REGISTRO: ", Toast.LENGTH_LONG).show();
@@ -97,6 +104,12 @@ public class RegistrarHijo extends AppCompatActivity implements Validator.Valida
                     Toast.makeText(getApplicationContext(), "Debe Escoger una Foto", Toast.LENGTH_LONG).show();
 
                 }
+            }
+        });
+        IMGAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 
@@ -115,6 +128,7 @@ public class RegistrarHijo extends AppCompatActivity implements Validator.Valida
         intent.setType("image/*");
         startActivityForResult(Intent.createChooser(intent,"Seleccione imagen del Hijo"),CODIGO_DE_SOLICITUD_IMAGEN);
     }
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CODIGO_DE_SOLICITUD_IMAGEN
@@ -123,11 +137,22 @@ public class RegistrarHijo extends AppCompatActivity implements Validator.Valida
                 && data.getData() != null){
 
             RutaArchivoUri = data.getData();
-            try {
-                FotoDeLHijo = MediaStore.Images.Media.getBitmap(getContentResolver(),RutaArchivoUri);
-                AgregarFotoHijo.setImageBitmap(FotoDeLHijo);
-            }catch (Exception e){
-                Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            CropImage.activity(RutaArchivoUri)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(1,1)
+                    .start(this);
+
+        }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK){
+                Uri RutaArchivoUri2 = result.getUri();
+                try {
+                    FotoDeLHijo = MediaStore.Images.Media.getBitmap(getContentResolver(),RutaArchivoUri2);
+                    AgregarFotoHijo.setImageBitmap(FotoDeLHijo);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         }
     }

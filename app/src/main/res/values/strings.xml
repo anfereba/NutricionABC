@@ -133,5 +133,6 @@
     <string name="contact">Contacto</string>
     <string name="skills">Habilidades</string>
     <string name="samplereview">Eres muy buen nutriologo</string>
+    <string name="TXTEditarHijo">Editar Hijo</string>
 
 </resources>

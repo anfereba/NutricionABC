@@ -27,9 +27,12 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.nio.charset.StandardCharsets;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class VerHijo extends AppCompatActivity {
     TextView NombreDelHijo;
-    ImageView EditarImagenHijo;
+    ImageView IMGAtras;
+    CircleImageView EditarImagenHijo;
     EditText EditarNombreHijo, EditarEstaturaHijo, EditarEdadHijo, EditarPesoHijo;
     TextInputLayout editarNombreHijo;
     FloatingActionButton EditarHijo,EliminarHijo,GuardarEdiHijo;
@@ -41,7 +44,7 @@ public class VerHijo extends AppCompatActivity {
         setContentView(R.layout.activity_editar_hijo);
         editarNombreHijo= (TextInputLayout) findViewById(R.id.editarNombreHijo);
         NombreDelHijo = (TextView) findViewById(R.id.NombreDelHijo);
-        EditarImagenHijo = (ImageView) findViewById(R.id.EditarImagenHijo);
+        EditarImagenHijo = findViewById(R.id.EditarImagenHijo);
         EditarNombreHijo = (EditText) findViewById(R.id.EditarNombreHijo);
         EditarEstaturaHijo = (EditText)findViewById(R.id.EditarEstaturaHijo);
         EditarEdadHijo=(EditText) findViewById(R.id.EditarEdadHijo);
@@ -49,6 +52,7 @@ public class VerHijo extends AppCompatActivity {
         EditarHijo=(FloatingActionButton) findViewById(R.id.EditarHijo);
         EliminarHijo=(FloatingActionButton) findViewById(R.id.EliminarHijo);
         GuardarEdiHijo=(FloatingActionButton) findViewById(R.id.GuardarEdiHijo);
+        IMGAtras = findViewById(R.id.IMGAtras);
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
@@ -103,6 +107,12 @@ public class VerHijo extends AppCompatActivity {
 
                     }
                 }).show();
+            }
+        });
+        IMGAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }

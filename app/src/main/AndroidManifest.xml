@@ -23,7 +23,8 @@
             android:exported="false" />
         <activity
             android:name=".FragmentosCliente.EditarHijo"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".FragmentosCliente.RegistrarHijo"
             android:theme="@style/AppTheme.NoActionBar"
@@ -69,6 +70,7 @@
             android:exported="true" />
         <activity
             android:name=".FragmentosCliente.VerHijo"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".FragmentosNutriologo.VerPlanesNutricionales"

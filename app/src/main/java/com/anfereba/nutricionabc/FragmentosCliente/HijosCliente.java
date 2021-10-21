@@ -29,29 +29,21 @@ import java.util.ArrayList;
 public class HijosCliente extends Fragment {
 
     public HijosCliente() {
-        // Required empty public constructor
+
     }
 
     Button AgregarHijo;
+    RecyclerView listaHijos;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_hijos_cliente, container, false);
         AgregarHijo = v.findViewById(R.id.AgregarHijo2);
+        listaHijos = (RecyclerView) v.findViewById(R.id.listaHijos);
 
-        RecyclerView listaHijos = (RecyclerView) v.findViewById(R.id.listaHijos);
-        listaHijos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-
-        DbHijo dbHijo = new DbHijo(getContext());
-        ArrayList<Hijos> listaArrayHijos = new ArrayList<>();
-        SharedPreferences shared = getActivity().getSharedPreferences("Sesiones", MODE_PRIVATE);//Llamar id del cliente.
-        Integer iDUsuario = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del cliente.
-
-        ListaHijosAdapter adapter =new ListaHijosAdapter(dbHijo.mostrarHijos(iDUsuario));
-
-        listaHijos.setAdapter(adapter);
-
+        SetearInformacionEnVista();
 
 
         AgregarHijo.setOnClickListener(new View.OnClickListener() {
@@ -63,5 +55,22 @@ public class HijosCliente extends Fragment {
             }
         });
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SetearInformacionEnVista();
+    }
+
+    private void SetearInformacionEnVista() {
+        listaHijos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
+        DbHijo dbHijo = new DbHijo(getContext());
+        ArrayList<Hijos> listaArrayHijos = new ArrayList<>();
+        SharedPreferences shared = getActivity().getSharedPreferences("Sesiones", MODE_PRIVATE);//Llamar id del cliente.
+        Integer iDUsuario = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del cliente.
+        ListaHijosAdapter adapter =new ListaHijosAdapter(dbHijo.mostrarHijos(iDUsuario));
+        listaHijos.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }
