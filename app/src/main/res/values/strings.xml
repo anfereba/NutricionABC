@@ -86,6 +86,7 @@
     <string name="TXTNombrePlan">Nombre del Plan Nutricional</string>
     <string name="OperacionInsertarUsuario">Insertar Usuario</string>
     <string name="BtnModificarNombrePlan">Modificar Nombre Plan</string>
+    <string name="TXTSeleccionePlanNutricional">Seleccione Plan Nutricional</string>
 
 
     <string name="TXTPreguntaUno">¿Cual fue tu apodo de pequeño/a?</string>
@@ -134,5 +135,6 @@
     <string name="skills">Habilidades</string>
     <string name="samplereview">Eres muy buen nutriologo</string>
     <string name="TXTMisPacientes">Mis Pacientes</string>
+    <string name="TXTEditarHijo">Editar Hijo</string>
 
 </resources>

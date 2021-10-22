@@ -1,5 +1,7 @@
 package com.anfereba.nutricionabc.FragmentosNutriologo.Listas;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anfereba.nutricionabc.FragmentosCliente.Listas.ListaHijosAdapter;
+import com.anfereba.nutricionabc.FragmentosNutriologo.AsignacionPlanNutricional;
+import com.anfereba.nutricionabc.FragmentosNutriologo.VerAlimentos;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
@@ -49,6 +53,15 @@ public class ListaHijosSinPlanAdapter extends RecyclerView.Adapter<ListaHijosSin
             EdadHijoSinPlan = itemView.findViewById(R.id.EdadHijoSinPlan);
             PesoHijoSinPlan = itemView.findViewById(R.id.PesoHijoSinPlan);
             EstaturaHijoSinPlan=itemView.findViewById(R.id.EstaturaHijoSinPlan);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context =  view.getContext();
+                    Intent intent = new Intent(context, AsignacionPlanNutricional.class); //si algo lo toca se podra modificar
+                    intent.putExtra("IdHijo",listaHijosSinPlan.get(getAdapterPosition()).getIdHijos());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

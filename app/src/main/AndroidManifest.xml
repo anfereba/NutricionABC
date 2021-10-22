@@ -15,20 +15,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".FragmentosNutriologo.AsignacionPlanNutricional"
+            android:exported="true" />
+        <activity
             android:name=".FragmentosCliente.VerDetallesNutriologo"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FragmentosCliente.VerNutriologos"
             android:exported="false" />
         <activity
             android:name=".FragmentosCliente.EditarHijo"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FragmentosCliente.RegistrarHijo"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FragmentosNutriologo.EditarPlanesAlimentos"
             android:exported="true" />
@@ -70,8 +73,8 @@
             android:exported="true" />
         <activity
             android:name=".FragmentosCliente.VerHijo"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FragmentosNutriologo.VerPlanesNutricionales"
             android:exported="true"
