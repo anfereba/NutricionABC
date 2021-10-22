@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.anfereba.nutricionabc.FragmentosCliente.Listas.ListaHijosAdapter;
+import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaHijosSinPlanAdapter;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbHijo;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
@@ -74,15 +75,22 @@ public class OpcionUnoNutriologo extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_opcion_uno_nutriologo, container, false);
+        DbHijo dbHijo = new DbHijo(getContext());
+        RecyclerView listaHijosSinPlan = (RecyclerView)v.findViewById(R.id.ListaHijosSinPlan);
+        listaHijosSinPlan.setLayoutManager(new LinearLayoutManager(getContext()));
+        ArrayList<Hijos>listaArrayHijosSinPlan=new ArrayList<>();
+        Integer iDUsuario=0;
+        ListaHijosSinPlanAdapter adapter =new ListaHijosSinPlanAdapter(dbHijo.mostrarTodosLosHijosQueNoTienenPlan(iDUsuario));
+        listaHijosSinPlan.setAdapter(adapter);
+
+
+        SharedPreferences shared = getActivity().getSharedPreferences("Sesiones", MODE_PRIVATE);//Llamar id del nutriologo.
+        Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del nutriologo.
         RecyclerView listaHijos = (RecyclerView) v.findViewById(R.id.ListaHijosNutriologo);
         listaHijos.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        DbHijo dbHijo = new DbHijo(getContext());
         ArrayList<Hijos> listaArrayHijos = new ArrayList<>();
-        Integer iDUsuario=0;
-        ListaHijosAdapter adapter =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosQueNoTienenPlan(iDUsuario));
-
-        listaHijos.setAdapter(adapter);
+        ListaHijosAdapter adapter2 =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosDelNutriologo(iDNutriologo));
+        listaHijos.setAdapter(adapter2);
         return v;
     }
 }

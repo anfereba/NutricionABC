@@ -107,12 +107,14 @@
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/activity_registro_usuario.xml" value="0.25" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/carga.xml" value="0.196875" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/encabezado.xml" value="0.196875" />
+        <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_hijos_cliente.xml" value="0.1" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_cliente.xml" value="0.22" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_nutriologo.xml" value="0.196875" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_nutriologo.xml" value="0.25" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_nutriologo.xml" value="0.196875" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/lista_item_alimento.xml" value="0.1272644927536232" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/lista_item_hijo.xml" value="0.25" />
+        <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/lista_item_hijo_sin_plan.xml" value="0.21818181345285476" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/lista_item_plan_nutricional.xml" value="0.22" />
         <entry key="..\:/universidad/Decimo semestre/Programacion Movil/Proyecto/NutricionABC/app/src/main/res/layout/lista_item_planes_alimentos.xml" value="0.1272644927536232" />
       </map>

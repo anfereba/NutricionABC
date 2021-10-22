@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
+import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import java.util.ArrayList;
@@ -107,6 +108,7 @@ public class DbHijo extends DbHelper {
 
         return listaHijos;
     }
+
     public Hijos verHijos(int id){
 
         DbHelper dbHelper = new DbHelper(context);
@@ -177,5 +179,68 @@ public class DbHijo extends DbHelper {
 
 
         return correcto;
+    }
+
+    public ArrayList<Hijos> mostrarTodosLosHijosDelNutriologo(int iDNutriologo) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int IdPlanNutricional= 0;
+        ArrayList<Hijos> listaHijos = new ArrayList<>();
+        Hijos hijos;
+        Cursor cursorHijos;
+        ArrayList<PlanesNutricionales> listaPlanesNutricionales = new ArrayList<>();
+        PlanesNutricionales planesNutricionales;
+        Cursor cursorPlanes;
+
+        cursorPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PlanNutricional +" WHERE "+Utilidades.CAMPO_ID_USUARIO2+" = "+iDNutriologo+"", null);
+
+        if (cursorPlanes.moveToFirst()) {
+            do {
+                planesNutricionales = new PlanesNutricionales();
+                planesNutricionales.setIdPlanNutricional(cursorPlanes.getInt(0));
+                IdPlanNutricional = planesNutricionales.getIdPlanNutricional();
+                System.out.println("Este es el nutriologo "+ iDNutriologo);
+                System.out.println( "este es el plan "+IdPlanNutricional);
+
+
+
+                cursorHijos = db.rawQuery("SELECT * FROM "+ Utilidades.TABLA_Hijo +" WHERE "+Utilidades.CAMPO_ID_PlanNutricional3+" = "+IdPlanNutricional+"", null);
+
+                if (cursorHijos.moveToFirst()) {
+                    do {
+                        hijos = new Hijos();
+                        hijos.setIdHijos(cursorHijos.getInt(0));
+                        hijos.setFotoHijos(cursorHijos.getBlob(1));
+                        hijos.setNombreHijos(cursorHijos.getString(2));
+                        hijos.setEstaturaHijos(cursorHijos.getString(3));
+                        hijos.setEdadHijos(cursorHijos.getInt(4));
+                        hijos.setPesoHijos(cursorHijos.getInt(5));
+                        hijos.setIdUsuario3(cursorHijos.getInt(6));
+                        hijos.setIdPlanNutricional3(cursorHijos.getInt(7));
+                        listaHijos.add(hijos);
+                    } while (cursorHijos.moveToNext());
+                }
+
+                cursorHijos.close();
+
+
+
+
+
+                planesNutricionales.setIdUsuario(cursorPlanes.getInt(1));
+                planesNutricionales.setNombrePlan(cursorPlanes.getString(2));
+                listaPlanesNutricionales.add(planesNutricionales);
+            } while (cursorPlanes.moveToNext());
+        }
+
+        cursorPlanes.close();
+
+
+
+
+
+
+        return listaHijos;
     }
 }

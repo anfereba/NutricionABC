@@ -42,7 +42,7 @@
 
     <!-- Menu de opciones Nutriologo -->
     <string name="Opcionestxt">Opciones</string>
-    <string name="Opcion_uno_Nutriologo">Opción 1 Nutriologo</string>
+    <string name="Opcion_uno_Nutriologo">Pacientes</string>
     <string name="Opcion_dos_Nutriologo">Planes Nutricionales</string>
     <string name="Opcion_tres_Nutriologo">Alimentos</string>
     <string name="Opcion_cuatro_Nutriologo">Opción 4 Nutriologo</string>
@@ -133,6 +133,6 @@
     <string name="contact">Contacto</string>
     <string name="skills">Habilidades</string>
     <string name="samplereview">Eres muy buen nutriologo</string>
-    <string name="TXTEditarHijo">Editar Hijo</string>
+    <string name="TXTMisPacientes">Mis Pacientes</string>
 
 </resources>
