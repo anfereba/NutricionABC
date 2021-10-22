@@ -74,9 +74,10 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/SeleccionarPlan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             android:text="Seleccionar" />
 
     </LinearLayout>

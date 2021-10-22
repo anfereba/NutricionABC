@@ -28,4 +28,7 @@ public class PlanesNutricionales {
     public void setNombrePlan(String nombrePlan) {
         NombrePlan = nombrePlan;
     }
+    public String toString(){
+        return  getNombrePlan();
+    }
 }

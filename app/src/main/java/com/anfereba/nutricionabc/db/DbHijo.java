@@ -200,10 +200,6 @@ public class DbHijo extends DbHelper {
                 planesNutricionales = new PlanesNutricionales();
                 planesNutricionales.setIdPlanNutricional(cursorPlanes.getInt(0));
                 IdPlanNutricional = planesNutricionales.getIdPlanNutricional();
-                System.out.println("Este es el nutriologo "+ iDNutriologo);
-                System.out.println( "este es el plan "+IdPlanNutricional);
-
-
 
                 cursorHijos = db.rawQuery("SELECT * FROM "+ Utilidades.TABLA_Hijo +" WHERE "+Utilidades.CAMPO_ID_PlanNutricional3+" = "+IdPlanNutricional+"", null);
 
@@ -242,5 +238,25 @@ public class DbHijo extends DbHelper {
 
 
         return listaHijos;
+    }
+    public long AsignarPlanNutricionalAlHijo(int idHijo,int idPlanNutricional) {
+
+        long correcto =0;
+        String[] parametros = {Integer.toString(idHijo)};
+
+        try {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put(Utilidades.CAMPO_ID_PlanNutricional3,idPlanNutricional);
+            correcto = db.update(Utilidades.TABLA_Hijo,values,Utilidades.CAMPO_ID_HIJO+"=?",parametros);
+        } catch (Exception ex) {
+            ex.toString();
+        }
+
+
+
+        return correcto;
     }
 }

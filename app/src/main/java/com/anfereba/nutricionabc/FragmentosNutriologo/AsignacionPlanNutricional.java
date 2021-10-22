@@ -2,19 +2,32 @@ package com.anfereba.nutricionabc.FragmentosNutriologo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.anfereba.nutricionabc.FragmentosCliente.VerHijo;
 import com.anfereba.nutricionabc.R;
+import com.anfereba.nutricionabc.db.DbAlimento;
 import com.anfereba.nutricionabc.db.DbHijo;
+import com.anfereba.nutricionabc.db.DbPlanNutricional;
+import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
+import com.anfereba.nutricionabc.db.Entidades.PlanesAlimentos;
+import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
+import com.anfereba.nutricionabc.db.utilidades.Utilidades;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -22,6 +35,7 @@ public class AsignacionPlanNutricional extends AppCompatActivity {
 TextView NombreSeleccionado, EdadSeleccionado, EstaturaSeleccionado,PesoSeleccionado;
 ImageView ImagenSeleccionado;
 Spinner spinnerPlanSeleccionado;
+Button SeleccionarPlan;
     int id =0;
     Hijos hijos;
     @Override
@@ -34,6 +48,7 @@ Spinner spinnerPlanSeleccionado;
         PesoSeleccionado = findViewById(R.id.PesoSeleccionado);
         ImagenSeleccionado = findViewById(R.id.ImagenSeleccionado);
         spinnerPlanSeleccionado = findViewById(R.id.spinnerPlanSeleccionado);
+        SeleccionarPlan = findViewById(R.id.SeleccionarPlan);
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
@@ -54,5 +69,33 @@ Spinner spinnerPlanSeleccionado;
             PesoSeleccionado.setText((hijos.getPesoHijos()).toString()+" kilos");
             ImagenSeleccionado.setImageBitmap(bitmap);
         }
+        DbPlanNutricional dbPlanNutricional =new DbPlanNutricional(AsignacionPlanNutricional.this);
+        List<PlanesNutricionales> planesNutricionales = dbPlanNutricional.mostrarPlan(TomarIdNutriologo());
+        ArrayAdapter<PlanesNutricionales> arrayAdapter =new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,planesNutricionales);
+        spinnerPlanSeleccionado.setAdapter(arrayAdapter);
+        spinnerPlanSeleccionado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                int idPlanNutricional = ((PlanesNutricionales)adapterView.getSelectedItem()).getIdPlanNutricional();
+                SeleccionarPlan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dbHijo.AsignarPlanNutricionalAlHijo(id,idPlanNutricional);
+                        finish();
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    private Integer TomarIdNutriologo() {
+        SharedPreferences shared = getSharedPreferences("Sesiones", MODE_PRIVATE);
+
+        Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );
+        return iDNutriologo;
     }
 }
