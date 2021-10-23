@@ -2,6 +2,8 @@ package com.anfereba.nutricionabc.FragmentosNutriologo.Listas;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,8 @@ import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ListaAlimentosAdapter extends RecyclerView.Adapter<ListaAlimentosAdapter.AlimentosViewHolder> {
     ArrayList<Alimentos>listaAlimentos;
     public ListaAlimentosAdapter(ArrayList<Alimentos>listaAlimentos){
@@ -31,6 +35,13 @@ public class ListaAlimentosAdapter extends RecyclerView.Adapter<ListaAlimentosAd
 
     @Override
     public void onBindViewHolder(@NonNull AlimentosViewHolder holder, int position) {
+
+        Bitmap bitmap = BitmapFactory.decodeByteArray(listaAlimentos.get(position).getFotoAlimento(), 0,
+                listaAlimentos.get(position).getFotoAlimento().length);
+
+        holder.IMGAlimento.setImageBitmap(bitmap);
+
+        holder.ValorCalorias.setText("Calorias: " + listaAlimentos.get(position).getCalorias().toString());
         holder.viewNombre.setText(listaAlimentos.get(position).getNombreAlimento());
     }
 
@@ -40,10 +51,16 @@ public class ListaAlimentosAdapter extends RecyclerView.Adapter<ListaAlimentosAd
     }
 
     public class AlimentosViewHolder extends RecyclerView.ViewHolder {
-        TextView viewNombre;
+        TextView viewNombre, ValorCalorias;
+        CircleImageView IMGAlimento;
+
         public AlimentosViewHolder(@NonNull View itemView) {
             super(itemView);
             viewNombre= itemView.findViewById(R.id.NombreAlimentoView);
+            ValorCalorias= itemView.findViewById(R.id.ValorCalorias);
+            IMGAlimento= itemView.findViewById(R.id.IMGAlimento);
+
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

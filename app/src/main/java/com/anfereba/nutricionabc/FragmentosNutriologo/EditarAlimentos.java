@@ -30,9 +30,11 @@ import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class EditarAlimentos extends AppCompatActivity implements Validator.ValidationListener {
 
-    ImageView AgregarFotoAlimento;
+    CircleImageView AgregarFotoAlimento;
     Button GuardarAlimento;
     Alimentos alimentos;
     FloatingActionButton fabEditarAlimento,fabEliminarAlimento;
@@ -59,7 +61,7 @@ public class EditarAlimentos extends AppCompatActivity implements Validator.Vali
         NombreDelAlimento=(EditText) findViewById(R.id.ModificarNombreAlimento);
         CaloriasAlimento=(EditText)findViewById(R.id.EditarCalorias);
         CaloriasAlimento.setInputType(InputType.TYPE_CLASS_NUMBER);
-        AgregarFotoAlimento=(ImageView)findViewById(R.id.EditarimagenAlimento);
+        AgregarFotoAlimento=findViewById(R.id.EditarimagenAlimento);
         GuardarAlimento=(Button) findViewById(R.id.ModificarAlimento);
         fabEditarAlimento= (FloatingActionButton) findViewById(R.id.fabEditarAlimento);
         fabEliminarAlimento= (FloatingActionButton) findViewById(R.id.fabEliminarAlimento);

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 public class RegistrarPlanNutricional extends AppCompatActivity {
 TextView NombrePlanNutricional;
+ImageView btnAtras;
 Button Guardarplan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ Button Guardarplan;
         TomarIdNutriologo(); //Con este podemos traer la informacion que se ha guardado en el login
         NombrePlanNutricional = findViewById(R.id.NombrePlanNutricional);
         Guardarplan=findViewById(R.id.GuardarPlan);
+        btnAtras = findViewById(R.id.btnAtras);
+
         Guardarplan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +47,13 @@ Button Guardarplan;
                 } else {
                     Toast.makeText(RegistrarPlanNutricional.this, "DEBE LLENAR LOS CAMPOS OBLIGATORIOS", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 

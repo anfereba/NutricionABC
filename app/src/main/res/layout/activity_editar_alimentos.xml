@@ -1,88 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
+    android:background="@color/grey"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentosNutriologo.EditarAlimentos">
 
-    <ScrollView
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryDark">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <ImageView
+                    android:layout_marginTop="3dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/atras_ico" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/TXTActualizarAlimento"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="14pt"
+                    android:fontFamily="@font/dm_sans_bold"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
 
             <TextView
-                android:id="@+id/editarAlimento"
+                android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/TXTActualizarNuevoAlimento"
                 android:gravity="center"
-                android:text="@string/TXTEditarAlimento"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textColor="@color/white"
+                android:textSize="7pt"
+                android:fontFamily="@font/dm_sans_bold"/>
 
-            <ImageView
-                android:id="@+id/EditarimagenAlimento"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                app:srcCompat="@drawable/imagen_ico" />
 
-            <com.google.android.material.textfield.TextInputLayout
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="30dp">
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="30dp"
+                android:elevation="20dp">
 
-                <EditText
-                    android:id="@+id/ModificarNombreAlimento"
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/TXTNombreAlimento"
-                    android:inputType="textPersonName" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/editarAlimento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/TXTEditarAlimento"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/EditarCalorias"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/CaloriasAlimento" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/EditarimagenAlimento"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center"
+                        app:civ_border_width="5dp"
+                        app:civ_border_color="@color/grey"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/imagen_ico" />
 
-            <Button
-                android:id="@+id/ModificarAlimento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:text="@string/TXTGuardarAlimento" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabEditarAlimento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:background="@color/white"
-                android:clickable="true"
-                android:foregroundGravity="clip_horizontal"
-                app:srcCompat="@drawable/ic_baseline_edit_24" />
+                        <EditText
+                            android:id="@+id/ModificarNombreAlimento"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="@string/TXTNombreAlimento"
+                            android:inputType="textPersonName" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabEliminarAlimento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:background="@color/white"
-                android:clickable="true"
-                app:srcCompat="@drawable/ic_baseline_delete_24" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-        </LinearLayout>
-    </ScrollView>
-</FrameLayout>
+                        <EditText
+                            android:id="@+id/EditarCalorias"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/CaloriasAlimento" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/ModificarAlimento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:background="@drawable/fondo_gradiente"
+                        android:text="@string/TXTGuardarAlimento" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fabEditarAlimento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:background="@color/white"
+                        android:clickable="true"
+                        android:foregroundGravity="clip_horizontal"
+                        app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fabEliminarAlimento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:background="@color/white"
+                        android:clickable="true"
+                        app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

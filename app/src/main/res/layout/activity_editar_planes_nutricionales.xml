@@ -1,92 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".FragmentosNutriologo.EditarPlanesNutricionales">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/ModificarNombrePlan"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F5F5F5"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/btn_Atras"
+                android:layout_alignParentLeft="true"
+                android:layout_width="172dp"
+                android:layout_height="200dp"
+                android:src="@drawable/fondo_atras">
+
+            </ImageView>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/TXTNombrePlan" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingEditarPlan"
+                <TextView
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    android:backgroundTint="@color/white"
-                    android:clickable="true"
-                    app:srcCompat="@drawable/ic_baseline_edit_24" />
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/ModificarPlan"
+                    android:fontFamily="@font/mont_bold"
+                    android:gravity="center"
+                    android:textSize="11pt"
+                    android:text="@string/TXTNombrePlan"
+                    android:layout_marginBottom="20dp"/>
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:src="@drawable/ic_baseline_save_24"
-                    app:backgroundTint="@color/white" />
+                    android:layout_height="match_parent">
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingEliminarPlan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    android:backgroundTint="@color/white"
-                    android:clickable="true"
-                    app:srcCompat="@drawable/ic_baseline_delete_24" />
+                    <EditText
+                        android:id="@+id/ModificarNombrePlan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mont_regular"
+                        android:hint="@string/TXTNombrePlan" />
 
-            </LinearLayout>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
 
-        </LinearLayout>
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:gravity="center"
-            android:orientation="horizontal">
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/floatingEditarPlan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:srcCompat="@drawable/ic_baseline_edit_24" />
 
-            <Spinner
-                android:id="@+id/spinnerAlimentos"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom|center"
-                android:layout_weight="1" />
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/ModificarPlan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorPrimary"
+                                android:src="@drawable/ic_baseline_save_24"
+                                app:backgroundTint="@color/white" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/agregarAlimentos"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom|start|center_horizontal|end"
-                android:layout_weight="1"
-                android:clickable="true"
-                app:backgroundTint="@color/icon_background"
-                app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
-        </LinearLayout>
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/floatingEliminarPlan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/spinnerAlimentos"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="bottom|center"
+                            android:layout_weight="1" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/agregarAlimentos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="bottom|start|center_horizontal|end"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            app:backgroundTint="@color/icon_background"
+                            app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+                    </LinearLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -106,4 +147,4 @@
 
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

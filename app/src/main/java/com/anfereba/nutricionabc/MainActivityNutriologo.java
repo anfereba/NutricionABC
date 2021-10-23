@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.anfereba.nutricionabc.FragmentosNutriologo.OpcionDosNutriologo;
+import com.anfereba.nutricionabc.FragmentosNutriologo.PlanesNutricionalesNutriologo;
 import com.anfereba.nutricionabc.FragmentosNutriologo.OpcionTresNutriologo;
 import com.anfereba.nutricionabc.FragmentosNutriologo.OpcionUnoNutriologo;
 import com.anfereba.nutricionabc.db.DbUsuario;
@@ -108,7 +108,7 @@ public class MainActivityNutriologo extends AppCompatActivity implements Navigat
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerN,new OpcionUnoNutriologo()).commit();
                 break;
             case R.id.Opcion_dos_Nutriologo:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerN,new OpcionDosNutriologo()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerN,new PlanesNutricionalesNutriologo()).commit();
                 break;
             case R.id.Opcion_tres_Nutriologo:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerN,new OpcionTresNutriologo()).commit();

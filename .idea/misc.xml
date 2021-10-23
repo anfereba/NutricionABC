@@ -44,26 +44,39 @@
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/menu/menu_insertar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/menu/menu_nutriologo.xml" value="0.536" />
         <entry key="..\:/Users/Andres/Desktop/nut/NutricionABC/app/src/main/res/menu/menu_opciones_perfil.xml" value="0.264" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/drawable-anydpi/atras_ico.xml" value="0.2203125" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/drawable/bg_bottom.xml" value="0.2703125" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.2703125" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/drawable/ic_notifications_white_24dp.xml" value="0.2703125" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/drawable/persona_ico.xml" value="0.2703125" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_actualizar_perfil.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_editar_alimentos.xml" value="0.264" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_editar_hijo.xml" value="0.23777173913043478" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_editar_planes_nutricionales.xml" value="0.264" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_gestion_usuarios.xml" value="0.2" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_registrar_alimento.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_registrar_hijo.xml" value="0.264" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_registrar_plan_nutricional.xml" value="0.2" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_registro_usuario.xml" value="0.2509057971014493" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_ver_detalles_nutriologo.xml" value="0.2" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/activity_ver_nutriologos.xml" value="0.2" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/fragment_crud_usuarios_administrador.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/fragment_hijos_cliente.xml" value="0.2" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_cliente.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/fragment_opcion_dos_nutriologo.xml" value="0.16" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_cliente.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/fragment_opcion_tres_nutriologo.xml" value="0.264" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/fragment_opcion_uno_cliente.xml" value="0.2" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/fragment_perfil_usuario.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/fragment_planes_nutricionales_nutriologo.xml" value="0.176" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/list_clientes.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/list_nutriologos.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/lista_calificaciones.xml" value="0.4" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/lista_item_alimento.xml" value="0.264" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/lista_item_hijo.xml" value="0.264" />
+        <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/layout/lista_item_plan_nutricional.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/menu/menu_buscar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Andres/Documents/GitHub/NutricionABC/app/src/main/res/menu/menu_cliente.xml" value="0.4" />
         <entry key="..\:/Users/Andres/NutricionABC/app/src/main/res/drawable-anydpi/imagen_ico.xml" value="0.1421875" />

@@ -1,71 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/grey"
     tools:context=".FragmentosNutriologo.RegistrarAlimento" >
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryDark">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <ImageView
+                    android:layout_marginTop="3dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/atras_ico" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/TXTAgregarAlimento"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="14pt"
+                    android:fontFamily="@font/dm_sans_bold"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <TextView
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/TXTCrearNuevoAlimento"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="7pt"
+                android:fontFamily="@font/dm_sans_bold"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="30dp">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="30dp"
+            android:elevation="20dp"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/TituloRegistroAlimento"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/TXTRegistroAlimento"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="25sp"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-            <ImageView
-                android:id="@+id/ImagenAlimento"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:onClick="EscogerImagenDeGaleria"
-                app:srcCompat="@drawable/imagen_ico" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ImagenAlimento"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    app:civ_border_width="5dp"
+                    app:civ_border_color="@color/grey"
+                    android:onClick="EscogerImagenDeGaleria"
+                    android:src="@drawable/imagen_ico" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/NombreDelAlimento"
+                    <EditText
+                        android:id="@+id/NombreDelAlimento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/TXTNombreAlimento"
+                        android:inputType="textPersonName"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="match_parent">
+
+                    <EditText
+
+                        android:id="@+id/CaloriasAlimento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/CaloriasAlimento" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/GuardarAlimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/TXTNombreAlimento"
-                    android:inputType="textPersonName"
-                    />
+                    android:background="@drawable/fondo_gradiente"
+                    android:textColor="@color/white"
+                    android:text="@string/TXTGuardarAlimento" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <EditText
-                    android:id="@+id/CaloriasAlimento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/CaloriasAlimento" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/GuardarAlimento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:text="@string/TXTGuardarAlimento" />
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </ScrollView>
-</FrameLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
