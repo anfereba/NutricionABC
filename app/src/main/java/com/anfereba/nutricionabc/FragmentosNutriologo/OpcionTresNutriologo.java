@@ -19,76 +19,44 @@ import com.anfereba.nutricionabc.R;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link OpcionTresNutriologo#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class OpcionTresNutriologo extends Fragment {
-    Button button;
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public OpcionTresNutriologo() {
-
-
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment OpcionTresNutriologo.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static OpcionTresNutriologo newInstance(String param1, String param2) {
-        OpcionTresNutriologo fragment = new OpcionTresNutriologo();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    ListaAlimentosAdapter adapter;
+    View view;
+    Button AgregarAlimento;
+    RecyclerView listaAlimentos;
+    DbAlimento dbAlimento;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
-        // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_opcion_tres_nutriologo, container, false);
-        Button button= (Button) v.findViewById(R.id.AgregarAlimento);
-        RecyclerView listaAlimentos = (RecyclerView) v.findViewById(R.id.listaAlimentos);
-        listaAlimentos.setLayoutManager(new LinearLayoutManager(getActivity()));
+        view=inflater.inflate(R.layout.fragment_opcion_tres_nutriologo, container, false);
 
-        DbAlimento dbAlimento = new DbAlimento(getActivity());
-        ArrayList<Alimentos>listaArrayAlimentos = new ArrayList<>();
-        ListaAlimentosAdapter adapter =new ListaAlimentosAdapter(dbAlimento.mostrarAlimentos());
+        AgregarAlimento = (Button) view.findViewById(R.id.AgregarAlimento);
+        listaAlimentos = (RecyclerView) view.findViewById(R.id.listaAlimentos);
+        listaAlimentos.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        dbAlimento = new DbAlimento(getActivity());
+
+        adapter =new ListaAlimentosAdapter(dbAlimento.mostrarAlimentos());
         listaAlimentos.setAdapter(adapter);
-        button.setOnClickListener(new View.OnClickListener() {
+        adapter.notifyDataSetChanged();
+
+        AgregarAlimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), RegistrarAlimento.class));
             }
         });
-        return v;
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter =new ListaAlimentosAdapter(dbAlimento.mostrarAlimentos());
+        listaAlimentos.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }

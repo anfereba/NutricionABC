@@ -30,9 +30,11 @@ import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class RegistrarAlimento extends AppCompatActivity implements Validator.ValidationListener {
 Button AgregarAlimento;
-    ImageView AgregarFotoAlimento;
+    CircleImageView AgregarFotoAlimento;
 Uri RutaArchivoUri;
     private byte[] imagenEnBytes = null;
     Bitmap FotoDeLAlimento;
@@ -53,7 +55,7 @@ Uri RutaArchivoUri;
         setContentView(R.layout.activity_registrar_alimento);
         NombreDelAlimento = (EditText) findViewById(R.id.NombreDelAlimento);
         AgregarAlimento= (Button) findViewById(R.id.GuardarAlimento);
-        AgregarFotoAlimento=(ImageView)findViewById(R.id.ImagenAlimento);
+        AgregarFotoAlimento= findViewById(R.id.ImagenAlimento);
         CaloriasAlimento=((EditText)findViewById(R.id.CaloriasAlimento));
         CaloriasAlimento.setInputType(InputType.TYPE_CLASS_NUMBER);
         validator = new Validator(this);
@@ -77,6 +79,7 @@ Uri RutaArchivoUri;
                         if (QueryExitosa > 0) {
                             Toast.makeText(getApplicationContext(), "Registro guardado con éxito: ", Toast.LENGTH_LONG).show();
                             limpiar();
+                            RegistrarAlimento.this.finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "ERROR AL GUARDAR REGISTRO: ", Toast.LENGTH_LONG).show();
                         }
@@ -155,6 +158,8 @@ Uri RutaArchivoUri;
 
         }
     }
+
+    /*
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode==event.KEYCODE_BACK){
@@ -162,5 +167,5 @@ Uri RutaArchivoUri;
             //((MainActivityNutriologo)getApplicationContext()).finish();
         }
         return super.onKeyDown(keyCode, event);
-    }
+    }*/
 }

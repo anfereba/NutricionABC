@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class EditarPlanesNutricionales extends AppCompatActivity {
 EditText NombrePlanNutricional;
 RecyclerView ListaPlanesAlimentos2;
 PlanesNutricionales planesNutricionales;
+ImageView btn_Atras;
 FloatingActionButton fabEditarPlan,fabEliminarPlan,agregarAlimentos,modificarPlanNutricional;
 Spinner spinnerAlimentos;
 boolean correcto= false;
@@ -49,6 +51,14 @@ int id2=0;
         agregarAlimentos=(FloatingActionButton)findViewById(R.id.agregarAlimentos);
         fabEliminarPlan=(FloatingActionButton) findViewById(R.id.floatingEliminarPlan);
         ListaPlanesAlimentos2 = (RecyclerView) findViewById(R.id.ListaPlanesAlimentos);
+        btn_Atras= findViewById(R.id.btn_Atras);
+
+        btn_Atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         if(savedInstanceState ==null){
             Bundle extras = getIntent().getExtras();
             if(extras == null){

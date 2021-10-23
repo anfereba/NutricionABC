@@ -83,7 +83,7 @@
     <!--Plan Nutricional -->
     <string name="TXTAgregarPlan">Agregar Plan +</string>
     <string name="TXTGuardarPlan">Guardar Plan</string>
-    <string name="TXTNombrePlan">Nombre del Plan Nutricional</string>
+    <string name="TXTNombrePlan">Nombre Plan</string>
     <string name="OperacionInsertarUsuario">Insertar Usuario</string>
     <string name="BtnModificarNombrePlan">Modificar Nombre Plan</string>
     <string name="TXTSeleccionePlanNutricional">Seleccione Plan Nutricional</string>
@@ -136,5 +136,10 @@
     <string name="samplereview">Eres muy buen nutriologo</string>
     <string name="TXTMisPacientes">Mis Pacientes</string>
     <string name="TXTEditarHijo">Editar Hijo</string>
+    <string name="TXTCrearNuevoPlan">Crear nuevo plan</string>
+    <string name="TXTCrearNuevoPlanN">Crea un nuevo plan nutricional</string>
+    <string name="TXTCrearNuevoAlimento">Agrega un nuevo Alimento</string>
+    <string name="TXTActualizarAlimento">Actualizar Alimento</string>
+    <string name="TXTActualizarNuevoAlimento">Actualizar alimento existente</string>
 
 </resources>

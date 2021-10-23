@@ -4,12 +4,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AlertDialog;
@@ -32,12 +34,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VerPlanesNutricionales extends AppCompatActivity {
+
     EditText NombrePlanNutricional;
     PlanesNutricionales planesNutricionales;
     FloatingActionButton fabEditarPlan,fabEliminarPlan,modificarPlanNutricional;
     Spinner spinnerAlimentos;
+    ImageView btn_Atras;
     FloatingActionButton agregarAlimentos;
     RecyclerView ListaPlanesAlimentos;
+    DbAlimento alimentos;
+    List<Alimentos> listaAlimentos;
+    ArrayAdapter<Alimentos> arrayAdapter;
+    DbPlanAlimento dbPlanAlimento;
     int id=0;
 
     @Override
@@ -46,19 +54,27 @@ public class VerPlanesNutricionales extends AppCompatActivity {
         setContentView(R.layout.activity_editar_planes_nutricionales);
         ListaPlanesAlimentos=(RecyclerView)findViewById(R.id.ListaPlanesAlimentos);
         ListaPlanesAlimentos.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        DbPlanAlimento dbPlanAlimento=new DbPlanAlimento(getApplicationContext());
-        ArrayList<PlanesAlimentos>listaArrayPlanesAlimentos= new ArrayList<>();
+        dbPlanAlimento=new DbPlanAlimento(getApplicationContext());
+        ArrayList<PlanesAlimentos> listaArrayPlanesAlimentos= new ArrayList<>();
 
         NombrePlanNutricional=(EditText) findViewById(R.id.ModificarNombrePlan);
         modificarPlanNutricional=(FloatingActionButton) findViewById(R.id.ModificarPlan);
         fabEditarPlan= (FloatingActionButton) findViewById(R.id.floatingEditarPlan);
         fabEliminarPlan= (FloatingActionButton)findViewById(R.id.floatingEliminarPlan);
         spinnerAlimentos=(Spinner)findViewById(R.id.spinnerAlimentos);
-        DbAlimento alimentos =new DbAlimento(VerPlanesNutricionales.this);
-        List<Alimentos> listaAlimentos = alimentos.mostrarAlimentos();
+        alimentos =new DbAlimento(VerPlanesNutricionales.this);
+
+        listaAlimentos = alimentos.mostrarAlimentos();
         agregarAlimentos=(FloatingActionButton)findViewById(R.id.agregarAlimentos);
-        ArrayAdapter<Alimentos> arrayAdapter =new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,listaAlimentos);
+        arrayAdapter =new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,listaAlimentos);
         spinnerAlimentos.setAdapter(arrayAdapter);
+        btn_Atras = findViewById(R.id.btn_Atras);
+        btn_Atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         fabEditarPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

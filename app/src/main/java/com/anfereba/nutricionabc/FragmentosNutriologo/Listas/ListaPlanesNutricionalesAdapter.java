@@ -2,6 +2,7 @@ package com.anfereba.nutricionabc.FragmentosNutriologo.Listas;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,7 @@ public class ListaPlanesNutricionalesAdapter extends RecyclerView.Adapter<ListaP
                     Context context =  view.getContext();
                     Intent intent = new Intent(context, VerPlanesNutricionales.class); //si algo me toca modificarlo
                     intent.putExtra("IdPlanesNutricionales",listaPlanes.get(getAdapterPosition()).getIdPlanNutricional());
+                    Log.i("Id plan",listaPlanes.get(getAdapterPosition()).getIdPlanNutricional().toString());
                      context.startActivity(intent);
                 }
             });
