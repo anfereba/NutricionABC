@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,21 +14,15 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.anfereba.nutricionabc.FragmentosCliente.VerHijo;
 import com.anfereba.nutricionabc.R;
-import com.anfereba.nutricionabc.db.DbAlimento;
+import com.anfereba.nutricionabc.db.DbPlanDiario;
 import com.anfereba.nutricionabc.db.DbHijo;
 import com.anfereba.nutricionabc.db.DbPlanNutricional;
-import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
-import com.anfereba.nutricionabc.db.Entidades.PlanesAlimentos;
 import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AsignacionPlanNutricional extends AppCompatActivity {
 TextView NombreSeleccionado, EdadSeleccionado, EstaturaSeleccionado,PesoSeleccionado;
@@ -69,6 +62,7 @@ Button SeleccionarPlan;
             PesoSeleccionado.setText((hijos.getPesoHijos()).toString()+" kilos");
             ImagenSeleccionado.setImageBitmap(bitmap);
         }
+        DbPlanDiario dbPlanDiario= new DbPlanDiario(AsignacionPlanNutricional.this);
         DbPlanNutricional dbPlanNutricional =new DbPlanNutricional(AsignacionPlanNutricional.this);
         List<PlanesNutricionales> planesNutricionales = dbPlanNutricional.mostrarPlan(TomarIdNutriologo());
         ArrayAdapter<PlanesNutricionales> arrayAdapter =new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,planesNutricionales);
@@ -82,6 +76,8 @@ Button SeleccionarPlan;
                     public void onClick(View view) {
                         dbHijo.AsignarPlanNutricionalAlHijo(id,idPlanNutricional);
                         finish();
+                        dbPlanDiario.insertarPlanDiario(id,idPlanNutricional);
+
                     }
                 });
             }

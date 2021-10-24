@@ -141,5 +141,6 @@
     <string name="TXTCrearNuevoAlimento">Agrega un nuevo Alimento</string>
     <string name="TXTActualizarAlimento">Actualizar Alimento</string>
     <string name="TXTActualizarNuevoAlimento">Actualizar alimento existente</string>
-
+    <!--Plan Diario -->
+    <string name="TXTPlanDiario">Plan Diario</string>
 </resources>

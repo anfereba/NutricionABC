@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.anfereba.nutricionabc.FragmentosCliente.HijosCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.VerHijo;
 import com.anfereba.nutricionabc.MainActivityCliente;
+import com.anfereba.nutricionabc.PlanDirario;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
 
@@ -85,6 +86,10 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
                     if(listaHijos.get(getAdapterPosition()).getIdPlanNutricional3()!=0){
 
                         Toast.makeText(context,"Te han asignado un plan",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(context, PlanDirario.class); //si algo me toca modificarlo
+                        intent.putExtra("IdHijo",listaHijos.get(getAdapterPosition()).getIdHijos());
+                        intent.putExtra("IdPlanNutricional",listaHijos.get(getAdapterPosition()).getIdPlanNutricional3());
+                        context.startActivity(intent);
                     }else{
 
                         Toast.makeText(context,"No te han asignado un plan",Toast.LENGTH_LONG).show();

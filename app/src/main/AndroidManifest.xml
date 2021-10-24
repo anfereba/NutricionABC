@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".PlanDirario"
+            android:exported="true" />
+        <activity
             android:name=".FragmentosNutriologo.AsignacionPlanNutricional"
             android:exported="true" />
         <activity
@@ -59,21 +62,21 @@
             android:exported="true" />
         <activity
             android:name=".FragmentosNutriologo.EditarAlimentos"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FragmentosNutriologo.VerAlimentos"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivityNutriologo">
+            android:parentActivityName=".MainActivityNutriologo"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityNutriologo" />
         </activity>
         <activity
             android:name=".FragmentosNutriologo.EditarPlanesNutricionales"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FragmentosCliente.VerHijo"
             android:exported="true"
@@ -81,8 +84,8 @@
         <activity
             android:name=".FragmentosNutriologo.VerPlanesNutricionales"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivityNutriologo">
+            android:parentActivityName=".MainActivityNutriologo"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityNutriologo" />
@@ -90,8 +93,8 @@
         <activity
             android:name=".FragmentosNutriologo.RegistrarPlanNutricional"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivityNutriologo">
+            android:parentActivityName=".MainActivityNutriologo"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityNutriologo" />
@@ -99,8 +102,8 @@
         <activity
             android:name=".FragmentosNutriologo.RegistrarAlimento"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivityNutriologo">
+            android:parentActivityName=".MainActivityNutriologo"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityNutriologo" />
