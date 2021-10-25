@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".PlanDirario"
+            android:name=".FragmentosNutriologo.PlanDirario"
             android:exported="true" />
         <activity
             android:name=".FragmentosNutriologo.AsignacionPlanNutricional"

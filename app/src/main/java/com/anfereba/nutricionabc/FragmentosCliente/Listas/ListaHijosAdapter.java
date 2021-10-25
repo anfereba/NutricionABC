@@ -1,12 +1,10 @@
 package com.anfereba.nutricionabc.FragmentosCliente.Listas;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.anfereba.nutricionabc.FragmentosCliente.HijosCliente;
 import com.anfereba.nutricionabc.FragmentosCliente.VerHijo;
-import com.anfereba.nutricionabc.MainActivityCliente;
-import com.anfereba.nutricionabc.PlanDirario;
+import com.anfereba.nutricionabc.FragmentosNutriologo.PlanDirario;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
 

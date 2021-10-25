@@ -91,4 +91,25 @@ public class DbPlanDiario extends DbHelper{
         }
         return listaPlanesDiarios;
     }
+    public long EditarCumplimientoDelPlanDiario(int IdCumplimientoPlanDiario,int valor) {
+
+        long correcto = 0;
+        String[] parametros = {Integer.toString(IdCumplimientoPlanDiario)};
+
+        try {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            //values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
+
+            values.put(Utilidades.CAMPO_Cumplimiento, valor);
+
+
+            correcto = db.update(Utilidades.TABLA_Cumplimiennto_Plan_Diario, values, Utilidades.CAMPO_ID_Cumplimiento_Plan_Diario + "=?", parametros);
+        } catch (Exception ex) {
+            ex.toString();
+        }
+        return correcto;
+    }
 }

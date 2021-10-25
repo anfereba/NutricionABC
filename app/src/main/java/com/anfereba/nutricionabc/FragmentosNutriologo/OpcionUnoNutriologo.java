@@ -87,10 +87,11 @@ public class OpcionUnoNutriologo extends Fragment {
         SharedPreferences shared = getActivity().getSharedPreferences("Sesiones", MODE_PRIVATE);//Llamar id del nutriologo.
         Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del nutriologo.
         RecyclerView listaHijos = (RecyclerView) v.findViewById(R.id.ListaHijosNutriologo);
-        listaHijos.setLayoutManager(new LinearLayoutManager(getContext()));
+        listaHijos.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         ArrayList<Hijos> listaArrayHijos = new ArrayList<>();
         ListaHijosAdapter adapter2 =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosDelNutriologo(iDNutriologo));
         listaHijos.setAdapter(adapter2);
+
         return v;
     }
 }
