@@ -2,8 +2,10 @@ package com.anfereba.nutricionabc.FragmentosNutriologo.Listas;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.anfereba.nutricionabc.FragmentosNutriologo.VerAlimentos;
+import com.anfereba.nutricionabc.FragmentosNutriologo.VerPlanesNutricionales;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbPlanDiario;
 import com.anfereba.nutricionabc.db.DbPlanNutricional;
@@ -70,6 +74,16 @@ public class ListaPlanDiarioAdapter extends RecyclerView.Adapter<ListaPlanDiario
             if(u==2){
                 checkBoxPlanDiario.setEnabled(false);
             }
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context =  view.getContext();
+                    Intent intent = new Intent(context, VerAlimentos.class); //si algo me toca modificarlo
+                    intent.putExtra("IdAlimentos",listaPlanesDiarios.get(getAdapterPosition()).getIdAlimento());
+                    intent.putExtra("IdPlanAlimento",listaPlanesDiarios.get(getAdapterPosition()).getIdPlanAlimento());
+                    context.startActivity(intent);
+                }
+            });
             checkBoxPlanDiario.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
