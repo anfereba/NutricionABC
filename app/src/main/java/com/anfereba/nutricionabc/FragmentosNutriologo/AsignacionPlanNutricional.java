@@ -2,6 +2,7 @@ package com.anfereba.nutricionabc.FragmentosNutriologo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbPlanDiario;
@@ -74,10 +76,16 @@ Button SeleccionarPlan;
                 SeleccionarPlan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        dbHijo.AsignarPlanNutricionalAlHijo(id,idPlanNutricional);
-                        finish();
-                        dbPlanDiario.insertarPlanDiario(id,idPlanNutricional);
-
+                        Context context =  view.getContext();
+                        if(dbPlanNutricional.Comprobar_ExistenciaHistorialPlan(id,idPlanNutricional)==true){
+                            Toast.makeText(context,"El Paciente ya habia intentado este plan Nutricional Antes",Toast.LENGTH_LONG).show();
+                            Toast.makeText(context,"Seleccione otro por favor",Toast.LENGTH_LONG).show();
+                        }else {
+                            dbPlanNutricional.insertarHistorialPlanNutricional(id,idPlanNutricional);
+                            dbHijo.AsignarPlanNutricionalAlHijo(id,idPlanNutricional);
+                            finish();
+                            dbPlanDiario.insertarPlanDiario(id,idPlanNutricional);
+                        }
                     }
                 });
             }
@@ -90,7 +98,6 @@ Button SeleccionarPlan;
     }
     private Integer TomarIdNutriologo() {
         SharedPreferences shared = getSharedPreferences("Sesiones", MODE_PRIVATE);
-
         Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );
         return iDNutriologo;
     }

@@ -44,6 +44,20 @@
             android:gravity="start"
             android:textColor="@color/black" />
 
+        <Button
+            android:id="@+id/GuardarComentarioDiario"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_gravity="end"
+            android:text="@string/BtnGuardarComentario"
+            android:textSize="8sp" />
+
+        <Button
+            android:id="@+id/VistoBueno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/BtnVistoBueno" />
+
     </LinearLayout>
 
 </FrameLayout>

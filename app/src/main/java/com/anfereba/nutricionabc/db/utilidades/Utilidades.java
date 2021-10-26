@@ -101,13 +101,23 @@ public class Utilidades {
     public static final String ALIAS_CAMPO_CORREO_NUTRIOLOGO = "CorreoNutriologo";
     public static final String ALIAS_CAMPO_FOTO_NUTRIOLOGO = "fotoNutriologo";
 
-//Campos Tabla CumplimientoPlanDiario
+//Campos Tabla Cumplimiento Plan Diario
 
     public static final String TABLA_Cumplimiennto_Plan_Diario = "CumplimienntoPlanDiario";
     public static final String CAMPO_ID_Cumplimiento_Plan_Diario = "idCumplimientoPlanDiario";
     public static final String CAMPO_ID_HIJO2 = "idHijo"; //FK_idHIJO
     public static final String CAMPO_ID_PlanAlimento2 = "idPlanAlimento"; //FK_idPlanAlimento
     public static final String CAMPO_Cumplimiento = "Cumplimiento";
+
+    //Campos Tabla Historial Planes Nutricionales
+
+    public static final String TABLA_Historial_Planes_Nutricionales = "HistorialPlanesNutricionales";
+    public static final String CAMPO_ID_Historial_Planes_Nutricionales = "idHistorialPlanNutricional";
+    public static final String CAMPO_ID_HIJO3 = "idHijo"; //FK_idHIJO
+    public static final String CAMPO_ID_PlanNutricional4 = "idPlanNutricional";
+    public static final String CAMPO_Comentarios_Nutriologo = "Comentarios_Nutriologo";
+    public static final String CAMPO_Cumplimiento2 = "Cumplimiento";
+    public static final String CAMPO_Visto_Bueno_Nutriologo = "VistoBueno";
 
 
 
@@ -242,5 +252,16 @@ public class Utilidades {
             +"REFERENCES "+TABLA_Hijo+"("+CAMPO_ID_HIJO+")"
             +"FOREIGN KEY"+ "("+CAMPO_ID_PlanAlimento2+") "
             +"REFERENCES "+TABLA_PlanAlimento+"("+CAMPO_ID_PlanAlimento+"))";
+
+    //Sentencia para crear TABLA_Historial_Planes_Nutricionales
+    public static final String CREAR_TABLA_Historial_Planes_Nutricionales = "CREATE TABLE "
+            + TABLA_Historial_Planes_Nutricionales + "(" + CAMPO_ID_Historial_Planes_Nutricionales + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + CAMPO_ID_HIJO3 + " INTEGER NOT NULL, "
+            + CAMPO_ID_PlanNutricional4 + " INTEGER NOT NULL, "
+            + CAMPO_Comentarios_Nutriologo + " TEXT NOT NULL, "
+            + CAMPO_Cumplimiento2 + " INTEGER NOT NULL, "
+            + CAMPO_Visto_Bueno_Nutriologo + " BOOLEAN NOT NULL, "
+            +"FOREIGN KEY"+ "("+CAMPO_ID_HIJO3+") "
+            +"REFERENCES "+TABLA_Hijo+"("+CAMPO_ID_HIJO+"))";
 
 }

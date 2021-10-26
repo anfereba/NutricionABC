@@ -143,4 +143,6 @@
     <string name="TXTActualizarNuevoAlimento">Actualizar alimento existente</string>
     <!--Plan Diario -->
     <string name="TXTPlanDiario">Plan Diario</string>
+    <string name="BtnGuardarComentario">Guardar Comentario</string>
+    <string name="BtnVistoBueno">Dar el visto bueno</string>
 </resources>

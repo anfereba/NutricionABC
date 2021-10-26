@@ -8,10 +8,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.anfereba.nutricionabc.db.DbHelper;
-import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -127,6 +127,140 @@ public class DbPlanNutricional extends DbHelper {
 
         return correcto;
     }
+    public long insertarHistorialPlanNutricional(int idHijo, int idPlanNutricional) {
+
+        long id = 0;
+
+        try {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            //values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
 
 
+            values.put(Utilidades.CAMPO_ID_HIJO3,idHijo);
+            values.put(Utilidades.CAMPO_ID_PlanNutricional4,idPlanNutricional);//<---- registrara La id del nutriologo que la cree
+            values.put(Utilidades.CAMPO_Comentarios_Nutriologo,"");
+            values.put(Utilidades.CAMPO_Cumplimiento2, 0);
+            values.put(Utilidades.CAMPO_Visto_Bueno_Nutriologo,0);
+
+
+            id = db.insert(Utilidades.TABLA_Historial_Planes_Nutricionales, null, values);
+        } catch (Exception ex) {
+            ex.toString();
+        }
+
+        return id;
+    }
+    public boolean Comprobar_ExistenciaHistorialPlan(int idHijo, int idPlanNutricional){
+        boolean existePlan = false;
+        try{
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            Cursor cursor = db.rawQuery("SELECT 1 FROM " + Utilidades.TABLA_Historial_Planes_Nutricionales +" WHERE "+Utilidades.CAMPO_ID_HIJO3+" = "+idHijo+" AND "+Utilidades.CAMPO_ID_PlanNutricional4+" = "+idPlanNutricional+"", null);
+            cursor.moveToFirst();
+            if (cursor.getCount() > 0){
+                existePlan = true;
+            }else {
+                existePlan = false;
+            }
+            db.close();
+        }catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            existePlan = false;
+        }
+        return existePlan;
+    }
+    public boolean EditarPorcentajePlanes(int idPlanNutricional, int IdHijo, int Porcentage) {
+
+        boolean correcto =false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("UPDATE "+Utilidades.TABLA_Historial_Planes_Nutricionales+ " SET "+Utilidades.CAMPO_Cumplimiento2+" = '"+Porcentage+"' WHERE "+Utilidades.CAMPO_ID_HIJO3+"= '"+ IdHijo +"' AND "+Utilidades.CAMPO_ID_PlanNutricional4+" = '"+idPlanNutricional +"'");
+            correcto=true;
+        } catch (Exception ex) {
+            ex.toString();
+            correcto=false;
+        }finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+
+    public Integer verPorcentagePlan(int IdHijo, int idPlanNutricional) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int Porcentage = 0;
+
+        PlanesNutricionales planesNutricionales=null;
+        Cursor cursorPlanes;
+
+        cursorPlanes = db.rawQuery("SELECT "+Utilidades.CAMPO_Cumplimiento2+" FROM  "+Utilidades.TABLA_Historial_Planes_Nutricionales+" WHERE "+Utilidades.CAMPO_ID_HIJO3+"= '"+ IdHijo +"' AND "+Utilidades.CAMPO_ID_PlanNutricional4+" = '"+idPlanNutricional +"'", null);
+
+        if (cursorPlanes.moveToFirst()) {
+            Porcentage =cursorPlanes.getInt(0);
+        }
+
+        cursorPlanes.close();
+
+        return Porcentage;
+    }
+    public boolean EditarVistoBueno(int idPlanNutricional, int IdHijo, boolean VistoBueno) {
+
+        boolean correcto =false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("UPDATE "+Utilidades.TABLA_Historial_Planes_Nutricionales+ " SET "+Utilidades.CAMPO_Visto_Bueno_Nutriologo+" = '"+VistoBueno+"' WHERE "+Utilidades.CAMPO_ID_HIJO3+"= '"+ IdHijo +"' AND "+Utilidades.CAMPO_ID_PlanNutricional4+" = '"+idPlanNutricional +"'");
+            correcto=true;
+        } catch (Exception ex) {
+            ex.toString();
+            correcto=false;
+        }finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+    public boolean EditarComentarioNutriologo(int idPlanNutricional, int IdHijo, String Comentario) {
+
+        boolean correcto =false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("UPDATE "+Utilidades.TABLA_Historial_Planes_Nutricionales+ " SET "+Utilidades.CAMPO_Comentarios_Nutriologo+" = '"+Comentario+"' WHERE "+Utilidades.CAMPO_ID_HIJO3+"= '"+ IdHijo +"' AND "+Utilidades.CAMPO_ID_PlanNutricional4+" = '"+idPlanNutricional +"'");
+            correcto=true;
+        } catch (Exception ex) {
+            ex.toString();
+            correcto=false;
+        }finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+    public String verComentarioNutriologo(int IdHijo, int idPlanNutricional) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String Porcentage = "";
+        Cursor cursorPlanes;
+
+        cursorPlanes = db.rawQuery("SELECT "+Utilidades.CAMPO_Comentarios_Nutriologo+" FROM "+Utilidades.TABLA_Historial_Planes_Nutricionales+" WHERE "+Utilidades.CAMPO_ID_HIJO3+"= '"+ IdHijo +"' AND "+Utilidades.CAMPO_ID_PlanNutricional4+" = '"+idPlanNutricional +"'", null);
+
+        if (cursorPlanes.moveToFirst()) {
+            Porcentage =cursorPlanes.getString(0);
+        }
+
+        cursorPlanes.close();
+
+        return Porcentage;
+    }
 }
