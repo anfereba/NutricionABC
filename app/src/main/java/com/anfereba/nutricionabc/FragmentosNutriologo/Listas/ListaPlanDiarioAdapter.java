@@ -1,5 +1,6 @@
 package com.anfereba.nutricionabc.FragmentosNutriologo.Listas;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,16 +64,15 @@ public class ListaPlanDiarioAdapter extends RecyclerView.Adapter<ListaPlanDiario
                     if(checkBoxPlanDiario.isChecked()==true){
                         dbPlanDiario.EditarCumplimientoDelPlanDiario(listaPlanesDiarios.get(getAdapterPosition()).getIdCumplimientoPlanDiario(),2);
                         b=b+1;
-                        Long c=Long.valueOf(a);
-                        Long d=Long.valueOf(b);
-                        long e = d/c;
-                        String f= String.valueOf(e);
-                        System.out.println(f);
+                        long c = (long) ((b*1.00)/(a*1.00)*100);
+                        String f= String.valueOf(c);
+                        Toast.makeText(context," Has completado el "+f+"%",Toast.LENGTH_LONG).show();
                     }else{
                         dbPlanDiario.EditarCumplimientoDelPlanDiario(listaPlanesDiarios.get(getAdapterPosition()).getIdCumplimientoPlanDiario(),1);
                         b=b-1;
-                        String c= String.valueOf(b/a);
-                        System.out.println(c);
+                        long c = (long) ((b*1.00)/(a*1.00)*100);
+                        String f= String.valueOf(c);
+                        Toast.makeText(context," Has completado el "+f+"%",Toast.LENGTH_LONG).show();
                     }
 
                 }
