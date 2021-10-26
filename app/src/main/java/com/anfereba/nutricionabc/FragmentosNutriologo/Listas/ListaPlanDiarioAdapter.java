@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,7 +52,7 @@ public class ListaPlanDiarioAdapter extends RecyclerView.Adapter<ListaPlanDiario
             holder.checkBoxPlanDiario.setChecked(true);
             b=b+1;
         }
-        holder.textViewPlanDiario.setText("Plan nutricional Dia "+a+" "+listaPlanesDiarios.get(position).getNombreAlimento());
+        holder.textViewPlanDiario.setText("Dia "+a+" "+listaPlanesDiarios.get(position).getNombreAlimento());
     }
 
     @Override
@@ -65,7 +66,11 @@ public class ListaPlanDiarioAdapter extends RecyclerView.Adapter<ListaPlanDiario
         public ListaPlanDiarioViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewPlanDiario = (TextView) itemView.findViewById(R.id.textViewPlanDiario);
+            textViewPlanDiario.setTextColor(Color.WHITE);
+            textViewPlanDiario.setTextSize(20);
             checkBoxPlanDiario = (CheckBox) itemView.findViewById(R.id.checkBoxPlanDiario);
+            checkBoxPlanDiario.setTextSize(20);
+            checkBoxPlanDiario.setTextColor(Color.WHITE);
             SharedPreferences shared = itemView.getContext().getSharedPreferences("Sesiones",itemView.getContext().MODE_PRIVATE);
             Integer IdPerfilSistema = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );
             DbUsuario dbUsuario = new DbUsuario(itemView.getContext());

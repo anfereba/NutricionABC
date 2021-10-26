@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".FragmentosNutriologo.PlanDirario"
-            android:exported="true" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FragmentosNutriologo.AsignacionPlanNutricional"
             android:exported="true" />

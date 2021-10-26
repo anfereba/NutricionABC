@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.anfereba.nutricionabc.FragmentosCliente.Listas.ListaHijosAdapter;
+import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaAlimentosAdapter;
 import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaHijosSinPlanAdapter;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbHijo;
@@ -29,7 +30,13 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class OpcionUnoNutriologo extends Fragment {
-
+    ListaHijosSinPlanAdapter adapter;
+    ListaHijosAdapter adapter2;
+    View view;
+    RecyclerView listaHijosSinPlan,listaHijos;
+    DbHijo dbHijo;
+    SharedPreferences shared;
+    Integer iDNutriologo;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -74,9 +81,9 @@ public class OpcionUnoNutriologo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_opcion_uno_nutriologo, container, false);
-        DbHijo dbHijo = new DbHijo(getContext());
-        RecyclerView listaHijosSinPlan = (RecyclerView)v.findViewById(R.id.ListaHijosSinPlan);
+        view = inflater.inflate(R.layout.fragment_opcion_uno_nutriologo, container, false);
+        dbHijo = new DbHijo(getContext());
+        listaHijosSinPlan = (RecyclerView)view.findViewById(R.id.ListaHijosSinPlan);
         listaHijosSinPlan.setLayoutManager(new LinearLayoutManager(getContext()));
         ArrayList<Hijos>listaArrayHijosSinPlan=new ArrayList<>();
         Integer iDUsuario=0;
@@ -84,14 +91,26 @@ public class OpcionUnoNutriologo extends Fragment {
         listaHijosSinPlan.setAdapter(adapter);
 
 
-        SharedPreferences shared = getActivity().getSharedPreferences("Sesiones", MODE_PRIVATE);//Llamar id del nutriologo.
-        Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del nutriologo.
-        RecyclerView listaHijos = (RecyclerView) v.findViewById(R.id.ListaHijosNutriologo);
+        shared = getActivity().getSharedPreferences("Sesiones", MODE_PRIVATE);//Llamar id del nutriologo.
+        iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del nutriologo.
+        listaHijos = (RecyclerView) view.findViewById(R.id.ListaHijosNutriologo);
         listaHijos.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         ArrayList<Hijos> listaArrayHijos = new ArrayList<>();
-        ListaHijosAdapter adapter2 =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosDelNutriologo(iDNutriologo));
+        adapter2 =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosDelNutriologo(iDNutriologo));
         listaHijos.setAdapter(adapter2);
 
-        return v;
+        return view;
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        Integer iDUsuario=0;
+        adapter =new ListaHijosSinPlanAdapter(dbHijo.mostrarTodosLosHijosQueNoTienenPlan(iDUsuario));
+        listaHijosSinPlan.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        adapter2 =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosDelNutriologo(iDNutriologo));
+        listaHijos.setAdapter(adapter2);
+        adapter.notifyDataSetChanged();
     }
 }

@@ -7,12 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anfereba.nutricionabc.FragmentosCliente.Listas.ListaHijosAdapter;
+import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaHijosSinPlanAdapter;
 import com.anfereba.nutricionabc.FragmentosNutriologo.Listas.ListaPlanDiarioAdapter;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbHijo;
@@ -32,6 +36,7 @@ TextView PlanDiario;
 RecyclerView AlimentosDiarios;
 EditText ComentarioNutriologo;
 Button GuardarComentarioDiario, VistoBueno;
+ImageView IMGAtras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +46,13 @@ Button GuardarComentarioDiario, VistoBueno;
         GuardarComentarioDiario = findViewById(R.id.GuardarComentarioDiario);
         VistoBueno = findViewById(R.id.VistoBueno);
         VistoBueno.setVisibility(View.INVISIBLE);
-
+        IMGAtras = findViewById(R.id.IMGAtras);
+        IMGAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
@@ -114,5 +125,13 @@ Button GuardarComentarioDiario, VistoBueno;
         SharedPreferences shared = getSharedPreferences("Sesiones", MODE_PRIVATE);
         Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );
         return iDNutriologo;
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==event.KEYCODE_BACK){
+            finishAffinity ();//se utiliza para terminará la actividad actual y todas las actividades de los padres
+            //((MainActivityCliente)getApplicationContext()).finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
