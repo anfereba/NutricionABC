@@ -24,19 +24,16 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="30dp">
 
-                <ImageView
-                    android:layout_marginTop="3dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/atras_ico" />
 
                 <TextView
+                    android:id="@+id/ImgAtras"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/TXTActualizarAlimento"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="14pt"
+                    android:drawableLeft="@drawable/atras_ico"
                     android:fontFamily="@font/dm_sans_bold"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>

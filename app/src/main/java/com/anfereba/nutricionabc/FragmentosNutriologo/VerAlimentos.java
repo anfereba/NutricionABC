@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -29,6 +30,7 @@ import java.sql.Blob;
 import java.util.ArrayList;
 
 public class VerAlimentos extends AppCompatActivity {
+    TextView ImgAtras;
     EditText NombreAlimento, CaloriasAlimento;
     ImageView EditarFotoAlimento;
     Button GuardarAlimento;
@@ -47,6 +49,7 @@ public class VerAlimentos extends AppCompatActivity {
         GuardarAlimento = (Button) findViewById(R.id.ModificarAlimento);
         fabEditarAlimentos = (FloatingActionButton) findViewById(R.id.fabEditarAlimento);
         fabEliminarAlimentos = (FloatingActionButton) findViewById(R.id.fabEliminarAlimento);
+        ImgAtras = findViewById(R.id.ImgAtras);
         fabEditarAlimentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +106,12 @@ public class VerAlimentos extends AppCompatActivity {
 
                     }
                 }).show();
+            }
+        });
+        ImgAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

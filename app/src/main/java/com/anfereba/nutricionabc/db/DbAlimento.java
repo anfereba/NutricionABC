@@ -14,6 +14,8 @@ import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
+import okhttp3.internal.Util;
+
 public class DbAlimento extends DbHelper {
     Context context;
     public DbAlimento(@Nullable Context context) {
@@ -126,14 +128,17 @@ public class DbAlimento extends DbHelper {
 
         return correcto;
     }
+
     public boolean EliminarAlimento(int id) {
 
         boolean correcto =false;
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] parametros = {String.valueOf(id)};
 
         try {
-            db.execSQL("DELETE FROM "+Utilidades.TABLA_Alimento+" WHERE idAlimento= '"+ id +"'");
+            //db.execSQL("DELETE FROM "+Utilidades.TABLA_Alimento+" WHERE idAlimento= '"+ id +"'");
+            db.delete(Utilidades.TABLA_Alimento,Utilidades.CAMPO_ID_Alimento+"=?",parametros);
             correcto=true;
         } catch (Exception ex) {
             ex.toString();

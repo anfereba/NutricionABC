@@ -25,6 +25,7 @@ import com.anfereba.nutricionabc.db.DbUsuario;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
+import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
 import java.io.ByteArrayOutputStream;
@@ -34,6 +35,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegistrarAlimento extends AppCompatActivity implements Validator.ValidationListener {
 Button AgregarAlimento;
+    ImageView atras_ico;
     CircleImageView AgregarFotoAlimento;
 Uri RutaArchivoUri;
     private byte[] imagenEnBytes = null;
@@ -44,6 +46,7 @@ Uri RutaArchivoUri;
     //Validacion de cada campo
 
     @NotEmpty (message = "Este campo es Obligatorio")
+    @Length(max = 9)
     EditText NombreDelAlimento;
 
     @NotEmpty (message = "Este campo es Obligatorio")
@@ -57,7 +60,10 @@ Uri RutaArchivoUri;
         AgregarAlimento= (Button) findViewById(R.id.GuardarAlimento);
         AgregarFotoAlimento= findViewById(R.id.ImagenAlimento);
         CaloriasAlimento=((EditText)findViewById(R.id.CaloriasAlimento));
+        atras_ico = findViewById(R.id.atras_ico);
+
         CaloriasAlimento.setInputType(InputType.TYPE_CLASS_NUMBER);
+
         validator = new Validator(this);
         validator.setValidationListener(this);
 
@@ -93,6 +99,12 @@ Uri RutaArchivoUri;
                     Toast.makeText(getApplicationContext(), "Debe Escoger una Foto para el alimento", Toast.LENGTH_LONG).show();
 
                 }
+            }
+        });
+        atras_ico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 

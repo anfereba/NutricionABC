@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anfereba.nutricionabc.MainActivityNutriologo;
@@ -34,6 +35,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditarAlimentos extends AppCompatActivity implements Validator.ValidationListener {
 
+    TextView ImgAtras;
     CircleImageView AgregarFotoAlimento;
     Button GuardarAlimento;
     Alimentos alimentos;
@@ -65,6 +67,8 @@ public class EditarAlimentos extends AppCompatActivity implements Validator.Vali
         GuardarAlimento=(Button) findViewById(R.id.ModificarAlimento);
         fabEditarAlimento= (FloatingActionButton) findViewById(R.id.fabEditarAlimento);
         fabEliminarAlimento= (FloatingActionButton) findViewById(R.id.fabEliminarAlimento);
+        ImgAtras = findViewById(R.id.ImgAtras);
+
         if(savedInstanceState==null){
             Bundle extras = getIntent().getExtras();
             if(extras==null){
@@ -128,6 +132,12 @@ public class EditarAlimentos extends AppCompatActivity implements Validator.Vali
                     //Toast.makeText(getApplicationContext(), "Debe Escoger una Foto para el alimento", Toast.LENGTH_LONG).show();
 
                 }
+            }
+        });
+        ImgAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 AgregarFotoAlimento.setOnClickListener(new View.OnClickListener() {

@@ -40,6 +40,7 @@ Button Guardarplan;
 
                     if (id > 0) {
                         Toast.makeText(RegistrarPlanNutricional.this, "Plan GUARDADO", Toast.LENGTH_LONG).show();
+                        RegistrarPlanNutricional.this.finish();
                         limpiar();
                     } else {
                         Toast.makeText(RegistrarPlanNutricional.this, "ERROR AL GUARDAR ", Toast.LENGTH_LONG).show();
