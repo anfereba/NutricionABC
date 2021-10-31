@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.anfereba.nutricionabc.db.Entidades.HistorialPlanes;
 import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
@@ -262,5 +263,70 @@ public class DbPlanNutricional extends DbHelper {
         cursorPlanes.close();
 
         return Porcentage;
+    }
+    public ArrayList<HistorialPlanes> mostrarHistorialPlan(int idUsuario) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ArrayList<HistorialPlanes> listaHistorialPlanes = new ArrayList<>();
+        HistorialPlanes historialPlanes;
+        Cursor cursorPlanes;
+
+        cursorPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_Hijo +" WHERE "+Utilidades.CAMPO_ID_USUARIO3+" = "+idUsuario+"", null);
+
+        if (cursorPlanes.moveToFirst()) {
+            do {
+                historialPlanes = new HistorialPlanes();
+                historialPlanes.setIdHijo(cursorPlanes.getInt(0));
+                historialPlanes.setFotoHijos(cursorPlanes.getBlob(1));
+                historialPlanes.setNombreHijo(cursorPlanes.getString(2));
+
+                Cursor cursorHistorialPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_Historial_Planes_Nutricionales +" WHERE "+Utilidades.CAMPO_ID_HIJO3+" = "+historialPlanes.getIdHijo()+"", null);
+                        cursorHistorialPlanes.moveToFirst();
+                        historialPlanes.setIdPlanNutricional(cursorHistorialPlanes.getInt(2));
+                        historialPlanes.setCumplimientoDelPlan(cursorHistorialPlanes.getInt(4));
+                        historialPlanes.setVistoBueno(cursorHistorialPlanes.getString(5));
+                cursorHistorialPlanes.close();
+                Cursor cursorPlanNutricional = db.rawQuery("SELECT " + Utilidades.CAMPO_NOMBREPlanNutricional + " FROM " + Utilidades.TABLA_PlanNutricional +" WHERE "+Utilidades.CAMPO_ID_PlanNutricional+" = "+historialPlanes.getIdPlanNutricional()+"", null);
+               cursorPlanNutricional.moveToFirst();
+                historialPlanes.setNombrePlanNutricional(cursorPlanNutricional.getString(0));
+                cursorPlanNutricional.close();
+                listaHistorialPlanes.add(historialPlanes);
+            } while (cursorPlanes.moveToNext());
+        }
+
+        cursorPlanes.close();
+
+        return listaHistorialPlanes;
+    }
+    public ArrayList<HistorialPlanes> mostrarItemsHistorialPlan(int idHijo) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ArrayList<HistorialPlanes> listaHistorialPlanes = new ArrayList<>();
+        HistorialPlanes historialPlanes;
+        Cursor cursorPlanes;
+
+        cursorPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_Historial_Planes_Nutricionales +" WHERE "+Utilidades.CAMPO_ID_HIJO3+" = "+idHijo+"", null);
+
+        if (cursorPlanes.moveToFirst()) {
+            do {
+                historialPlanes = new HistorialPlanes();
+                historialPlanes.setIdPlanNutricional(cursorPlanes.getInt(2));
+                historialPlanes.setCumplimientoDelPlan(cursorPlanes.getInt(4));
+                historialPlanes.setVistoBueno(cursorPlanes.getString(5));
+                Cursor cursorPlanNutricional = db.rawQuery("SELECT " + Utilidades.CAMPO_NOMBREPlanNutricional + " FROM " + Utilidades.TABLA_PlanNutricional +" WHERE "+Utilidades.CAMPO_ID_PlanNutricional+" = "+historialPlanes.getIdPlanNutricional()+"", null);
+                cursorPlanNutricional.moveToFirst();
+                historialPlanes.setNombrePlanNutricional(cursorPlanNutricional.getString(0));
+                cursorPlanNutricional.close();
+                listaHistorialPlanes.add(historialPlanes);
+            } while (cursorPlanes.moveToNext());
+        }
+
+        cursorPlanes.close();
+
+        return listaHistorialPlanes;
     }
 }

@@ -81,7 +81,7 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
                     Context context =  view.getContext();
                     if(listaHijos.get(getAdapterPosition()).getIdPlanNutricional3()!=0){
 
-                        Toast.makeText(context,"Te han asignado un plan",Toast.LENGTH_LONG).show();
+                        //Toast.makeText(context,"Te han asignado un plan",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(context, PlanDirario.class); //si algo me toca modificarlo
                         intent.putExtra("IdHijo",listaHijos.get(getAdapterPosition()).getIdHijos());
                         intent.putExtra("IdPlanNutricional",listaHijos.get(getAdapterPosition()).getIdPlanNutricional3());

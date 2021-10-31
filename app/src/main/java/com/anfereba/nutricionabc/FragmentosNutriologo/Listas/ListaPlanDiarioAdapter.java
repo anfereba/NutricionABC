@@ -101,11 +101,11 @@ public class ListaPlanDiarioAdapter extends RecyclerView.Adapter<ListaPlanDiario
                         b=b+1;
                         long c = (long) ((b*1.00)/(a*1.00)*100);
                         String f= String.valueOf(c);
-                        Toast.makeText(context," Has completado el "+f+"%",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context," Has completado el "+f+"%",Toast.LENGTH_SHORT).show();
                         int d = (int) c;
                         dbPlanNutricional.EditarPorcentajePlanes(listaPlanesDiarios.get(getAdapterPosition()).getPlanNutricional(),listaPlanesDiarios.get(getAdapterPosition()).getIdHijo(),d);
                         if(a==b){
-                            Toast.makeText(context," Has completado el Plan",Toast.LENGTH_LONG).show();
+                            Toast.makeText(context," Has completado el Plan",Toast.LENGTH_SHORT).show();
                             Toast.makeText(context," Se Notificara al nutriologo",Toast.LENGTH_LONG).show();
                         }
                     }else{
@@ -113,7 +113,7 @@ public class ListaPlanDiarioAdapter extends RecyclerView.Adapter<ListaPlanDiario
                         b=b-1;
                         long c = (long) ((b*1.00)/(a*1.00)*100);
                         String f= String.valueOf(c);
-                        Toast.makeText(context," Has completado el "+f+"%",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context," Has completado el "+f+"%",Toast.LENGTH_SHORT).show();
                         int d = (int) c;
                         dbPlanNutricional.EditarPorcentajePlanes(listaPlanesDiarios.get(getAdapterPosition()).getPlanNutricional(),listaPlanesDiarios.get(getAdapterPosition()).getIdHijo(),d);
                     }

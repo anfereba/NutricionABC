@@ -35,7 +35,7 @@
     <string name="Salir">Cerrar sesión</string>
     <string name="Opcion_uno_Cliente">Info git Nutriologos</string>
     <string name="Opcion_dos_Cliente">Hijos</string>
-    <string name="Opcion_tres_Cliente">Opción 3</string>
+    <string name="Opcion_tres_Cliente">Historial Planes Nutricionales</string>
     <string name="Opcion_cuatro_Cliente">Opción 4</string>
     <string name="Opcion_cinco_Cliente">Opción 5</string>
     <string name="usuario" />
@@ -145,4 +145,5 @@
     <string name="TXTPlanDiario">Plan Diario</string>
     <string name="BtnGuardarComentario">Guardar Comentario</string>
     <string name="BtnVistoBueno">Dar el visto bueno</string>
+    <string name="TXTAprobado">Aprobado:</string>
 </resources>
