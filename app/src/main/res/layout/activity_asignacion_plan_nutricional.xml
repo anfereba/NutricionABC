@@ -1,85 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/grey"
     tools:context=".FragmentosNutriologo.AsignacionPlanNutricional">
-
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="@color/colorPrimaryDark">
 
-        <TextView
-            android:id="@+id/NombreSeleccionado"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
 
             <ImageView
-                android:id="@+id/ImagenSeleccionado"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_gravity="center|center_horizontal"
-                android:layout_marginTop="10dp" />
-
-            <LinearLayout
+                android:id="@+id/atras_ico_plan"
+                android:layout_marginTop="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical">
+                android:onClick="IrAtras"
+                android:src="@drawable/atras_ico" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/TXTAsignarPlan"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="14pt"
+                android:fontFamily="@font/dm_sans_bold"/>
 
-                <TextView
-                    android:id="@+id/EdadSeleccionado"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <TextView
-                    android:id="@+id/EstaturaSeleccionado"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/PesoSeleccionado"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </LinearLayout>
 
         <TextView
-            android:id="@+id/textView5"
+            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/TXTSeleccionePlanNutricional"
-            android:textAlignment="center" />
+            android:text="@string/TXTAsignarNuevoPlan"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="7pt"
+            android:fontFamily="@font/dm_sans_bold"/>
 
-        <Spinner
-            android:id="@+id/spinnerPlanSeleccionado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/SeleccionarPlan"
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        app:cardCornerRadius="20dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:text="Seleccionar" />
+            android:orientation="vertical"
+            android:padding="30dp">
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-</FrameLayout>
+                <TextView
+                    android:id="@+id/NombreSeleccionado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Nombre Persona"
+                    android:textColor="@color/black"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ImagenSeleccionado"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_gravity="center|center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/lion"
+                        app:civ_border_color="@color/hipervinculo"
+                        app:civ_border_width="3dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <androidx.legacy.widget.Space
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp" />
+
+                        <TextView
+                            android:id="@+id/EdadSeleccionado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/flecha_derecha_ico"
+                            android:text="edad"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/EstaturaSeleccionado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/flecha_derecha_ico"
+                            android:text="Estatura"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/PesoSeleccionado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/flecha_derecha_ico"
+                            android:text="Peso"
+                            android:textSize="20dp" />
+
+                        <androidx.legacy.widget.Space
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/TXTSeleccionePlanNutricional"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="20dp" />
+
+                <Spinner
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/spinnerPlanSeleccionado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/SeleccionarPlan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/fondo_gradiente"
+                    android:backgroundTint="@color/white"
+                    android:text="Seleccionar" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

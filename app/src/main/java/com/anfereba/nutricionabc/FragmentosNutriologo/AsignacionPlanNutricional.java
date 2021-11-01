@@ -26,9 +26,11 @@ import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AsignacionPlanNutricional extends AppCompatActivity {
 TextView NombreSeleccionado, EdadSeleccionado, EstaturaSeleccionado,PesoSeleccionado;
-ImageView ImagenSeleccionado;
+CircleImageView ImagenSeleccionado;
 Spinner spinnerPlanSeleccionado;
 Button SeleccionarPlan;
     int id =0;
@@ -100,5 +102,9 @@ Button SeleccionarPlan;
         SharedPreferences shared = getSharedPreferences("Sesiones", MODE_PRIVATE);
         Integer iDNutriologo = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );
         return iDNutriologo;
+    }
+
+    public void IrAtras(View view) {
+        onBackPressed();
     }
 }

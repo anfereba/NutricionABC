@@ -146,4 +146,6 @@
     <string name="BtnGuardarComentario">Guardar Comentario</string>
     <string name="BtnVistoBueno">Dar el visto bueno</string>
     <string name="TXTAprobado">Aprobado:</string>
+    <string name="TXTAsignarPlan">Asignar Plan</string>
+    <string name="TXTAsignarNuevoPlan">Asignar un nuevo plan nutricional</string>
 </resources>
