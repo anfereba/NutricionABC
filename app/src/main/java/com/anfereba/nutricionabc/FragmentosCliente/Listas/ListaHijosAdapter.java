@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.ListaHijosViewHolder>{
     ArrayList<Hijos> listaHijos;
-    public ListaHijosAdapter(ArrayList<Hijos>listaHijos){
+    String NombreActividad;
+
+    public ListaHijosAdapter(ArrayList<Hijos>listaHijos,String NombreActividad){
         this.listaHijos=listaHijos;
+        this.NombreActividad = NombreActividad;
     }
     @NonNull
     @Override
@@ -103,6 +107,8 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
                     Context context =  view.getContext();
                     Intent intent = new Intent(context, VerHijo.class); //si algo me toca modificarlo
                     intent.putExtra("IdHijo",listaHijos.get(getAdapterPosition()).getIdHijos());
+                    intent.putExtra("nombreActividad",NombreActividad);
+
                     context.startActivity(intent);
                     //((Activity)context).finish();
                 }

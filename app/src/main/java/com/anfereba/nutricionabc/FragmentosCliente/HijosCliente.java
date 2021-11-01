@@ -34,6 +34,7 @@ public class HijosCliente extends Fragment {
 
     Button AgregarHijo;
     RecyclerView listaHijos;
+    final String NombreActividad = this.getClass().getSimpleName();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,7 +70,7 @@ public class HijosCliente extends Fragment {
         ArrayList<Hijos> listaArrayHijos = new ArrayList<>();
         SharedPreferences shared = getActivity().getSharedPreferences("Sesiones", MODE_PRIVATE);//Llamar id del cliente.
         Integer iDUsuario = shared.getInt(Utilidades.CAMPO_ID_USUARIO,0 );//Llamar id del cliente.
-        ListaHijosAdapter adapter =new ListaHijosAdapter(dbHijo.mostrarHijos(iDUsuario));
+        ListaHijosAdapter adapter =new ListaHijosAdapter(dbHijo.mostrarHijos(iDUsuario),NombreActividad);
         listaHijos.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

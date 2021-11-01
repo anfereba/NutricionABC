@@ -30,7 +30,7 @@ import java.nio.charset.StandardCharsets;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VerHijo extends AppCompatActivity {
-    TextView NombreDelHijo;
+    TextView NombreDelHijo, TituloRegistroHijo;
     ImageView IMGAtras;
     CircleImageView EditarImagenHijo;
     EditText EditarNombreHijo, EditarEstaturaHijo, EditarEdadHijo, EditarPesoHijo;
@@ -38,10 +38,12 @@ public class VerHijo extends AppCompatActivity {
     FloatingActionButton EditarHijo,EliminarHijo,GuardarEdiHijo;
     int id =0;
     Hijos hijos;
+    String nombreActividad;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_hijo);
+        TituloRegistroHijo = findViewById(R.id.TituloRegistroHijo);
         editarNombreHijo= (TextInputLayout) findViewById(R.id.editarNombreHijo);
         NombreDelHijo = (TextView) findViewById(R.id.NombreDelHijo);
         EditarImagenHijo = findViewById(R.id.EditarImagenHijo);
@@ -59,6 +61,7 @@ public class VerHijo extends AppCompatActivity {
                 id = Integer.parseInt(null);
             } else {
                 id = extras.getInt("IdHijo");
+                nombreActividad = extras.getString("nombreActividad");
             }
         } else {
             id = (int) savedInstanceState.getSerializable("IdHijo");
@@ -72,9 +75,20 @@ public class VerHijo extends AppCompatActivity {
             EditarEstaturaHijo.setText(hijos.getEstaturaHijos());
             EditarEdadHijo.setText((hijos.getEdadHijos()).toString());
             EditarPesoHijo.setText((hijos.getPesoHijos()).toString());
+
+            //Si el nutriologo accede a esta vista, no podra acceder a las opciones para editar o eliminar hijo
+
+            if (nombreActividad.equals("OpcionUnoNutriologo")){
+                EliminarHijo.setVisibility(View.INVISIBLE);
+                EditarHijo.setVisibility(View.INVISIBLE);
+                GuardarEdiHijo.setVisibility(View.INVISIBLE);
+                TituloRegistroHijo.setText("Informacion del Paciente");
+            }
+
             EditarNombreHijo.setVisibility(View.INVISIBLE);
             editarNombreHijo.setVisibility(View.INVISIBLE);
             GuardarEdiHijo.setVisibility(View.INVISIBLE);
+
             EditarEstaturaHijo.setInputType(InputType.TYPE_NULL);
             EditarEdadHijo.setInputType(InputType.TYPE_NULL);
             EditarPesoHijo.setInputType(InputType.TYPE_NULL);

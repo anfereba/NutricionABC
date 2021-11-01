@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -88,7 +89,7 @@ public class DbHijo extends DbHelper {
         Cursor cursorHijos;
 
         cursorHijos = db.rawQuery("SELECT * FROM "+ Utilidades.TABLA_Hijo +" WHERE "+Utilidades.CAMPO_ID_PlanNutricional3+" = "+id+"", null);
-
+        Log.i("Query","SELECT * FROM "+ Utilidades.TABLA_Hijo +" WHERE "+Utilidades.CAMPO_ID_PlanNutricional3+" = "+id+"");
         if (cursorHijos.moveToFirst()) {
             do {
                 hijos = new Hijos();

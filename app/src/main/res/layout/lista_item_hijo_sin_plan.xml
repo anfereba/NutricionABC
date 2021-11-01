@@ -1,43 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:id="@+id/cv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="20dp"
+    android:layout_gravity="center"
+    android:outlineAmbientShadowColor="@color/fondocardview1"
+    app:cardElevation="4dp"
+    android:orientation="horizontal"
+    app:cardUseCompatPadding="true">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="6dp">
 
-        <TextView
-            android:id="@+id/NombreHijoSinPlan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/EdadHijoSinPlan"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/LinearLayoutCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="9dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/PesoHijoSinPlan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/NombreHijoSinPlan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:gravity="center"
+                    android:text="Nombre"
+                    android:textColor="@color/black"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/EstaturaHijoSinPlan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-    </LinearLayout>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/IMGHijoSinPlan"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    app:civ_border_color="@color/colorPrimary"
+                    app:civ_border_width="4dp"
+                    app:srcCompat="@drawable/lion" />
+
+                <TextView
+                    android:id="@+id/EdadHijoSinPlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/flecha_derecha_ico"
+                    android:fontFamily="@font/proximanovaregular"
+                    android:gravity="center"
+                    android:text="Edad"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/PesoHijoSinPlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/flecha_derecha_ico"
+                    android:fontFamily="@font/proximanovaregular"
+                    android:gravity="center"
+                    android:text="Peso"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/EstaturaHijoSinPlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/flecha_derecha_ico"
+                    android:fontFamily="@font/proximanovaregular"
+                    android:gravity="center"
+                    android:text="Estatura"
+                    android:textSize="14sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.cardview.widget.CardView>

@@ -50,13 +50,13 @@
                     android:gravity="center"
                     android:text="Nombre"
                     android:textColor="@color/black"
-                    android:textSize="33sp"
+                    android:textSize="28sp"
                     android:textStyle="bold" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/IMGHijo"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
@@ -75,7 +75,7 @@
                     android:fontFamily="@font/proximanovaregular"
                     android:gravity="center"
                     android:text="Edad"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/PesoHijo"
@@ -85,7 +85,7 @@
                     android:fontFamily="@font/proximanovaregular"
                     android:gravity="center"
                     android:text="Peso"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/EstaturaHijo"
@@ -95,7 +95,7 @@
                     android:fontFamily="@font/proximanovaregular"
                     android:gravity="center"
                     android:text="Estatura"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
