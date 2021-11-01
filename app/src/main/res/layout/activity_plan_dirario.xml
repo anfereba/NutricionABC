@@ -38,10 +38,18 @@
             android:textStyle="bold"
             android:text="@string/TXTPlanDiario"
             android:textSize="20sp" />
+
         <androidx.legacy.widget.Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/SharePlan"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_action_share" />
     </LinearLayout>
 
     <LinearLayout
