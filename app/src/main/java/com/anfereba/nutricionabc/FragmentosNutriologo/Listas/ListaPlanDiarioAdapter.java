@@ -53,6 +53,12 @@ public class ListaPlanDiarioAdapter extends RecyclerView.Adapter<ListaPlanDiario
             b=b+1;
         }
         holder.textViewPlanDiario.setText("Dia "+a+" "+listaPlanesDiarios.get(position).getNombreAlimento());
+        DbPlanNutricional dbPlanNutricional = new DbPlanNutricional(holder.itemView.getContext());
+        String a =dbPlanNutricional.verVistoBueno(listaPlanesDiarios.get(position).getIdHijo(),listaPlanesDiarios.get(position).getPlanNutricional());
+        Boolean b= Boolean.parseBoolean(a);
+        if (b==true){
+            holder.checkBoxPlanDiario.setEnabled(false);
+        }
     }
 
     @Override
@@ -79,6 +85,7 @@ public class ListaPlanDiarioAdapter extends RecyclerView.Adapter<ListaPlanDiario
             if(u==2){
                 checkBoxPlanDiario.setEnabled(false);
             }
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

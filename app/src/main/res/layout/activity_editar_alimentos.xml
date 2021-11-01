@@ -40,14 +40,15 @@
 
 
             <TextView
-                android:layout_marginTop="40dp"
+                android:id="@+id/ActualizarAlimentoExistente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/TXTActualizarNuevoAlimento"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/dm_sans_bold"
                 android:gravity="center"
+                android:text="@string/TXTActualizarNuevoAlimento"
                 android:textColor="@color/white"
-                android:textSize="7pt"
-                android:fontFamily="@font/dm_sans_bold"/>
+                android:textSize="7pt" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

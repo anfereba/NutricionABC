@@ -30,7 +30,7 @@ import java.sql.Blob;
 import java.util.ArrayList;
 
 public class VerAlimentos extends AppCompatActivity {
-    TextView ImgAtras;
+    TextView ImgAtras,ActualizarNuevoAlimento;
     EditText NombreAlimento, CaloriasAlimento;
     ImageView EditarFotoAlimento;
     Button GuardarAlimento;
@@ -50,6 +50,9 @@ public class VerAlimentos extends AppCompatActivity {
         fabEditarAlimentos = (FloatingActionButton) findViewById(R.id.fabEditarAlimento);
         fabEliminarAlimentos = (FloatingActionButton) findViewById(R.id.fabEliminarAlimento);
         ImgAtras = findViewById(R.id.ImgAtras);
+        ActualizarNuevoAlimento = findViewById(R.id.ActualizarAlimentoExistente);
+        ImgAtras.setText("Ver Alimento");
+        ActualizarNuevoAlimento.setText("AlimentoExistente");
         fabEditarAlimentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
