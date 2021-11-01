@@ -1,7 +1,9 @@
 package com.anfereba.nutricionabc.FragmentosCliente;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -20,8 +22,10 @@ import com.anfereba.nutricionabc.FragmentosNutriologo.VerAlimentos;
 import com.anfereba.nutricionabc.MainActivityCliente;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbHijo;
+import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Alimentos;
 import com.anfereba.nutricionabc.db.Entidades.Hijos;
+import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -30,20 +34,21 @@ import java.nio.charset.StandardCharsets;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VerHijo extends AppCompatActivity {
-    TextView NombreDelHijo, TituloRegistroHijo;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    TextView NombreDelHijo,TituloRegistroHijo;
     ImageView IMGAtras;
     CircleImageView EditarImagenHijo;
     EditText EditarNombreHijo, EditarEstaturaHijo, EditarEdadHijo, EditarPesoHijo;
     TextInputLayout editarNombreHijo;
     FloatingActionButton EditarHijo,EliminarHijo,GuardarEdiHijo;
+
     int id =0;
     Hijos hijos;
-    String nombreActividad;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_hijo);
-        TituloRegistroHijo = findViewById(R.id.TituloRegistroHijo);
         editarNombreHijo= (TextInputLayout) findViewById(R.id.editarNombreHijo);
         NombreDelHijo = (TextView) findViewById(R.id.NombreDelHijo);
         EditarImagenHijo = findViewById(R.id.EditarImagenHijo);
@@ -54,6 +59,8 @@ public class VerHijo extends AppCompatActivity {
         EditarHijo=(FloatingActionButton) findViewById(R.id.EditarHijo);
         EliminarHijo=(FloatingActionButton) findViewById(R.id.EliminarHijo);
         GuardarEdiHijo=(FloatingActionButton) findViewById(R.id.GuardarEdiHijo);
+        TituloRegistroHijo = (TextView)findViewById(R.id.TituloRegistroHijo);
+        TituloRegistroHijo.setText("Hijo");
         IMGAtras = findViewById(R.id.IMGAtras);
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -61,7 +68,6 @@ public class VerHijo extends AppCompatActivity {
                 id = Integer.parseInt(null);
             } else {
                 id = extras.getInt("IdHijo");
-                nombreActividad = extras.getString("nombreActividad");
             }
         } else {
             id = (int) savedInstanceState.getSerializable("IdHijo");
@@ -75,20 +81,9 @@ public class VerHijo extends AppCompatActivity {
             EditarEstaturaHijo.setText(hijos.getEstaturaHijos());
             EditarEdadHijo.setText((hijos.getEdadHijos()).toString());
             EditarPesoHijo.setText((hijos.getPesoHijos()).toString());
-
-            //Si el nutriologo accede a esta vista, no podra acceder a las opciones para editar o eliminar hijo
-
-            if (nombreActividad.equals("OpcionUnoNutriologo")){
-                EliminarHijo.setVisibility(View.INVISIBLE);
-                EditarHijo.setVisibility(View.INVISIBLE);
-                GuardarEdiHijo.setVisibility(View.INVISIBLE);
-                TituloRegistroHijo.setText("Informacion del Paciente");
-            }
-
             EditarNombreHijo.setVisibility(View.INVISIBLE);
             editarNombreHijo.setVisibility(View.INVISIBLE);
             GuardarEdiHijo.setVisibility(View.INVISIBLE);
-
             EditarEstaturaHijo.setInputType(InputType.TYPE_NULL);
             EditarEdadHijo.setInputType(InputType.TYPE_NULL);
             EditarPesoHijo.setInputType(InputType.TYPE_NULL);
@@ -129,6 +124,14 @@ public class VerHijo extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        DbUsuario dbUsuario = new DbUsuario(VerHijo.this);
+
+        String U = dbUsuario.consultarDato("idPerfilSistema","idUsuario",String.valueOf(ObtenerIdUsuarioActual()));
+        int u = Integer.parseInt (U);
+        if(u==2){
+            EditarHijo.setVisibility(View.INVISIBLE);
+            EliminarHijo.setVisibility(View.INVISIBLE);
+        }
     }
     private void lista() {
         /*Intent intent = new Intent(this, MainActivityNutriologo.class);
@@ -142,5 +145,13 @@ public class VerHijo extends AppCompatActivity {
             //((MainActivityCliente)getApplicationContext()).finish();
         }
         return super.onKeyDown(keyCode, event);
+    }
+    private int ObtenerIdUsuarioActual() {
+
+        preferences = this.getSharedPreferences("Sesiones", Context.MODE_PRIVATE);
+        editor = preferences.edit();
+        int IdUsuario = preferences.getInt(Utilidades.CAMPO_ID_USUARIO,0);
+        return IdUsuario;
+
     }
 }

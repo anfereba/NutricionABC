@@ -99,7 +99,6 @@ ImageView IMGAtras;
         DbUsuario dbUsuario = new DbUsuario(PlanDirario.this);
         String U = dbUsuario.consultarDato("idPerfilSistema","idUsuario",TomarIdUsuario().toString());
         int u = Integer.parseInt (U);
-        System.out.println(u);
         if(u==1){
             ComentarioNutriologo.setInputType(InputType.TYPE_NULL);
             GuardarComentarioDiario.setVisibility(View.INVISIBLE);
@@ -112,10 +111,11 @@ ImageView IMGAtras;
             VistoBueno.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dbPlanNutricional.EditarVistoBueno(IdHijo,IdPlanNutricional,true);
+                    dbPlanNutricional.EditarVistoBueno(IdPlanNutricional,IdHijo,true);
                     Toast.makeText(PlanDirario.this,"has dado el visto bueno",Toast.LENGTH_LONG).show();
                     DbHijo dbHijo = new DbHijo(PlanDirario.this);
                     dbHijo.AsignarPlanNutricionalAlHijo(IdHijo,0);
+                    finish();
                 }
             });
         }

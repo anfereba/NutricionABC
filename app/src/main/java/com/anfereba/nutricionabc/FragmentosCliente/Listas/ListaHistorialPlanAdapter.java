@@ -43,12 +43,12 @@ public class ListaHistorialPlanAdapter extends RecyclerView.Adapter<ListaHistori
         holder.ImagenHistorialHijo.setImageBitmap(bitmap);
         holder.NombreHistrorialHijo.setText(ListaHistorial.get(position).getNombreHijo());
         a = ListaHistorial.get(position).getIdHijo();
-        System.out.println(a);
+
 
         DbPlanNutricional dbPlanNutricional = new DbPlanNutricional(holder.itemView.getContext());
         holder.CaracteristicasHistorialPlan.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext()));
         ArrayList<HistorialPlanes> listaArrayHistorialPlan=new ArrayList<>();
-        System.out.println(a+"a");
+
         ListaItemsHistorialPlanAdapter adapter2 =new ListaItemsHistorialPlanAdapter(dbPlanNutricional.mostrarItemsHistorialPlan(a));
         holder.CaracteristicasHistorialPlan.setAdapter(adapter2);
         /*holder.NombreHistrorialPlan.setText(ListaHistorial.get(position).getNombrePlanNutricional());

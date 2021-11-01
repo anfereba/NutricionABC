@@ -314,6 +314,7 @@ public class DbPlanNutricional extends DbHelper {
         if (cursorPlanes.moveToFirst()) {
             do {
                 historialPlanes = new HistorialPlanes();
+                historialPlanes.setIdHijo(cursorPlanes.getInt(1));
                 historialPlanes.setIdPlanNutricional(cursorPlanes.getInt(2));
                 historialPlanes.setCumplimientoDelPlan(cursorPlanes.getInt(4));
                 historialPlanes.setVistoBueno(cursorPlanes.getString(5));
@@ -328,5 +329,24 @@ public class DbPlanNutricional extends DbHelper {
         cursorPlanes.close();
 
         return listaHistorialPlanes;
+    }
+    public String verVistoBueno(int IdHijo, int idPlanNutricional) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String verVistoBueno = "";
+
+        PlanesNutricionales planesNutricionales=null;
+        Cursor cursorPlanes;
+
+        cursorPlanes = db.rawQuery("SELECT "+Utilidades.CAMPO_Visto_Bueno_Nutriologo+" FROM  "+Utilidades.TABLA_Historial_Planes_Nutricionales+" WHERE "+Utilidades.CAMPO_ID_HIJO3+"= '"+ IdHijo +"' AND "+Utilidades.CAMPO_ID_PlanNutricional4+" = '"+idPlanNutricional +"'", null);
+
+        if (cursorPlanes.moveToFirst()) {
+            verVistoBueno =cursorPlanes.getString(0);
+        }
+
+        cursorPlanes.close();
+
+        return verVistoBueno;
     }
 }
