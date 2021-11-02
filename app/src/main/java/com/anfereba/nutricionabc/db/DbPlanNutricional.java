@@ -282,16 +282,15 @@ public class DbPlanNutricional extends DbHelper {
                 historialPlanes.setFotoHijos(cursorPlanes.getBlob(1));
                 historialPlanes.setNombreHijo(cursorPlanes.getString(2));
 
-                Cursor cursorHistorialPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_Historial_Planes_Nutricionales +" WHERE "+Utilidades.CAMPO_ID_HIJO3+" = "+historialPlanes.getIdHijo()+"", null);
-                        cursorHistorialPlanes.moveToFirst();
-                        historialPlanes.setIdPlanNutricional(cursorHistorialPlanes.getInt(2));
-                        historialPlanes.setCumplimientoDelPlan(cursorHistorialPlanes.getInt(4));
-                        historialPlanes.setVistoBueno(cursorHistorialPlanes.getString(5));
+               /* Cursor cursorHistorialPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_Historial_Planes_Nutricionales +" WHERE "+Utilidades.CAMPO_ID_HIJO3+" = "+historialPlanes.getIdHijo()+"", null);
+                    historialPlanes.setIdPlanNutricional(cursorHistorialPlanes.getInt(2));
+                    historialPlanes.setCumplimientoDelPlan(cursorHistorialPlanes.getInt(4));
+                    historialPlanes.setVistoBueno(cursorHistorialPlanes.getString(5));
                 cursorHistorialPlanes.close();
                 Cursor cursorPlanNutricional = db.rawQuery("SELECT " + Utilidades.CAMPO_NOMBREPlanNutricional + " FROM " + Utilidades.TABLA_PlanNutricional +" WHERE "+Utilidades.CAMPO_ID_PlanNutricional+" = "+historialPlanes.getIdPlanNutricional()+"", null);
                cursorPlanNutricional.moveToFirst();
                 historialPlanes.setNombrePlanNutricional(cursorPlanNutricional.getString(0));
-                cursorPlanNutricional.close();
+                cursorPlanNutricional.close();*/
                 listaHistorialPlanes.add(historialPlanes);
             } while (cursorPlanes.moveToNext());
         }
