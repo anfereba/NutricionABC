@@ -126,6 +126,7 @@ public class VerPlanesNutricionales extends AppCompatActivity {
         });
         ListaPlanesAlimentosAdapter adapter = new ListaPlanesAlimentosAdapter(dbPlanAlimento.mostrarIdAlimento(id));
         ListaPlanesAlimentos.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         spinnerAlimentos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

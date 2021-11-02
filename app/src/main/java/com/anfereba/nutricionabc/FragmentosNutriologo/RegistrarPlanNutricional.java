@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,11 +16,24 @@ import com.anfereba.nutricionabc.MainActivityNutriologo;
 import com.anfereba.nutricionabc.R;
 import com.anfereba.nutricionabc.db.DbPlanNutricional;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Length;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
-public class RegistrarPlanNutricional extends AppCompatActivity {
-TextView NombrePlanNutricional;
-ImageView btnAtras;
-Button Guardarplan;
+import java.util.List;
+
+public class RegistrarPlanNutricional extends AppCompatActivity implements Validator.ValidationListener {
+
+    private boolean DatosValidados;
+
+    @NotEmpty
+    @Length(min = 8, max =14)
+    EditText NombrePlanNutricional;
+    ImageView btnAtras;
+    Button Guardarplan;
+    private Validator validator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +43,16 @@ Button Guardarplan;
         Guardarplan=findViewById(R.id.GuardarPlan);
         btnAtras = findViewById(R.id.btnAtras);
 
+        validator = new Validator(this);
+        validator.setValidationListener(this);
+
         Guardarplan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(!NombrePlanNutricional.getText().toString().equals("") ) {
+                validator.validate();
+
+                if(DatosValidados) {
 
                     DbPlanNutricional dbPlanNutricional = new DbPlanNutricional(RegistrarPlanNutricional.this);
                     long id = dbPlanNutricional.insertarPlan(TomarIdNutriologo(),NombrePlanNutricional.getText().toString());
@@ -46,7 +65,7 @@ Button Guardarplan;
                         Toast.makeText(RegistrarPlanNutricional.this, "ERROR AL GUARDAR ", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(RegistrarPlanNutricional.this, "DEBE LLENAR LOS CAMPOS OBLIGATORIOS", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistrarPlanNutricional.this, "El campo no puede estar vacio y debe tener entre 8 y 14 caracteres", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -79,4 +98,26 @@ Button Guardarplan;
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    public void onValidationSucceeded() {
+        DatosValidados = true;
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+
+        DatosValidados = false;
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(this);
+
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            } else {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+
+        }
+
+    }
 }
