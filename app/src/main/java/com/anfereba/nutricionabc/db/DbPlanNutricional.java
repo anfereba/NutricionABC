@@ -142,7 +142,7 @@ public class DbPlanNutricional extends DbHelper {
 
             values.put(Utilidades.CAMPO_ID_HIJO3,idHijo);
             values.put(Utilidades.CAMPO_ID_PlanNutricional4,idPlanNutricional);//<---- registrara La id del nutriologo que la cree
-            values.put(Utilidades.CAMPO_Comentarios_Nutriologo,"");
+            values.put(Utilidades.CAMPO_Comentarios_Nutriologo," ");
             values.put(Utilidades.CAMPO_Cumplimiento2, 0);
             values.put(Utilidades.CAMPO_Visto_Bueno_Nutriologo,0);
 

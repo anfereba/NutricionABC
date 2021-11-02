@@ -75,10 +75,11 @@ public class DbPlanDiario extends DbHelper{
                 planesDiarios.setIdHijo(cursorPlanesDiarios.getInt(1));
                 planesDiarios.setIdPlanAlimento(cursorPlanesDiarios.getInt(2));
                 planesDiarios.setCumplimiento(cursorPlanesDiarios.getInt(3));
-                cursorPlanes = db.rawQuery("SELECT idAlimento,idPlanNutricional FROM "+Utilidades.TABLA_PlanAlimento+" WHERE "+Utilidades.CAMPO_ID_PlanAlimento+" = "+planesDiarios.getIdPlanAlimento()+"", null);
+                cursorPlanes = db.rawQuery("SELECT idAlimento,idPlanNutricional,Dia FROM "+Utilidades.TABLA_PlanAlimento+" WHERE "+Utilidades.CAMPO_ID_PlanAlimento+" = "+planesDiarios.getIdPlanAlimento()+"", null);
                 cursorPlanes.moveToFirst();
                 planesDiarios.setIdAlimento(cursorPlanes.getInt(0));
                 planesDiarios.setPlanNutricional(cursorPlanes.getInt(1));
+                planesDiarios.setDia(cursorPlanes.getInt(2));
                 Cursor cursorNombreAlimentos =db.rawQuery("SELECT "+Utilidades.CAMPO_NOMBREAlimento+" FROM  "+Utilidades.TABLA_Alimento+" WHERE "+Utilidades.CAMPO_ID_Alimento+" = "+planesDiarios.getIdAlimento()+"", null);
                 cursorNombreAlimentos.moveToFirst();
                 planesDiarios.setNombreAlimento(cursorNombreAlimentos.getString(0));

@@ -48,6 +48,7 @@ public class VerPlanesNutricionales extends AppCompatActivity {
     DbPlanAlimento dbPlanAlimento;
     int id=0;
     int dia=1;
+    boolean a=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,11 +137,18 @@ public class VerPlanesNutricionales extends AppCompatActivity {
                 agregarAlimentos.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        do {
+                            if(dbPlanAlimento.ConsultarDia(id,dia)!=0){
+                                dia = dia +1;
+                            }else{
+                                a=true;
+                            }
+
+                        }while (a!=true);
                         dbPlanAlimento.insertarPlanAlimento(id,idAlimentos,dia);
-                        dia = dia +1;
                         ListaPlanesAlimentosAdapter adapter = new ListaPlanesAlimentosAdapter(dbPlanAlimento.mostrarIdAlimento(id));
                         ListaPlanesAlimentos.setAdapter(adapter);
-                        //finish();
+                        a=false;
                     }
                 });
             }

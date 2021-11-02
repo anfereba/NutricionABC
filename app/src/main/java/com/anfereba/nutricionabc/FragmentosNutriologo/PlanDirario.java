@@ -113,7 +113,7 @@ ImageView IMGAtras,SharePlan;
         GuardarComentarioDiario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbPlanNutricional.EditarComentarioNutriologo(IdHijo,IdPlanNutricional,(ComentarioNutriologo.getText()).toString());
+                dbPlanNutricional.EditarComentarioNutriologo(IdPlanNutricional,IdHijo,(ComentarioNutriologo.getText()).toString());
                 Toast.makeText(PlanDirario.this,"Comentario Guardado",Toast.LENGTH_LONG).show();
             }
         });

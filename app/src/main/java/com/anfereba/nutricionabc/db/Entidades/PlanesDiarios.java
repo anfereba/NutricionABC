@@ -9,6 +9,16 @@ public class PlanesDiarios {
     private Integer PlanNutricional;
     private Integer idAlimento;
 
+    public Integer getDia() {
+        return Dia;
+    }
+
+    public void setDia(Integer dia) {
+        Dia = dia;
+    }
+
+    private Integer Dia;
+
     public Integer getIdCumplimientoPlanDiario() {
         return idCumplimientoPlanDiario;
     }

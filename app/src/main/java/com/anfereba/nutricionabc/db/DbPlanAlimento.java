@@ -146,5 +146,24 @@ public class DbPlanAlimento extends DbHelper{
 
         return correcto;
     }
+    public int ConsultarDia(int idPlanNutricional, int Dia) {
+
+        int id = 0;
+
+        try {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Cursor cursorDia;
+            cursorDia = db.rawQuery("SELECT idPlanAlimento FROM " + Utilidades.TABLA_PlanAlimento+" WHERE idPlanNutricional ="+idPlanNutricional+" AND Dia = "+Dia+"", null);
+            ContentValues values = new ContentValues();
+            //values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
+            cursorDia.moveToFirst();
+            id = cursorDia.getInt(0);
+        } catch (Exception ex) {
+            ex.toString();
+        }
+
+        return id;
+    }
 
 }
