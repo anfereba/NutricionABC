@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class ListaPlanesAlimentosAdapter extends RecyclerView.Adapter<ListaPlanesAlimentosAdapter.ListaPlanesAlimentosViewHolder>{
     ArrayList<PlanesAlimentos> listaPlanesAlimentos;
-    int a=1;
+    int a=0;
     public ListaPlanesAlimentosAdapter(ArrayList<PlanesAlimentos>listaPlanesAlimentos){
         this.listaPlanesAlimentos=listaPlanesAlimentos;
     }
@@ -38,8 +38,8 @@ public class ListaPlanesAlimentosAdapter extends RecyclerView.Adapter<ListaPlane
     @Override
     public void onBindViewHolder(@NonNull ListaPlanesAlimentosViewHolder holder, int position) {
 
-        holder.viewNombre.setText("Dia "+a+"  "+listaPlanesAlimentos.get(position).getNombrePlanesAlimentos());
-        a=a+1;
+        holder.viewNombre.setText("Dia "+listaPlanesAlimentos.get(position).getDia()+"  "+listaPlanesAlimentos.get(position).getNombrePlanesAlimentos());
+
     }
 
     @Override
@@ -60,7 +60,6 @@ public class ListaPlanesAlimentosAdapter extends RecyclerView.Adapter<ListaPlane
                     Intent intent = new Intent(context, VerAlimentos.class); //si algo me toca modificarlo
                     intent.putExtra("IdAlimentos",listaPlanesAlimentos.get(getAdapterPosition()).getIdAlimento());
                     intent.putExtra("IdPlanAlimento",listaPlanesAlimentos.get(getAdapterPosition()).getIdPlanAlimento());
-
                     context.startActivity(intent);
                     //((Activity)context).finish();
                 }

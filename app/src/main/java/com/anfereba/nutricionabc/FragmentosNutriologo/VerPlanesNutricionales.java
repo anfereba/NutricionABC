@@ -47,6 +47,7 @@ public class VerPlanesNutricionales extends AppCompatActivity {
     ArrayAdapter<Alimentos> arrayAdapter;
     DbPlanAlimento dbPlanAlimento;
     int id=0;
+    int dia=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +136,8 @@ public class VerPlanesNutricionales extends AppCompatActivity {
                 agregarAlimentos.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        dbPlanAlimento.insertarPlanAlimento(id,idAlimentos);
+                        dbPlanAlimento.insertarPlanAlimento(id,idAlimentos,dia);
+                        dia = dia +1;
                         ListaPlanesAlimentosAdapter adapter = new ListaPlanesAlimentosAdapter(dbPlanAlimento.mostrarIdAlimento(id));
                         ListaPlanesAlimentos.setAdapter(adapter);
                         //finish();

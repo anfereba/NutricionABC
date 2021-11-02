@@ -32,7 +32,7 @@ public class ListaPlanesAlimentosEditarAdapter extends RecyclerView.Adapter<List
 
     @Override
     public void onBindViewHolder(@NonNull ListaPlanesAlimentosEditarAdapter.ListaPlanesAlimentosEditarAdapterViewHolder holder, int position) {
-        holder.viewNombre.setText("Dia "+a+"  "+listaPlanesAlimentos.get(position).getNombrePlanesAlimentos());
+        holder.viewNombre.setText("Dia "+listaPlanesAlimentos.get(position).getDia()+"  "+listaPlanesAlimentos.get(position).getNombrePlanesAlimentos());
         a=a+1;
     }
 

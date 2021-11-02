@@ -3,7 +3,19 @@ public class PlanesAlimentos{
     private int idPlanAlimento;
     private int idPlanNutricional;
     private int idAlimento;
+    private int Dia;
     private String NombrePlanesAlimentos;
+
+
+    public int getDia() {
+        return Dia;
+    }
+
+    public void setDia(int dia) {
+        Dia = dia;
+    }
+
+
 
     public int getIdPlanAlimento() {
         return idPlanAlimento;

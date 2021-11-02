@@ -25,7 +25,7 @@ public class DbPlanAlimento extends DbHelper{
 
 
 
-    public long insertarPlanAlimento(int IdPLanNutricional,int IdAlimento ) {
+    public long insertarPlanAlimento(int IdPLanNutricional,int IdAlimento,int dia ) {
 
         long id = 0;
 
@@ -37,6 +37,7 @@ public class DbPlanAlimento extends DbHelper{
             //values.put(Utilidades.CAMPO_ID_PERFIL_SISTEMA,1); // <---- Por defecto se registrara como cliente
             values.put(Utilidades.CAMPO_ID_PlanNutricional2,IdPLanNutricional);
             values.put(Utilidades.CAMPO_ID_Alimento2,IdAlimento);
+            values.put(Utilidades.CAMPO_Dia,dia);
 
 
 
@@ -90,6 +91,8 @@ public class DbPlanAlimento extends DbHelper{
                 planesAlimentos.setIdPlanAlimento(cursorPlanes.getInt(0));
                 planesAlimentos.setIdPlanNutricional(cursorPlanes.getInt(1));
                 planesAlimentos.setIdAlimento(cursorPlanes.getInt(2));
+                planesAlimentos.setDia(cursorPlanes.getInt(3));
+
                 Cursor cursorNombreAlimentos =db.rawQuery("SELECT "+Utilidades.CAMPO_NOMBREAlimento+" FROM  "+Utilidades.TABLA_Alimento+" WHERE "+Utilidades.CAMPO_ID_Alimento+" = "+planesAlimentos.getIdAlimento()+"", null);
                 cursorNombreAlimentos.moveToFirst();
                 planesAlimentos.setNombrePlanesAlimentos(cursorNombreAlimentos.getString(0));
