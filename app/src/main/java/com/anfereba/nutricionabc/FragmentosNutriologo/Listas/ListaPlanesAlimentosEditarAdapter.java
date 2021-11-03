@@ -1,5 +1,6 @@
 package com.anfereba.nutricionabc.FragmentosNutriologo.Listas;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -54,6 +55,7 @@ public class ListaPlanesAlimentosEditarAdapter extends RecyclerView.Adapter<List
                     intent.putExtra("IdPlanAlimento",listaPlanesAlimentos.get(getAdapterPosition()).getIdPlanAlimento());
                     intent.putExtra("IdPlanNutricional",listaPlanesAlimentos.get(getAdapterPosition()).getIdPlanNutricional());
                     context.startActivity(intent);
+                    ((Activity)context).finish();
                 }
             });
         }
