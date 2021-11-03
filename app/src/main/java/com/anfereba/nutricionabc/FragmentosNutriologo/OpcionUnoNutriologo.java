@@ -55,7 +55,7 @@ public class OpcionUnoNutriologo extends Fragment {
         listaHijos = (RecyclerView) view.findViewById(R.id.ListaHijosNutriologo);
         listaHijos.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         ArrayList<Hijos> listaArrayHijos = new ArrayList<>();
-        adapter2 =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosDelNutriologo(iDNutriologo),NombreActividad);
+        adapter2 =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosDelNutriologo(iDNutriologo),NombreActividad,getContext());
         listaHijos.setAdapter(adapter2);
 
         return view;
@@ -68,7 +68,7 @@ public class OpcionUnoNutriologo extends Fragment {
         listaHijosSinPlan.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        adapter2 =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosDelNutriologo(iDNutriologo),NombreActividad);
+        adapter2 =new ListaHijosAdapter(dbHijo.mostrarTodosLosHijosDelNutriologo(iDNutriologo),NombreActividad,getContext());
         listaHijos.setAdapter(adapter2);
         adapter2.notifyDataSetChanged();
     }

@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cv"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
     app:cardCornerRadius="20dp"
     android:layout_gravity="center"
@@ -13,21 +13,22 @@
     app:cardUseCompatPadding="true">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+        android:id="@+id/linearlayoutcompat"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:orientation="horizontal">
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:padding="4dp">
 
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/LinearLayoutCliente"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
@@ -40,7 +41,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/proximanovaregular"
                     android:gravity="center"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
+
 
                 <TextView
                     android:id="@+id/NombreHijo"
@@ -50,13 +52,13 @@
                     android:gravity="center"
                     android:text="Nombre"
                     android:textColor="@color/black"
-                    android:textSize="28sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/IMGHijo"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
@@ -72,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/flecha_derecha_ico"
-                    android:fontFamily="@font/proximanovaregular"
+                    android:fontFamily="@font/lato_blackitalic"
                     android:gravity="center"
                     android:text="Edad"
                     android:textSize="14sp" />
@@ -82,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/flecha_derecha_ico"
-                    android:fontFamily="@font/proximanovaregular"
+                    android:fontFamily="@font/lato_blackitalic"
                     android:gravity="center"
                     android:text="Peso"
                     android:textSize="14sp" />
@@ -92,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/flecha_derecha_ico"
-                    android:fontFamily="@font/proximanovaregular"
+                    android:fontFamily="@font/lato_blackitalic"
                     android:gravity="center"
                     android:text="Estatura"
                     android:textSize="14sp" />

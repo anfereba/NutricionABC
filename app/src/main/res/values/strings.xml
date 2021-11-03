@@ -33,8 +33,8 @@
 
     <!-- Menu de Opciones Cliente -->
     <string name="Salir">Cerrar sesión</string>
-    <string name="Opcion_uno_Cliente">Info git Nutriologos</string>
-    <string name="Opcion_dos_Cliente">Hijos</string>
+    <string name="Opcion_uno_Cliente">Informacion Nutriologos</string>
+    <string name="Opcion_dos_Cliente">Gestionar Hijos</string>
     <string name="Opcion_tres_Cliente">Historial Planes Nutricionales</string>
     <string name="Opcion_cuatro_Cliente">Opción 4</string>
     <string name="Opcion_cinco_Cliente">Opción 5</string>
@@ -130,7 +130,7 @@
     <string name="job_success">Job Success</string>
     <string name="ratings">Calificacion</string>
     <string name="about_me">Acerca de mi</string>
-    <string name="my_desc">Aqui van cosas sobre mi</string>
+    <string name="my_desc">Soy un nutriólogo con formación sólida en el área de la nutrición  clínica trabajando conforme al código ético y deontológico en el que la alimentación y la promoción de hábitos saludables  son mis pilares,  estableciendo en las personas estilos de vida saludables  para lograr una vida plena, con bienestar y calidad de vida. Ejerciendo  siempre  bajo el respaldo científico actualizado. </string>
     <string name="contact">Contacto</string>
     <string name="skills">Habilidades</string>
     <string name="samplereview">Eres muy buen nutriologo</string>

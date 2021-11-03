@@ -59,7 +59,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,10 +67,29 @@
                 android:orientation="vertical">
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/AlimentosDiarios"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"
+                    app:cardElevation="25dp"
+                    app:cardUseCompatPadding="true"
+                    app:cardCornerRadius="5dp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:background="@color/blue"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/AlimentosDiarios"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
             </LinearLayout>
         </ScrollView>
 
@@ -84,14 +103,22 @@
             android:textColor="@color/black" />
 
         <Button
+            android:layout_marginTop="10dp"
             android:id="@+id/GuardarComentarioDiario"
             android:layout_width="wrap_content"
             android:layout_height="33dp"
             android:layout_gravity="end"
+            android:background="@drawable/rounder_corners"
+            android:padding="10dp"
+            android:textColor="@color/white"
             android:text="@string/BtnGuardarComentario"
-            android:textSize="8sp" />
+            android:textSize="12sp" />
 
         <Button
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounder_corners"
+            android:padding="10dp"
+            android:textColor="@color/white"
             android:id="@+id/VistoBueno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

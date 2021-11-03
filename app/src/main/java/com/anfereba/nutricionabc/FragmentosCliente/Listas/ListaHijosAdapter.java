@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anfereba.nutricionabc.FragmentosCliente.VerHijo;
@@ -27,10 +31,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.ListaHijosViewHolder>{
     ArrayList<Hijos> listaHijos;
     String NombreActividad;
+    private Context context;
 
-    public ListaHijosAdapter(ArrayList<Hijos>listaHijos,String NombreActividad){
+    public ListaHijosAdapter(ArrayList<Hijos>listaHijos,String NombreActividad, Context context){
         this.listaHijos=listaHijos;
         this.NombreActividad = NombreActividad;
+        this.context = context;
     }
     @NonNull
     @Override
@@ -43,6 +49,29 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
     public void onBindViewHolder(@NonNull ListaHijosViewHolder holder, int position) {
         Bitmap bitmap = BitmapFactory.decodeByteArray(listaHijos.get(position).getFotoHijos(), 0,
                 listaHijos.get(position).getFotoHijos().length);
+
+        if (position%2 == 0){
+            holder.linearlayoutcompat.setBackgroundResource(R.drawable.fondo_gradiente_cardview_azul);
+            holder.NombreHijos.setTextColor(Color.WHITE);
+            holder.EstaturaHijos.setTextColor(Color.WHITE);
+            holder.EdadHijos.setTextColor(Color.WHITE);
+            holder.PesoHijos.setTextColor(Color.WHITE);
+
+            Drawable unwrappedDrawable = AppCompatResources.getDrawable(context, R.drawable.flecha_derecha_ico);
+            Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
+            DrawableCompat.setTint(wrappedDrawable, Color.WHITE);
+
+        }else{
+            holder.linearlayoutcompat.setBackgroundResource(R.drawable.fondo_gradiente_cardview_rojo);
+            holder.NombreHijos.setTextColor(Color.WHITE);
+            holder.EstaturaHijos.setTextColor(Color.WHITE);
+            holder.EdadHijos.setTextColor(Color.WHITE);
+            holder.PesoHijos.setTextColor(Color.WHITE);
+
+            Drawable unwrappedDrawable = AppCompatResources.getDrawable(context, R.drawable.flecha_derecha_ico);
+            Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
+            DrawableCompat.setTint(wrappedDrawable, Color.WHITE);
+        }
 
         if(listaHijos.get(position).getIdPlanNutricional3()!=0){
             holder.AsignacionDePlan.setText("Se le ha asignado un plan");
@@ -76,9 +105,11 @@ public class ListaHijosAdapter extends RecyclerView.Adapter<ListaHijosAdapter.Li
         TextView EdadHijos;
         TextView PesoHijos;
         CircleImageView IMGHijo;
+        LinearLayoutCompat linearlayoutcompat;
         public ListaHijosViewHolder(@NonNull View itemView) {
             super(itemView);
             AsignacionDePlan= itemView. findViewById(R.id.AsignacionDePlan);
+            linearlayoutcompat = itemView.findViewById(R.id.linearlayoutcompat);
             AsignacionDePlan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

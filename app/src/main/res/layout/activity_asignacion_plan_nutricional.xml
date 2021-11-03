@@ -55,8 +55,9 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="5dp"
-        app:cardCornerRadius="20dp">
+        android:elevation="30dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="40dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -89,14 +90,15 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/ImagenSeleccionado"
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:layout_gravity="center|center_horizontal"
                         android:layout_marginTop="10dp"
                         android:src="@drawable/lion"
                         app:civ_border_color="@color/hipervinculo"
                         app:civ_border_width="3dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="5dp"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -167,8 +169,10 @@
                     android:id="@+id/SeleccionarPlan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/fondo_gradiente"
-                    android:backgroundTint="@color/white"
+                    android:background="@drawable/border_table"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/colorAccent"
                     android:text="Seleccionar" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>

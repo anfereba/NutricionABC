@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -273,7 +274,9 @@ public class DbPlanNutricional extends DbHelper {
         HistorialPlanes historialPlanes;
         Cursor cursorPlanes;
 
-        cursorPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_Hijo +" WHERE "+Utilidades.CAMPO_ID_USUARIO3+" = "+idUsuario+"", null);
+        String query = "SELECT * FROM " + Utilidades.TABLA_Hijo +" WHERE "+Utilidades.CAMPO_ID_USUARIO3+" = "+idUsuario+" AND "+Utilidades.CAMPO_ID_PlanNutricional + " <> 0";
+        cursorPlanes = db.rawQuery(query, null);
+        Log.i("Consulta",query);
 
         if (cursorPlanes.moveToFirst()) {
             do {
@@ -281,16 +284,6 @@ public class DbPlanNutricional extends DbHelper {
                 historialPlanes.setIdHijo(cursorPlanes.getInt(0));
                 historialPlanes.setFotoHijos(cursorPlanes.getBlob(1));
                 historialPlanes.setNombreHijo(cursorPlanes.getString(2));
-
-               /* Cursor cursorHistorialPlanes = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_Historial_Planes_Nutricionales +" WHERE "+Utilidades.CAMPO_ID_HIJO3+" = "+historialPlanes.getIdHijo()+"", null);
-                    historialPlanes.setIdPlanNutricional(cursorHistorialPlanes.getInt(2));
-                    historialPlanes.setCumplimientoDelPlan(cursorHistorialPlanes.getInt(4));
-                    historialPlanes.setVistoBueno(cursorHistorialPlanes.getString(5));
-                cursorHistorialPlanes.close();
-                Cursor cursorPlanNutricional = db.rawQuery("SELECT " + Utilidades.CAMPO_NOMBREPlanNutricional + " FROM " + Utilidades.TABLA_PlanNutricional +" WHERE "+Utilidades.CAMPO_ID_PlanNutricional+" = "+historialPlanes.getIdPlanNutricional()+"", null);
-               cursorPlanNutricional.moveToFirst();
-                historialPlanes.setNombrePlanNutricional(cursorPlanNutricional.getString(0));
-                cursorPlanNutricional.close();*/
                 listaHistorialPlanes.add(historialPlanes);
             } while (cursorPlanes.moveToNext());
         }
@@ -345,6 +338,7 @@ public class DbPlanNutricional extends DbHelper {
         }
 
         cursorPlanes.close();
+        db.close();
 
         return verVistoBueno;
     }

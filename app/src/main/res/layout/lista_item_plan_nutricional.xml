@@ -6,6 +6,7 @@
     android:animateLayoutChanges="true"
     app:cardCornerRadius="20dp"
     android:layout_gravity="center"
+    android:background="@drawable/fondo_gradiente_cardview_azul"
     android:outlineAmbientShadowColor="@color/fondocardview1"
     app:cardElevation="4dp"
     android:orientation="horizontal"
@@ -15,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
+        android:background="@drawable/fondo_gradiente_cardview_azul"
         android:orientation="horizontal">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -40,7 +42,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:text="Nombre"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="33sp"
                     android:textStyle="bold" />
 
