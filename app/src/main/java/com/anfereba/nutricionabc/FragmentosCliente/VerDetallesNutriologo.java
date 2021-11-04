@@ -139,13 +139,18 @@ public class VerDetallesNutriologo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                personalinfo.setVisibility(View.GONE);
-                experience.setVisibility(View.VISIBLE);
-                review.setVisibility(View.GONE);
-                personalinfobtn.setTextColor(getResources().getColor(R.color.grey));
-                experiencebtn.setTextColor(getResources().getColor(R.color.blue));
-                reviewbtn.setTextColor(getResources().getColor(R.color.grey));
-
+                DbUsuario dbUsuario = new DbUsuario(getApplicationContext());
+                String PerfilUsuario = dbUsuario.Comprobar_Perfil(ObtenerIdUsuarioActual());
+                if (PerfilUsuario.equals("Cliente")){
+                    personalinfo.setVisibility(View.GONE);
+                    experience.setVisibility(View.VISIBLE);
+                    review.setVisibility(View.GONE);
+                    personalinfobtn.setTextColor(getResources().getColor(R.color.grey));
+                    experiencebtn.setTextColor(getResources().getColor(R.color.blue));
+                    reviewbtn.setTextColor(getResources().getColor(R.color.grey));
+                }else{
+                    Toast.makeText(getApplicationContext(), "No puedes calificarte a ti mismo", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

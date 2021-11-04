@@ -306,6 +306,36 @@ public class DbUsuario extends DbHelper{
         return datosUsuario;
     }
 
+    public ArrayList<Usuario> ObtenerDatosUsuarioConPlan(String nombrePlan) {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        ArrayList<Usuario> datosUsuario = new ArrayList<>();
+        Usuario usuario = null;
+        Cursor cursorUsuarios = null;
+        String consulta = " SELECT a."+Utilidades.CAMPO_NOMBRES +
+                ", a."+Utilidades.CAMPO_APELLIDOS +
+                ", a."+Utilidades.CAMPO_CORREO +
+                ", a."+Utilidades.CAMPO_TELEFONO +
+                ", a."+Utilidades.CAMPO_FOTO_USUARIO +
+                " FROM "+Utilidades.TABLA_USUARIO + " a INNER JOIN "+
+                Utilidades.TABLA_PlanNutricional + " b ON a."+Utilidades.CAMPO_ID_USUARIO +
+                " = b."+Utilidades.CAMPO_ID_USUARIO + " WHERE b."+Utilidades.CAMPO_NOMBREPlanNutricional + " = '"+nombrePlan+"'";
+        Log.i("Consulta",consulta);
+        cursorUsuarios = db.rawQuery(consulta,null);
+        if (cursorUsuarios.moveToFirst()){
+            usuario = new Usuario();
+            usuario.setNombres(cursorUsuarios.getString(0));
+            usuario.setApellidos(cursorUsuarios.getString(1));
+            usuario.setCorreo(cursorUsuarios.getString(2));
+            usuario.setTelefono(cursorUsuarios.getString(3));
+            usuario.setFotoPerfil(cursorUsuarios.getBlob(4));
+            datosUsuario.add(usuario);
+        }
+        cursorUsuarios.close();
+        return datosUsuario;
+    }
+
+
     public void ActualizarRespuestasUsuario(int idUsuario, String preguntaUno, String preguntaDos) {
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();

@@ -28,9 +28,15 @@
                 android:title="@string/Opcion_tres_Nutriologo"
                 android:icon="@drawable/tres_ico">
             </item>
+
             <item
                 android:id="@+id/Opcion_cuatro_Nutriologo"
                 android:title="@string/OpcionPerfil"
+                android:icon="@drawable/cuatro_ico">
+            </item>
+            <item
+                android:id="@+id/Opcion_cinco_Nutriologo"
+                android:title="@string/MisCalificaciones"
                 android:icon="@drawable/cuatro_ico">
             </item>
             <item

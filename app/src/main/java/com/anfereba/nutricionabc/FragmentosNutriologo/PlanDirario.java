@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -29,6 +30,7 @@ import com.anfereba.nutricionabc.db.DbPlanNutricional;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.PlanesDiarios;
 import com.anfereba.nutricionabc.db.Entidades.PlanesNutricionales;
+import com.anfereba.nutricionabc.db.Entidades.Usuario;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
 
 import java.io.File;
@@ -36,20 +38,37 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class PlanDirario extends AppCompatActivity {
 int IdHijo =0;
 int IdPlanNutricional =0;
-TextView PlanDiario;
+TextView PlanDiario, NombresNutriologo, TelefonoNutriologo, CorreoNutriologo;
+CircleImageView FotoNutriologo;
 RecyclerView AlimentosDiarios;
 EditText ComentarioNutriologo;
 Button GuardarComentarioDiario, VistoBueno;
 ImageView IMGAtras,SharePlan;
+ArrayList<Usuario> datosNutriologo;
     Uri uri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_dirario);
         PlanDiario = findViewById(R.id.PlanDiario);
+        ComentarioNutriologo = findViewById(R.id.ComentarioNutriologo);
+        GuardarComentarioDiario = findViewById(R.id.GuardarComentarioDiario);
+
+        ComentarioNutriologo = findViewById(R.id.ComentarioNutriologo);
+        GuardarComentarioDiario = findViewById(R.id.GuardarComentarioDiario);
+
+        FotoNutriologo = findViewById(R.id.FotoNutriologo);
+        NombresNutriologo = findViewById(R.id.NombresNutriologo);
+        TelefonoNutriologo = findViewById(R.id.TelefonoNutriologo);
+
+        CorreoNutriologo = findViewById(R.id.CorreoNutriologo);
+
+
         ComentarioNutriologo = findViewById(R.id.ComentarioNutriologo);
         GuardarComentarioDiario = findViewById(R.id.GuardarComentarioDiario);
         VistoBueno = findViewById(R.id.VistoBueno);
@@ -108,6 +127,9 @@ ImageView IMGAtras,SharePlan;
         }
         DbPlanNutricional dbPlanNutricional = new DbPlanNutricional(PlanDirario.this);
         PlanesNutricionales planesNutricionales= dbPlanNutricional.verPlan(IdPlanNutricional);
+
+
+
         PlanDiario.setText(planesNutricionales.getNombrePlan());
         ComentarioNutriologo.setText(dbPlanNutricional.verComentarioNutriologo(IdHijo,IdPlanNutricional));
         GuardarComentarioDiario.setOnClickListener(new View.OnClickListener() {
@@ -117,13 +139,7 @@ ImageView IMGAtras,SharePlan;
                 Toast.makeText(PlanDirario.this,"Comentario Guardado",Toast.LENGTH_LONG).show();
             }
         });
-        /*DbHijo dbHijo = new DbHijo(this);
-        AlimentosDiarios = (RecyclerView) findViewById(R.id.AlimentosDiarios);
-        AlimentosDiarios.setLayoutManager(new LinearLayoutManager(this));
-        ArrayList<Hijos>listaArrayHijosSinPlan=new ArrayList<>();
-        Integer iDUsuario=0;
-        ListaHijosSinPlanAdapter adapter =new ListaHijosSinPlanAdapter(dbHijo.mostrarTodosLosHijosQueNoTienenPlan(iDUsuario));
-        AlimentosDiarios.setAdapter(adapter);*/
+
 
        DbPlanDiario dbPlanDiario = new DbPlanDiario(PlanDirario.this);
         AlimentosDiarios = (RecyclerView) findViewById(R.id.AlimentosDiarios);
@@ -134,6 +150,19 @@ ImageView IMGAtras,SharePlan;
 
 
         DbUsuario dbUsuario = new DbUsuario(PlanDirario.this);
+        datosNutriologo = new ArrayList<>(dbUsuario.ObtenerDatosUsuarioConPlan(planesNutricionales.getNombrePlan()));
+
+        //Asignar datos nutriologo a vista
+
+        NombresNutriologo.setText(datosNutriologo.get(0).getNombres() + " "+datosNutriologo.get(0).getApellidos());
+        TelefonoNutriologo.setText(datosNutriologo.get(0).getTelefono());
+        CorreoNutriologo.setText(datosNutriologo.get(0).getCorreo());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(datosNutriologo.get(0).getFotoPerfil(),0,
+                datosNutriologo.get(0).getFotoPerfil().length);
+        FotoNutriologo.setImageBitmap(bitmap);
+
+
+
         String U = dbUsuario.consultarDato("idPerfilSistema","idUsuario",TomarIdUsuario().toString());
         int u = Integer.parseInt (U);
         if(u==1){
