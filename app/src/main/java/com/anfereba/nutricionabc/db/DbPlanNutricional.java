@@ -174,6 +174,26 @@ public class DbPlanNutricional extends DbHelper {
         }
         return existePlan;
     }
+
+    public boolean PlanContieneAlimentos(int idPlanNutricional){
+        boolean contieneAlimento = false;
+        try{
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PlanAlimento +" WHERE "+Utilidades.CAMPO_ID_PlanNutricional+" = "+idPlanNutricional, null);
+            if (cursor.getCount() > 0){
+                contieneAlimento = true;
+            }else {
+                contieneAlimento = false;
+            }
+            db.close();
+        }catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            contieneAlimento = false;
+        }
+        return contieneAlimento;
+
+    }
     public boolean EditarPorcentajePlanes(int idPlanNutricional, int IdHijo, int Porcentage) {
 
         boolean correcto =false;
@@ -274,7 +294,10 @@ public class DbPlanNutricional extends DbHelper {
         HistorialPlanes historialPlanes;
         Cursor cursorPlanes;
 
-        String query = "SELECT * FROM " + Utilidades.TABLA_Hijo +" WHERE "+Utilidades.CAMPO_ID_USUARIO3+" = "+idUsuario+" AND "+Utilidades.CAMPO_ID_PlanNutricional + " <> 0";
+        String query = "SELECT * FROM " + Utilidades.TABLA_Hijo +
+                " a INNER JOIN "+Utilidades.TABLA_Historial_Planes_Nutricionales+ " b ON a."+
+                Utilidades.CAMPO_ID_HIJO + " = b."+Utilidades.CAMPO_ID_HIJO + " WHERE a."+
+                Utilidades.CAMPO_ID_USUARIO3+" = "+idUsuario;
         cursorPlanes = db.rawQuery(query, null);
         Log.i("Consulta",query);
 

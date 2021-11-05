@@ -79,14 +79,19 @@ Button SeleccionarPlan;
                     @Override
                     public void onClick(View view) {
                         Context context =  view.getContext();
-                        if(dbPlanNutricional.Comprobar_ExistenciaHistorialPlan(id,idPlanNutricional)==true){
+                        if(dbPlanNutricional.Comprobar_ExistenciaHistorialPlan(id,idPlanNutricional)){
                             Toast.makeText(context,"El Paciente ya habia intentado este plan Nutricional Antes",Toast.LENGTH_LONG).show();
                             Toast.makeText(context,"Seleccione otro por favor",Toast.LENGTH_LONG).show();
                         }else {
-                            dbPlanNutricional.insertarHistorialPlanNutricional(id,idPlanNutricional);
-                            dbHijo.AsignarPlanNutricionalAlHijo(id,idPlanNutricional);
-                            finish();
-                            dbPlanDiario.insertarPlanDiario(id,idPlanNutricional);
+                            if(dbPlanNutricional.PlanContieneAlimentos(idPlanNutricional)){
+                                dbPlanNutricional.insertarHistorialPlanNutricional(id,idPlanNutricional);
+                                dbHijo.AsignarPlanNutricionalAlHijo(id,idPlanNutricional);
+                                finish();
+                                dbPlanDiario.insertarPlanDiario(id,idPlanNutricional);
+                            }else{
+                                Toast.makeText(context, "Debe registrar al menos un alimento en este plan antes de asignarlo a un paciente", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                     }
                 });
