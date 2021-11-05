@@ -14,135 +14,159 @@
         android:orientation="vertical">
 
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F5F5F5"
-            android:orientation="horizontal">
-            <ImageView
-                android:id="@+id/btn_Atras"
-                android:layout_alignParentLeft="true"
-                android:layout_width="172dp"
-                android:layout_height="200dp"
-                android:src="@drawable/fondo_atras">
-
-            </ImageView>
+            android:background="@drawable/border_table">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:background="@color/grey"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/btn_Atras"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="172dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/fondo_atras">
 
-                <TextView
-                    android:layout_marginTop="20dp"
+                </ImageView>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/mont_bold"
-                    android:gravity="center"
-                    android:textSize="11pt"
-                    android:text="@string/TXTNombrePlan"
-                    android:layout_marginBottom="20dp"/>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/ModificarNombrePlan"
+                    <TextView
+                        android:layout_marginTop="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/mont_regular"
-                        android:hint="@string/TXTNombrePlan" />
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:fontFamily="@font/mont_bold"
+                        android:gravity="center"
+                        android:textSize="11pt"
+                        android:text="@string/TXTNombrePlan"
+                        android:layout_marginBottom="20dp"/>
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/ModificarNombrePlan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mont_regular"
+                            android:hint="@string/TXTNombrePlan" />
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
                             android:orientation="horizontal">
 
-                            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/floatingEditarPlan"
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:backgroundTint="@color/white"
-                                android:clickable="true"
-                                app:srcCompat="@drawable/ic_baseline_edit_24" />
+                                android:orientation="horizontal">
 
-                            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/ModificarPlan"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/colorPrimary"
-                                android:src="@drawable/ic_baseline_save_24"
-                                app:backgroundTint="@color/white" />
+                                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                    android:id="@+id/floatingEditarPlan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/white"
+                                    android:clickable="true"
+                                    app:srcCompat="@drawable/ic_baseline_edit_24" />
 
-                            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/floatingEliminarPlan"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@color/white"
-                                android:clickable="true"
-                                app:srcCompat="@drawable/ic_baseline_delete_24" />
+                                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                    android:id="@+id/ModificarPlan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/colorPrimary"
+                                    android:src="@drawable/ic_baseline_save_24"
+                                    app:backgroundTint="@color/white" />
+
+                                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                    android:id="@+id/floatingEliminarPlan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/white"
+                                    android:clickable="true"
+                                    app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="end"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <Spinner
-                            android:id="@+id/spinnerAlimentos"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="bottom|center"
-                            android:layout_weight="1" />
-
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/agregarAlimentos"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_gravity="bottom|start|center_horizontal|end"
-                            android:layout_weight="1"
-                            android:clickable="true"
-                            app:backgroundTint="@color/icon_background"
-                            app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
-                    </LinearLayout>
-                </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_gravity="end"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <Spinner
+                                android:id="@+id/spinnerAlimentos"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="bottom|center"
+                                android:layout_weight="1" />
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/agregarAlimentos"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="bottom|start|center_horizontal|end"
+                                android:layout_weight="1"
+                                android:clickable="true"
+                                app:backgroundTint="@color/icon_background"
+                                app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+                        </LinearLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-
+        </LinearLayout>
 
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="20dp"
+                app:cardUseCompatPadding="true">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/ListaPlanesAlimentos"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/fondo_gradiente_cardview_cherry"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Rutina Nutricional"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/horario_ico"
+                        android:fontFamily="@font/lato_blackitalic"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/ListaPlanesAlimentos"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </ScrollView>
 
     </LinearLayout>

@@ -4,7 +4,12 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_marginTop="5dp"
         android:id="@+id/NombrePlanesAlimentos2"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:drawableLeft="@drawable/flecha_derecha_ico"
+        android:fontFamily="@font/proximanovaregular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>

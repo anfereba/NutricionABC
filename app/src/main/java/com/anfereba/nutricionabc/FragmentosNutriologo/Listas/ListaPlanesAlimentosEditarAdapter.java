@@ -3,6 +3,7 @@ package com.anfereba.nutricionabc.FragmentosNutriologo.Listas;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,8 @@ public class ListaPlanesAlimentosEditarAdapter extends RecyclerView.Adapter<List
 
     @Override
     public void onBindViewHolder(@NonNull ListaPlanesAlimentosEditarAdapter.ListaPlanesAlimentosEditarAdapterViewHolder holder, int position) {
-        holder.viewNombre.setText("Dia "+listaPlanesAlimentos.get(position).getDia()+"  "+listaPlanesAlimentos.get(position).getNombrePlanesAlimentos());
+        holder.viewNombre.setText("Dia "+listaPlanesAlimentos.get(position).getDia()+" - "+listaPlanesAlimentos.get(position).getNombrePlanesAlimentos());
+        holder.viewNombre.setTextColor(Color.WHITE);
         a=a+1;
     }
 

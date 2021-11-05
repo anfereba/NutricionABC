@@ -20,6 +20,12 @@ import android.widget.Toast;
 
 import com.anfereba.nutricionabc.FragmentosAdministrador.OpcionDosAdministrador;
 import com.anfereba.nutricionabc.FragmentosAdministrador.CrudUsuariosAdministrador;
+import com.anfereba.nutricionabc.FragmentosCliente.HijosCliente;
+import com.anfereba.nutricionabc.FragmentosCliente.InformacionNutriologoCliente;
+import com.anfereba.nutricionabc.FragmentosCliente.OpcionTresCliente;
+import com.anfereba.nutricionabc.FragmentosNutriologo.OpcionTresNutriologo;
+import com.anfereba.nutricionabc.FragmentosNutriologo.OpcionUnoNutriologo;
+import com.anfereba.nutricionabc.FragmentosNutriologo.PlanesNutricionalesNutriologo;
 import com.anfereba.nutricionabc.db.DbUsuario;
 import com.anfereba.nutricionabc.db.Entidades.Usuario;
 import com.anfereba.nutricionabc.db.utilidades.Utilidades;
@@ -113,6 +119,27 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
                 break;
             case R.id.Opcion_tres_Administrador:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new PerfilUsuario()).commit();
+                break;
+            case R.id.Opcion_uno_Nutriologo:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new OpcionUnoNutriologo()).commit();
+                break;
+            case R.id.Opcion_dos_Nutriologo:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new PlanesNutricionalesNutriologo()).commit();
+                break;
+            case R.id.Opcion_tres_Nutriologo:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new OpcionTresNutriologo()).commit();
+                break;
+            case R.id.Opcion_cinco_Nutriologo:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new InformacionNutriologoCliente()).commit();
+                break;
+            case R.id.Opcion_uno_Cliente:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new InformacionNutriologoCliente()).commit();
+                break;
+            case R.id.Opcion_dos_Cliente:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new HijosCliente()).commit();
+                break;
+            case R.id.Opcion_tres_Cliente:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,new OpcionTresCliente()).commit();
                 break;
             case R.id.Salir:
                 CerrarSesion();

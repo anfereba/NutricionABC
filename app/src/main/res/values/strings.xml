@@ -150,4 +150,6 @@
     <string name="TXTAsignarNuevoPlan">Asignar un nuevo plan nutricional</string>
     <string name="MisCalificaciones">Mis Calificaciones</string>
     <string name="progreso_nutricional">Tu progreso nutricional</string>
+    <string name="OpcionesCliente">Opciones Cliente</string>
+    <string name="OpcionesNutriologo">Opciones Nutriologo</string>
 </resources>
